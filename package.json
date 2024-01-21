@@ -1,6 +1,6 @@
 {
   "name": "@2004scape/rsmod-pathfinder",
-  "version": "4.2.3",
+  "version": "4.2.4",
   "description": "A breadth-first search path finder.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
