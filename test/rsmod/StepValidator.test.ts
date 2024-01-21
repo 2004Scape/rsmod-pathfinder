@@ -261,7 +261,7 @@ describe('StepValidator', () => {
                 expect(validated).toBeTruthy();
 
                 const validated2 = stepValidator.canTravel(level, destX, destZ, dirX, dirZ, 1, 0, CollisionStrategies.LINE_OF_SIGHT);
-                expect(validated2).toBeFalsy();
+                expect(validated2).toBeTruthy();
             }
         }
     });

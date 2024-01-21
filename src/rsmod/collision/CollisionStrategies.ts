@@ -27,7 +27,7 @@ class Outdoors implements CollisionStrategy {
 }
 
 class LineOfSight implements CollisionStrategy {
-    static BLOCK_MOVEMENT: number =
+    private static readonly BLOCK_MOVEMENT: number =
         CollisionFlag.WALL_NORTH_WEST |
         CollisionFlag.WALL_NORTH |
         CollisionFlag.WALL_NORTH_EAST |
@@ -38,11 +38,20 @@ class LineOfSight implements CollisionStrategy {
         CollisionFlag.WALL_WEST |
         CollisionFlag.LOC;
 
-    static BLOCK_ROUTE: number = CollisionFlag.PLAYER;
+    private static readonly BLOCK_ROUTE: number =
+        CollisionFlag.WALL_NORTH_WEST_ROUTE_BLOCKER |
+        CollisionFlag.WALL_NORTH_ROUTE_BLOCKER |
+        CollisionFlag.WALL_NORTH_EAST_ROUTE_BLOCKER |
+        CollisionFlag.WALL_EAST_ROUTE_BLOCKER |
+        CollisionFlag.WALL_SOUTH_EAST_ROUTE_BLOCKER |
+        CollisionFlag.WALL_SOUTH_ROUTE_BLOCKER |
+        CollisionFlag.WALL_SOUTH_WEST_ROUTE_BLOCKER |
+        CollisionFlag.WALL_WEST_ROUTE_BLOCKER |
+        CollisionFlag.LOC_ROUTE_BLOCKER;
 
     canMove(tileFlag: number, blockFlag: number): boolean {
         const movementFlags: number = (blockFlag & LineOfSight.BLOCK_MOVEMENT) << 9;
-        const routeFlags: number = LineOfSight.BLOCK_ROUTE;
+        const routeFlags: number = (blockFlag & LineOfSight.BLOCK_ROUTE) >> 13;
         const finalBlockFlag: number = movementFlags | routeFlags;
         return (tileFlag & finalBlockFlag) === CollisionFlag.OPEN;
     }
