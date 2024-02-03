@@ -16,7 +16,7 @@ https://github.com/wclr/yalc
 ```shell
 npm run build # Builds the js bundle and type definitions.
 yalc publish --push # Publishes to the local repo and pushes to all projects it has been added to.
-yalc add rsmod-pathfinder # Adds the published library to your project. 
+yalc add @2004scape/rsmod-pathfinder # Adds the published library to your project. 
 npm publish --access public # Publishes the version of this to npm.
 ```
 

@@ -34,7 +34,7 @@ export default class NaivePathFinder {
             const dest: RouteCoordinates = this.cardinalDestination(level, srcX, srcZ);
             return new Route([dest], false, true);
         }
-        const dest: RouteCoordinates = this.naiveDestination(level, srcX, srcZ, srcWidth, srcHeight, destX, destZ, destWidth, destHeight);
+        const dest: RouteCoordinates = this.naiveDestination(level, srcX, srcZ, srcWidth, srcHeight, destX, destZ, 1, 1);
         if (this.isDiagonal(dest.x, dest.z, srcWidth, srcHeight, destX, destZ, destWidth, destHeight)) {
             return new Route([dest], false, true);
         }
