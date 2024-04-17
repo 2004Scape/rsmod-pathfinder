@@ -2,9 +2,9 @@
  (type $0 (func (param i32) (result i32)))
  (type $1 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
  (type $2 (func (param i32 i32 i32 i32 i32 i32 i32) (result i32)))
- (type $3 (func (param i32 i32) (result i32)))
+ (type $3 (func (param i32)))
  (type $4 (func (param i32 i32 i32 i32 i32)))
- (type $5 (func (param i32)))
+ (type $5 (func (param i32 i32) (result i32)))
  (type $6 (func (param i32 i32)))
  (type $7 (func (param i32 i32 i32 i32)))
  (type $8 (func))
@@ -15,18 +15,18 @@
  (type $13 (func (param i32 i32 i32)))
  (type $14 (func (param i32 i32 i32 i32 i32 i32 i32 i32)))
  (type $15 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
- (type $16 (func (param i32 i32 i32) (result i32)))
- (type $17 (func (param i32 i32 i32 i32 i32) (result i32)))
- (type $18 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
- (type $19 (func (param i32 i32 i64)))
- (type $20 (func (result i32)))
- (type $21 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
- (type $22 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
- (type $23 (func (param i32 i32 i32 i32 i32 i32) (result i32)))
+ (type $16 (func (param i32 i32 i32 i32 i32) (result i32)))
+ (type $17 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
+ (type $18 (func (param i32 i32 i64)))
+ (type $19 (func (result i32)))
+ (type $20 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
+ (type $21 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
+ (type $22 (func (param i32 i32 i32 i32 i32 i32) (result i32)))
+ (type $23 (func (param i32 i32 i32) (result i32)))
  (type $24 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "console.log" (func $~lib/bindings/dom/console.log (param i32)))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 37856))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 37924))
  (global $assembly/index/flags (mut i32) (i32.const 0))
  (global $~argumentsLength (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/toSpace (mut i32) (i32.const 0))
@@ -154,69 +154,71 @@
  (data $7.1 (i32.const 1384) "\02\00\00\00\1e\00\00\00~\00l\00i\00b\00/\00r\00t\00/\00t\00l\00s\00f\00.\00t\00s")
  (data $8 (i32.const 1436) ",")
  (data $8.1 (i32.const 1448) "\02\00\00\00\1c\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00l\00e\00n\00g\00t\00h")
- (data $9 (i32.const 1484) ",")
- (data $9.1 (i32.const 1496) "\02\00\00\00\1a\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00.\00t\00s")
- (data $10 (i32.const 1532) "<")
- (data $10.1 (i32.const 1544) "\02\00\00\00&\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00b\00u\00f\00f\00e\00r\00.\00t\00s")
- (data $11 (i32.const 1596) "|")
- (data $11.1 (i32.const 1608) "\02\00\00\00l\00\00\00[\00f\00i\00n\00d\00P\00a\00t\00h\00]\00 \00F\00a\00i\00l\00e\00d\00 \00r\00e\00q\00u\00i\00r\00e\00m\00e\00n\00t\00.\00 \00c\00o\00l\00l\00i\00s\00i\00o\00n\00S\00t\00r\00a\00t\00e\00g\00y\00 \00w\00a\00s\00:\00 ")
- (data $12 (i32.const 1724) ",")
- (data $12.1 (i32.const 1736) "\02\00\00\00\1c\00\00\00.\00 \00m\00u\00s\00t\00 \00b\00e\00 \000\00-\004\00.")
- (data $13 (i32.const 1772) "\1c\00\00\00\03\00\00\00\00\00\00\00\11\00\00\00\0c\00\00\00P\06\00\00\00\00\00\00\d0\06")
- (data $14 (i32.const 1804) "|")
- (data $14.1 (i32.const 1816) "\02\00\00\00d\00\00\00t\00o\00S\00t\00r\00i\00n\00g\00(\00)\00 \00r\00a\00d\00i\00x\00 \00a\00r\00g\00u\00m\00e\00n\00t\00 \00m\00u\00s\00t\00 \00b\00e\00 \00b\00e\00t\00w\00e\00e\00n\00 \002\00 \00a\00n\00d\00 \003\006")
- (data $15 (i32.const 1932) "<")
- (data $15.1 (i32.const 1944) "\02\00\00\00&\00\00\00~\00l\00i\00b\00/\00u\00t\00i\00l\00/\00n\00u\00m\00b\00e\00r\00.\00t\00s")
- (data $16 (i32.const 1996) "\1c")
- (data $16.1 (i32.const 2008) "\02\00\00\00\02\00\00\000")
- (data $17 (i32.const 2028) "0\000\000\001\000\002\000\003\000\004\000\005\000\006\000\007\000\008\000\009\001\000\001\001\001\002\001\003\001\004\001\005\001\006\001\007\001\008\001\009\002\000\002\001\002\002\002\003\002\004\002\005\002\006\002\007\002\008\002\009\003\000\003\001\003\002\003\003\003\004\003\005\003\006\003\007\003\008\003\009\004\000\004\001\004\002\004\003\004\004\004\005\004\006\004\007\004\008\004\009\005\000\005\001\005\002\005\003\005\004\005\005\005\006\005\007\005\008\005\009\006\000\006\001\006\002\006\003\006\004\006\005\006\006\006\007\006\008\006\009\007\000\007\001\007\002\007\003\007\004\007\005\007\006\007\007\007\008\007\009\008\000\008\001\008\002\008\003\008\004\008\005\008\006\008\007\008\008\008\009\009\000\009\001\009\002\009\003\009\004\009\005\009\006\009\007\009\008\009\009")
- (data $18 (i32.const 2428) "\1c\04")
- (data $18.1 (i32.const 2440) "\02\00\00\00\00\04\00\000\000\000\001\000\002\000\003\000\004\000\005\000\006\000\007\000\008\000\009\000\00a\000\00b\000\00c\000\00d\000\00e\000\00f\001\000\001\001\001\002\001\003\001\004\001\005\001\006\001\007\001\008\001\009\001\00a\001\00b\001\00c\001\00d\001\00e\001\00f\002\000\002\001\002\002\002\003\002\004\002\005\002\006\002\007\002\008\002\009\002\00a\002\00b\002\00c\002\00d\002\00e\002\00f\003\000\003\001\003\002\003\003\003\004\003\005\003\006\003\007\003\008\003\009\003\00a\003\00b\003\00c\003\00d\003\00e\003\00f\004\000\004\001\004\002\004\003\004\004\004\005\004\006\004\007\004\008\004\009\004\00a\004\00b\004\00c\004\00d\004\00e\004\00f\005\000\005\001\005\002\005\003\005\004\005\005\005\006\005\007\005\008\005\009\005\00a\005\00b\005\00c\005\00d\005\00e\005\00f\006\000\006\001\006\002\006\003\006\004\006\005\006\006\006\007\006\008\006\009\006\00a\006\00b\006\00c\006\00d\006\00e\006\00f\007\000\007\001\007\002\007\003\007\004\007\005\007\006\007\007\007\008\007\009\007\00a\007\00b\007\00c\007\00d\007\00e\007\00f\008\000\008\001\008\002\008\003\008\004\008\005\008\006\008\007\008\008\008\009\008\00a\008\00b\008\00c\008\00d\008\00e\008\00f\009\000\009\001\009\002\009\003\009\004\009\005\009\006\009\007\009\008\009\009\009\00a\009\00b\009\00c\009\00d\009\00e\009\00f\00a\000\00a\001\00a\002\00a\003\00a\004\00a\005\00a\006\00a\007\00a\008\00a\009\00a\00a\00a\00b\00a\00c\00a\00d\00a\00e\00a\00f\00b\000\00b\001\00b\002\00b\003\00b\004\00b\005\00b\006\00b\007\00b\008\00b\009\00b\00a\00b\00b\00b\00c\00b\00d\00b\00e\00b\00f\00c\000\00c\001\00c\002\00c\003\00c\004\00c\005\00c\006\00c\007\00c\008\00c\009\00c\00a\00c\00b\00c\00c\00c\00d\00c\00e\00c\00f\00d\000\00d\001\00d\002\00d\003\00d\004\00d\005\00d\006\00d\007\00d\008\00d\009\00d\00a\00d\00b\00d\00c\00d\00d\00d\00e\00d\00f\00e\000\00e\001\00e\002\00e\003\00e\004\00e\005\00e\006\00e\007\00e\008\00e\009\00e\00a\00e\00b\00e\00c\00e\00d\00e\00e\00e\00f\00f\000\00f\001\00f\002\00f\003\00f\004\00f\005\00f\006\00f\007\00f\008\00f\009\00f\00a\00f\00b\00f\00c\00f\00d\00f\00e\00f\00f")
- (data $19 (i32.const 3484) "\\")
- (data $19.1 (i32.const 3496) "\02\00\00\00H\00\00\000\001\002\003\004\005\006\007\008\009\00a\00b\00c\00d\00e\00f\00g\00h\00i\00j\00k\00l\00m\00n\00o\00p\00q\00r\00s\00t\00u\00v\00w\00x\00y\00z")
- (data $20 (i32.const 3580) "\1c")
- (data $20.1 (i32.const 3592) "\02")
- (data $21 (i32.const 3612) "<")
- (data $21.1 (i32.const 3624) "\02\00\00\00\"\00\00\00a\00s\00s\00e\00m\00b\00l\00y\00/\00i\00n\00d\00e\00x\00.\00t\00s")
- (data $22 (i32.const 3676) "l")
- (data $22.1 (i32.const 3688) "\02\00\00\00R\00\00\00[\00f\00i\00n\00d\00P\00a\00t\00h\00]\00 \00F\00a\00i\00l\00e\00d\00 \00r\00e\00q\00u\00i\00r\00e\00m\00e\00n\00t\00.\00 \00s\00r\00c\00X\00 \00w\00a\00s\00:\00 ")
- (data $23 (i32.const 3788) ",")
- (data $23.1 (i32.const 3800) "\02\00\00\00\18\00\00\00,\00 \00s\00r\00c\00Z\00 \00w\00a\00s\00:\00 ")
- (data $24 (i32.const 3836) "\1c")
- (data $24.1 (i32.const 3848) "\02\00\00\00\02\00\00\00.")
- (data $25 (i32.const 3868) ",\00\00\00\03\00\00\00\00\00\00\00\11\00\00\00\14\00\00\00p\0e\00\00\00\00\00\00\e0\0e\00\00\00\00\00\00\10\0f")
- (data $26 (i32.const 3916) "<")
- (data $26.1 (i32.const 3928) "\02\00\00\00,\00\00\00a\00s\00s\00e\00m\00b\00l\00y\00/\00P\00a\00t\00h\00F\00i\00n\00d\00e\00r\00.\00t\00s")
- (data $27 (i32.const 3980) "l")
- (data $27.1 (i32.const 3992) "\02\00\00\00R\00\00\00[\00f\00i\00n\00d\00P\00a\00t\00h\00]\00F\00a\00i\00l\00e\00d\00 \00r\00e\00q\00u\00i\00r\00e\00m\00e\00n\00t\00.\00 \00d\00e\00s\00t\00X\00 \00w\00a\00s\00:\00 ")
- (data $28 (i32.const 4092) ",")
- (data $28.1 (i32.const 4104) "\02\00\00\00\1a\00\00\00,\00 \00d\00e\00s\00t\00Z\00 \00w\00a\00s\00:\00 ")
- (data $29 (i32.const 4140) ",\00\00\00\03\00\00\00\00\00\00\00\11\00\00\00\14\00\00\00\a0\0f\00\00\00\00\00\00\10\10\00\00\00\00\00\00\10\0f")
- (data $30 (i32.const 4188) "l")
- (data $30.1 (i32.const 4200) "\02\00\00\00R\00\00\00[\00f\00i\00n\00d\00P\00a\00t\00h\00]\00F\00a\00i\00l\00e\00d\00 \00r\00e\00q\00u\00i\00r\00e\00m\00e\00n\00t\00.\00 \00l\00e\00v\00e\00l\00 \00w\00a\00s\00:\00 ")
- (data $31 (i32.const 4300) ",")
- (data $31.1 (i32.const 4312) "\02\00\00\00\1c\00\00\00.\00 \00m\00u\00s\00t\00 \00b\00e\00 \000\00-\003\00.")
- (data $32 (i32.const 4348) "\1c\00\00\00\03\00\00\00\00\00\00\00\11\00\00\00\0c\00\00\00p\10\00\00\00\00\00\00\e0\10")
- (data $33 (i32.const 4380) "<")
- (data $33.1 (i32.const 4392) "\02\00\00\00$\00\00\00~\00l\00i\00b\00/\00t\00y\00p\00e\00d\00a\00r\00r\00a\00y\00.\00t\00s")
- (data $34 (i32.const 4444) "\1c")
- (data $34.1 (i32.const 4456) "\01")
+ (data $9 (i32.const 1484) "<")
+ (data $9.1 (i32.const 1496) "\02\00\00\00&\00\00\00~\00l\00i\00b\00/\00s\00t\00a\00t\00i\00c\00a\00r\00r\00a\00y\00.\00t\00s")
+ (data $10 (i32.const 1548) "|")
+ (data $10.1 (i32.const 1560) "\02\00\00\00l\00\00\00[\00f\00i\00n\00d\00P\00a\00t\00h\00]\00 \00F\00a\00i\00l\00e\00d\00 \00r\00e\00q\00u\00i\00r\00e\00m\00e\00n\00t\00.\00 \00c\00o\00l\00l\00i\00s\00i\00o\00n\00S\00t\00r\00a\00t\00e\00g\00y\00 \00w\00a\00s\00:\00 ")
+ (data $11 (i32.const 1676) ",")
+ (data $11.1 (i32.const 1688) "\02\00\00\00\1c\00\00\00.\00 \00m\00u\00s\00t\00 \00b\00e\00 \000\00-\004\00.")
+ (data $12 (i32.const 1724) "\1c\00\00\00\03\00\00\00\00\00\00\00\12\00\00\00\0c\00\00\00 \06\00\00\00\00\00\00\a0\06")
+ (data $13 (i32.const 1756) "|")
+ (data $13.1 (i32.const 1768) "\02\00\00\00d\00\00\00t\00o\00S\00t\00r\00i\00n\00g\00(\00)\00 \00r\00a\00d\00i\00x\00 \00a\00r\00g\00u\00m\00e\00n\00t\00 \00m\00u\00s\00t\00 \00b\00e\00 \00b\00e\00t\00w\00e\00e\00n\00 \002\00 \00a\00n\00d\00 \003\006")
+ (data $14 (i32.const 1884) "<")
+ (data $14.1 (i32.const 1896) "\02\00\00\00&\00\00\00~\00l\00i\00b\00/\00u\00t\00i\00l\00/\00n\00u\00m\00b\00e\00r\00.\00t\00s")
+ (data $15 (i32.const 1948) "\1c")
+ (data $15.1 (i32.const 1960) "\02\00\00\00\02\00\00\000")
+ (data $16 (i32.const 1980) "0\000\000\001\000\002\000\003\000\004\000\005\000\006\000\007\000\008\000\009\001\000\001\001\001\002\001\003\001\004\001\005\001\006\001\007\001\008\001\009\002\000\002\001\002\002\002\003\002\004\002\005\002\006\002\007\002\008\002\009\003\000\003\001\003\002\003\003\003\004\003\005\003\006\003\007\003\008\003\009\004\000\004\001\004\002\004\003\004\004\004\005\004\006\004\007\004\008\004\009\005\000\005\001\005\002\005\003\005\004\005\005\005\006\005\007\005\008\005\009\006\000\006\001\006\002\006\003\006\004\006\005\006\006\006\007\006\008\006\009\007\000\007\001\007\002\007\003\007\004\007\005\007\006\007\007\007\008\007\009\008\000\008\001\008\002\008\003\008\004\008\005\008\006\008\007\008\008\008\009\009\000\009\001\009\002\009\003\009\004\009\005\009\006\009\007\009\008\009\009")
+ (data $17 (i32.const 2380) "\1c\04")
+ (data $17.1 (i32.const 2392) "\02\00\00\00\00\04\00\000\000\000\001\000\002\000\003\000\004\000\005\000\006\000\007\000\008\000\009\000\00a\000\00b\000\00c\000\00d\000\00e\000\00f\001\000\001\001\001\002\001\003\001\004\001\005\001\006\001\007\001\008\001\009\001\00a\001\00b\001\00c\001\00d\001\00e\001\00f\002\000\002\001\002\002\002\003\002\004\002\005\002\006\002\007\002\008\002\009\002\00a\002\00b\002\00c\002\00d\002\00e\002\00f\003\000\003\001\003\002\003\003\003\004\003\005\003\006\003\007\003\008\003\009\003\00a\003\00b\003\00c\003\00d\003\00e\003\00f\004\000\004\001\004\002\004\003\004\004\004\005\004\006\004\007\004\008\004\009\004\00a\004\00b\004\00c\004\00d\004\00e\004\00f\005\000\005\001\005\002\005\003\005\004\005\005\005\006\005\007\005\008\005\009\005\00a\005\00b\005\00c\005\00d\005\00e\005\00f\006\000\006\001\006\002\006\003\006\004\006\005\006\006\006\007\006\008\006\009\006\00a\006\00b\006\00c\006\00d\006\00e\006\00f\007\000\007\001\007\002\007\003\007\004\007\005\007\006\007\007\007\008\007\009\007\00a\007\00b\007\00c\007\00d\007\00e\007\00f\008\000\008\001\008\002\008\003\008\004\008\005\008\006\008\007\008\008\008\009\008\00a\008\00b\008\00c\008\00d\008\00e\008\00f\009\000\009\001\009\002\009\003\009\004\009\005\009\006\009\007\009\008\009\009\009\00a\009\00b\009\00c\009\00d\009\00e\009\00f\00a\000\00a\001\00a\002\00a\003\00a\004\00a\005\00a\006\00a\007\00a\008\00a\009\00a\00a\00a\00b\00a\00c\00a\00d\00a\00e\00a\00f\00b\000\00b\001\00b\002\00b\003\00b\004\00b\005\00b\006\00b\007\00b\008\00b\009\00b\00a\00b\00b\00b\00c\00b\00d\00b\00e\00b\00f\00c\000\00c\001\00c\002\00c\003\00c\004\00c\005\00c\006\00c\007\00c\008\00c\009\00c\00a\00c\00b\00c\00c\00c\00d\00c\00e\00c\00f\00d\000\00d\001\00d\002\00d\003\00d\004\00d\005\00d\006\00d\007\00d\008\00d\009\00d\00a\00d\00b\00d\00c\00d\00d\00d\00e\00d\00f\00e\000\00e\001\00e\002\00e\003\00e\004\00e\005\00e\006\00e\007\00e\008\00e\009\00e\00a\00e\00b\00e\00c\00e\00d\00e\00e\00e\00f\00f\000\00f\001\00f\002\00f\003\00f\004\00f\005\00f\006\00f\007\00f\008\00f\009\00f\00a\00f\00b\00f\00c\00f\00d\00f\00e\00f\00f")
+ (data $18 (i32.const 3436) "\\")
+ (data $18.1 (i32.const 3448) "\02\00\00\00H\00\00\000\001\002\003\004\005\006\007\008\009\00a\00b\00c\00d\00e\00f\00g\00h\00i\00j\00k\00l\00m\00n\00o\00p\00q\00r\00s\00t\00u\00v\00w\00x\00y\00z")
+ (data $19 (i32.const 3532) "\1c")
+ (data $19.1 (i32.const 3544) "\02")
+ (data $20 (i32.const 3564) "<")
+ (data $20.1 (i32.const 3576) "\02\00\00\00\"\00\00\00a\00s\00s\00e\00m\00b\00l\00y\00/\00i\00n\00d\00e\00x\00.\00t\00s")
+ (data $21 (i32.const 3628) "l")
+ (data $21.1 (i32.const 3640) "\02\00\00\00R\00\00\00[\00f\00i\00n\00d\00P\00a\00t\00h\00]\00 \00F\00a\00i\00l\00e\00d\00 \00r\00e\00q\00u\00i\00r\00e\00m\00e\00n\00t\00.\00 \00s\00r\00c\00X\00 \00w\00a\00s\00:\00 ")
+ (data $22 (i32.const 3740) ",")
+ (data $22.1 (i32.const 3752) "\02\00\00\00\18\00\00\00,\00 \00s\00r\00c\00Z\00 \00w\00a\00s\00:\00 ")
+ (data $23 (i32.const 3788) "\1c")
+ (data $23.1 (i32.const 3800) "\02\00\00\00\02\00\00\00.")
+ (data $24 (i32.const 3820) ",\00\00\00\03\00\00\00\00\00\00\00\12\00\00\00\14\00\00\00@\0e\00\00\00\00\00\00\b0\0e\00\00\00\00\00\00\e0\0e")
+ (data $25 (i32.const 3868) "<")
+ (data $25.1 (i32.const 3880) "\02\00\00\00,\00\00\00a\00s\00s\00e\00m\00b\00l\00y\00/\00P\00a\00t\00h\00F\00i\00n\00d\00e\00r\00.\00t\00s")
+ (data $26 (i32.const 3932) "l")
+ (data $26.1 (i32.const 3944) "\02\00\00\00R\00\00\00[\00f\00i\00n\00d\00P\00a\00t\00h\00]\00F\00a\00i\00l\00e\00d\00 \00r\00e\00q\00u\00i\00r\00e\00m\00e\00n\00t\00.\00 \00d\00e\00s\00t\00X\00 \00w\00a\00s\00:\00 ")
+ (data $27 (i32.const 4044) ",")
+ (data $27.1 (i32.const 4056) "\02\00\00\00\1a\00\00\00,\00 \00d\00e\00s\00t\00Z\00 \00w\00a\00s\00:\00 ")
+ (data $28 (i32.const 4092) ",\00\00\00\03\00\00\00\00\00\00\00\12\00\00\00\14\00\00\00p\0f\00\00\00\00\00\00\e0\0f\00\00\00\00\00\00\e0\0e")
+ (data $29 (i32.const 4140) "l")
+ (data $29.1 (i32.const 4152) "\02\00\00\00R\00\00\00[\00f\00i\00n\00d\00P\00a\00t\00h\00]\00F\00a\00i\00l\00e\00d\00 \00r\00e\00q\00u\00i\00r\00e\00m\00e\00n\00t\00.\00 \00l\00e\00v\00e\00l\00 \00w\00a\00s\00:\00 ")
+ (data $30 (i32.const 4252) ",")
+ (data $30.1 (i32.const 4264) "\02\00\00\00\1c\00\00\00.\00 \00m\00u\00s\00t\00 \00b\00e\00 \000\00-\003\00.")
+ (data $31 (i32.const 4300) "\1c\00\00\00\03\00\00\00\00\00\00\00\12\00\00\00\0c\00\00\00@\10\00\00\00\00\00\00\b0\10")
+ (data $32 (i32.const 4332) "<")
+ (data $32.1 (i32.const 4344) "\02\00\00\00&\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00b\00u\00f\00f\00e\00r\00.\00t\00s")
+ (data $33 (i32.const 4396) "\1c")
+ (data $33.1 (i32.const 4408) "\01")
+ (data $34 (i32.const 4428) ",")
+ (data $34.1 (i32.const 4440) "\02\00\00\00\1c\00\00\00A\00r\00r\00a\00y\00 \00i\00s\00 \00e\00m\00p\00t\00y")
  (data $35 (i32.const 4476) ",")
- (data $35.1 (i32.const 4488) "\02\00\00\00\1c\00\00\00A\00r\00r\00a\00y\00 \00i\00s\00 \00e\00m\00p\00t\00y")
- (data $36 (i32.const 4524) "\8c")
- (data $36.1 (i32.const 4536) "\02\00\00\00n\00\00\00[\00c\00a\00n\00T\00r\00a\00v\00e\00l\00]\00 \00F\00a\00i\00l\00e\00d\00 \00r\00e\00q\00u\00i\00r\00e\00m\00e\00n\00t\00.\00 \00c\00o\00l\00l\00i\00s\00i\00o\00n\00S\00t\00r\00a\00t\00e\00g\00y\00 \00w\00a\00s\00:\00 ")
- (data $37 (i32.const 4668) "\1c\00\00\00\03\00\00\00\00\00\00\00\11\00\00\00\0c\00\00\00\c0\11\00\00\00\00\00\00\d0\06")
- (data $38 (i32.const 4700) "L")
- (data $38.1 (i32.const 4712) "\02\00\00\00<\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00o\00f\00f\00s\00e\00t\00s\00:\00 \00o\00f\00f\00s\00e\00t\00X\00 \00w\00a\00s\00:\00 ")
- (data $39 (i32.const 4780) "<")
- (data $39.1 (i32.const 4792) "\02\00\00\00\1e\00\00\00,\00 \00o\00f\00f\00s\00e\00t\00Z\00 \00w\00a\00s\00:\00 ")
- (data $40 (i32.const 4844) ",\00\00\00\03\00\00\00\00\00\00\00\11\00\00\00\10\00\00\00p\12\00\00\00\00\00\00\c0\12")
- (data $41 (i32.const 4892) "L")
- (data $41.1 (i32.const 4904) "\02\00\00\002\00\00\00a\00s\00s\00e\00m\00b\00l\00y\00/\00S\00t\00e\00p\00V\00a\00l\00i\00d\00a\00t\00o\00r\00.\00t\00s")
- (data $42 (i32.const 4972) "\1c")
- (data $42.1 (i32.const 4984) "\01")
- (data $43 (i32.const 5008) "\13\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00\01\t\00\00\02a")
- (data $43.1 (i32.const 5080) "\04A\00\00\02\t")
+ (data $35.1 (i32.const 4488) "\02\00\00\00\1a\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00.\00t\00s")
+ (data $36 (i32.const 4524) "<")
+ (data $36.1 (i32.const 4536) "\02\00\00\00$\00\00\00~\00l\00i\00b\00/\00t\00y\00p\00e\00d\00a\00r\00r\00a\00y\00.\00t\00s")
+ (data $37 (i32.const 4588) "\8c")
+ (data $37.1 (i32.const 4600) "\02\00\00\00n\00\00\00[\00c\00a\00n\00T\00r\00a\00v\00e\00l\00]\00 \00F\00a\00i\00l\00e\00d\00 \00r\00e\00q\00u\00i\00r\00e\00m\00e\00n\00t\00.\00 \00c\00o\00l\00l\00i\00s\00i\00o\00n\00S\00t\00r\00a\00t\00e\00g\00y\00 \00w\00a\00s\00:\00 ")
+ (data $38 (i32.const 4732) "\1c\00\00\00\03\00\00\00\00\00\00\00\12\00\00\00\0c\00\00\00\00\12\00\00\00\00\00\00\a0\06")
+ (data $39 (i32.const 4764) "L")
+ (data $39.1 (i32.const 4776) "\02\00\00\00<\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00o\00f\00f\00s\00e\00t\00s\00:\00 \00o\00f\00f\00s\00e\00t\00X\00 \00w\00a\00s\00:\00 ")
+ (data $40 (i32.const 4844) "<")
+ (data $40.1 (i32.const 4856) "\02\00\00\00\1e\00\00\00,\00 \00o\00f\00f\00s\00e\00t\00Z\00 \00w\00a\00s\00:\00 ")
+ (data $41 (i32.const 4908) ",\00\00\00\03\00\00\00\00\00\00\00\12\00\00\00\10\00\00\00\b0\12\00\00\00\00\00\00\00\13")
+ (data $42 (i32.const 4956) "L")
+ (data $42.1 (i32.const 4968) "\02\00\00\002\00\00\00a\00s\00s\00e\00m\00b\00l\00y\00/\00S\00t\00e\00p\00V\00a\00l\00i\00d\00a\00t\00o\00r\00.\00t\00s")
+ (data $43 (i32.const 5036) "\1c")
+ (data $43.1 (i32.const 5048) "\01")
+ (data $44 (i32.const 5072) "\14\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00$\t\00\00\04a")
+ (data $44.1 (i32.const 5144) "\01\t\00\00\04A\00\00\02\t")
  (export "findPath" (func $assembly/index/findPath@varargs))
  (export "changeFloor" (func $assembly/index/changeFloor))
  (export "changeLoc" (func $assembly/index/changeLoc))
@@ -394,13 +396,13 @@
   call $~lib/rt/itcms/__visit
   i32.const 1456
   call $~lib/rt/itcms/__visit
-  i32.const 4496
+  i32.const 4448
   call $~lib/rt/itcms/__visit
   i32.const 1056
   call $~lib/rt/itcms/__visit
-  i32.const 2448
+  i32.const 2400
   call $~lib/rt/itcms/__visit
-  i32.const 3504
+  i32.const 3456
   call $~lib/rt/itcms/__visit
   global.get $~lib/rt/itcms/pinSpace
   local.tee $1
@@ -463,7 +465,7 @@
    local.get $1
    global.set $~lib/rt/itcms/iter
   end
-  block $__inlined_func$~lib/rt/itcms/Object#unlink$723
+  block $__inlined_func$~lib/rt/itcms/Object#unlink$749
    local.get $0
    i32.load offset=4
    i32.const -4
@@ -475,7 +477,7 @@
     i32.load offset=8
     i32.eqz
     local.get $0
-    i32.const 37856
+    i32.const 37924
     i32.lt_u
     i32.and
     i32.eqz
@@ -487,7 +489,7 @@
      call $~lib/builtins/abort
      unreachable
     end
-    br $__inlined_func$~lib/rt/itcms/Object#unlink$723
+    br $__inlined_func$~lib/rt/itcms/Object#unlink$749
    end
    local.get $0
    i32.load offset=8
@@ -524,7 +526,7 @@
    i32.const 1
   else
    local.get $1
-   i32.const 5008
+   i32.const 5072
    i32.load
    i32.gt_u
    if
@@ -538,7 +540,7 @@
    local.get $1
    i32.const 2
    i32.shl
-   i32.const 5012
+   i32.const 5076
    i32.add
    i32.load
    i32.const 32
@@ -1122,10 +1124,10 @@
   if
    unreachable
   end
-  i32.const 37856
+  i32.const 37936
   i32.const 0
   i32.store
-  i32.const 39424
+  i32.const 39504
   i32.const 0
   i32.store
   loop $for-loop|0
@@ -1136,7 +1138,7 @@
     local.get $0
     i32.const 2
     i32.shl
-    i32.const 37856
+    i32.const 37936
     i32.add
     i32.const 0
     i32.store offset=4
@@ -1154,7 +1156,7 @@
       i32.add
       i32.const 2
       i32.shl
-      i32.const 37856
+      i32.const 37936
       i32.add
       i32.const 0
       i32.store offset=96
@@ -1172,14 +1174,14 @@
     br $for-loop|0
    end
   end
-  i32.const 37856
-  i32.const 39428
+  i32.const 37936
+  i32.const 39508
   memory.size
   i64.extend_i32_s
   i64.const 16
   i64.shl
   call $~lib/rt/tlsf/addMemory
-  i32.const 37856
+  i32.const 37936
   global.set $~lib/rt/tlsf/ROOT
  )
  (func $~lib/rt/itcms/step (result i32)
@@ -1264,7 +1266,7 @@
      local.set $0
      loop $while-continue|0
       local.get $0
-      i32.const 37856
+      i32.const 37924
       i32.lt_u
       if
        local.get $0
@@ -1360,7 +1362,7 @@
      unreachable
     end
     local.get $0
-    i32.const 37856
+    i32.const 37924
     i32.lt_u
     if
      local.get $0
@@ -1383,7 +1385,7 @@
      i32.const 4
      i32.add
      local.tee $0
-     i32.const 37856
+     i32.const 37924
      i32.ge_u
      if
       global.get $~lib/rt/tlsf/ROOT
@@ -1959,11 +1961,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -1972,7 +1974,7 @@
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   i32.store
-  block $__inlined_func$~lib/util/number/itoa32$79
+  block $__inlined_func$~lib/util/number/itoa32$80
    local.get $0
    i32.eqz
    if
@@ -1980,9 +1982,9 @@
     i32.const 4
     i32.add
     global.set $~lib/memory/__stack_pointer
-    i32.const 2016
+    i32.const 1968
     local.set $2
-    br $__inlined_func$~lib/util/number/itoa32$79
+    br $__inlined_func$~lib/util/number/itoa32$80
    end
    global.get $~lib/memory/__stack_pointer
    i32.const 0
@@ -2081,7 +2083,7 @@
      i32.div_u
      i32.const 2
      i32.shl
-     i32.const 2028
+     i32.const 1980
      i32.add
      i64.load32_u
      local.get $4
@@ -2089,7 +2091,7 @@
      i32.rem_u
      i32.const 2
      i32.shl
-     i32.const 2028
+     i32.const 1980
      i32.add
      i64.load32_u
      i64.const 32
@@ -2116,7 +2118,7 @@
     i32.rem_u
     i32.const 2
     i32.shl
-    i32.const 2028
+    i32.const 1980
     i32.add
     i32.load
     i32.store
@@ -2139,7 +2141,7 @@
     local.get $0
     i32.const 2
     i32.shl
-    i32.const 2028
+    i32.const 1980
     i32.add
     i32.load
     i32.store
@@ -2221,11 +2223,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -2252,27 +2254,27 @@
    local.tee $0
    i32.store
    global.get $~lib/memory/__stack_pointer
-   i32.const 1792
+   i32.const 1744
    i32.store offset=4
    global.get $~lib/memory/__stack_pointer
    local.get $0
    i32.store offset=8
-   i32.const 1796
+   i32.const 1748
    local.get $0
    i32.store
-   i32.const 1792
+   i32.const 1744
    local.get $0
    i32.const 1
    call $~lib/rt/itcms/__link
    global.get $~lib/memory/__stack_pointer
-   i32.const 1792
+   i32.const 1744
    i32.store offset=4
    global.get $~lib/memory/__stack_pointer
-   i32.const 3600
+   i32.const 3552
    i32.store offset=8
-   i32.const 1792
+   i32.const 1744
    call $~lib/staticarray/StaticArray<~lib/string/String>#join
-   i32.const 3632
+   i32.const 3584
    i32.const 51
    i32.const 9
    call $~lib/builtins/abort
@@ -2398,11 +2400,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -2429,27 +2431,27 @@
    local.tee $0
    i32.store
    global.get $~lib/memory/__stack_pointer
-   i32.const 4688
+   i32.const 4752
    i32.store offset=4
    global.get $~lib/memory/__stack_pointer
    local.get $0
    i32.store offset=8
-   i32.const 4692
+   i32.const 4756
    local.get $0
    i32.store
-   i32.const 4688
+   i32.const 4752
    local.get $0
    i32.const 1
    call $~lib/rt/itcms/__link
    global.get $~lib/memory/__stack_pointer
-   i32.const 4688
+   i32.const 4752
    i32.store offset=4
    global.get $~lib/memory/__stack_pointer
-   i32.const 3600
+   i32.const 3552
    i32.store offset=8
-   i32.const 4688
+   i32.const 4752
    call $~lib/staticarray/StaticArray<~lib/string/String>#join
-   i32.const 3632
+   i32.const 3584
    i32.const 314
    i32.const 9
    call $~lib/builtins/abort
@@ -2537,7 +2539,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -2552,7 +2554,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -2602,8 +2604,8 @@
    local.get $0
    return
   end
-  i32.const 37888
-  i32.const 37936
+  i32.const 37952
+  i32.const 38000
   i32.const 1
   i32.const 1
   call $~lib/builtins/abort
@@ -2642,7 +2644,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -2657,7 +2659,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -2707,8 +2709,8 @@
    local.get $0
    return
   end
-  i32.const 37888
-  i32.const 37936
+  i32.const 37952
+  i32.const 38000
   i32.const 1
   i32.const 1
   call $~lib/builtins/abort
@@ -2747,7 +2749,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -2762,7 +2764,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -2809,8 +2811,8 @@
    local.get $0
    return
   end
-  i32.const 37888
-  i32.const 37936
+  i32.const 37952
+  i32.const 38000
   i32.const 1
   i32.const 1
   call $~lib/builtins/abort
@@ -2849,7 +2851,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -2864,7 +2866,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -2911,8 +2913,8 @@
    local.get $0
    return
   end
-  i32.const 37888
-  i32.const 37936
+  i32.const 37952
+  i32.const 38000
   i32.const 1
   i32.const 1
   call $~lib/builtins/abort
@@ -2946,11 +2948,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -2983,34 +2985,59 @@
   global.set $~lib/memory/__stack_pointer
   local.get $0
  )
- (func $~lib/rt/__visit_members (param $0 i32)
+ (func $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>|null>~visit (param $0 i32)
   (local $1 i32)
   (local $2 i32)
-  (local $3 i32)
-  block $folding-inner2
-   block $folding-inner1
-    block $folding-inner0
-     block $invalid
-      block $~lib/array/Array<i32>
-       block $~lib/staticarray/StaticArray<~lib/string/String>
-        block $assembly/PathFinder/PathFinder
-         block $~lib/array/Array<~lib/typedarray/Int32Array|null>
-          block $assembly/collision/CollisionStrategies/LineOfSight
-           block $assembly/collision/CollisionStrategies/Outdoors
-            block $assembly/collision/CollisionStrategies/Indoors
-             block $assembly/collision/CollisionStrategies/Blocked
-              block $assembly/collision/CollisionStrategies/Normal
-               block $assembly/collision/CollisionStrategy/CollisionStrategy
-                block $~lib/string/String
-                 block $~lib/arraybuffer/ArrayBuffer
-                  block $~lib/object/Object
-                   local.get $0
-                   i32.const 8
-                   i32.sub
-                   i32.load
-                   br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $folding-inner1 $assembly/collision/CollisionStrategy/CollisionStrategy $assembly/collision/CollisionStrategies/Normal $assembly/collision/CollisionStrategies/Blocked $assembly/collision/CollisionStrategies/Indoors $assembly/collision/CollisionStrategies/Outdoors $assembly/collision/CollisionStrategies/LineOfSight $folding-inner1 $folding-inner1 $~lib/array/Array<~lib/typedarray/Int32Array|null> $assembly/PathFinder/PathFinder $folding-inner1 $folding-inner1 $folding-inner1 $~lib/staticarray/StaticArray<~lib/string/String> $~lib/array/Array<i32> $invalid
-                  end
-                  return
+  local.get $0
+  local.get $0
+  i32.const 20
+  i32.sub
+  i32.load offset=16
+  i32.add
+  local.set $1
+  loop $while-continue|0
+   local.get $0
+   local.get $1
+   i32.lt_u
+   if
+    local.get $0
+    i32.load
+    local.tee $2
+    if
+     local.get $2
+     call $~lib/rt/itcms/__visit
+    end
+    local.get $0
+    i32.const 4
+    i32.add
+    local.set $0
+    br $while-continue|0
+   end
+  end
+ )
+ (func $~lib/rt/__visit_members (param $0 i32)
+  (local $1 i32)
+  block $folding-inner0
+   block $invalid
+    block $~lib/array/Array<i32>
+     block $~lib/staticarray/StaticArray<~lib/string/String>
+      block $assembly/PathFinder/PathFinder
+       block $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>|null>
+        block $~lib/staticarray/StaticArray<i32>
+         block $assembly/collision/CollisionStrategies/LineOfSight
+          block $assembly/collision/CollisionStrategies/Outdoors
+           block $assembly/collision/CollisionStrategies/Indoors
+            block $assembly/collision/CollisionStrategies/Blocked
+             block $assembly/collision/CollisionStrategies/Normal
+              block $assembly/collision/CollisionStrategy/CollisionStrategy
+               block $~lib/string/String
+                block $~lib/arraybuffer/ArrayBuffer
+                 block $~lib/object/Object
+                  local.get $0
+                  i32.const 8
+                  i32.sub
+                  i32.load
+                  br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $folding-inner0 $assembly/collision/CollisionStrategy/CollisionStrategy $assembly/collision/CollisionStrategies/Normal $assembly/collision/CollisionStrategies/Blocked $assembly/collision/CollisionStrategies/Indoors $assembly/collision/CollisionStrategies/Outdoors $assembly/collision/CollisionStrategies/LineOfSight $folding-inner0 $~lib/staticarray/StaticArray<i32> $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>|null> $assembly/PathFinder/PathFinder $folding-inner0 $folding-inner0 $folding-inner0 $folding-inner0 $~lib/staticarray/StaticArray<~lib/string/String> $~lib/array/Array<i32> $invalid
                  end
                  return
                 end
@@ -3028,160 +3055,94 @@
           end
           return
          end
-         global.get $~lib/memory/__stack_pointer
-         i32.const 4
-         i32.sub
-         global.set $~lib/memory/__stack_pointer
-         global.get $~lib/memory/__stack_pointer
-         i32.const 5088
-         i32.lt_s
-         br_if $folding-inner0
-         global.get $~lib/memory/__stack_pointer
-         i32.const 0
-         i32.store
-         global.get $~lib/memory/__stack_pointer
-         local.get $0
-         i32.store
-         local.get $0
-         i32.load offset=4
-         local.set $1
-         global.get $~lib/memory/__stack_pointer
-         local.get $0
-         i32.store
-         local.get $1
-         local.get $0
-         i32.load offset=12
-         i32.const 2
-         i32.shl
-         i32.add
-         local.set $2
-         loop $while-continue|0
-          local.get $1
-          local.get $2
-          i32.lt_u
-          if
-           local.get $1
-           i32.load
-           local.tee $3
-           if
-            local.get $3
-            call $~lib/rt/itcms/__visit
-           end
-           local.get $1
-           i32.const 4
-           i32.add
-           local.set $1
-           br $while-continue|0
-          end
-         end
-         br $folding-inner2
-        end
-        local.get $0
-        i32.load
-        local.tee $1
-        if
-         local.get $1
-         call $~lib/rt/itcms/__visit
-        end
-        local.get $0
-        i32.load offset=12
-        local.tee $1
-        if
-         local.get $1
-         call $~lib/rt/itcms/__visit
-        end
-        local.get $0
-        i32.load offset=16
-        local.tee $1
-        if
-         local.get $1
-         call $~lib/rt/itcms/__visit
-        end
-        local.get $0
-        i32.load offset=20
-        local.tee $1
-        if
-         local.get $1
-         call $~lib/rt/itcms/__visit
-        end
-        local.get $0
-        i32.load offset=24
-        local.tee $0
-        if
-         local.get $0
-         call $~lib/rt/itcms/__visit
+         return
         end
         return
        end
        local.get $0
-       local.get $0
-       i32.const 20
-       i32.sub
-       i32.load offset=16
-       i32.add
-       local.set $1
-       loop $while-continue|01
-        local.get $0
-        local.get $1
-        i32.lt_u
-        if
-         local.get $0
-         i32.load
-         local.tee $2
-         if
-          local.get $2
-          call $~lib/rt/itcms/__visit
-         end
-         local.get $0
-         i32.const 4
-         i32.add
-         local.set $0
-         br $while-continue|01
-        end
-       end
+       call $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>|null>~visit
        return
       end
-      global.get $~lib/memory/__stack_pointer
-      i32.const 4
-      i32.sub
-      global.set $~lib/memory/__stack_pointer
-      global.get $~lib/memory/__stack_pointer
-      i32.const 5088
-      i32.lt_s
-      br_if $folding-inner0
-      global.get $~lib/memory/__stack_pointer
-      i32.const 0
-      i32.store
-      br $folding-inner2
+      local.get $0
+      i32.load
+      local.tee $1
+      if
+       local.get $1
+       call $~lib/rt/itcms/__visit
+      end
+      local.get $0
+      i32.load offset=12
+      local.tee $1
+      if
+       local.get $1
+       call $~lib/rt/itcms/__visit
+      end
+      local.get $0
+      i32.load offset=16
+      local.tee $1
+      if
+       local.get $1
+       call $~lib/rt/itcms/__visit
+      end
+      local.get $0
+      i32.load offset=20
+      local.tee $1
+      if
+       local.get $1
+       call $~lib/rt/itcms/__visit
+      end
+      local.get $0
+      i32.load offset=24
+      local.tee $0
+      if
+       local.get $0
+       call $~lib/rt/itcms/__visit
+      end
+      return
      end
+     local.get $0
+     call $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>|null>~visit
+     return
+    end
+    global.get $~lib/memory/__stack_pointer
+    i32.const 4
+    i32.sub
+    global.set $~lib/memory/__stack_pointer
+    global.get $~lib/memory/__stack_pointer
+    i32.const 5156
+    i32.lt_s
+    if
+     i32.const 37952
+     i32.const 38000
+     i32.const 1
+     i32.const 1
+     call $~lib/builtins/abort
      unreachable
     end
-    i32.const 37888
-    i32.const 37936
-    i32.const 1
-    i32.const 1
-    call $~lib/builtins/abort
-    unreachable
-   end
-   local.get $0
-   i32.load
-   local.tee $0
-   if
+    global.get $~lib/memory/__stack_pointer
+    i32.const 0
+    i32.store
+    global.get $~lib/memory/__stack_pointer
     local.get $0
+    i32.store
+    local.get $0
+    i32.load
     call $~lib/rt/itcms/__visit
+    global.get $~lib/memory/__stack_pointer
+    i32.const 4
+    i32.add
+    global.set $~lib/memory/__stack_pointer
+    return
    end
-   return
+   unreachable
   end
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store
   local.get $0
   i32.load
-  call $~lib/rt/itcms/__visit
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
+  local.tee $0
+  if
+   local.get $0
+   call $~lib/rt/itcms/__visit
+  end
  )
  (func $~setArgumentsLength (param $0 i32)
   local.get $0
@@ -3190,14 +3151,13 @@
  (func $~start
   (local $0 i32)
   (local $1 i32)
-  (local $2 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
   block $folding-inner1
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner1
    global.get $~lib/memory/__stack_pointer
@@ -3206,7 +3166,7 @@
    memory.size
    i32.const 16
    i32.shl
-   i32.const 37856
+   i32.const 37924
    i32.sub
    i32.const 1
    i32.shr_u
@@ -3240,7 +3200,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner1
    global.get $~lib/memory/__stack_pointer
@@ -3271,7 +3231,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner1
    global.get $~lib/memory/__stack_pointer
@@ -3302,7 +3262,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner1
    global.get $~lib/memory/__stack_pointer
@@ -3333,7 +3293,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner1
    global.get $~lib/memory/__stack_pointer
@@ -3364,7 +3324,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner1
    global.get $~lib/memory/__stack_pointer
@@ -3397,7 +3357,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner1
    global.get $~lib/memory/__stack_pointer
@@ -3418,115 +3378,47 @@
    global.get $~lib/memory/__stack_pointer
    local.get $0
    call $~lib/object/Object#constructor
-   local.tee $1
-   i32.store
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store offset=4
-   global.get $~lib/memory/__stack_pointer
-   i32.const 16
-   i32.sub
-   global.set $~lib/memory/__stack_pointer
-   global.get $~lib/memory/__stack_pointer
-   i32.const 5088
-   i32.lt_s
-   br_if $folding-inner1
-   global.get $~lib/memory/__stack_pointer
-   i64.const 0
-   i64.store
-   global.get $~lib/memory/__stack_pointer
-   i64.const 0
-   i64.store offset=8
-   global.get $~lib/memory/__stack_pointer
-   i32.const 16
-   i32.const 12
-   call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
    global.get $~lib/memory/__stack_pointer
    local.get $0
    i32.store offset=4
-   local.get $0
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.sub
+   global.set $~lib/memory/__stack_pointer
+   global.get $~lib/memory/__stack_pointer
+   i32.const 5156
+   i32.lt_s
+   br_if $folding-inner1
+   global.get $~lib/memory/__stack_pointer
    i32.const 0
    i32.store
-   local.get $0
-   i32.const 0
-   i32.const 0
-   call $~lib/rt/itcms/__link
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store offset=4
-   local.get $0
-   i32.const 0
-   i32.store offset=4
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store offset=4
-   local.get $0
-   i32.const 0
-   i32.store offset=8
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store offset=4
-   local.get $0
-   i32.const 0
-   i32.store offset=12
    global.get $~lib/memory/__stack_pointer
    i32.const 67108864
-   i32.const 1
+   i32.const 12
    call $~lib/rt/itcms/__new
-   local.tee $2
-   i32.store offset=8
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store offset=4
-   global.get $~lib/memory/__stack_pointer
-   local.get $2
-   i32.store offset=12
-   local.get $0
-   local.get $2
+   local.tee $1
    i32.store
-   local.get $0
-   local.get $2
-   i32.const 0
-   call $~lib/rt/itcms/__link
    global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store offset=4
-   local.get $0
-   local.get $2
-   i32.store offset=4
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store offset=4
-   local.get $0
-   i32.const 67108864
-   i32.store offset=8
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store offset=4
-   local.get $0
-   i32.const 16777216
-   i32.store offset=12
-   global.get $~lib/memory/__stack_pointer
-   i32.const 16
+   i32.const 4
    i32.add
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   local.get $0
+   local.get $1
    i32.store offset=8
-   local.get $1
    local.get $0
+   local.get $1
    i32.store
-   local.get $1
    local.get $0
+   local.get $1
    i32.const 0
    call $~lib/rt/itcms/__link
    global.get $~lib/memory/__stack_pointer
    i32.const 12
    i32.add
    global.set $~lib/memory/__stack_pointer
-   local.get $1
+   local.get $0
    global.set $assembly/index/flags
    global.get $~lib/memory/__stack_pointer
    global.get $assembly/index/flags
@@ -3539,7 +3431,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner1
    global.get $~lib/memory/__stack_pointer
@@ -3569,7 +3461,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner1
    global.get $~lib/memory/__stack_pointer
@@ -3622,7 +3514,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner1
    global.get $~lib/memory/__stack_pointer
@@ -3675,7 +3567,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner1
    global.get $~lib/memory/__stack_pointer
@@ -3725,197 +3617,24 @@
    global.set $~lib/memory/__stack_pointer
    return
   end
-  i32.const 37888
-  i32.const 37936
+  i32.const 37952
+  i32.const 38000
   i32.const 1
   i32.const 1
   call $~lib/builtins/abort
   unreachable
  )
- (func $~lib/typedarray/Int32Array#constructor (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  block $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   i32.const 5088
-   i32.lt_s
-   br_if $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   i64.const 0
-   i64.store
-   global.get $~lib/memory/__stack_pointer
-   i32.const 12
-   i32.const 11
-   call $~lib/rt/itcms/__new
-   local.tee $1
-   i32.store
-   global.get $~lib/memory/__stack_pointer
-   local.set $2
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store offset=4
-   global.get $~lib/memory/__stack_pointer
-   i32.const 16
-   i32.sub
-   global.set $~lib/memory/__stack_pointer
-   global.get $~lib/memory/__stack_pointer
-   i32.const 5088
-   i32.lt_s
-   br_if $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   i64.const 0
-   i64.store
-   global.get $~lib/memory/__stack_pointer
-   i64.const 0
-   i64.store offset=8
-   local.get $1
-   i32.eqz
-   if
-    global.get $~lib/memory/__stack_pointer
-    i32.const 12
-    i32.const 3
-    call $~lib/rt/itcms/__new
-    local.tee $1
-    i32.store
-   end
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store offset=4
-   local.get $1
-   i32.const 0
-   i32.store
-   local.get $1
-   i32.const 0
-   i32.const 0
-   call $~lib/rt/itcms/__link
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store offset=4
-   local.get $1
-   i32.const 0
-   i32.store offset=4
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store offset=4
-   local.get $1
-   i32.const 0
-   i32.store offset=8
-   local.get $0
-   i32.const 268435455
-   i32.gt_u
-   if
-    i32.const 1456
-    i32.const 1552
-    i32.const 19
-    i32.const 57
-    call $~lib/builtins/abort
-    unreachable
-   end
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.const 2
-   i32.shl
-   local.tee $0
-   i32.const 1
-   call $~lib/rt/itcms/__new
-   local.tee $3
-   i32.store offset=8
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store offset=4
-   global.get $~lib/memory/__stack_pointer
-   local.get $3
-   i32.store offset=12
-   local.get $1
-   local.get $3
-   i32.store
-   local.get $1
-   local.get $3
-   i32.const 0
-   call $~lib/rt/itcms/__link
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store offset=4
-   local.get $1
-   local.get $3
-   i32.store offset=4
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store offset=4
-   local.get $1
-   local.get $0
-   i32.store offset=8
-   global.get $~lib/memory/__stack_pointer
-   i32.const 16
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   local.get $2
-   local.get $1
-   i32.store
-   global.get $~lib/memory/__stack_pointer
-   i32.const 8
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   local.get $1
-   return
-  end
-  i32.const 37888
-  i32.const 37936
-  i32.const 1
-  i32.const 1
-  call $~lib/builtins/abort
-  unreachable
- )
- (func $~lib/typedarray/Int32Array#get:length (param $0 i32) (result i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 5088
-  i32.lt_s
-  if
-   i32.const 37888
-   i32.const 37936
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store
-  local.get $0
-  i32.load offset=8
-  i32.const 2
-  i32.shr_u
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $0
- )
- (func $~lib/typedarray/Int32Array#fill@varargs (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/staticarray/StaticArray<i32>#fill@varargs (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
-  (local $5 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -3932,7 +3651,7 @@
      unreachable
     end
     i32.const 2147483647
-    local.set $3
+    local.set $2
    end
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -3942,7 +3661,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -3950,31 +3669,21 @@
    i32.store
    global.get $~lib/memory/__stack_pointer
    local.get $0
-   local.tee $2
    i32.store
+   local.get $2
    local.get $0
-   i32.load offset=4
-   local.set $5
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store
-   local.get $0
-   call $~lib/typedarray/Int32Array#get:length
+   i32.const 20
+   i32.sub
+   i32.load offset=16
+   i32.const 2
+   i32.shr_u
    local.tee $4
-   i32.const 0
-   local.get $4
-   i32.const 0
-   i32.le_s
-   select
-   local.set $0
-   local.get $3
-   local.get $4
-   local.get $3
+   local.get $2
    local.get $4
    i32.lt_s
    select
-   local.set $3
-   block $__inlined_func$~lib/util/bytes/FILL<u32>$131
+   local.set $2
+   block $__inlined_func$~lib/util/bytes/FILL<i32>$110
     local.get $1
     i32.eqz
     local.get $1
@@ -3982,41 +3691,35 @@
     i32.eq
     i32.or
     if
-     local.get $0
-     local.get $3
-     i32.lt_s
+     local.get $2
+     i32.const 0
+     i32.gt_s
      if
-      local.get $5
       local.get $0
-      i32.const 2
-      i32.shl
-      i32.add
       local.get $1
-      local.get $3
-      local.get $0
-      i32.sub
+      local.get $2
       i32.const 2
       i32.shl
       memory.fill
      end
-     br $__inlined_func$~lib/util/bytes/FILL<u32>$131
+     br $__inlined_func$~lib/util/bytes/FILL<i32>$110
     end
     loop $for-loop|0
-     local.get $0
+     local.get $2
      local.get $3
-     i32.lt_s
+     i32.gt_s
      if
-      local.get $5
       local.get $0
+      local.get $3
       i32.const 2
       i32.shl
       i32.add
       local.get $1
       i32.store
-      local.get $0
+      local.get $3
       i32.const 1
       i32.add
-      local.set $0
+      local.set $3
       br $for-loop|0
      end
     end
@@ -4029,11 +3732,11 @@
    i32.const 4
    i32.add
    global.set $~lib/memory/__stack_pointer
-   local.get $2
+   local.get $0
    return
   end
-  i32.const 37888
-  i32.const 37936
+  i32.const 37952
+  i32.const 38000
   i32.const 1
   i32.const 1
   call $~lib/builtins/abort
@@ -4046,11 +3749,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -4183,7 +3886,7 @@
   local.get $1
   i32.store offset=4
   i32.const 16384
-  call $~lib/typedarray/Int32Array#constructor
+  call $~lib/staticarray/StaticArray<i32>#constructor
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
@@ -4199,7 +3902,7 @@
   local.get $1
   i32.store offset=4
   i32.const 16384
-  call $~lib/typedarray/Int32Array#constructor
+  call $~lib/staticarray/StaticArray<i32>#constructor
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
@@ -4208,7 +3911,7 @@
   global.set $~argumentsLength
   local.get $0
   i32.const 99999999
-  call $~lib/typedarray/Int32Array#fill@varargs
+  call $~lib/staticarray/StaticArray<i32>#fill@varargs
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
@@ -4224,7 +3927,7 @@
   local.get $1
   i32.store offset=4
   i32.const 4096
-  call $~lib/typedarray/Int32Array#constructor
+  call $~lib/staticarray/StaticArray<i32>#constructor
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
@@ -4240,7 +3943,7 @@
   local.get $1
   i32.store offset=4
   i32.const 4096
-  call $~lib/typedarray/Int32Array#constructor
+  call $~lib/staticarray/StaticArray<i32>#constructor
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
@@ -4269,11 +3972,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -4296,7 +3999,7 @@
    i32.const 16
    i32.add
    global.set $~lib/memory/__stack_pointer
-   i32.const 3600
+   i32.const 3552
    return
   end
   local.get $4
@@ -4312,7 +4015,7 @@
    i32.add
    global.set $~lib/memory/__stack_pointer
    local.get $0
-   i32.const 3600
+   i32.const 3552
    local.get $0
    select
    return
@@ -4356,11 +4059,11 @@
   i32.const 0
   local.set $3
   global.get $~lib/memory/__stack_pointer
-  i32.const 3600
+  i32.const 3552
   i32.store offset=8
   global.get $~lib/memory/__stack_pointer
   local.get $2
-  i32.const 3596
+  i32.const 3548
   i32.load
   i32.const 1
   i32.shr_u
@@ -4423,7 +4126,7 @@
      i32.const 1
      i32.shl
      i32.add
-     i32.const 3600
+     i32.const 3552
      local.get $1
      i32.const 1
      i32.shl
@@ -4481,11 +4184,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -4505,7 +4208,7 @@
   i32.shr_u
   local.set $1
   global.get $~lib/memory/__stack_pointer
-  i32.const 3600
+  i32.const 3552
   i32.store
   local.get $0
   local.get $1
@@ -4517,106 +4220,19 @@
   global.set $~lib/memory/__stack_pointer
   local.get $0
  )
- (func $assembly/PathFinder/PathFinder#localIndex (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 5088
-  i32.lt_s
-  if
-   i32.const 37888
-   i32.const 37936
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store
-  local.get $1
-  local.get $0
-  i32.load offset=4
-  i32.mul
-  local.get $2
-  i32.add
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $0
- )
- (func $~lib/typedarray/Int32Array#__set (param $0 i32) (param $1 i32) (param $2 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 5088
-  i32.lt_s
-  if
-   i32.const 37888
-   i32.const 37936
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store
-  local.get $1
-  local.get $0
-  i32.load offset=8
-  i32.const 2
-  i32.shr_u
-  i32.ge_u
-  if
-   i32.const 1248
-   i32.const 4400
-   i32.const 747
-   i32.const 64
-   call $~lib/builtins/abort
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  local.get $2
-  i32.store
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
  (func $assembly/PathFinder/PathFinder#appendDirection (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32)
   (local $5 i32)
   (local $6 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 12
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -4626,75 +4242,94 @@
   i64.const 0
   i64.store
   global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store
-  local.get $0
-  local.get $1
-  local.get $2
-  call $assembly/PathFinder/PathFinder#localIndex
-  local.set $5
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store offset=4
+  local.get $1
+  local.get $0
+  i32.load offset=4
+  i32.mul
+  local.get $2
+  i32.add
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store offset=8
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load offset=12
-  local.tee $6
-  i32.store
-  local.get $6
+  local.tee $5
+  i32.store offset=4
   local.get $5
+  local.get $6
+  i32.const 2
+  i32.shl
+  local.tee $5
+  i32.add
   local.get $3
-  call $~lib/typedarray/Int32Array#__set
+  i32.store
   global.get $~lib/memory/__stack_pointer
   local.get $0
-  i32.store offset=4
+  i32.store offset=8
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load offset=16
   local.tee $3
-  i32.store
+  i32.store offset=4
   local.get $3
   local.get $5
+  i32.add
   local.get $4
-  call $~lib/typedarray/Int32Array#__set
+  i32.store
   global.get $~lib/memory/__stack_pointer
   local.get $0
-  i32.store offset=4
+  i32.store offset=8
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load offset=20
   local.tee $3
-  i32.store
+  i32.store offset=4
   global.get $~lib/memory/__stack_pointer
   local.get $0
-  i32.store offset=4
+  i32.store offset=8
   local.get $3
   local.get $0
   i32.load offset=40
+  i32.const 2
+  i32.shl
+  i32.add
   local.get $1
-  call $~lib/typedarray/Int32Array#__set
+  i32.store
   global.get $~lib/memory/__stack_pointer
   local.get $0
-  i32.store offset=4
+  i32.store offset=8
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load offset=24
   local.tee $1
-  i32.store
+  i32.store offset=4
   global.get $~lib/memory/__stack_pointer
   local.get $0
-  i32.store offset=4
+  i32.store offset=8
   local.get $1
   local.get $0
   i32.load offset=40
+  i32.const 2
+  i32.shl
+  i32.add
   local.get $2
-  call $~lib/typedarray/Int32Array#__set
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
   i32.store
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store offset=4
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store offset=8
   local.get $0
   i32.load offset=40
   i32.const 1
@@ -4702,7 +4337,7 @@
   local.set $1
   global.get $~lib/memory/__stack_pointer
   local.get $0
-  i32.store offset=4
+  i32.store offset=8
   local.get $0
   local.get $1
   local.get $0
@@ -4712,115 +4347,9 @@
   i32.and
   i32.store offset=40
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 12
   i32.add
   global.set $~lib/memory/__stack_pointer
- )
- (func $~lib/typedarray/Int32Array#__get (param $0 i32) (param $1 i32) (result i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 5088
-  i32.lt_s
-  if
-   i32.const 37888
-   i32.const 37936
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store
-  local.get $1
-  local.get $0
-  i32.load offset=8
-  i32.const 2
-  i32.shr_u
-  i32.ge_u
-  if
-   i32.const 1248
-   i32.const 4400
-   i32.const 736
-   i32.const 64
-   call $~lib/builtins/abort
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $0
- )
- (func $~lib/array/Array<~lib/typedarray/Int32Array|null>#__get (param $0 i32) (param $1 i32) (result i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 5088
-  i32.lt_s
-  if
-   i32.const 37888
-   i32.const 37936
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store
-  local.get $1
-  local.get $0
-  i32.load offset=12
-  i32.ge_u
-  if
-   i32.const 1248
-   i32.const 1504
-   i32.const 114
-   i32.const 42
-   call $~lib/builtins/abort
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.load offset=4
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load
-  local.tee $0
-  i32.store offset=4
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $0
  )
  (func $assembly/collision/CollisionFlagMap/CollisionFlagMap#get (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (result i32)
   (local $4 i32)
@@ -4829,11 +4358,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -4884,7 +4413,10 @@
   i32.const 22
   i32.shl
   i32.or
-  call $~lib/array/Array<~lib/typedarray/Int32Array|null>#__get
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
   local.tee $0
   i32.store offset=8
   block $folding-inner0
@@ -4894,17 +4426,24 @@
    global.get $~lib/memory/__stack_pointer
    local.get $0
    i32.store
-   local.get $0
-   call $~lib/typedarray/Int32Array#get:length
    local.get $4
-   i32.le_s
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load offset=16
+   i32.const 2
+   i32.shr_u
+   i32.ge_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
    local.get $0
    i32.store
    local.get $0
    local.get $4
-   call $~lib/typedarray/Int32Array#__get
+   i32.const 2
+   i32.shl
+   i32.add
+   i32.load
    local.set $0
    global.get $~lib/memory/__stack_pointer
    i32.const 12
@@ -4925,11 +4464,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -5450,11 +4989,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -6079,11 +5618,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -6362,11 +5901,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -6699,11 +6238,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -6946,11 +6485,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -7125,7 +6664,7 @@
   block $folding-inner1
    block $folding-inner0
     global.get $~lib/memory/__stack_pointer
-    i32.const 5088
+    i32.const 5156
     i32.lt_s
     br_if $folding-inner0
     global.get $~lib/memory/__stack_pointer
@@ -7134,18 +6673,18 @@
     local.get $2
     local.get $4
     i32.eq
-    block $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.exitStrategy$215 (result i32)
+    block $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.exitStrategy$182 (result i32)
      i32.const 4
      local.get $10
      i32.const -2
      i32.eq
-     br_if $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.exitStrategy$215
+     br_if $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.exitStrategy$182
      drop
      i32.const 3
      local.get $10
      i32.const -1
      i32.eq
-     br_if $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.exitStrategy$215
+     br_if $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.exitStrategy$182
      drop
      i32.const 0
      local.get $10
@@ -7159,13 +6698,13 @@
      i32.const 9
      i32.eq
      i32.or
-     br_if $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.exitStrategy$215
+     br_if $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.exitStrategy$182
      drop
      i32.const 1
      local.get $10
      i32.const 9
      i32.lt_s
-     br_if $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.exitStrategy$215
+     br_if $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.exitStrategy$182
      drop
      i32.const 2
      local.get $10
@@ -7179,7 +6718,7 @@
      i32.const 22
      i32.eq
      i32.or
-     br_if $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.exitStrategy$215
+     br_if $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.exitStrategy$182
      drop
      i32.const 3
     end
@@ -7215,13 +6754,13 @@
         i32.sub
         global.set $~lib/memory/__stack_pointer
         global.get $~lib/memory/__stack_pointer
-        i32.const 5088
+        i32.const 5156
         i32.lt_s
         br_if $folding-inner0
         global.get $~lib/memory/__stack_pointer
         i32.const 0
         i32.store
-        block $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWall$713
+        block $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWall$736
          local.get $2
          local.get $4
          i32.eq
@@ -7240,7 +6779,7 @@
           global.set $~lib/memory/__stack_pointer
           i32.const 1
           local.set $0
-          br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWall$713
+          br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWall$736
          else
           local.get $8
           i32.const 1
@@ -7276,7 +6815,7 @@
            global.set $~lib/memory/__stack_pointer
            i32.const 1
            local.set $0
-           br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWall$713
+           br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWall$736
           else
            local.get $8
            i32.const 1
@@ -7299,7 +6838,7 @@
             i32.const 4
             i32.add
             global.set $~lib/memory/__stack_pointer
-            br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWall$713
+            br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWall$736
            end
           end
          end
@@ -7332,13 +6871,13 @@
        i32.sub
        global.set $~lib/memory/__stack_pointer
        global.get $~lib/memory/__stack_pointer
-       i32.const 5088
+       i32.const 5156
        i32.lt_s
        br_if $folding-inner0
        global.get $~lib/memory/__stack_pointer
        i32.const 0
        i32.store
-       block $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWallDecor$714
+       block $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWallDecor$737
         local.get $2
         local.get $4
         i32.eq
@@ -7357,7 +6896,7 @@
          global.set $~lib/memory/__stack_pointer
          i32.const 1
          local.set $0
-         br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWallDecor$714
+         br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWallDecor$737
         else
          local.get $8
          i32.const 1
@@ -7393,7 +6932,7 @@
           global.set $~lib/memory/__stack_pointer
           i32.const 1
           local.set $0
-          br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWallDecor$714
+          br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWallDecor$737
          else
           local.get $8
           i32.const 1
@@ -7416,7 +6955,7 @@
            i32.const 4
            i32.add
            global.set $~lib/memory/__stack_pointer
-           br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWallDecor$714
+           br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachWallDecor$737
           end
          end
         end
@@ -7449,7 +6988,7 @@
       i32.sub
       global.set $~lib/memory/__stack_pointer
       global.get $~lib/memory/__stack_pointer
-      i32.const 5088
+      i32.const 5156
       i32.lt_s
       br_if $folding-inner0
       global.get $~lib/memory/__stack_pointer
@@ -7510,7 +7049,7 @@
        i32.and
       end
       local.set $7
-      block $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachRectangle$715 (result i32)
+      block $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachRectangle$738 (result i32)
        local.get $8
        i32.const 1
        i32.gt_s
@@ -7535,7 +7074,7 @@
          local.get $11
          call $assembly/reach/RectangleBoundaryUtils/RectangleBoundaryUtils.reachRectangleN
         end
-        br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachRectangle$715
+        br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachRectangle$738
        end
        local.get $7
        if (result i32)
@@ -7571,7 +7110,7 @@
      i32.sub
      global.set $~lib/memory/__stack_pointer
      global.get $~lib/memory/__stack_pointer
-     i32.const 5088
+     i32.const 5156
      i32.lt_s
      br_if $folding-inner0
      global.get $~lib/memory/__stack_pointer
@@ -7632,7 +7171,7 @@
       i32.and
      end
      local.set $7
-     block $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachExclusiveRectangle$716 (result i32)
+     block $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachExclusiveRectangle$739 (result i32)
       local.get $8
       i32.const 1
       i32.gt_s
@@ -7657,7 +7196,7 @@
         local.get $11
         call $assembly/reach/RectangleBoundaryUtils/RectangleBoundaryUtils.reachRectangleN
        end
-       br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachExclusiveRectangle$716
+       br $__inlined_func$assembly/reach/ReachStrategy/ReachStrategy.reachExclusiveRectangle$739
       end
       local.get $7
       if (result i32)
@@ -7692,8 +7231,8 @@
     i32.const 0
     return
    end
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -7711,11 +7250,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -7755,26 +7294,24 @@
   (local $16 i32)
   (local $17 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 12
+  i32.const 48
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.store offset=8
+  i32.const 48
+  memory.fill
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store
@@ -7816,7 +7353,10 @@
     local.get $14
     local.get $0
     i32.load offset=36
-    call $~lib/typedarray/Int32Array#__get
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load
     i32.store offset=28
     global.get $~lib/memory/__stack_pointer
     local.get $0
@@ -7836,7 +7376,10 @@
     local.get $14
     local.get $0
     i32.load offset=36
-    call $~lib/typedarray/Int32Array#__get
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load
     i32.store offset=32
     global.get $~lib/memory/__stack_pointer
     local.get $0
@@ -7901,7 +7444,7 @@
     call $assembly/reach/ReachStrategy/ReachStrategy.reached
     if
      global.get $~lib/memory/__stack_pointer
-     i32.const 12
+     i32.const 48
      i32.add
      global.set $~lib/memory/__stack_pointer
      i32.const 1
@@ -7917,23 +7460,33 @@
     i32.store
     global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.store offset=4
+    i32.store offset=12
     global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.store offset=8
+    i32.store offset=4
     local.get $0
     i32.load offset=28
     local.set $15
     global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.store offset=8
-    local.get $14
-    local.get $0
-    local.get $15
+    i32.store offset=4
     local.get $0
     i32.load offset=32
-    call $assembly/PathFinder/PathFinder#localIndex
-    call $~lib/typedarray/Int32Array#__get
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $0
+    i32.store offset=4
+    local.get $14
+    local.get $16
+    local.get $15
+    local.get $0
+    i32.load offset=4
+    i32.mul
+    i32.add
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load
     i32.const 1
     i32.add
     local.set $14
@@ -7969,13 +7522,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=16
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -7988,7 +7549,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$4 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$3 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -8015,7 +7576,7 @@
            i32.const 2359560
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$4
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$3
           end
           local.get $17
           i32.const 262408
@@ -8027,7 +7588,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$4
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$3
          end
          local.get $17
          i32.const 2359560
@@ -8039,19 +7600,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$4
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$3
         end
         local.get $17
         i32.const -2145124088
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$4
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$3
        end
        local.get $17
        i32.const 135168
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$4
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$3
       end
       unreachable
      end
@@ -8099,13 +7660,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=20
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -8118,7 +7687,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$5 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$4 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -8145,7 +7714,7 @@
            i32.const 2359680
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$5
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$4
           end
           local.get $17
           i32.const 262528
@@ -8157,7 +7726,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$5
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$4
          end
          local.get $17
          i32.const 2359680
@@ -8169,19 +7738,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$5
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$4
         end
         local.get $17
         i32.const -2145123968
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$5
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$4
        end
        local.get $17
        i32.const 196608
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$5
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$4
       end
       unreachable
      end
@@ -8229,13 +7798,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=24
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -8248,7 +7825,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$6 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$5 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -8275,7 +7852,7 @@
            i32.const 2359554
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$6
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$5
           end
           local.get $17
           i32.const 262402
@@ -8287,7 +7864,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$6
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$5
          end
          local.get $17
          i32.const 2359554
@@ -8299,19 +7876,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$6
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$5
         end
         local.get $17
         i32.const -2145124094
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$6
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$5
        end
        local.get $17
        i32.const 132096
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$6
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$5
       end
       unreachable
      end
@@ -8359,13 +7936,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=28
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -8378,7 +7963,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$7 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$6 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -8405,7 +7990,7 @@
            i32.const 2359584
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$7
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$6
           end
           local.get $17
           i32.const 262432
@@ -8417,7 +8002,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$7
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$6
          end
          local.get $17
          i32.const 2359584
@@ -8429,19 +8014,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$7
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$6
         end
         local.get $17
         i32.const -2145124064
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$7
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$6
        end
        local.get $17
        i32.const 147456
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$7
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$6
       end
       unreachable
      end
@@ -8502,13 +8087,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=32
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -8521,7 +8114,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$8 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$7 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -8548,7 +8141,7 @@
            i32.const 2359566
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$8
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$7
           end
           local.get $17
           i32.const 262414
@@ -8560,7 +8153,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$8
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$7
          end
          local.get $17
          i32.const 2359566
@@ -8572,19 +8165,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$8
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$7
         end
         local.get $17
         i32.const -2145124082
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$8
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$7
        end
        local.get $17
        i32.const 138240
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$8
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$7
       end
       unreachable
      end
@@ -8599,7 +8192,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$9 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$8 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -8627,7 +8220,7 @@
            i32.const 2359560
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$9
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$8
           end
           local.get $17
           i32.const 262408
@@ -8639,7 +8232,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$9
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$8
          end
          local.get $17
          i32.const 2359560
@@ -8651,19 +8244,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$9
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$8
         end
         local.get $17
         i32.const -2145124088
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$9
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$8
        end
        local.get $17
        i32.const 135168
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$9
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$8
       end
       unreachable
      end
@@ -8680,7 +8273,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$10 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$9 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -8708,7 +8301,7 @@
            i32.const 2359554
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$10
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$9
           end
           local.get $17
           i32.const 262402
@@ -8720,7 +8313,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$10
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$9
          end
          local.get $17
          i32.const 2359554
@@ -8732,19 +8325,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$10
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$9
         end
         local.get $17
         i32.const -2145124094
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$10
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$9
        end
        local.get $17
        i32.const 132096
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$10
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$9
       end
       unreachable
      end
@@ -8807,13 +8400,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=36
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -8826,7 +8427,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$11 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$10 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -8853,7 +8454,7 @@
            i32.const 2359683
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$11
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$10
           end
           local.get $17
           i32.const 262531
@@ -8865,7 +8466,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$11
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$10
          end
          local.get $17
          i32.const 2359683
@@ -8877,19 +8478,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$11
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$10
         end
         local.get $17
         i32.const -2145123965
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$11
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$10
        end
        local.get $17
        i32.const 198144
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$11
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$10
       end
       unreachable
      end
@@ -8904,7 +8505,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$12 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$11 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -8932,7 +8533,7 @@
            i32.const 2359680
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$12
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$11
           end
           local.get $17
           i32.const 262528
@@ -8944,7 +8545,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$12
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$11
          end
          local.get $17
          i32.const 2359680
@@ -8956,19 +8557,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$12
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$11
         end
         local.get $17
         i32.const -2145123968
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$12
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$11
        end
        local.get $17
        i32.const 196608
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$12
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$11
       end
       unreachable
      end
@@ -8985,7 +8586,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$13 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$12 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -9013,7 +8614,7 @@
            i32.const 2359554
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$13
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$12
           end
           local.get $17
           i32.const 262402
@@ -9025,7 +8626,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$13
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$12
          end
          local.get $17
          i32.const 2359554
@@ -9037,19 +8638,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$13
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$12
         end
         local.get $17
         i32.const -2145124094
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$13
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$12
        end
        local.get $17
        i32.const 132096
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$13
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$12
       end
       unreachable
      end
@@ -9112,13 +8713,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=40
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -9131,7 +8740,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$14 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$13 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -9158,7 +8767,7 @@
            i32.const 2359608
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$14
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$13
           end
           local.get $17
           i32.const 262456
@@ -9170,7 +8779,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$14
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$13
          end
          local.get $17
          i32.const 2359608
@@ -9182,19 +8791,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$14
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$13
         end
         local.get $17
         i32.const -2145124040
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$14
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$13
        end
        local.get $17
        i32.const 159744
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$14
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$13
       end
       unreachable
      end
@@ -9209,7 +8818,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$15 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$14 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -9237,7 +8846,7 @@
            i32.const 2359560
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$15
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$14
           end
           local.get $17
           i32.const 262408
@@ -9249,7 +8858,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$15
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$14
          end
          local.get $17
          i32.const 2359560
@@ -9261,19 +8870,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$15
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$14
         end
         local.get $17
         i32.const -2145124088
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$15
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$14
        end
        local.get $17
        i32.const 135168
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$15
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$14
       end
       unreachable
      end
@@ -9290,7 +8899,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$16 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$15 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -9318,7 +8927,7 @@
            i32.const 2359584
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$16
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$15
           end
           local.get $17
           i32.const 262432
@@ -9330,7 +8939,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$16
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$15
          end
          local.get $17
          i32.const 2359584
@@ -9342,19 +8951,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$16
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$15
         end
         local.get $17
         i32.const -2145124064
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$16
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$15
        end
        local.get $17
        i32.const 147456
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$16
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$15
       end
       unreachable
      end
@@ -9417,13 +9026,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=44
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -9436,7 +9053,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$17 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$16 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -9463,7 +9080,7 @@
            i32.const 2359776
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$17
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$16
           end
           local.get $17
           i32.const 262624
@@ -9475,7 +9092,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$17
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$16
          end
          local.get $17
          i32.const 2359776
@@ -9487,19 +9104,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$17
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$16
         end
         local.get $17
         i32.const -2145123872
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$17
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$16
        end
        local.get $17
        i32.const 245760
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$17
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$16
       end
       unreachable
      end
@@ -9514,7 +9131,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$18 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$17 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -9542,7 +9159,7 @@
            i32.const 2359680
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$18
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$17
           end
           local.get $17
           i32.const 262528
@@ -9554,7 +9171,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$18
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$17
          end
          local.get $17
          i32.const 2359680
@@ -9566,19 +9183,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$18
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$17
         end
         local.get $17
         i32.const -2145123968
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$18
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$17
        end
        local.get $17
        i32.const 196608
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$18
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$17
       end
       unreachable
      end
@@ -9595,7 +9212,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$19 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$18 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -9623,7 +9240,7 @@
            i32.const 2359584
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$19
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$18
           end
           local.get $17
           i32.const 262432
@@ -9635,7 +9252,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$19
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$18
          end
          local.get $17
          i32.const 2359584
@@ -9647,19 +9264,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$19
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$18
         end
         local.get $17
         i32.const -2145124064
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$19
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$18
        end
        local.get $17
        i32.const 147456
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$19
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$18
       end
       unreachable
      end
@@ -9681,7 +9298,7 @@
    end
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 12
+  i32.const 48
   i32.add
   global.set $~lib/memory/__stack_pointer
   i32.const 0
@@ -9693,26 +9310,24 @@
   (local $16 i32)
   (local $17 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 12
+  i32.const 48
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.store offset=8
+  i32.const 48
+  memory.fill
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store
@@ -9754,7 +9369,10 @@
     local.get $14
     local.get $0
     i32.load offset=36
-    call $~lib/typedarray/Int32Array#__get
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load
     i32.store offset=28
     global.get $~lib/memory/__stack_pointer
     local.get $0
@@ -9774,7 +9392,10 @@
     local.get $14
     local.get $0
     i32.load offset=36
-    call $~lib/typedarray/Int32Array#__get
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load
     i32.store offset=32
     global.get $~lib/memory/__stack_pointer
     local.get $0
@@ -9839,7 +9460,7 @@
     call $assembly/reach/ReachStrategy/ReachStrategy.reached
     if
      global.get $~lib/memory/__stack_pointer
-     i32.const 12
+     i32.const 48
      i32.add
      global.set $~lib/memory/__stack_pointer
      i32.const 1
@@ -9855,23 +9476,33 @@
     i32.store
     global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.store offset=4
+    i32.store offset=12
     global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.store offset=8
+    i32.store offset=4
     local.get $0
     i32.load offset=28
     local.set $15
     global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.store offset=8
-    local.get $14
-    local.get $0
-    local.get $15
+    i32.store offset=4
     local.get $0
     i32.load offset=32
-    call $assembly/PathFinder/PathFinder#localIndex
-    call $~lib/typedarray/Int32Array#__get
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $0
+    i32.store offset=4
+    local.get $14
+    local.get $16
+    local.get $15
+    local.get $0
+    i32.load offset=4
+    i32.mul
+    i32.add
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load
     i32.const 1
     i32.add
     local.set $14
@@ -9907,13 +9538,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=16
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -9926,7 +9565,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$20 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$19 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -9953,7 +9592,7 @@
            i32.const 2359566
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$20
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$19
           end
           local.get $17
           i32.const 262414
@@ -9965,7 +9604,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$20
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$19
          end
          local.get $17
          i32.const 2359566
@@ -9977,19 +9616,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$20
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$19
         end
         local.get $17
         i32.const -2145124082
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$20
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$19
        end
        local.get $17
        i32.const 138240
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$20
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$19
       end
       unreachable
      end
@@ -10004,7 +9643,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$21 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$20 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -10034,7 +9673,7 @@
            i32.const 2359608
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$21
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$20
           end
           local.get $17
           i32.const 262456
@@ -10046,7 +9685,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$21
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$20
          end
          local.get $17
          i32.const 2359608
@@ -10058,19 +9697,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$21
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$20
         end
         local.get $17
         i32.const -2145124040
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$21
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$20
        end
        local.get $17
        i32.const 159744
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$21
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$20
       end
       unreachable
      end
@@ -10120,13 +9759,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=20
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -10142,7 +9789,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$22 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$21 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -10172,7 +9819,7 @@
            i32.const 2359683
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$22
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$21
           end
           local.get $17
           i32.const 262531
@@ -10184,7 +9831,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$22
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$21
          end
          local.get $17
          i32.const 2359683
@@ -10196,19 +9843,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$22
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$21
         end
         local.get $17
         i32.const -2145123965
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$22
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$21
        end
        local.get $17
        i32.const 198144
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$22
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$21
       end
       unreachable
      end
@@ -10231,7 +9878,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$23 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$22 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -10261,7 +9908,7 @@
            i32.const 2359776
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$23
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$22
           end
           local.get $17
           i32.const 262624
@@ -10273,7 +9920,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$23
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$22
          end
          local.get $17
          i32.const 2359776
@@ -10285,19 +9932,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$23
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$22
         end
         local.get $17
         i32.const -2145123872
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$23
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$22
        end
        local.get $17
        i32.const 245760
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$23
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$22
       end
       unreachable
      end
@@ -10347,13 +9994,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=24
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -10366,7 +10021,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$24 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$23 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -10393,7 +10048,7 @@
            i32.const 2359566
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$24
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$23
           end
           local.get $17
           i32.const 262414
@@ -10405,7 +10060,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$24
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$23
          end
          local.get $17
          i32.const 2359566
@@ -10417,19 +10072,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$24
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$23
         end
         local.get $17
         i32.const -2145124082
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$24
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$23
        end
        local.get $17
        i32.const 138240
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$24
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$23
       end
       unreachable
      end
@@ -10444,7 +10099,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$25 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$24 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -10474,7 +10129,7 @@
            i32.const 2359683
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$25
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$24
           end
           local.get $17
           i32.const 262531
@@ -10486,7 +10141,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$25
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$24
          end
          local.get $17
          i32.const 2359683
@@ -10498,19 +10153,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$25
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$24
         end
         local.get $17
         i32.const -2145123965
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$25
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$24
        end
        local.get $17
        i32.const 198144
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$25
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$24
       end
       unreachable
      end
@@ -10560,13 +10215,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=28
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -10582,7 +10245,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$26 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$25 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -10612,7 +10275,7 @@
            i32.const 2359608
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$26
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$25
           end
           local.get $17
           i32.const 262456
@@ -10624,7 +10287,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$26
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$25
          end
          local.get $17
          i32.const 2359608
@@ -10636,19 +10299,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$26
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$25
         end
         local.get $17
         i32.const -2145124040
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$26
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$25
        end
        local.get $17
        i32.const 159744
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$26
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$25
       end
       unreachable
      end
@@ -10671,7 +10334,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$27 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$26 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -10701,7 +10364,7 @@
            i32.const 2359776
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$27
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$26
           end
           local.get $17
           i32.const 262624
@@ -10713,7 +10376,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$27
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$26
          end
          local.get $17
          i32.const 2359776
@@ -10725,19 +10388,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$27
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$26
         end
         local.get $17
         i32.const -2145123872
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$27
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$26
        end
        local.get $17
        i32.const 245760
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$27
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$26
       end
       unreachable
      end
@@ -10800,13 +10463,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=32
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -10822,7 +10493,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$28 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$27 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -10850,7 +10521,7 @@
            i32.const 2359614
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$28
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$27
           end
           local.get $17
           i32.const 262462
@@ -10862,7 +10533,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$28
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$27
          end
          local.get $17
          i32.const 2359614
@@ -10874,19 +10545,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$28
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$27
         end
         local.get $17
         i32.const -2145124034
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$28
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$27
        end
        local.get $17
        i32.const 162816
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$28
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$27
       end
       unreachable
      end
@@ -10898,7 +10569,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$29 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$28 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -10925,7 +10596,7 @@
            i32.const 2359566
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$29
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$28
           end
           local.get $17
           i32.const 262414
@@ -10937,7 +10608,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$29
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$28
          end
          local.get $17
          i32.const 2359566
@@ -10949,19 +10620,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$29
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$28
         end
         local.get $17
         i32.const -2145124082
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$29
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$28
        end
        local.get $17
        i32.const 138240
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$29
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$28
       end
       unreachable
      end
@@ -10978,7 +10649,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$30 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$29 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -11001,6 +10672,159 @@
             i32.const 5
             i32.sub
             br_table $case014 $case113 $case212 $case311 $case410 $default9
+           end
+           local.get $17
+           i32.const 2359695
+           i32.and
+           i32.eqz
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$29
+          end
+          local.get $17
+          i32.const 262543
+          i32.and
+          i32.eqz
+          local.get $17
+          i32.const 2097152
+          i32.and
+          i32.const 0
+          i32.ne
+          i32.and
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$29
+         end
+         local.get $17
+         i32.const 2359695
+         i32.and
+         i32.eqz
+         local.get $17
+         i32.const -2147483648
+         i32.and
+         i32.const 0
+         i32.ne
+         i32.and
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$29
+        end
+        local.get $17
+        i32.const -2145123953
+        i32.and
+        i32.eqz
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$29
+       end
+       local.get $17
+       i32.const 204288
+       i32.and
+       i32.eqz
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$29
+      end
+      unreachable
+     end
+    else
+     i32.const 0
+    end
+    if
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
+     i32.store
+     local.get $0
+     local.get $15
+     local.get $16
+     i32.const 3
+     local.get $14
+     call $assembly/PathFinder/PathFinder#appendDirection
+    end
+    global.get $~lib/memory/__stack_pointer
+    local.get $0
+    i32.store
+    local.get $0
+    i32.load offset=28
+    i32.const 1
+    i32.add
+    local.set $15
+    global.get $~lib/memory/__stack_pointer
+    local.get $0
+    i32.store
+    local.get $0
+    i32.load offset=32
+    i32.const 1
+    i32.sub
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $0
+    i32.store
+    local.get $13
+    local.get $0
+    i32.load offset=28
+    i32.gt_s
+    if (result i32)
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
+     i32.store
+     local.get $0
+     i32.load offset=32
+     i32.const 0
+     i32.gt_s
+    else
+     i32.const 0
+    end
+    if (result i32)
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
+     i32.store offset=4
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
+     i32.load offset=12
+     local.tee $17
+     i32.store
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
+     i32.store offset=36
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
+     i32.store offset=4
+     local.get $17
+     local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
+     local.get $16
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
+    else
+     i32.const 1
+    end
+    if (result i32)
+     i32.const 0
+    else
+     global.get $~lib/memory/__stack_pointer
+     local.get $12
+     i32.store
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
+     i32.store offset=4
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$30 (result i32)
+      local.get $0
+      local.get $1
+      local.get $2
+      local.get $15
+      local.get $16
+      local.get $3
+      call $assembly/PathFinder/PathFinder#collisionFlag
+      local.set $17
+      block $default10
+       block $case411
+        block $case312
+         block $case213
+          block $case114
+           block $case015
+            local.get $12
+            i32.const 8
+            i32.sub
+            i32.load
+            i32.const 5
+            i32.sub
+            br_table $case015 $case114 $case213 $case312 $case411 $default10
            end
            local.get $17
            i32.const 2359695
@@ -11046,151 +10870,6 @@
       end
       unreachable
      end
-    else
-     i32.const 0
-    end
-    if
-     global.get $~lib/memory/__stack_pointer
-     local.get $0
-     i32.store
-     local.get $0
-     local.get $15
-     local.get $16
-     i32.const 3
-     local.get $14
-     call $assembly/PathFinder/PathFinder#appendDirection
-    end
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.store
-    local.get $0
-    i32.load offset=28
-    i32.const 1
-    i32.add
-    local.set $15
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.store
-    local.get $0
-    i32.load offset=32
-    i32.const 1
-    i32.sub
-    local.set $16
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.store
-    local.get $13
-    local.get $0
-    i32.load offset=28
-    i32.gt_s
-    if (result i32)
-     global.get $~lib/memory/__stack_pointer
-     local.get $0
-     i32.store
-     local.get $0
-     i32.load offset=32
-     i32.const 0
-     i32.gt_s
-    else
-     i32.const 0
-    end
-    if (result i32)
-     global.get $~lib/memory/__stack_pointer
-     local.get $0
-     i32.store offset=4
-     global.get $~lib/memory/__stack_pointer
-     local.get $0
-     i32.load offset=12
-     local.tee $17
-     i32.store
-     global.get $~lib/memory/__stack_pointer
-     local.get $0
-     i32.store offset=4
-     local.get $17
-     local.get $0
-     local.get $15
-     local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
-    else
-     i32.const 1
-    end
-    if (result i32)
-     i32.const 0
-    else
-     global.get $~lib/memory/__stack_pointer
-     local.get $12
-     i32.store
-     global.get $~lib/memory/__stack_pointer
-     local.get $0
-     i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$31 (result i32)
-      local.get $0
-      local.get $1
-      local.get $2
-      local.get $15
-      local.get $16
-      local.get $3
-      call $assembly/PathFinder/PathFinder#collisionFlag
-      local.set $17
-      block $default10
-       block $case411
-        block $case312
-         block $case213
-          block $case114
-           block $case015
-            local.get $12
-            i32.const 8
-            i32.sub
-            i32.load
-            i32.const 5
-            i32.sub
-            br_table $case015 $case114 $case213 $case312 $case411 $default10
-           end
-           local.get $17
-           i32.const 2359695
-           i32.and
-           i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$31
-          end
-          local.get $17
-          i32.const 262543
-          i32.and
-          i32.eqz
-          local.get $17
-          i32.const 2097152
-          i32.and
-          i32.const 0
-          i32.ne
-          i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$31
-         end
-         local.get $17
-         i32.const 2359695
-         i32.and
-         i32.eqz
-         local.get $17
-         i32.const -2147483648
-         i32.and
-         i32.const 0
-         i32.ne
-         i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$31
-        end
-        local.get $17
-        i32.const -2145123953
-        i32.and
-        i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$31
-       end
-       local.get $17
-       i32.const 204288
-       i32.and
-       i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$31
-      end
-      unreachable
-     end
     end
     if (result i32)
      global.get $~lib/memory/__stack_pointer
@@ -11202,7 +10881,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$32 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$31 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -11232,7 +10911,7 @@
            i32.const 2359683
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$32
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$31
           end
           local.get $17
           i32.const 262531
@@ -11244,7 +10923,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$32
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$31
          end
          local.get $17
          i32.const 2359683
@@ -11256,19 +10935,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$32
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$31
         end
         local.get $17
         i32.const -2145123965
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$32
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$31
        end
        local.get $17
        i32.const 198144
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$32
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$31
       end
       unreachable
      end
@@ -11293,7 +10972,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$33 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$32 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -11321,7 +11000,7 @@
            i32.const 2359779
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$33
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$32
           end
           local.get $17
           i32.const 262627
@@ -11333,7 +11012,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$33
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$32
          end
          local.get $17
          i32.const 2359779
@@ -11345,19 +11024,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$33
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$32
         end
         local.get $17
         i32.const -2145123869
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$33
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$32
        end
        local.get $17
        i32.const 247296
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$33
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$32
       end
       unreachable
      end
@@ -11420,13 +11099,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=40
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -11439,7 +11126,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$34 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$33 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -11466,7 +11153,7 @@
            i32.const 2359614
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$34
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$33
           end
           local.get $17
           i32.const 262462
@@ -11478,7 +11165,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$34
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$33
          end
          local.get $17
          i32.const 2359614
@@ -11490,19 +11177,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$34
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$33
         end
         local.get $17
         i32.const -2145124034
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$34
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$33
        end
        local.get $17
        i32.const 162816
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$34
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$33
       end
       unreachable
      end
@@ -11517,7 +11204,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$35 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$34 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -11547,7 +11234,7 @@
            i32.const 2359608
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$35
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$34
           end
           local.get $17
           i32.const 262456
@@ -11559,7 +11246,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$35
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$34
          end
          local.get $17
          i32.const 2359608
@@ -11571,19 +11258,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$35
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$34
         end
         local.get $17
         i32.const -2145124040
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$35
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$34
        end
        local.get $17
        i32.const 159744
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$35
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$34
       end
       unreachable
      end
@@ -11606,7 +11293,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$36 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$35 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -11636,7 +11323,7 @@
            i32.const 2359800
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$36
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$35
           end
           local.get $17
           i32.const 262648
@@ -11648,7 +11335,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$36
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$35
          end
          local.get $17
          i32.const 2359800
@@ -11660,19 +11347,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$36
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$35
         end
         local.get $17
         i32.const -2145123848
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$36
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$35
        end
        local.get $17
        i32.const 258048
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$36
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$35
       end
       unreachable
      end
@@ -11735,13 +11422,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=44
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $17
-     local.get $0
      local.get $15
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $16
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -11757,7 +11452,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$37 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$36 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -11787,7 +11482,7 @@
            i32.const 2359800
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$37
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$36
           end
           local.get $17
           i32.const 262648
@@ -11799,7 +11494,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$37
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$36
          end
          local.get $17
          i32.const 2359800
@@ -11811,19 +11506,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$37
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$36
         end
         local.get $17
         i32.const -2145123848
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$37
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$36
        end
        local.get $17
        i32.const 258048
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$37
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$36
       end
       unreachable
      end
@@ -11846,7 +11541,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$38 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$37 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -11876,7 +11571,7 @@
            i32.const 2359776
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$38
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$37
           end
           local.get $17
           i32.const 262624
@@ -11888,7 +11583,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$38
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$37
          end
          local.get $17
          i32.const 2359776
@@ -11900,19 +11595,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$38
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$37
         end
         local.get $17
         i32.const -2145123872
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$38
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$37
        end
        local.get $17
        i32.const 245760
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$38
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$37
       end
       unreachable
      end
@@ -11929,7 +11624,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$39 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$38 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -11959,7 +11654,7 @@
            i32.const 2359779
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$39
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$38
           end
           local.get $17
           i32.const 262627
@@ -11971,7 +11666,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$39
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$38
          end
          local.get $17
          i32.const 2359779
@@ -11983,19 +11678,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$39
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$38
         end
         local.get $17
         i32.const -2145123869
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$39
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$38
        end
        local.get $17
        i32.const 247296
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$39
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$38
       end
       unreachable
      end
@@ -12017,7 +11712,7 @@
    end
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 12
+  i32.const 48
   i32.add
   global.set $~lib/memory/__stack_pointer
   i32.const 0
@@ -12031,26 +11726,24 @@
   (local $18 i32)
   (local $19 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 12
+  i32.const 48
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.store offset=8
+  i32.const 48
+  memory.fill
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store
@@ -12058,7 +11751,7 @@
   i32.load offset=4
   local.get $8
   i32.sub
-  local.set $16
+  local.set $15
   loop $while-continue|0
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -12092,7 +11785,10 @@
     local.get $13
     local.get $0
     i32.load offset=36
-    call $~lib/typedarray/Int32Array#__get
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load
     i32.store offset=28
     global.get $~lib/memory/__stack_pointer
     local.get $0
@@ -12112,7 +11808,10 @@
     local.get $13
     local.get $0
     i32.load offset=36
-    call $~lib/typedarray/Int32Array#__get
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load
     i32.store offset=32
     global.get $~lib/memory/__stack_pointer
     local.get $0
@@ -12177,7 +11876,7 @@
     call $assembly/reach/ReachStrategy/ReachStrategy.reached
     if
      global.get $~lib/memory/__stack_pointer
-     i32.const 12
+     i32.const 48
      i32.add
      global.set $~lib/memory/__stack_pointer
      i32.const 1
@@ -12193,26 +11892,36 @@
     i32.store
     global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.store offset=4
+    i32.store offset=12
     global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.store offset=8
+    i32.store offset=4
     local.get $0
     i32.load offset=28
     local.set $14
     global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.store offset=8
-    local.get $13
-    local.get $0
-    local.get $14
+    i32.store offset=4
     local.get $0
     i32.load offset=32
-    call $assembly/PathFinder/PathFinder#localIndex
-    call $~lib/typedarray/Int32Array#__get
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $0
+    i32.store offset=4
+    local.get $13
+    local.get $16
+    local.get $14
+    local.get $0
+    i32.load offset=4
+    i32.mul
+    i32.add
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load
     i32.const 1
     i32.add
-    local.set $15
+    local.set $16
     global.get $~lib/memory/__stack_pointer
     local.get $0
     i32.store
@@ -12245,13 +11954,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=16
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $13
-     local.get $0
      local.get $17
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $18
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -12264,7 +11981,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$40 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$39 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -12291,7 +12008,7 @@
            i32.const 2359566
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$40
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$39
           end
           local.get $13
           i32.const 262414
@@ -12303,7 +12020,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$40
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$39
          end
          local.get $13
          i32.const 2359566
@@ -12315,19 +12032,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$40
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$39
         end
         local.get $13
         i32.const -2145124082
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$40
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$39
        end
        local.get $13
        i32.const 138240
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$40
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$39
       end
       unreachable
      end
@@ -12342,7 +12059,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$41 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$40 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -12374,7 +12091,7 @@
            i32.const 2359608
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$41
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$40
           end
           local.get $13
           i32.const 262456
@@ -12386,7 +12103,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$41
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$40
          end
          local.get $13
          i32.const 2359608
@@ -12398,19 +12115,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$41
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$40
         end
         local.get $13
         i32.const -2145124040
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$41
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$40
        end
        local.get $13
        i32.const 159744
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$41
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$40
       end
       unreachable
      end
@@ -12439,7 +12156,7 @@
         global.get $~lib/memory/__stack_pointer
         local.get $0
         i32.store offset=8
-        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$42 (result i32)
+        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$41 (result i32)
          local.get $0
          local.get $1
          local.get $2
@@ -12469,7 +12186,7 @@
               i32.const 2359614
               i32.and
               i32.eqz
-              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$42
+              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$41
              end
              local.get $19
              i32.const 262462
@@ -12481,7 +12198,7 @@
              i32.const 0
              i32.ne
              i32.and
-             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$42
+             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$41
             end
             local.get $19
             i32.const 2359614
@@ -12493,19 +12210,19 @@
             i32.const 0
             i32.ne
             i32.and
-            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$42
+            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$41
            end
            local.get $19
            i32.const -2145124034
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$42
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$41
           end
           local.get $19
           i32.const 162816
           i32.and
           i32.eqz
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$42
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$41
          end
          unreachable
         end
@@ -12533,7 +12250,7 @@
       local.get $17
       local.get $18
       i32.const 2
-      local.get $15
+      local.get $16
       call $assembly/PathFinder/PathFinder#appendDirection
      end
     end
@@ -12554,7 +12271,7 @@
     global.get $~lib/memory/__stack_pointer
     local.get $0
     i32.store
-    local.get $16
+    local.get $15
     local.get $0
     i32.load offset=28
     i32.gt_s
@@ -12569,13 +12286,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=20
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $13
-     local.get $0
      local.get $17
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $18
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -12591,7 +12316,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$43 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$42 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -12621,7 +12346,7 @@
            i32.const 2359683
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$43
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$42
           end
           local.get $13
           i32.const 262531
@@ -12633,7 +12358,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$43
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$42
          end
          local.get $13
          i32.const 2359683
@@ -12645,19 +12370,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$43
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$42
         end
         local.get $13
         i32.const -2145123965
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$43
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$42
        end
        local.get $13
        i32.const 198144
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$43
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$42
       end
       unreachable
      end
@@ -12680,7 +12405,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$44 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$43 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -12712,7 +12437,7 @@
            i32.const 2359776
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$44
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$43
           end
           local.get $13
           i32.const 262624
@@ -12724,7 +12449,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$44
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$43
          end
          local.get $13
          i32.const 2359776
@@ -12736,19 +12461,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$44
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$43
         end
         local.get $13
         i32.const -2145123872
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$44
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$43
        end
        local.get $13
        i32.const 245760
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$44
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$43
       end
       unreachable
      end
@@ -12785,7 +12510,7 @@
         global.get $~lib/memory/__stack_pointer
         local.get $0
         i32.store offset=8
-        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$45 (result i32)
+        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$44 (result i32)
          local.get $0
          local.get $1
          local.get $2
@@ -12815,7 +12540,7 @@
               i32.const 2359779
               i32.and
               i32.eqz
-              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$45
+              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$44
              end
              local.get $19
              i32.const 262627
@@ -12827,7 +12552,7 @@
              i32.const 0
              i32.ne
              i32.and
-             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$45
+             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$44
             end
             local.get $19
             i32.const 2359779
@@ -12839,19 +12564,19 @@
             i32.const 0
             i32.ne
             i32.and
-            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$45
+            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$44
            end
            local.get $19
            i32.const -2145123869
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$45
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$44
           end
           local.get $19
           i32.const 247296
           i32.and
           i32.eqz
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$45
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$44
          end
          unreachable
         end
@@ -12879,7 +12604,7 @@
       local.get $17
       local.get $18
       i32.const 8
-      local.get $15
+      local.get $16
       call $assembly/PathFinder/PathFinder#appendDirection
      end
     end
@@ -12915,13 +12640,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=24
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $13
-     local.get $0
      local.get $17
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $18
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -12934,7 +12667,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$46 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$45 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -12961,7 +12694,7 @@
            i32.const 2359566
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$46
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$45
           end
           local.get $13
           i32.const 262414
@@ -12973,7 +12706,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$46
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$45
          end
          local.get $13
          i32.const 2359566
@@ -12985,19 +12718,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$46
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$45
         end
         local.get $13
         i32.const -2145124082
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$46
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$45
        end
        local.get $13
        i32.const 138240
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$46
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$45
       end
       unreachable
      end
@@ -13012,7 +12745,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$47 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$46 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -13044,7 +12777,7 @@
            i32.const 2359683
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$47
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$46
           end
           local.get $13
           i32.const 262531
@@ -13056,7 +12789,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$47
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$46
          end
          local.get $13
          i32.const 2359683
@@ -13068,19 +12801,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$47
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$46
         end
         local.get $13
         i32.const -2145123965
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$47
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$46
        end
        local.get $13
        i32.const 198144
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$47
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$46
       end
       unreachable
      end
@@ -13109,7 +12842,7 @@
         global.get $~lib/memory/__stack_pointer
         local.get $0
         i32.store offset=8
-        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$48 (result i32)
+        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$47 (result i32)
          local.get $0
          local.get $1
          local.get $2
@@ -13139,7 +12872,7 @@
               i32.const 2359695
               i32.and
               i32.eqz
-              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$48
+              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$47
              end
              local.get $19
              i32.const 262543
@@ -13151,7 +12884,7 @@
              i32.const 0
              i32.ne
              i32.and
-             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$48
+             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$47
             end
             local.get $19
             i32.const 2359695
@@ -13163,19 +12896,19 @@
             i32.const 0
             i32.ne
             i32.and
-            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$48
+            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$47
            end
            local.get $19
            i32.const -2145123953
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$48
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$47
           end
           local.get $19
           i32.const 204288
           i32.and
           i32.eqz
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$48
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$47
          end
          unreachable
         end
@@ -13203,7 +12936,7 @@
       local.get $17
       local.get $18
       i32.const 1
-      local.get $15
+      local.get $16
       call $assembly/PathFinder/PathFinder#appendDirection
      end
     end
@@ -13224,7 +12957,7 @@
     global.get $~lib/memory/__stack_pointer
     local.get $0
     i32.store
-    local.get $16
+    local.get $15
     local.get $0
     i32.load offset=32
     i32.gt_s
@@ -13239,13 +12972,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=28
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $13
-     local.get $0
      local.get $17
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $18
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -13261,7 +13002,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$49 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$48 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -13291,7 +13032,7 @@
            i32.const 2359608
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$49
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$48
           end
           local.get $13
           i32.const 262456
@@ -13303,7 +13044,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$49
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$48
          end
          local.get $13
          i32.const 2359608
@@ -13315,19 +13056,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$49
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$48
         end
         local.get $13
         i32.const -2145124040
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$49
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$48
        end
        local.get $13
        i32.const 159744
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$49
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$48
       end
       unreachable
      end
@@ -13352,7 +13093,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$50 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$49 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -13382,7 +13123,7 @@
            i32.const 2359776
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$50
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$49
           end
           local.get $13
           i32.const 262624
@@ -13394,7 +13135,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$50
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$49
          end
          local.get $13
          i32.const 2359776
@@ -13406,19 +13147,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$50
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$49
         end
         local.get $13
         i32.const -2145123872
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$50
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$49
        end
        local.get $13
        i32.const 245760
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$50
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$49
       end
       unreachable
      end
@@ -13447,7 +13188,7 @@
         global.get $~lib/memory/__stack_pointer
         local.get $0
         i32.store offset=8
-        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$51 (result i32)
+        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$50 (result i32)
          local.get $0
          local.get $1
          local.get $2
@@ -13479,7 +13220,7 @@
               i32.const 2359800
               i32.and
               i32.eqz
-              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$51
+              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$50
              end
              local.get $19
              i32.const 262648
@@ -13491,7 +13232,7 @@
              i32.const 0
              i32.ne
              i32.and
-             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$51
+             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$50
             end
             local.get $19
             i32.const 2359800
@@ -13503,19 +13244,19 @@
             i32.const 0
             i32.ne
             i32.and
-            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$51
+            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$50
            end
            local.get $19
            i32.const -2145123848
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$51
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$50
           end
           local.get $19
           i32.const 258048
           i32.and
           i32.eqz
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$51
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$50
          end
          unreachable
         end
@@ -13543,7 +13284,7 @@
       local.get $17
       local.get $18
       i32.const 4
-      local.get $15
+      local.get $16
       call $assembly/PathFinder/PathFinder#appendDirection
      end
     end
@@ -13592,13 +13333,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=32
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $13
-     local.get $0
      local.get $17
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $18
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -13611,7 +13360,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=4
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$52 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$51 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -13638,7 +13387,7 @@
            i32.const 2359566
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$52
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$51
           end
           local.get $13
           i32.const 262414
@@ -13650,7 +13399,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$52
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$51
          end
          local.get $13
          i32.const 2359566
@@ -13662,19 +13411,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$52
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$51
         end
         local.get $13
         i32.const -2145124082
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$52
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$51
        end
        local.get $13
        i32.const 138240
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$52
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$51
       end
       unreachable
      end
@@ -13699,7 +13448,7 @@
         global.get $~lib/memory/__stack_pointer
         local.get $0
         i32.store offset=8
-        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$53 (result i32)
+        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$52 (result i32)
          local.get $0
          local.get $1
          local.get $2
@@ -13731,7 +13480,7 @@
               i32.const 2359614
               i32.and
               i32.eqz
-              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$53
+              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$52
              end
              local.get $19
              i32.const 262462
@@ -13743,7 +13492,7 @@
              i32.const 0
              i32.ne
              i32.and
-             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$53
+             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$52
             end
             local.get $19
             i32.const 2359614
@@ -13755,19 +13504,19 @@
             i32.const 0
             i32.ne
             i32.and
-            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$53
+            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$52
            end
            local.get $19
            i32.const -2145124034
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$53
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$52
           end
           local.get $19
           i32.const 162816
           i32.and
           i32.eqz
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$53
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$52
          end
          unreachable
         end
@@ -13781,7 +13530,7 @@
          global.get $~lib/memory/__stack_pointer
          local.get $0
          i32.store offset=8
-         block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$54 (result i32)
+         block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$53 (result i32)
           local.get $0
           local.get $1
           local.get $2
@@ -13813,7 +13562,7 @@
                i32.const 2359695
                i32.and
                i32.eqz
-               br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$54
+               br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$53
               end
               local.get $19
               i32.const 262543
@@ -13825,7 +13574,7 @@
               i32.const 0
               i32.ne
               i32.and
-              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$54
+              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$53
              end
              local.get $19
              i32.const 2359695
@@ -13837,19 +13586,19 @@
              i32.const 0
              i32.ne
              i32.and
-             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$54
+             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$53
             end
             local.get $19
             i32.const -2145123953
             i32.and
             i32.eqz
-            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$54
+            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$53
            end
            local.get $19
            i32.const 204288
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$54
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$53
           end
           unreachable
          end
@@ -13880,7 +13629,7 @@
       local.get $17
       local.get $18
       i32.const 3
-      local.get $15
+      local.get $16
       call $assembly/PathFinder/PathFinder#appendDirection
      end
     end
@@ -13903,7 +13652,7 @@
     global.get $~lib/memory/__stack_pointer
     local.get $0
     i32.store
-    local.get $16
+    local.get $15
     local.get $0
     i32.load offset=28
     i32.gt_s
@@ -13929,13 +13678,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=36
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $13
-     local.get $0
      local.get $17
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $18
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -13951,7 +13708,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$55 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$54 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -13981,7 +13738,7 @@
            i32.const 2359683
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$55
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$54
           end
           local.get $13
           i32.const 262531
@@ -13993,7 +13750,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$55
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$54
          end
          local.get $13
          i32.const 2359683
@@ -14005,19 +13762,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$55
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$54
         end
         local.get $13
         i32.const -2145123965
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$55
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$54
        end
        local.get $13
        i32.const 198144
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$55
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$54
       end
       unreachable
      end
@@ -14050,7 +13807,7 @@
         global.get $~lib/memory/__stack_pointer
         local.get $0
         i32.store offset=8
-        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$56 (result i32)
+        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$55 (result i32)
          local.get $0
          local.get $1
          local.get $2
@@ -14082,7 +13839,7 @@
               i32.const 2359779
               i32.and
               i32.eqz
-              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$56
+              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$55
              end
              local.get $19
              i32.const 262627
@@ -14094,7 +13851,7 @@
              i32.const 0
              i32.ne
              i32.and
-             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$56
+             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$55
             end
             local.get $19
             i32.const 2359779
@@ -14106,19 +13863,19 @@
             i32.const 0
             i32.ne
             i32.and
-            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$56
+            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$55
            end
            local.get $19
            i32.const -2145123869
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$56
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$55
           end
           local.get $19
           i32.const 247296
           i32.and
           i32.eqz
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$56
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$55
          end
          unreachable
         end
@@ -14132,7 +13889,7 @@
          global.get $~lib/memory/__stack_pointer
          local.get $0
          i32.store offset=8
-         block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$57 (result i32)
+         block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$56 (result i32)
           local.get $0
           local.get $1
           local.get $2
@@ -14162,7 +13919,7 @@
                i32.const 2359695
                i32.and
                i32.eqz
-               br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$57
+               br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$56
               end
               local.get $19
               i32.const 262543
@@ -14174,7 +13931,7 @@
               i32.const 0
               i32.ne
               i32.and
-              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$57
+              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$56
              end
              local.get $19
              i32.const 2359695
@@ -14186,19 +13943,19 @@
              i32.const 0
              i32.ne
              i32.and
-             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$57
+             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$56
             end
             local.get $19
             i32.const -2145123953
             i32.and
             i32.eqz
-            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$57
+            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$56
            end
            local.get $19
            i32.const 204288
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$57
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$56
           end
           unreachable
          end
@@ -14229,7 +13986,7 @@
       local.get $17
       local.get $18
       i32.const 9
-      local.get $15
+      local.get $16
       call $assembly/PathFinder/PathFinder#appendDirection
      end
     end
@@ -14260,7 +14017,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store
-     local.get $16
+     local.get $15
      local.get $0
      i32.load offset=32
      i32.gt_s
@@ -14278,13 +14035,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=40
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $13
-     local.get $0
      local.get $17
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $18
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -14300,7 +14065,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$58 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$57 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -14330,7 +14095,7 @@
            i32.const 2359608
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$58
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$57
           end
           local.get $13
           i32.const 262456
@@ -14342,7 +14107,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$58
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$57
          end
          local.get $13
          i32.const 2359608
@@ -14354,19 +14119,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$58
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$57
         end
         local.get $13
         i32.const -2145124040
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$58
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$57
        end
        local.get $13
        i32.const 159744
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$58
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$57
       end
       unreachable
      end
@@ -14391,7 +14156,7 @@
         global.get $~lib/memory/__stack_pointer
         local.get $0
         i32.store offset=8
-        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$59 (result i32)
+        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$58 (result i32)
          local.get $0
          local.get $1
          local.get $2
@@ -14421,7 +14186,7 @@
               i32.const 2359614
               i32.and
               i32.eqz
-              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$59
+              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$58
              end
              local.get $19
              i32.const 262462
@@ -14433,7 +14198,7 @@
              i32.const 0
              i32.ne
              i32.and
-             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$59
+             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$58
             end
             local.get $19
             i32.const 2359614
@@ -14445,19 +14210,19 @@
             i32.const 0
             i32.ne
             i32.and
-            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$59
+            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$58
            end
            local.get $19
            i32.const -2145124034
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$59
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$58
           end
           local.get $19
           i32.const 162816
           i32.and
           i32.eqz
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$59
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$58
          end
          unreachable
         end
@@ -14481,7 +14246,7 @@
          global.get $~lib/memory/__stack_pointer
          local.get $0
          i32.store offset=8
-         block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$60 (result i32)
+         block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$59 (result i32)
           local.get $0
           local.get $1
           local.get $2
@@ -14511,7 +14276,7 @@
                i32.const 2359800
                i32.and
                i32.eqz
-               br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$60
+               br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$59
               end
               local.get $19
               i32.const 262648
@@ -14523,7 +14288,7 @@
               i32.const 0
               i32.ne
               i32.and
-              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$60
+              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$59
              end
              local.get $19
              i32.const 2359800
@@ -14535,19 +14300,19 @@
              i32.const 0
              i32.ne
              i32.and
-             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$60
+             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$59
             end
             local.get $19
             i32.const -2145123848
             i32.and
             i32.eqz
-            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$60
+            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$59
            end
            local.get $19
            i32.const 258048
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$60
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$59
           end
           unreachable
          end
@@ -14578,7 +14343,7 @@
       local.get $17
       local.get $18
       i32.const 6
-      local.get $15
+      local.get $16
       call $assembly/PathFinder/PathFinder#appendDirection
      end
     end
@@ -14601,7 +14366,7 @@
     global.get $~lib/memory/__stack_pointer
     local.get $0
     i32.store
-    local.get $16
+    local.get $15
     local.get $0
     i32.load offset=28
     i32.gt_s
@@ -14609,7 +14374,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store
-     local.get $16
+     local.get $15
      local.get $0
      i32.load offset=32
      i32.gt_s
@@ -14627,13 +14392,21 @@
      i32.store
      global.get $~lib/memory/__stack_pointer
      local.get $0
+     i32.store offset=44
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
      i32.store offset=4
      local.get $13
-     local.get $0
      local.get $17
+     local.get $0
+     i32.load offset=4
+     i32.mul
      local.get $18
-     call $assembly/PathFinder/PathFinder#localIndex
-     call $~lib/typedarray/Int32Array#__get
+     i32.add
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load
     else
      i32.const 1
     end
@@ -14657,7 +14430,7 @@
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=8
-     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$61 (result i32)
+     block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$60 (result i32)
       local.get $0
       local.get $1
       local.get $2
@@ -14687,7 +14460,7 @@
            i32.const 2359776
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$61
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$60
           end
           local.get $13
           i32.const 262624
@@ -14699,7 +14472,7 @@
           i32.const 0
           i32.ne
           i32.and
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$61
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$60
          end
          local.get $13
          i32.const 2359776
@@ -14711,19 +14484,19 @@
          i32.const 0
          i32.ne
          i32.and
-         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$61
+         br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$60
         end
         local.get $13
         i32.const -2145123872
         i32.and
         i32.eqz
-        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$61
+        br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$60
        end
        local.get $13
        i32.const 245760
        i32.and
        i32.eqz
-       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$61
+       br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$60
       end
       unreachable
      end
@@ -14756,7 +14529,7 @@
         global.get $~lib/memory/__stack_pointer
         local.get $0
         i32.store offset=8
-        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$62 (result i32)
+        block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$61 (result i32)
          local.get $0
          local.get $1
          local.get $2
@@ -14786,7 +14559,7 @@
               i32.const 2359800
               i32.and
               i32.eqz
-              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$62
+              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$61
              end
              local.get $19
              i32.const 262648
@@ -14798,7 +14571,7 @@
              i32.const 0
              i32.ne
              i32.and
-             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$62
+             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$61
             end
             local.get $19
             i32.const 2359800
@@ -14810,19 +14583,19 @@
             i32.const 0
             i32.ne
             i32.and
-            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$62
+            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$61
            end
            local.get $19
            i32.const -2145123848
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$62
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$61
           end
           local.get $19
           i32.const 258048
           i32.and
           i32.eqz
-          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$62
+          br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$61
          end
          unreachable
         end
@@ -14844,7 +14617,7 @@
          global.get $~lib/memory/__stack_pointer
          local.get $0
          i32.store offset=8
-         block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$63 (result i32)
+         block $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$62 (result i32)
           local.get $0
           local.get $1
           local.get $2
@@ -14874,7 +14647,7 @@
                i32.const 2359779
                i32.and
                i32.eqz
-               br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$63
+               br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$62
               end
               local.get $19
               i32.const 262627
@@ -14886,7 +14659,7 @@
               i32.const 0
               i32.ne
               i32.and
-              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$63
+              br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$62
              end
              local.get $19
              i32.const 2359779
@@ -14898,19 +14671,19 @@
              i32.const 0
              i32.ne
              i32.and
-             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$63
+             br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$62
             end
             local.get $19
             i32.const -2145123869
             i32.and
             i32.eqz
-            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$63
+            br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$62
            end
            local.get $19
            i32.const 247296
            i32.and
            i32.eqz
-           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$63
+           br $__inlined_func$assembly/collision/CollisionStrategy/CollisionStrategy#canMove@override$62
           end
           unreachable
          end
@@ -14941,7 +14714,7 @@
       local.get $17
       local.get $18
       i32.const 12
-      local.get $15
+      local.get $16
       call $assembly/PathFinder/PathFinder#appendDirection
      end
     end
@@ -14949,10 +14722,149 @@
    end
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 12
+  i32.const 48
   i32.add
   global.set $~lib/memory/__stack_pointer
   i32.const 0
+ )
+ (func $~lib/typedarray/Int32Array#constructor (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  block $folding-inner0
+   global.get $~lib/memory/__stack_pointer
+   i32.const 5156
+   i32.lt_s
+   br_if $folding-inner0
+   global.get $~lib/memory/__stack_pointer
+   i64.const 0
+   i64.store
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.const 17
+   call $~lib/rt/itcms/__new
+   local.tee $1
+   i32.store
+   global.get $~lib/memory/__stack_pointer
+   local.set $2
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store offset=4
+   global.get $~lib/memory/__stack_pointer
+   i32.const 16
+   i32.sub
+   global.set $~lib/memory/__stack_pointer
+   global.get $~lib/memory/__stack_pointer
+   i32.const 5156
+   i32.lt_s
+   br_if $folding-inner0
+   global.get $~lib/memory/__stack_pointer
+   i64.const 0
+   i64.store
+   global.get $~lib/memory/__stack_pointer
+   i64.const 0
+   i64.store offset=8
+   local.get $1
+   i32.eqz
+   if
+    global.get $~lib/memory/__stack_pointer
+    i32.const 12
+    i32.const 3
+    call $~lib/rt/itcms/__new
+    local.tee $1
+    i32.store
+   end
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store offset=4
+   local.get $1
+   i32.const 0
+   i32.store
+   local.get $1
+   i32.const 0
+   i32.const 0
+   call $~lib/rt/itcms/__link
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store offset=4
+   local.get $1
+   i32.const 0
+   i32.store offset=4
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store offset=4
+   local.get $1
+   i32.const 0
+   i32.store offset=8
+   local.get $0
+   i32.const 268435455
+   i32.gt_u
+   if
+    i32.const 1456
+    i32.const 4352
+    i32.const 19
+    i32.const 57
+    call $~lib/builtins/abort
+    unreachable
+   end
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.const 2
+   i32.shl
+   local.tee $0
+   i32.const 1
+   call $~lib/rt/itcms/__new
+   local.tee $3
+   i32.store offset=8
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store offset=4
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store offset=12
+   local.get $1
+   local.get $3
+   i32.store
+   local.get $1
+   local.get $3
+   i32.const 0
+   call $~lib/rt/itcms/__link
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store offset=4
+   local.get $1
+   local.get $3
+   i32.store offset=4
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store offset=4
+   local.get $1
+   local.get $0
+   i32.store offset=8
+   global.get $~lib/memory/__stack_pointer
+   i32.const 16
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $2
+   local.get $1
+   i32.store
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $1
+   return
+  end
+  i32.const 37952
+  i32.const 38000
+  i32.const 1
+  i32.const 1
+  call $~lib/builtins/abort
+  unreachable
  )
  (func $assembly/PathFinder/PathFinder#findClosestApproachPoint (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (result i32)
   (local $5 i32)
@@ -14962,33 +14874,34 @@
   (local $9 i32)
   (local $10 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 20
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store
+  i32.const 0
+  i32.const 20
+  memory.fill
   i32.const 1000
-  local.set $5
+  local.set $7
   i32.const 100
-  local.set $8
+  local.set $5
   local.get $1
   i32.const 10
   i32.sub
-  local.set $6
+  local.set $10
   loop $for-loop|0
-   local.get $6
+   local.get $10
    local.get $1
    i32.const 10
    i32.add
@@ -14997,22 +14910,22 @@
     local.get $2
     i32.const 10
     i32.sub
-    local.set $7
+    local.set $9
     loop $for-loop|1
-     local.get $7
+     local.get $9
      local.get $2
      i32.const 10
      i32.add
      i32.le_s
      if
-      local.get $6
+      local.get $10
       i32.const 0
       i32.ge_s
       if (result i32)
        global.get $~lib/memory/__stack_pointer
        local.get $0
        i32.store
-       local.get $6
+       local.get $10
        local.get $0
        i32.load offset=4
        i32.lt_s
@@ -15020,14 +14933,14 @@
        i32.const 0
       end
       if (result i32)
-       local.get $7
+       local.get $9
        i32.const 0
        i32.ge_s
        if (result i32)
         global.get $~lib/memory/__stack_pointer
         local.get $0
         i32.store
-        local.get $7
+        local.get $9
         local.get $0
         i32.load offset=4
         i32.lt_s
@@ -15044,17 +14957,25 @@
        global.get $~lib/memory/__stack_pointer
        local.get $0
        i32.load offset=16
-       local.tee $9
+       local.tee $6
        i32.store
        global.get $~lib/memory/__stack_pointer
        local.get $0
-       i32.store offset=4
-       local.get $9
+       i32.store offset=8
+       global.get $~lib/memory/__stack_pointer
        local.get $0
+       i32.store offset=4
        local.get $6
-       local.get $7
-       call $assembly/PathFinder/PathFinder#localIndex
-       call $~lib/typedarray/Int32Array#__get
+       local.get $10
+       local.get $0
+       i32.load offset=4
+       i32.mul
+       local.get $9
+       i32.add
+       i32.const 2
+       i32.shl
+       i32.add
+       i32.load
        i32.const 100
        i32.ge_s
       else
@@ -15063,64 +14984,64 @@
       i32.eqz
       if
        local.get $1
-       local.get $6
+       local.get $10
        i32.gt_s
        if (result i32)
         local.get $1
-        local.get $6
+        local.get $10
         i32.sub
        else
-        local.get $6
+        local.get $10
         local.get $1
         local.get $3
         i32.add
         i32.const 1
         i32.sub
-        local.tee $9
+        local.tee $6
         i32.sub
         i32.const 0
         local.get $6
-        local.get $9
-        i32.gt_s
+        local.get $10
+        i32.lt_s
         select
        end
-       local.tee $9
-       local.get $9
+       local.tee $6
+       local.get $6
        i32.mul
        local.get $2
-       local.get $7
+       local.get $9
        i32.gt_s
        if (result i32)
         local.get $2
-        local.get $7
+        local.get $9
         i32.sub
        else
-        local.get $7
+        local.get $9
         local.get $2
         local.get $4
         i32.add
         i32.const 1
         i32.sub
-        local.tee $9
+        local.tee $6
         i32.sub
         i32.const 0
-        local.get $7
+        local.get $6
         local.get $9
-        i32.gt_s
+        i32.lt_s
         select
        end
-       local.tee $9
-       local.get $9
+       local.tee $6
+       local.get $6
        i32.mul
        i32.add
-       local.tee $10
-       local.get $5
+       local.tee $6
+       local.get $7
        i32.lt_s
        if (result i32)
         i32.const 1
        else
-        local.get $5
-        local.get $10
+        local.get $6
+        local.get $7
         i32.eq
         if (result i32)
          global.get $~lib/memory/__stack_pointer
@@ -15129,19 +15050,27 @@
          global.get $~lib/memory/__stack_pointer
          local.get $0
          i32.load offset=16
-         local.tee $9
+         local.tee $8
          i32.store
          global.get $~lib/memory/__stack_pointer
          local.get $0
-         i32.store offset=4
-         local.get $9
+         i32.store offset=12
+         global.get $~lib/memory/__stack_pointer
          local.get $0
-         local.get $6
-         local.get $7
-         call $assembly/PathFinder/PathFinder#localIndex
-         call $~lib/typedarray/Int32Array#__get
+         i32.store offset=4
+         local.get $5
          local.get $8
-         i32.lt_s
+         local.get $10
+         local.get $0
+         i32.load offset=4
+         i32.mul
+         local.get $9
+         i32.add
+         i32.const 2
+         i32.shl
+         i32.add
+         i32.load
+         i32.gt_s
         else
          i32.const 0
         end
@@ -15151,14 +15080,16 @@
         local.get $0
         i32.store
         local.get $0
-        local.get $6
+        local.get $10
         i32.store offset=28
         global.get $~lib/memory/__stack_pointer
         local.get $0
         i32.store
         local.get $0
-        local.get $7
+        local.get $9
         i32.store offset=32
+        local.get $6
+        local.set $7
         global.get $~lib/memory/__stack_pointer
         local.get $0
         i32.store offset=4
@@ -15169,37 +15100,43 @@
         i32.store
         global.get $~lib/memory/__stack_pointer
         local.get $0
+        i32.store offset=16
+        global.get $~lib/memory/__stack_pointer
+        local.get $0
         i32.store offset=4
         local.get $5
-        local.get $0
-        local.get $6
-        local.get $7
-        call $assembly/PathFinder/PathFinder#localIndex
-        call $~lib/typedarray/Int32Array#__get
-        local.set $8
         local.get $10
+        local.get $0
+        i32.load offset=4
+        i32.mul
+        local.get $9
+        i32.add
+        i32.const 2
+        i32.shl
+        i32.add
+        i32.load
         local.set $5
        end
       end
-      local.get $7
+      local.get $9
       i32.const 1
       i32.add
-      local.set $7
+      local.set $9
       br $for-loop|1
      end
     end
-    local.get $6
+    local.get $10
     i32.const 1
     i32.add
-    local.set $6
+    local.set $10
     br $for-loop|0
    end
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 20
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $7
   i32.const 1000
   i32.ne
  )
@@ -15209,11 +15146,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -15243,11 +15180,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -15272,7 +15209,7 @@
    i32.gt_u
    if
     i32.const 1456
-    i32.const 1504
+    i32.const 4496
     i32.const 19
     i32.const 48
     call $~lib/builtins/abort
@@ -15281,7 +15218,7 @@
    global.get $~lib/memory/__stack_pointer
    local.get $0
    i32.store
-   block $__inlined_func$~lib/rt/itcms/__renew$717
+   block $__inlined_func$~lib/rt/itcms/__renew$741
     i32.const 1073741820
     local.get $2
     i32.const 1
@@ -15324,7 +15261,7 @@
      i32.store offset=16
      local.get $2
      local.set $1
-     br $__inlined_func$~lib/rt/itcms/__renew$717
+     br $__inlined_func$~lib/rt/itcms/__renew$741
     end
     local.get $3
     local.get $4
@@ -15372,11 +15309,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -15394,7 +15331,7 @@
   i32.ge_u
   if
    i32.const 1248
-   i32.const 1504
+   i32.const 4496
    i32.const 114
    i32.const 42
    call $~lib/builtins/abort
@@ -15417,23 +15354,75 @@
   global.set $~lib/memory/__stack_pointer
   local.get $0
  )
+ (func $~lib/typedarray/Int32Array#__set (param $0 i32) (param $1 i32) (param $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 5156
+  i32.lt_s
+  if
+   i32.const 37952
+   i32.const 38000
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store
+  local.get $1
+  local.get $0
+  i32.load offset=8
+  i32.const 2
+  i32.shr_u
+  i32.ge_u
+  if
+   i32.const 1248
+   i32.const 4544
+   i32.const 747
+   i32.const 64
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  i32.const 2
+  i32.shl
+  i32.add
+  local.get $2
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
  (func $assembly/PathFinder/PathFinder#findPath (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (param $9 i32) (param $10 i32) (param $11 i32) (param $12 i32) (param $13 i32) (param $14 i32) (result i32)
   (local $15 i32)
   (local $16 i32)
   (local $17 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 40
+  i32.const 44
   i32.sub
   global.set $~lib/memory/__stack_pointer
   block $folding-inner1
    block $folding-inner0
     global.get $~lib/memory/__stack_pointer
-    i32.const 5088
+    i32.const 5156
     i32.lt_s
     br_if $folding-inner0
     global.get $~lib/memory/__stack_pointer
     i32.const 0
-    i32.const 40
+    i32.const 44
     memory.fill
     local.get $2
     i32.const 32767
@@ -15463,40 +15452,40 @@
      local.tee $1
      i32.store offset=4
      global.get $~lib/memory/__stack_pointer
-     i32.const 3888
+     i32.const 3840
      i32.store offset=8
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=12
-     i32.const 3892
+     i32.const 3844
      local.get $0
      i32.store
-     i32.const 3888
+     i32.const 3840
      local.get $0
      i32.const 1
      call $~lib/rt/itcms/__link
      global.get $~lib/memory/__stack_pointer
-     i32.const 3888
+     i32.const 3840
      i32.store offset=8
      global.get $~lib/memory/__stack_pointer
      local.get $1
      i32.store offset=12
-     i32.const 3900
+     i32.const 3852
      local.get $1
      i32.store
-     i32.const 3888
+     i32.const 3840
      local.get $1
      i32.const 1
      call $~lib/rt/itcms/__link
      global.get $~lib/memory/__stack_pointer
-     i32.const 3888
+     i32.const 3840
      i32.store offset=8
      global.get $~lib/memory/__stack_pointer
-     i32.const 3600
+     i32.const 3552
      i32.store offset=12
-     i32.const 3888
+     i32.const 3840
      call $~lib/staticarray/StaticArray<~lib/string/String>#join
-     i32.const 3936
+     i32.const 3888
      i32.const 57
      i32.const 13
      call $~lib/builtins/abort
@@ -15530,40 +15519,40 @@
      local.tee $1
      i32.store offset=20
      global.get $~lib/memory/__stack_pointer
-     i32.const 4160
+     i32.const 4112
      i32.store offset=8
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=12
-     i32.const 4164
+     i32.const 4116
      local.get $0
      i32.store
-     i32.const 4160
+     i32.const 4112
      local.get $0
      i32.const 1
      call $~lib/rt/itcms/__link
      global.get $~lib/memory/__stack_pointer
-     i32.const 4160
+     i32.const 4112
      i32.store offset=8
      global.get $~lib/memory/__stack_pointer
      local.get $1
      i32.store offset=12
-     i32.const 4172
+     i32.const 4124
      local.get $1
      i32.store
-     i32.const 4160
+     i32.const 4112
      local.get $1
      i32.const 1
      call $~lib/rt/itcms/__link
      global.get $~lib/memory/__stack_pointer
-     i32.const 4160
+     i32.const 4112
      i32.store offset=8
      global.get $~lib/memory/__stack_pointer
-     i32.const 3600
+     i32.const 3552
      i32.store offset=12
-     i32.const 4160
+     i32.const 4112
      call $~lib/staticarray/StaticArray<~lib/string/String>#join
-     i32.const 3936
+     i32.const 3888
      i32.const 60
      i32.const 13
      call $~lib/builtins/abort
@@ -15584,27 +15573,27 @@
      local.tee $0
      i32.store offset=24
      global.get $~lib/memory/__stack_pointer
-     i32.const 4368
+     i32.const 4320
      i32.store offset=8
      global.get $~lib/memory/__stack_pointer
      local.get $0
      i32.store offset=12
-     i32.const 4372
+     i32.const 4324
      local.get $0
      i32.store
-     i32.const 4368
+     i32.const 4320
      local.get $0
      i32.const 1
      call $~lib/rt/itcms/__link
      global.get $~lib/memory/__stack_pointer
-     i32.const 4368
+     i32.const 4320
      i32.store offset=8
      global.get $~lib/memory/__stack_pointer
-     i32.const 3600
+     i32.const 3552
      i32.store offset=12
-     i32.const 4368
+     i32.const 4320
      call $~lib/staticarray/StaticArray<~lib/string/String>#join
-     i32.const 3936
+     i32.const 3888
      i32.const 63
      i32.const 13
      call $~lib/builtins/abort
@@ -15618,7 +15607,7 @@
     i32.sub
     global.set $~lib/memory/__stack_pointer
     global.get $~lib/memory/__stack_pointer
-    i32.const 5088
+    i32.const 5156
     i32.lt_s
     br_if $folding-inner0
     global.get $~lib/memory/__stack_pointer
@@ -15636,7 +15625,7 @@
     global.set $~argumentsLength
     local.get $15
     i32.const 0
-    call $~lib/typedarray/Int32Array#fill@varargs
+    call $~lib/staticarray/StaticArray<i32>#fill@varargs
     drop
     global.get $~lib/memory/__stack_pointer
     local.get $0
@@ -15650,7 +15639,7 @@
     global.set $~argumentsLength
     local.get $15
     i32.const 99999999
-    call $~lib/typedarray/Int32Array#fill@varargs
+    call $~lib/staticarray/StaticArray<i32>#fill@varargs
     drop
     global.get $~lib/memory/__stack_pointer
     local.get $0
@@ -15816,7 +15805,7 @@
      br_if $folding-inner1
     end
     global.get $~lib/memory/__stack_pointer
-    i32.const 4464
+    i32.const 4416
     call $~lib/rt/__newArray
     local.tee $5
     i32.store offset=28
@@ -15830,23 +15819,33 @@
     i32.store offset=8
     global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.store offset=12
+    i32.store offset=32
     global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.store offset=32
+    i32.store offset=12
     local.get $0
     i32.load offset=28
     local.set $4
     global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.store offset=32
-    local.get $3
-    local.get $0
-    local.get $4
+    i32.store offset=12
     local.get $0
     i32.load offset=32
-    call $assembly/PathFinder/PathFinder#localIndex
-    call $~lib/typedarray/Int32Array#__get
+    local.set $6
+    global.get $~lib/memory/__stack_pointer
+    local.get $0
+    i32.store offset=12
+    local.get $3
+    local.get $6
+    local.get $4
+    local.get $0
+    i32.load offset=4
+    i32.mul
+    i32.add
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load
     local.set $4
     i32.const -1
     local.set $3
@@ -15861,10 +15860,14 @@
      i32.load offset=12
      local.tee $7
      i32.store offset=8
-     local.get $7
-     call $~lib/typedarray/Int32Array#get:length
      local.get $6
-     i32.gt_s
+     local.get $7
+     i32.const 20
+     i32.sub
+     i32.load offset=16
+     i32.const 2
+     i32.shr_u
+     i32.lt_s
      if
       block $for-break1
        global.get $~lib/memory/__stack_pointer
@@ -15908,7 +15911,7 @@
          i32.sub
          global.set $~lib/memory/__stack_pointer
          global.get $~lib/memory/__stack_pointer
-         i32.const 5088
+         i32.const 5156
          i32.lt_s
          br_if $folding-inner0
          global.get $~lib/memory/__stack_pointer
@@ -15923,8 +15926,8 @@
          i32.const 0
          i32.le_s
          if
+          i32.const 4448
           i32.const 4496
-          i32.const 1504
           i32.const 271
           i32.const 18
           call $~lib/builtins/abort
@@ -15993,7 +15996,7 @@
         i32.sub
         global.set $~lib/memory/__stack_pointer
         global.get $~lib/memory/__stack_pointer
-        i32.const 5088
+        i32.const 5156
         i32.lt_s
         br_if $folding-inner0
         global.get $~lib/memory/__stack_pointer
@@ -16118,23 +16121,33 @@
        i32.store offset=8
        global.get $~lib/memory/__stack_pointer
        local.get $0
-       i32.store offset=12
+       i32.store offset=36
        global.get $~lib/memory/__stack_pointer
        local.get $0
-       i32.store offset=32
+       i32.store offset=12
        local.get $0
        i32.load offset=28
        local.set $7
        global.get $~lib/memory/__stack_pointer
        local.get $0
-       i32.store offset=32
-       local.get $4
-       local.get $0
-       local.get $7
+       i32.store offset=12
        local.get $0
        i32.load offset=32
-       call $assembly/PathFinder/PathFinder#localIndex
-       call $~lib/typedarray/Int32Array#__get
+       local.set $8
+       global.get $~lib/memory/__stack_pointer
+       local.get $0
+       i32.store offset=12
+       local.get $4
+       local.get $8
+       local.get $7
+       local.get $0
+       i32.load offset=4
+       i32.mul
+       i32.add
+       i32.const 2
+       i32.shl
+       i32.add
+       i32.load
        local.set $4
        local.get $6
        i32.const 1
@@ -16152,7 +16165,7 @@
     call $~lib/array/Array<i32>#get:length
     call $~lib/typedarray/Int32Array#constructor
     local.tee $0
-    i32.store offset=36
+    i32.store offset=40
     i32.const 0
     local.set $1
     loop $for-loop|2
@@ -16184,14 +16197,14 @@
      end
     end
     global.get $~lib/memory/__stack_pointer
-    i32.const 40
+    i32.const 44
     i32.add
     global.set $~lib/memory/__stack_pointer
     local.get $0
     return
    end
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -16201,7 +16214,7 @@
   call $~lib/typedarray/Int32Array#constructor
   local.set $0
   global.get $~lib/memory/__stack_pointer
-  i32.const 40
+  i32.const 44
   i32.add
   global.set $~lib/memory/__stack_pointer
   local.get $0
@@ -16212,132 +16225,98 @@
   i32.const 20
   i32.sub
   global.set $~lib/memory/__stack_pointer
-  block $folding-inner1
-   block $folding-inner0
-    global.get $~lib/memory/__stack_pointer
-    i32.const 5088
-    i32.lt_s
-    br_if $folding-inner0
-    global.get $~lib/memory/__stack_pointer
-    i32.const 0
-    i32.const 20
-    memory.fill
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.store offset=4
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.load
-    local.tee $4
-    i32.store
-    global.get $~lib/memory/__stack_pointer
-    local.get $4
-    local.get $1
-    i32.const 3
-    i32.shr_s
-    i32.const 2047
-    i32.and
-    local.get $2
-    i32.const 3
-    i32.shr_s
-    i32.const 2047
-    i32.and
-    i32.const 11
-    i32.shl
-    i32.or
-    local.get $3
-    i32.const 3
-    i32.and
-    i32.const 22
-    i32.shl
-    i32.or
-    local.tee $2
-    call $~lib/array/Array<~lib/typedarray/Int32Array|null>#__get
-    local.tee $1
-    i32.store offset=8
-    local.get $1
-    br_if $folding-inner1
-    global.get $~lib/memory/__stack_pointer
-    i32.const 64
-    call $~lib/typedarray/Int32Array#constructor
-    local.tee $1
-    i32.store offset=12
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.store offset=16
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.load
-    local.tee $0
-    i32.store
-    global.get $~lib/memory/__stack_pointer
-    local.get $1
-    i32.store offset=4
-    global.get $~lib/memory/__stack_pointer
-    i32.const 4
-    i32.sub
-    global.set $~lib/memory/__stack_pointer
-    global.get $~lib/memory/__stack_pointer
-    i32.const 5088
-    i32.lt_s
-    br_if $folding-inner0
-    global.get $~lib/memory/__stack_pointer
-    i32.const 0
-    i32.store
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.store
-    local.get $2
-    local.get $0
-    i32.load offset=12
-    i32.ge_u
-    if
-     local.get $0
-     local.get $2
-     i32.const 1
-     i32.add
-     local.tee $3
-     call $~lib/array/ensureCapacity
-     global.get $~lib/memory/__stack_pointer
-     local.get $0
-     i32.store
-     local.get $0
-     local.get $3
-     i32.store offset=12
-    end
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.store
-    local.get $0
-    i32.load offset=4
-    local.get $2
-    i32.const 2
-    i32.shl
-    i32.add
-    local.get $1
-    i32.store
-    local.get $0
-    local.get $1
-    i32.const 1
-    call $~lib/rt/itcms/__link
-    global.get $~lib/memory/__stack_pointer
-    i32.const 4
-    i32.add
-    global.set $~lib/memory/__stack_pointer
-    br $folding-inner1
-   end
-   i32.const 37888
-   i32.const 37936
+  global.get $~lib/memory/__stack_pointer
+  i32.const 5156
+  i32.lt_s
+  if
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 20
+  memory.fill
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store offset=4
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.load
+  local.tee $4
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.const 3
+  i32.shr_s
+  i32.const 2047
+  i32.and
+  local.get $2
+  i32.const 3
+  i32.shr_s
+  i32.const 2047
+  i32.and
+  i32.const 11
+  i32.shl
+  i32.or
+  local.get $3
+  i32.const 3
+  i32.and
+  i32.const 22
+  i32.shl
+  i32.or
+  local.tee $1
+  i32.const 2
+  i32.shl
+  local.get $4
+  i32.add
+  i32.load
+  local.tee $2
+  i32.store offset=8
+  local.get $2
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 20
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $2
+   return
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 64
+  call $~lib/staticarray/StaticArray<i32>#constructor
+  local.tee $2
+  i32.store offset=12
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store offset=16
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.load
+  local.tee $0
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $0
+  local.get $1
+  i32.const 2
+  i32.shl
+  i32.add
+  local.get $2
+  i32.store
+  local.get $0
+  local.get $2
+  i32.const 1
+  call $~lib/rt/itcms/__link
+  global.get $~lib/memory/__stack_pointer
   i32.const 20
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $1
+  local.get $2
  )
  (func $assembly/collision/CollisionFlagMap/CollisionFlagMap#set (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32)
   (local $5 i32)
@@ -16346,11 +16325,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -16391,7 +16370,10 @@
   i32.const 22
   i32.shl
   i32.or
-  call $~lib/array/Array<~lib/typedarray/Int32Array|null>#__get
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
   local.tee $5
   i32.store offset=8
   local.get $5
@@ -16422,8 +16404,11 @@
   i32.const 3
   i32.shl
   i32.or
+  i32.const 2
+  i32.shl
+  i32.add
   local.get $4
-  call $~lib/typedarray/Int32Array#__set
+  i32.store
   global.get $~lib/memory/__stack_pointer
   i32.const 12
   i32.add
@@ -16437,11 +16422,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -16492,7 +16477,10 @@
   i32.const 22
   i32.shl
   i32.or
-  call $~lib/array/Array<~lib/typedarray/Int32Array|null>#__get
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
   local.tee $6
   i32.store offset=8
   local.get $6
@@ -16500,10 +16488,14 @@
    global.get $~lib/memory/__stack_pointer
    local.get $6
    i32.store
-   local.get $6
-   call $~lib/typedarray/Int32Array#get:length
    local.get $5
-   i32.gt_s
+   local.get $6
+   i32.const 20
+   i32.sub
+   i32.load offset=16
+   i32.const 2
+   i32.shr_u
+   i32.lt_s
   else
    i32.const 0
   end
@@ -16513,7 +16505,10 @@
    i32.store
    local.get $6
    local.get $5
-   call $~lib/typedarray/Int32Array#__get
+   i32.const 2
+   i32.shl
+   i32.add
+   i32.load
   else
    i32.const 0
   end
@@ -16542,11 +16537,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -16597,7 +16592,10 @@
   i32.const 22
   i32.shl
   i32.or
-  call $~lib/array/Array<~lib/typedarray/Int32Array|null>#__get
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
   local.tee $6
   i32.store offset=8
   local.get $6
@@ -16605,10 +16603,14 @@
    global.get $~lib/memory/__stack_pointer
    local.get $6
    i32.store
-   local.get $6
-   call $~lib/typedarray/Int32Array#get:length
    local.get $5
-   i32.gt_s
+   local.get $6
+   i32.const 20
+   i32.sub
+   i32.load offset=16
+   i32.const 2
+   i32.shr_u
+   i32.lt_s
   else
    i32.const 0
   end
@@ -16618,7 +16620,10 @@
    i32.store
    local.get $6
    local.get $5
-   call $~lib/typedarray/Int32Array#__get
+   i32.const 2
+   i32.shl
+   i32.add
+   i32.load
   else
    i32.const 0
   end
@@ -16647,11 +16652,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -16698,11 +16703,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -16789,11 +16794,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -16867,11 +16872,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -16941,11 +16946,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -16993,11 +16998,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -17298,11 +17303,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -17620,11 +17625,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -18034,11 +18039,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -18069,11 +18074,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -18109,7 +18114,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -18126,7 +18131,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 5088
+   i32.const 5156
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -18159,8 +18164,8 @@
    local.get $0
    return
   end
-  i32.const 37888
-  i32.const 37936
+  i32.const 37952
+  i32.const 38000
   i32.const 1
   i32.const 1
   call $~lib/builtins/abort
@@ -18175,11 +18180,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -18852,11 +18857,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -19529,11 +19534,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -20206,11 +20211,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -20883,11 +20888,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -21862,11 +21867,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -22841,11 +22846,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -23720,11 +23725,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -24696,11 +24701,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -24901,40 +24906,40 @@
           local.tee $1
           i32.store offset=12
           global.get $~lib/memory/__stack_pointer
-          i32.const 4864
+          i32.const 4928
           i32.store
           global.get $~lib/memory/__stack_pointer
           local.get $0
           i32.store offset=4
-          i32.const 4868
+          i32.const 4932
           local.get $0
           i32.store
-          i32.const 4864
+          i32.const 4928
           local.get $0
           i32.const 1
           call $~lib/rt/itcms/__link
           global.get $~lib/memory/__stack_pointer
-          i32.const 4864
+          i32.const 4928
           i32.store
           global.get $~lib/memory/__stack_pointer
           local.get $1
           i32.store offset=4
-          i32.const 4876
+          i32.const 4940
           local.get $1
           i32.store
-          i32.const 4864
+          i32.const 4928
           local.get $1
           i32.const 1
           call $~lib/rt/itcms/__link
           global.get $~lib/memory/__stack_pointer
-          i32.const 4864
+          i32.const 4928
           i32.store
           global.get $~lib/memory/__stack_pointer
-          i32.const 3600
+          i32.const 3552
           i32.store offset=4
-          i32.const 4864
+          i32.const 4928
           call $~lib/staticarray/StaticArray<~lib/string/String>#join
-          i32.const 4912
+          i32.const 4976
           i32.const 31
           i32.const 13
           call $~lib/builtins/abort
@@ -24963,11 +24968,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -24976,12 +24981,12 @@
   global.get $~lib/memory/__stack_pointer
   i64.const 0
   i64.store
-  block $__inlined_func$assembly/Line/Line.coordinate$589
+  block $__inlined_func$assembly/Line/Line.coordinate$631
    local.get $2
    local.tee $16
    local.get $4
    i32.ge_s
-   br_if $__inlined_func$assembly/Line/Line.coordinate$589
+   br_if $__inlined_func$assembly/Line/Line.coordinate$631
    local.get $6
    local.get $16
    i32.add
@@ -24990,18 +24995,18 @@
    local.tee $16
    local.get $4
    i32.le_s
-   br_if $__inlined_func$assembly/Line/Line.coordinate$589
+   br_if $__inlined_func$assembly/Line/Line.coordinate$631
    local.get $4
    local.set $16
   end
   local.get $16
   local.set $17
-  block $__inlined_func$assembly/Line/Line.coordinate$590
+  block $__inlined_func$assembly/Line/Line.coordinate$632
    local.get $3
    local.tee $16
    local.get $5
    i32.ge_s
-   br_if $__inlined_func$assembly/Line/Line.coordinate$590
+   br_if $__inlined_func$assembly/Line/Line.coordinate$632
    local.get $6
    local.get $16
    i32.add
@@ -25010,7 +25015,7 @@
    local.tee $16
    local.get $5
    i32.le_s
-   br_if $__inlined_func$assembly/Line/Line.coordinate$590
+   br_if $__inlined_func$assembly/Line/Line.coordinate$632
    local.get $5
    local.set $16
   end
@@ -25036,11 +25041,11 @@
      i32.const 0
     end
     br_if $folding-inner0
-    block $__inlined_func$assembly/Line/Line.coordinate$592
+    block $__inlined_func$assembly/Line/Line.coordinate$634
      local.get $2
      local.get $4
      i32.le_s
-     br_if $__inlined_func$assembly/Line/Line.coordinate$592
+     br_if $__inlined_func$assembly/Line/Line.coordinate$634
      local.get $4
      local.get $7
      i32.add
@@ -25049,15 +25054,15 @@
      local.tee $4
      local.get $2
      i32.le_s
-     br_if $__inlined_func$assembly/Line/Line.coordinate$592
+     br_if $__inlined_func$assembly/Line/Line.coordinate$634
      local.get $2
      local.set $4
     end
-    block $__inlined_func$assembly/Line/Line.coordinate$593
+    block $__inlined_func$assembly/Line/Line.coordinate$635
      local.get $3
      local.get $5
      i32.le_s
-     br_if $__inlined_func$assembly/Line/Line.coordinate$593
+     br_if $__inlined_func$assembly/Line/Line.coordinate$635
      local.get $5
      local.get $8
      i32.add
@@ -25066,7 +25071,7 @@
      local.tee $5
      local.get $3
      i32.le_s
-     br_if $__inlined_func$assembly/Line/Line.coordinate$593
+     br_if $__inlined_func$assembly/Line/Line.coordinate$635
      local.get $3
      local.set $5
     end
@@ -25366,11 +25371,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -25420,11 +25425,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -25434,12 +25439,12 @@
   i32.const 0
   i32.const 32
   memory.fill
-  block $__inlined_func$assembly/Line/Line.coordinate$613
+  block $__inlined_func$assembly/Line/Line.coordinate$647
    local.get $2
    local.tee $15
    local.get $4
    i32.ge_s
-   br_if $__inlined_func$assembly/Line/Line.coordinate$613
+   br_if $__inlined_func$assembly/Line/Line.coordinate$647
    local.get $6
    local.get $15
    i32.add
@@ -25448,18 +25453,18 @@
    local.tee $15
    local.get $4
    i32.le_s
-   br_if $__inlined_func$assembly/Line/Line.coordinate$613
+   br_if $__inlined_func$assembly/Line/Line.coordinate$647
    local.get $4
    local.set $15
   end
   local.get $15
   local.set $16
-  block $__inlined_func$assembly/Line/Line.coordinate$614
+  block $__inlined_func$assembly/Line/Line.coordinate$648
    local.get $3
    local.tee $15
    local.get $5
    i32.ge_s
-   br_if $__inlined_func$assembly/Line/Line.coordinate$614
+   br_if $__inlined_func$assembly/Line/Line.coordinate$648
    local.get $6
    local.get $15
    i32.add
@@ -25468,7 +25473,7 @@
    local.tee $15
    local.get $5
    i32.le_s
-   br_if $__inlined_func$assembly/Line/Line.coordinate$614
+   br_if $__inlined_func$assembly/Line/Line.coordinate$648
    local.get $5
    local.set $15
   end
@@ -25495,11 +25500,11 @@
       i32.const 0
      end
      br_if $folding-inner0
-     block $__inlined_func$assembly/Line/Line.coordinate$616
+     block $__inlined_func$assembly/Line/Line.coordinate$650
       local.get $2
       local.get $4
       i32.le_s
-      br_if $__inlined_func$assembly/Line/Line.coordinate$616
+      br_if $__inlined_func$assembly/Line/Line.coordinate$650
       local.get $4
       local.get $7
       i32.add
@@ -25508,15 +25513,15 @@
       local.tee $4
       local.get $2
       i32.le_s
-      br_if $__inlined_func$assembly/Line/Line.coordinate$616
+      br_if $__inlined_func$assembly/Line/Line.coordinate$650
       local.get $2
       local.set $4
      end
-     block $__inlined_func$assembly/Line/Line.coordinate$617
+     block $__inlined_func$assembly/Line/Line.coordinate$651
       local.get $3
       local.get $5
       i32.le_s
-      br_if $__inlined_func$assembly/Line/Line.coordinate$617
+      br_if $__inlined_func$assembly/Line/Line.coordinate$651
       local.get $5
       local.get $8
       i32.add
@@ -25525,7 +25530,7 @@
       local.tee $5
       local.get $3
       i32.le_s
-      br_if $__inlined_func$assembly/Line/Line.coordinate$617
+      br_if $__inlined_func$assembly/Line/Line.coordinate$651
       local.get $3
       local.set $5
      end
@@ -25570,7 +25575,7 @@
      select
      local.set $10
      global.get $~lib/memory/__stack_pointer
-     i32.const 4992
+     i32.const 5056
      call $~lib/rt/__newArray
      local.tee $12
      i32.store offset=8
@@ -26037,11 +26042,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -26066,6 +26071,50 @@
   global.set $~lib/memory/__stack_pointer
   local.get $0
  )
+ (func $~lib/staticarray/StaticArray<i32>#constructor (param $0 i32) (result i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 5156
+  i32.lt_s
+  if
+   i32.const 37952
+   i32.const 38000
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.const 268435455
+  i32.gt_u
+  if
+   i32.const 1456
+   i32.const 1504
+   i32.const 51
+   i32.const 60
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.const 2
+  i32.shl
+  i32.const 11
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $0
+ )
  (func $~lib/rt/__newArray (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
@@ -26074,11 +26123,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 5088
+  i32.const 5156
   i32.lt_s
   if
-   i32.const 37888
-   i32.const 37936
+   i32.const 37952
+   i32.const 38000
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -26104,7 +26153,7 @@
   local.get $1
   i32.store
   i32.const 16
-  i32.const 18
+  i32.const 19
   call $~lib/rt/itcms/__new
   local.tee $0
   local.get $1

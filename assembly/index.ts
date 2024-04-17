@@ -291,7 +291,7 @@ function changeWallL(x: i32, z: i32, level: i32, angle: i32, blockrange: bool, b
     }
 }
 
-export function allocateIfAbsent(absoluteX: i32, absoluteZ: i32, level: i32): Int32Array {
+export function allocateIfAbsent(absoluteX: i32, absoluteZ: i32, level: i32): StaticArray<i32> {
     return flags.allocateIfAbsent(absoluteX, absoluteZ, level);
 }
 

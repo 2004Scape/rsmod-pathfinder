@@ -13,10 +13,12 @@ export default class Line {
 
     static readonly HALF_TILE: i32 = Line.scaleUp(1) / 2;
 
+    @inline
     static scaleUp(tiles: i32): i32 {
         return tiles << 16;
     }
 
+    @inline
     static scaleDown(tiles: i32): i32 {
         return tiles >>> 16;
     }

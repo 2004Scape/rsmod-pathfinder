@@ -2,12 +2,14 @@ import {CollisionStrategy} from './CollisionStrategy';
 import {CollisionFlag} from '../flag/CollisionFlag';
 
 class Normal implements CollisionStrategy {
+    @inline
     canMove(tileFlag: i32, blockFlag: i32): bool {
         return (tileFlag & blockFlag) === CollisionFlag.OPEN;
     }
 }
 
 class Blocked implements CollisionStrategy {
+    @inline
     canMove(tileFlag: i32, blockFlag: i32): bool {
         const flag: i32 = blockFlag & ~CollisionFlag.FLOOR;
         return (tileFlag & flag) === 0 && (tileFlag & CollisionFlag.FLOOR) !== CollisionFlag.OPEN;
@@ -15,12 +17,14 @@ class Blocked implements CollisionStrategy {
 }
 
 class Indoors implements CollisionStrategy {
+    @inline
     canMove(tileFlag: i32, blockFlag: i32): bool {
         return (tileFlag & blockFlag) === 0 && (tileFlag & CollisionFlag.ROOF) !== CollisionFlag.OPEN;
     }
 }
 
 class Outdoors implements CollisionStrategy {
+    @inline
     canMove(tileFlag: i32, blockFlag: i32): bool {
         return (tileFlag & (blockFlag | CollisionFlag.ROOF)) === CollisionFlag.OPEN;
     }
