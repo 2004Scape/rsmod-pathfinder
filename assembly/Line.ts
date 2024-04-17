@@ -23,6 +23,7 @@ export default class Line {
         return tiles >>> 16;
     }
 
+    @inline
     static coordinate(a: i32, b: i32, size: i32): i32 {
         if (a >= b) {
             return a;

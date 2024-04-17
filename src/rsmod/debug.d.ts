@@ -16,7 +16,7 @@ export declare const memory: WebAssembly.Memory;
  * @param blockAccessFlags `i32`
  * @param maxWaypoints `i32`
  * @param collision `i32`
- * @returns `~lib/typedarray/Int32Array`
+ * @returns `~lib/staticarray/StaticArray<i32>`
  */
 export declare function findPath(
     level: number,
@@ -33,7 +33,7 @@ export declare function findPath(
     blockAccessFlags?: number,
     maxWaypoints?: number,
     collision?: number
-): Int32Array;
+): ArrayLike<number>;
 /**
  * assembly/index/changeFloor
  * @param x `i32`
@@ -161,9 +161,9 @@ export declare function hasLineOfWalk(level: number, srcX: number, srcZ: number,
  * @param destWidth `i32`
  * @param destHeight `i32`
  * @param extraFlag `i32`
- * @returns `~lib/typedarray/Int32Array`
+ * @returns `~lib/staticarray/StaticArray<i32>`
  */
-export declare function lineOfSight(level: number, srcX: number, srcZ: number, destX: number, destZ: number, srcSize?: number, destWidth?: number, destHeight?: number, extraFlag?: number): Int32Array;
+export declare function lineOfSight(level: number, srcX: number, srcZ: number, destX: number, destZ: number, srcSize?: number, destWidth?: number, destHeight?: number, extraFlag?: number): ArrayLike<number>;
 /**
  * assembly/index/lineOfWalk
  * @param level `i32`
@@ -175,9 +175,9 @@ export declare function lineOfSight(level: number, srcX: number, srcZ: number, d
  * @param destWidth `i32`
  * @param destHeight `i32`
  * @param extraFlag `i32`
- * @returns `~lib/typedarray/Int32Array`
+ * @returns `~lib/staticarray/StaticArray<i32>`
  */
-export declare function lineOfWalk(level: number, srcX: number, srcZ: number, destX: number, destZ: number, srcSize?: number, destWidth?: number, destHeight?: number, extraFlag?: number): Int32Array;
+export declare function lineOfWalk(level: number, srcX: number, srcZ: number, destX: number, destZ: number, srcSize?: number, destWidth?: number, destHeight?: number, extraFlag?: number): ArrayLike<number>;
 /**
  * assembly/index/reached
  * @param level `i32`

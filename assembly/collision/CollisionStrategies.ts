@@ -53,6 +53,7 @@ class LineOfSight implements CollisionStrategy {
         CollisionFlag.WALL_WEST_ROUTE_BLOCKER |
         CollisionFlag.LOC_ROUTE_BLOCKER;
 
+    @inline
     canMove(tileFlag: i32, blockFlag: i32): bool {
         const movementFlags: i32 = (blockFlag & LineOfSight.BLOCK_MOVEMENT) << 9;
         const routeFlags: i32 = (blockFlag & LineOfSight.BLOCK_ROUTE) >> 13;

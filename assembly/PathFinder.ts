@@ -14,6 +14,8 @@ export default class PathFinder {
     private static readonly MAX_ALTERNATIVE_ROUTE_SEEK_RANGE: i32 = 100;
     private static readonly MAX_ALTERNATIVE_ROUTE_DISTANCE_FROM_DESTINATION: i32 = 10;
 
+    private static readonly EMPTY: StaticArray<i32> = new StaticArray<i32>(0);
+
     private readonly flags: CollisionFlagMap;
     private readonly searchMapSize: i32;
     private readonly ringBufferSize: i32;
@@ -52,15 +54,15 @@ export default class PathFinder {
         blockAccessFlags: i32,
         maxWaypoints: i32,
         collision: CollisionStrategy
-    ): Int32Array {
+    ): StaticArray<i32> {
         if (!(srcX >= 0 && srcX <= 0x7fff && srcZ >= 0 && srcZ <= 0x7fff)) {
             throw new Error(`[findPath] Failed requirement. srcX was: ${srcX}, srcZ was: ${srcZ}.`);
         }
         if (!(destX >= 0 && destX <= 0x7fff && destZ >= 0 && destZ <= 0x7fff)) {
-            throw new Error(`[findPath]Failed requirement. destX was: ${destX}, destZ was: ${destZ}.`);
+            throw new Error(`[findPath] Failed requirement. destX was: ${destX}, destZ was: ${destZ}.`);
         }
         if (!(level >= 0 && level <= 0x3)) {
-            throw new Error(`[findPath]Failed requirement. level was: ${level}. must be 0-3.`);
+            throw new Error(`[findPath] Failed requirement. level was: ${level}. must be 0-3.`);
         }
         this.reset();
         const baseX: i32 = srcX - this.searchMapSize / 2;
@@ -85,11 +87,11 @@ export default class PathFinder {
         }
         if (!pathFound) {
             if (!moveNear) {
-                return new Int32Array(0); // Route.FAILED;
+                return PathFinder.EMPTY; // Route.FAILED;
             }
             const foundApproachPoint: bool = this.findClosestApproachPoint(localDestX, localDestZ, RotationUtils.rotate(angle, destWidth, destHeight), RotationUtils.rotate(angle, destHeight, destWidth));
             if (!foundApproachPoint) {
-                return new Int32Array(0); // Route.FAILED;
+                return PathFinder.EMPTY; // Route.FAILED;
             }
         }
         const waypoints: i32[] = [];
@@ -119,9 +121,9 @@ export default class PathFinder {
             }
             nextDir = unchecked(this.directions[this.localIndex(this.currLocalX, this.currLocalZ)]);
         }
-        const route: Int32Array = new Int32Array(waypoints.length);
+        const route: StaticArray<i32> = new StaticArray<i32>(waypoints.length);
         for (let i: i32 = 0; i < waypoints.length; i++) {
-            route[i] = waypoints[i];
+            unchecked(route[i] = waypoints[i]);
         }
         return route;
     }
@@ -659,10 +661,12 @@ export default class PathFinder {
         return x * this.searchMapSize + z;
     }
 
+    @inline
     private collisionFlag(baseX: i32, baseZ: i32, localX: i32, localZ: i32, level: i32): i32 {
         return this.flags.get(baseX + localX, baseZ + localZ, level);
     }
 
+    @inline
     private appendDirection(x: i32, z: i32, direction: i32, distance: i32): void {
         const index: i32 = this.localIndex(x, z);
         unchecked(this.directions[index] = direction);
@@ -672,6 +676,7 @@ export default class PathFinder {
         this.bufWriterIndex = (this.bufWriterIndex + 1) & (this.ringBufferSize - 1);
     }
 
+    @inline
     private reset(): void {
         this.directions.fill(0);
         this.distances.fill(PathFinder.DEFAULT_DISTANCE_VALUE);

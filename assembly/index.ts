@@ -46,7 +46,7 @@ export function findPath(
     blockAccessFlags: i32 = 0,
     maxWaypoints: i32 = 25,
     collision: CollisionType = CollisionType.NORMAL
-): Int32Array {
+): StaticArray<i32> {
     if (!(collision >= 0 && collision <= 4)) {
         throw new Error(`[findPath] Failed requirement. collisionStrategy was: ${collision}. must be 0-4.`);
     }
@@ -383,7 +383,7 @@ export function lineOfSight(
     destWidth: i32 = 0,
     destHeight: i32 = 0,
     extraFlag: i32 = 0
-): Int32Array {
+): StaticArray<i32> {
     return linePathFinder.lineOfSight(
         level,
         srcX,
@@ -407,7 +407,7 @@ export function lineOfWalk(
     destWidth: i32 = 0,
     destHeight: i32 = 0,
     extraFlag: i32 = 0
-): Int32Array {
+): StaticArray<i32> {
     return linePathFinder.lineOfWalk(
         level,
         srcX,

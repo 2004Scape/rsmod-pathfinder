@@ -10,6 +10,7 @@ export default class ReachStrategy {
     private static readonly NO_STRATEGY: i32 = 3;
     private static readonly RECTANGLE_EXCLUSIVE_STRATEGY: i32 = 4;
 
+    @inline
     private static exitStrategy(locShape: i32): i32 {
         if (locShape === -2) {
             return this.RECTANGLE_EXCLUSIVE_STRATEGY;
@@ -25,6 +26,7 @@ export default class ReachStrategy {
         return this.NO_STRATEGY;
     }
 
+    @inline
     private static alteredRotation(angle: i32, shape: i32): i32 {
         return shape === 7 ? (angle + 2) & 0x3 : angle;
     }

@@ -3,6 +3,7 @@ import {CollisionFlag} from '../flag/CollisionFlag';
 import BlockAccessFlag from '../flag/BlockAccessFlag';
 
 export default class RectangleBoundaryUtils {
+    @inline
     static collides(srcX: i32, srcZ: i32, destX: i32, destZ: i32, srcWidth: i32, srcHeight: i32, destWidth: i32, destHeight: i32): bool {
         return srcX >= destX + destWidth || srcX + srcWidth <= destX ? false : srcZ < destZ + destHeight && destZ < srcHeight + srcZ;
     }

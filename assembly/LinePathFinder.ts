@@ -4,6 +4,7 @@ import {CollisionFlag} from './flag/CollisionFlag';
 
 export default class LinePathFinder {
     private readonly flags: CollisionFlagMap;
+    private static readonly EMPTY: StaticArray<i32> = new StaticArray<i32>(0);
 
     constructor(flags: CollisionFlagMap) {
         this.flags = flags;
@@ -19,7 +20,7 @@ export default class LinePathFinder {
         destWidth: i32,
         destHeight: i32,
         extraFlag: i32
-    ): Int32Array {
+    ): StaticArray<i32> {
         return this.rayCast(
             level,
             srcX,
@@ -48,7 +49,7 @@ export default class LinePathFinder {
         destWidth: i32,
         destHeight: i32,
         extraFlag: i32
-    ): Int32Array {
+    ): StaticArray<i32> {
         return this.rayCast(
             level,
             srcX,
@@ -82,19 +83,19 @@ export default class LinePathFinder {
         flagNorth: i32,
         flagObject: i32,
         los: bool
-    ): Int32Array {
+    ): StaticArray<i32> {
         const startX: i32 = Line.coordinate(srcX, destX, srcSize);
         const startZ: i32 = Line.coordinate(srcZ, destZ, srcSize);
 
         if (los && this.flags.isFlagged(startX, startZ, level, flagObject)) {
-            return new Int32Array(0); // RayCast.FAILED;
+            return LinePathFinder.EMPTY; // RayCast.FAILED;
         }
 
         const endX: i32 = Line.coordinate(destX, srcX, destWidth);
         const endZ: i32 = Line.coordinate(destZ, srcZ, destHeight);
 
         if (startX === endX && startZ === endZ) {
-            return new Int32Array(0); // RayCast.EMPTY_SUCCESS;
+            return LinePathFinder.EMPTY; // RayCast.EMPTY_SUCCESS;
         }
 
         const deltaX: i32 = endX - startX;
@@ -124,9 +125,9 @@ export default class LinePathFinder {
                     xFlags = (xFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (xFlags & ~CollisionFlag.PLAYER);
                 }
                 if (this.flags.isFlagged(currX, currZ, level, xFlags)) {
-                    const route: Int32Array = new Int32Array(coordinates.length);
+                    const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
                     for (let i: i32 = 0; i < coordinates.length; i++) {
-                        route[i] = coordinates[i];
+                        unchecked(route[i] = coordinates[i]);
                     }
                     return route;
                     // return new RayCast(coordinates, coordinates.length > 0, false);
@@ -142,9 +143,9 @@ export default class LinePathFinder {
                         zFlags = (zFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (zFlags & ~CollisionFlag.PLAYER);
                     }
                     if (this.flags.isFlagged(currX, nextZ, level, zFlags)) {
-                        const route: Int32Array = new Int32Array(coordinates.length);
+                        const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
                         for (let i: i32 = 0; i < coordinates.length; i++) {
-                            route[i] = coordinates[i];
+                            unchecked(route[i] = coordinates[i]);
                         }
                         return route;
                         // return new RayCast(coordinates, coordinates.length > 0, false);
@@ -168,9 +169,9 @@ export default class LinePathFinder {
                     zFlags = (zFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (zFlags & ~CollisionFlag.PLAYER);
                 }
                 if (this.flags.isFlagged(currX, currZ, level, zFlags)) {
-                    const route: Int32Array = new Int32Array(coordinates.length);
+                    const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
                     for (let i: i32 = 0; i < coordinates.length; i++) {
-                        route[i] = coordinates[i];
+                        unchecked(route[i] = coordinates[i]);
                     }
                     return route;
                     // return new RayCast(coordinates, coordinates.length > 0, false);
@@ -186,9 +187,9 @@ export default class LinePathFinder {
                         xFlags = (xFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (xFlags & ~CollisionFlag.PLAYER);
                     }
                     if (this.flags.isFlagged(nextX, currZ, level, xFlags)) {
-                        const route: Int32Array = new Int32Array(coordinates.length);
+                        const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
                         for (let i: i32 = 0; i < coordinates.length; i++) {
-                            route[i] = coordinates[i];
+                            unchecked(route[i] = coordinates[i]);
                         }
                         return route;
                         // return new RayCast(coordinates, coordinates.length > 0, false);
@@ -198,9 +199,9 @@ export default class LinePathFinder {
                 }
             }
         }
-        const route: Int32Array = new Int32Array(coordinates.length);
+        const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
         for (let i: i32 = 0; i < coordinates.length; i++) {
-            route[i] = coordinates[i];
+            unchecked(route[i] = coordinates[i]);
         }
         return route;
         // return new RayCast(coordinates, false, true);

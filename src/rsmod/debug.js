@@ -23,10 +23,10 @@ async function instantiate(module, imports = {}) {
   const memory = exports.memory || imports.env.memory;
   const adaptedExports = Object.setPrototypeOf({
     findPath(level, srcX, srcZ, destX, destZ, srcSize, destWidth, destHeight, angle, shape, moveNear, blockAccessFlags, maxWaypoints, collision) {
-      // assembly/index/findPath(i32, i32, i32, i32, i32, i32?, i32?, i32?, i32?, i32?, bool?, i32?, i32?, i32?) => ~lib/typedarray/Int32Array
+      // assembly/index/findPath(i32, i32, i32, i32, i32, i32?, i32?, i32?, i32?, i32?, bool?, i32?, i32?, i32?) => ~lib/staticarray/StaticArray<i32>
       moveNear = moveNear ? 1 : 0;
       exports.__setArgumentsLength(arguments.length);
-      return __liftTypedArray(Int32Array, exports.findPath(level, srcX, srcZ, destX, destZ, srcSize, destWidth, destHeight, angle, shape, moveNear, blockAccessFlags, maxWaypoints, collision) >>> 0);
+      return __liftStaticArray(__getI32, 2, exports.findPath(level, srcX, srcZ, destX, destZ, srcSize, destWidth, destHeight, angle, shape, moveNear, blockAccessFlags, maxWaypoints, collision) >>> 0);
     },
     changeFloor(x, z, level, add) {
       // assembly/index/changeFloor(i32, i32, i32, bool) => void
@@ -86,14 +86,14 @@ async function instantiate(module, imports = {}) {
       return exports.hasLineOfWalk(level, srcX, srcZ, destX, destZ, srcSize, destWidth, destHeight, extraFlag) != 0;
     },
     lineOfSight(level, srcX, srcZ, destX, destZ, srcSize, destWidth, destHeight, extraFlag) {
-      // assembly/index/lineOfSight(i32, i32, i32, i32, i32, i32?, i32?, i32?, i32?) => ~lib/typedarray/Int32Array
+      // assembly/index/lineOfSight(i32, i32, i32, i32, i32, i32?, i32?, i32?, i32?) => ~lib/staticarray/StaticArray<i32>
       exports.__setArgumentsLength(arguments.length);
-      return __liftTypedArray(Int32Array, exports.lineOfSight(level, srcX, srcZ, destX, destZ, srcSize, destWidth, destHeight, extraFlag) >>> 0);
+      return __liftStaticArray(__getI32, 2, exports.lineOfSight(level, srcX, srcZ, destX, destZ, srcSize, destWidth, destHeight, extraFlag) >>> 0);
     },
     lineOfWalk(level, srcX, srcZ, destX, destZ, srcSize, destWidth, destHeight, extraFlag) {
-      // assembly/index/lineOfWalk(i32, i32, i32, i32, i32, i32?, i32?, i32?, i32?) => ~lib/typedarray/Int32Array
+      // assembly/index/lineOfWalk(i32, i32, i32, i32, i32, i32?, i32?, i32?, i32?) => ~lib/staticarray/StaticArray<i32>
       exports.__setArgumentsLength(arguments.length);
-      return __liftTypedArray(Int32Array, exports.lineOfWalk(level, srcX, srcZ, destX, destZ, srcSize, destWidth, destHeight, extraFlag) >>> 0);
+      return __liftStaticArray(__getI32, 2, exports.lineOfWalk(level, srcX, srcZ, destX, destZ, srcSize, destWidth, destHeight, extraFlag) >>> 0);
     },
     reached(level, srcX, srcZ, destX, destZ, destWidth, destHeight, srcSize, angle, shape, blockAccessFlags) {
       // assembly/index/reached(i32, i32, i32, i32, i32, i32, i32, i32, i32?, i32?, i32?) => bool
@@ -219,14 +219,6 @@ async function instantiate(module, imports = {}) {
       string = "";
     while (end - start > 1024) string += String.fromCharCode(...memoryU16.subarray(start, start += 1024));
     return string + String.fromCharCode(...memoryU16.subarray(start, end));
-  }
-  function __liftTypedArray(constructor, pointer) {
-    if (!pointer) return null;
-    return new constructor(
-      memory.buffer,
-      __getU32(pointer + 4),
-      __dataview.getUint32(pointer + 8, true) / constructor.BYTES_PER_ELEMENT
-    ).slice();
   }
   function __liftStaticArray(liftElement, align, pointer) {
     if (!pointer) return null;
