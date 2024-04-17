@@ -1,0 +1,29 @@
+{
+  "entries": [
+    "assembly/collision/CollisionFlagMap.ts",
+    "assembly/collision/CollisionStrategies.ts",
+    "assembly/collision/CollisionStrategy.ts",
+    "assembly/flag/CollisionFlag.ts",
+    "assembly/PathFinder.ts"
+  ],
+  "targets": {
+    "debug": {
+      "outFile": "src/rsmod/debug.wasm",
+      "textFile": "src/rsmod/debug.wat",
+      "sourceMap": true,
+      "debug": true
+    },
+    "release": {
+      "outFile": "src/rsmod/debug.wasm",
+      "textFile": "src/rsmod/debug.wat",
+      "sourceMap": true,
+      "optimizeLevel": 3,
+      "shrinkLevel": 0,
+      "converge": false,
+      "noAssert": false
+    }
+  },
+  "options": {
+    "bindings": "esm"
+  }
+}
