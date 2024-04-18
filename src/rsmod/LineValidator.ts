@@ -1,7 +1,8 @@
 import CollisionFlagMap from './collision/CollisionFlagMap';
 import Line from './Line';
-import CollisionFlag from './flag/CollisionFlag';
+import {CollisionFlag} from './flag/CollisionFlag';
 
+@final
 export default class LineValidator {
     private readonly flags: CollisionFlagMap;
 
@@ -9,7 +10,19 @@ export default class LineValidator {
         this.flags = flags;
     }
 
-    hasLineOfSight(level: number, srcX: number, srcZ: number, destX: number, destZ: number, srcSize: number = 1, destWidth: number = 0, destHeight: number = 0, extraFlag: number = 0): boolean {
+    // prettier-ignore
+    @inline
+    hasLineOfSight(
+        level: i8,
+        srcX: i32,
+        srcZ: i32,
+        destX: i32,
+        destZ: i32,
+        srcSize: i8,
+        destWidth: i8,
+        destHeight: i8,
+        extraFlag: i32
+    ): bool {
         return this.rayCast(
             level,
             srcX,
@@ -29,7 +42,19 @@ export default class LineValidator {
         );
     }
 
-    hasLineOfWalk(level: number, srcX: number, srcZ: number, destX: number, destZ: number, srcSize: number = 1, destWidth: number = 0, destHeight: number = 0, extraFlag: number = 0): boolean {
+    // prettier-ignore
+    @inline
+    hasLineOfWalk(
+        level: i8,
+        srcX: i32,
+        srcZ: i32,
+        destX: i32,
+        destZ: i32,
+        srcSize: i8,
+        destWidth: i8,
+        destHeight: i8,
+        extraFlag: i32
+    ): bool {
         return this.rayCast(
             level,
             srcX,
@@ -49,60 +74,62 @@ export default class LineValidator {
         );
     }
 
-    rayCast(
-        level: number,
-        srcX: number,
-        srcZ: number,
-        destX: number,
-        destZ: number,
-        srcSize: number,
-        destWidth: number,
-        destHeight: number,
-        flagWest: number,
-        flagEast: number,
-        flagSouth: number,
-        flagNorth: number,
-        flagLoc: number,
-        flagProj: number,
-        los: boolean
-    ): boolean {
-        const startX: number = Line.coordinate(srcX, destX, srcSize);
-        const startZ: number = Line.coordinate(srcZ, destZ, srcSize);
+    // prettier-ignore
+    @inline
+    private rayCast(
+        level: i8,
+        srcX: i32,
+        srcZ: i32,
+        destX: i32,
+        destZ: i32,
+        srcSize: i8,
+        destWidth: i8,
+        destHeight: i8,
+        flagWest: i32,
+        flagEast: i32,
+        flagSouth: i32,
+        flagNorth: i32,
+        flagLoc: i32,
+        flagProj: i32,
+        los: bool
+    ): bool {
+        const startX: i32 = Line.coordinate(srcX, destX, srcSize);
+        const startZ: i32 = Line.coordinate(srcZ, destZ, srcSize);
 
         if (los && this.flags.isFlagged(startX, startZ, level, flagLoc)) {
             return false;
         }
 
-        const endX: number = Line.coordinate(destX, srcX, destWidth);
-        const endZ: number = Line.coordinate(destZ, srcZ, destHeight);
+        const endX: i32 = Line.coordinate(destX, srcX, destWidth);
+        const endZ: i32 = Line.coordinate(destZ, srcZ, destHeight);
 
-        if (startX === endX && startZ === endZ) {
+        if (startX == endX && startZ == endZ) {
             return true;
         }
 
-        const deltaX: number = endX - startX;
-        const deltaZ: number = endZ - startZ;
-        const absoluteDeltaX: number = Math.abs(deltaX);
-        const absoluteDeltaZ: number = Math.abs(deltaZ);
+        const deltaX: i32 = endX - startX;
+        const deltaZ: i32 = endZ - startZ;
+        const absoluteDeltaX: i32 = <i32>Math.abs(deltaX);
+        const absoluteDeltaZ: i32 = <i32>Math.abs(deltaZ);
 
-        const travelEast: boolean = deltaX >= 0;
-        const travelNorth: boolean = deltaZ >= 0;
+        const travelEast: bool = deltaX >= 0;
+        const travelNorth: bool = deltaZ >= 0;
 
-        let xFlags: number = travelEast ? flagWest : flagEast;
-        let zFlags: number = travelNorth ? flagSouth : flagNorth;
+        let xFlags: i32 = travelEast ? flagWest : flagEast;
+        let zFlags: i32 = travelNorth ? flagSouth : flagNorth;
 
         if (absoluteDeltaX > absoluteDeltaZ) {
-            const offsetX: number = travelEast ? 1 : -1;
-            const offsetZ: number = travelNorth ? 0 : -1;
+            const offsetX: i32 = travelEast ? 1 : -1;
+            const offsetZ: i32 = travelNorth ? 0 : -1;
 
-            let scaledZ: number = Line.scaleUp(startZ) + Line.HALF_TILE + offsetZ;
-            const tangent: number = Line.scaleUp(deltaZ) / absoluteDeltaX;
+            let scaledZ: i32 = Line.scaleUp(startZ) + Line.HALF_TILE + offsetZ;
+            const tangent: i32 = Line.scaleUp(deltaZ) / absoluteDeltaX;
 
-            let currX: number = startX;
-            while (currX !== endX) {
+            let currX: i32 = startX;
+            while (currX != endX) {
                 currX += offsetX;
-                const currZ: number = Line.scaleDown(scaledZ);
-                if (los && currX === endX && currZ === endZ) {
+                const currZ: i32 = Line.scaleDown(scaledZ);
+                if (los && currX == endX && currZ == endZ) {
                     xFlags = xFlags & ~flagProj;
                 }
                 if (this.flags.isFlagged(currX, currZ, level, xFlags)) {
@@ -111,26 +138,26 @@ export default class LineValidator {
 
                 scaledZ += tangent;
 
-                const nextZ: number = Line.scaleDown(scaledZ);
-                if (los && currX === endX && nextZ === endZ) {
+                const nextZ: i32 = Line.scaleDown(scaledZ);
+                if (los && currX == endX && nextZ == endZ) {
                     zFlags = zFlags & ~flagProj;
                 }
-                if (nextZ !== currZ && this.flags.isFlagged(currX, nextZ, level, zFlags)) {
+                if (nextZ != currZ && this.flags.isFlagged(currX, nextZ, level, zFlags)) {
                     return false;
                 }
             }
         } else {
-            const offsetX: number = travelEast ? 0 : -1;
-            const offsetZ: number = travelNorth ? 1 : -1;
+            const offsetX: i32 = travelEast ? 0 : -1;
+            const offsetZ: i32 = travelNorth ? 1 : -1;
 
-            let scaledX: number = Line.scaleUp(startX) + Line.HALF_TILE + offsetX;
-            const tangent: number = Line.scaleUp(deltaX) / absoluteDeltaZ;
+            let scaledX: i32 = Line.scaleUp(startX) + Line.HALF_TILE + offsetX;
+            const tangent: i32 = Line.scaleUp(deltaX) / absoluteDeltaZ;
 
-            let currZ: number = startZ;
-            while (currZ !== endZ) {
+            let currZ: i32 = startZ;
+            while (currZ != endZ) {
                 currZ += offsetZ;
-                const currX: number = Line.scaleDown(scaledX);
-                if (los && currX === endX && currZ === endZ) {
+                const currX: i32 = Line.scaleDown(scaledX);
+                if (los && currX == endX && currZ == endZ) {
                     zFlags = zFlags & ~flagProj;
                 }
                 if (this.flags.isFlagged(currX, currZ, level, zFlags)) {
@@ -139,11 +166,11 @@ export default class LineValidator {
 
                 scaledX += tangent;
 
-                const nextX: number = Line.scaleDown(scaledX);
-                if (los && nextX === endX && currZ === endZ) {
+                const nextX: i32 = Line.scaleDown(scaledX);
+                if (los && nextX == endX && currZ == endZ) {
                     xFlags = xFlags & ~flagProj;
                 }
-                if (nextX !== currX && this.flags.isFlagged(nextX, currZ, level, xFlags)) {
+                if (nextX != currX && this.flags.isFlagged(nextX, currZ, level, xFlags)) {
                     return false;
                 }
             }

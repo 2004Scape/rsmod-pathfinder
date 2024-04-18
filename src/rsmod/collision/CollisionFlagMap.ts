@@ -1,71 +1,84 @@
-import CollisionFlag from '../flag/CollisionFlag';
+import {CollisionFlag} from '../flag/CollisionFlag';
 
+@final
 export default class CollisionFlagMap {
-    // 256x256 mapsquares (room for instances): 2048 * 2048 * 4 = ((256 * 256) * 64) * 4
-    // 60x160 mapsquares (we don't support instances): ((60 * 160) * 64) * 4
-    private static readonly TOTAL_ZONE_COUNT: number = 60 * 160 * 64 * 4;
-    private static readonly ZONE_TILE_COUNT: number = 8 * 8;
+    @inline static readonly ZONE_TILE_COUNT: i32 = 8 * 8;
+    @inline static readonly TOTAL_ZONE_COUNT: i32 = 256 * 256 * 4 * CollisionFlagMap.ZONE_TILE_COUNT;
 
-    private static tileIndex(x: number, z: number): number {
-        return (x & 0x7) | ((z & 0x7) << 3);
-    }
-
-    private static zoneIndex(x: number, z: number, level: number): number {
+    @inline
+    static zoneIndex(x: i32, z: i32, level: i32): i32 {
         return ((x >> 3) & 0x7ff) | (((z >> 3) & 0x7ff) << 11) | ((level & 0x3) << 22);
     }
 
-    flags: Array<Int32Array | null> = new Array<Int32Array>(CollisionFlagMap.TOTAL_ZONE_COUNT);
-
-    get(absoluteX: number, absoluteZ: number, level: number): number {
-        const zoneIndex: number = CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level);
-        const tileIndex: number = CollisionFlagMap.tileIndex(absoluteX, absoluteZ);
-        return this.flags?.[zoneIndex]?.[tileIndex] ?? CollisionFlag.NULL;
+    @inline
+    static tileIndex(x: i32, z: i32): i32 {
+        return (x & 0x7) | ((z & 0x7) << 3);
     }
 
-    set(absoluteX: number, absoluteZ: number, level: number, mask: number): void {
-        const zoneIndex: number = CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level);
-        const tileIndex: number = CollisionFlagMap.tileIndex(absoluteX, absoluteZ);
-        const tiles: Int32Array = this.flags[zoneIndex] ?? this.allocateIfAbsent(absoluteX, absoluteZ, level);
-        tiles[tileIndex] = mask;
+    private readonly flags: StaticArray<StaticArray<i32> | null> = new StaticArray(CollisionFlagMap.TOTAL_ZONE_COUNT);
+
+    get(absoluteX: i32, absoluteZ: i32, level: i32): i32 {
+        const tileIndex: i32 = CollisionFlagMap.tileIndex(absoluteX, absoluteZ);
+        const flags: StaticArray<i32> | null = unchecked(this.flags[CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level)]);
+        if (flags == null) {
+            return CollisionFlag.NULL;
+        }
+        if (flags.length <= tileIndex) {
+            return CollisionFlag.NULL;
+        }
+        return unchecked(flags[tileIndex]);
     }
 
-    add(absoluteX: number, absoluteZ: number, level: number, mask: number): void {
-        const zoneIndex: number = CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level);
-        const tileIndex: number = CollisionFlagMap.tileIndex(absoluteX, absoluteZ);
-        const currentFlags: number = this.flags?.[zoneIndex]?.[tileIndex] ?? CollisionFlag.OPEN;
+    set(absoluteX: i32, absoluteZ: i32, level: i32, mask: i32): void {
+        const tileIndex: i32 = CollisionFlagMap.tileIndex(absoluteX, absoluteZ);
+        let tiles: StaticArray<i32> | null = unchecked(this.flags[CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level)]);
+        if (tiles == null) {
+            tiles = this.allocateIfAbsent(absoluteX, absoluteZ, level);
+        }
+        unchecked((tiles[tileIndex] = mask));
+    }
+
+    add(absoluteX: i32, absoluteZ: i32, level: i32, mask: i32): void {
+        const tileIndex: i32 = CollisionFlagMap.tileIndex(absoluteX, absoluteZ);
+        const flags: StaticArray<i32> | null = unchecked(this.flags[CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level)]);
+        let currentFlags: i32 = CollisionFlag.OPEN;
+        if (flags != null && tileIndex < flags.length) {
+            unchecked((currentFlags = flags[tileIndex]));
+        }
         this.set(absoluteX, absoluteZ, level, currentFlags | mask);
     }
 
-    remove(absoluteX: number, absoluteZ: number, level: number, mask: number): void {
-        const zoneIndex: number = CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level);
-        const tileIndex: number = CollisionFlagMap.tileIndex(absoluteX, absoluteZ);
-        const currentFlags: number = this.flags?.[zoneIndex]?.[tileIndex] ?? CollisionFlag.OPEN;
+    remove(absoluteX: i32, absoluteZ: i32, level: i32, mask: i32): void {
+        const tileIndex: i32 = CollisionFlagMap.tileIndex(absoluteX, absoluteZ);
+        const flags: StaticArray<i32> | null = unchecked(this.flags[CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level)]);
+        let currentFlags: i32 = CollisionFlag.OPEN;
+        if (flags != null && tileIndex < flags.length) {
+            unchecked((currentFlags = flags[tileIndex]));
+        }
         this.set(absoluteX, absoluteZ, level, currentFlags & ~mask);
     }
 
-    allocateIfAbsent(absoluteX: number, absoluteZ: number, level: number): Int32Array {
-        const zoneIndex: number = CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level);
-        const existingFlags: Int32Array | null = this.flags[zoneIndex];
+    allocateIfAbsent(absoluteX: i32, absoluteZ: i32, level: i32): StaticArray<i32> {
+        const zoneIndex: i32 = CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level);
+        const existingFlags: StaticArray<i32> | null = unchecked(this.flags[zoneIndex]);
         if (existingFlags != null) {
             return existingFlags;
         }
 
-        const tileFlags: Int32Array = new Int32Array(CollisionFlagMap.ZONE_TILE_COUNT);
-        this.flags[zoneIndex] = tileFlags;
+        const tileFlags: StaticArray<i32> = new StaticArray<i32>(CollisionFlagMap.ZONE_TILE_COUNT);
+        unchecked((this.flags[zoneIndex] = tileFlags));
         return tileFlags;
     }
 
-    deallocateIfPresent(absoluteX: number, absoluteZ: number, level: number): void {
-        const zoneIndex: number = CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level);
-        this.flags[zoneIndex] = null;
+    deallocateIfPresent(absoluteX: i32, absoluteZ: i32, level: i32): void {
+        unchecked((this.flags[CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level)] = null));
     }
 
-    isZoneAllocated(absoluteX: number, absoluteZ: number, level: number): boolean {
-        const zoneIndex: number = CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level);
-        return this.flags[zoneIndex] != null;
+    isZoneAllocated(absoluteX: i32, absoluteZ: i32, level: i32): bool {
+        return unchecked(this.flags[CollisionFlagMap.zoneIndex(absoluteX, absoluteZ, level)] != null);
     }
 
-    isFlagged(x: number, z: number, level: number, flags: number): boolean {
-        return (this.get(x, z, level) & flags) !== CollisionFlag.OPEN;
+    isFlagged(x: i32, z: i32, level: i32, masks: i32): bool {
+        return (this.get(x, z, level) & masks) != CollisionFlag.OPEN;
     }
 }

@@ -1,11 +1,12 @@
+@final
 export default class DirectionFlag {
-    static readonly NORTH: number = 0x1;
-    static readonly EAST: number = 0x2;
-    static readonly SOUTH: number = 0x4;
-    static readonly WEST: number = 0x8;
+    @inline static readonly NORTH: i8 = 0x1;
+    @inline static readonly EAST: i8 = 0x2;
+    @inline static readonly SOUTH: i8 = 0x4;
+    @inline static readonly WEST: i8 = 0x8;
 
-    static readonly SOUTH_WEST: number = DirectionFlag.WEST | DirectionFlag.SOUTH;
-    static readonly NORTH_WEST: number = DirectionFlag.WEST | DirectionFlag.NORTH;
-    static readonly SOUTH_EAST: number = DirectionFlag.EAST | DirectionFlag.SOUTH;
-    static readonly NORTH_EAST: number = DirectionFlag.EAST | DirectionFlag.NORTH;
+    @inline static readonly SOUTH_WEST: i8 = DirectionFlag.WEST | DirectionFlag.SOUTH;
+    @inline static readonly NORTH_WEST: i8 = DirectionFlag.WEST | DirectionFlag.NORTH;
+    @inline static readonly SOUTH_EAST: i8 = DirectionFlag.EAST | DirectionFlag.SOUTH;
+    @inline static readonly NORTH_EAST: i8 = DirectionFlag.EAST | DirectionFlag.NORTH;
 }
