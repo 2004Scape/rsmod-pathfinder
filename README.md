@@ -14,9 +14,16 @@ npm i @2004scape/rsmod-pathfinder
 https://github.com/wclr/yalc
 
 ```shell
-npm run asbuild:release # Builds the wasm bundle.
+npm run asbuild:debug # Builds the wasm bundle.
 yalc publish --push # Publishes to the local repo and pushes to all projects it has been added to.
 yalc add @2004scape/rsmod-pathfinder # Adds the published library to your project. 
+npm publish --access public # Publishes the version of this to npm.
+```
+
+## Publishing (Release)
+```shell
+npm run asbuild:release # Builds the wasm bundle.
+# update package.json version
 npm publish --access public # Publishes the version of this to npm.
 ```
 
