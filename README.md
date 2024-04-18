@@ -24,6 +24,7 @@ npm publish --access public # Publishes the version of this to npm.
 ```shell
 npm run asbuild:release # Builds the wasm bundle.
 # update package.json version
+# commit and push to main
 npm publish --access public # Publishes the version of this to npm.
 ```
 

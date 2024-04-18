@@ -14,12 +14,11 @@
  (type $12 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
  (type $13 (func (param i32 i32 i32 i32) (result i32)))
  (type $14 (func (param i32 i32 i32 i32 i32 i32 i32 i32)))
- (type $15 (func (param i32)))
- (type $16 (func (param i32 i32 i64)))
- (type $17 (func (result f64)))
+ (type $15 (func (param i32 i32 i64)))
+ (type $16 (func (result f64)))
+ (type $17 (func (param i32)))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "seed" (func $~lib/builtins/seed (result f64)))
- (import "env" "console.log" (func $~lib/bindings/dom/console.log (param i32)))
  (global $src/rsmod/flag/CollisionFlag/CollisionFlag.NULL i32 (i32.const -1))
  (global $src/rsmod/flag/CollisionFlag/CollisionFlag.OPEN i32 (i32.const 0))
  (global $src/rsmod/flag/CollisionFlag/CollisionFlag.WALL_NORTH_WEST i32 (i32.const 1))
@@ -1322,7 +1321,7 @@
    call $~lib/rt/tlsf/moveBlock
    local.set $0
   else
-   block $__inlined_func$~lib/rt/tlsf/reallocateBlock$1232
+   block $__inlined_func$~lib/rt/tlsf/reallocateBlock$1230
     local.get $2
     i32.const 4
     i32.sub
@@ -1359,7 +1358,7 @@
      local.get $0
      local.get $4
      call $~lib/rt/tlsf/prepareBlock
-     br $__inlined_func$~lib/rt/tlsf/reallocateBlock$1232
+     br $__inlined_func$~lib/rt/tlsf/reallocateBlock$1230
     end
     local.get $0
     i32.const 4
@@ -1400,7 +1399,7 @@
       local.get $0
       local.get $4
       call $~lib/rt/tlsf/prepareBlock
-      br $__inlined_func$~lib/rt/tlsf/reallocateBlock$1232
+      br $__inlined_func$~lib/rt/tlsf/reallocateBlock$1230
      end
     end
     local.get $3
@@ -2222,7 +2221,7 @@
    i32.const 1840
    call $~lib/staticarray/StaticArray<~lib/string/String>#join
    i32.const 3680
-   i32.const 541
+   i32.const 540
    i32.const 9
    call $~lib/builtins/abort
    unreachable
@@ -25631,7 +25630,7 @@
    i32.const 4608
    call $~lib/staticarray/StaticArray<~lib/string/String>#join
    i32.const 4656
-   i32.const 36
+   i32.const 37
    i32.const 13
    call $~lib/builtins/abort
    unreachable
@@ -25670,7 +25669,7 @@
    i32.const 4832
    call $~lib/staticarray/StaticArray<~lib/string/String>#join
    i32.const 4656
-   i32.const 39
+   i32.const 40
    i32.const 13
    call $~lib/builtins/abort
    unreachable
@@ -25691,7 +25690,7 @@
    i32.const 4976
    call $~lib/staticarray/StaticArray<~lib/string/String>#join
    i32.const 4656
-   i32.const 42
+   i32.const 43
    i32.const 13
    call $~lib/builtins/abort
    unreachable
@@ -26139,7 +26138,7 @@
         i32.const 5328
         call $~lib/staticarray/StaticArray<~lib/string/String>#join
         i32.const 4656
-        i32.const 178
+        i32.const 179
         i32.const 17
         call $~lib/builtins/abort
         unreachable
@@ -35586,7 +35585,7 @@
               i32.const 5584
               call $~lib/staticarray/StaticArray<~lib/string/String>#join
               i32.const 5632
-              i32.const 42
+              i32.const 33
               i32.const 13
               call $~lib/builtins/abort
               unreachable
@@ -37500,7 +37499,7 @@
           i32.const 5712
           call $~lib/staticarray/StaticArray<~lib/string/String>#join
           i32.const 5632
-          i32.const 42
+          i32.const 33
           i32.const 13
           call $~lib/builtins/abort
           unreachable
@@ -39417,7 +39416,7 @@
            i32.const 5760
            call $~lib/staticarray/StaticArray<~lib/string/String>#join
            i32.const 5632
-           i32.const 42
+           i32.const 33
            i32.const 13
            call $~lib/builtins/abort
            unreachable
@@ -40792,9 +40791,6 @@
   i32.ne
  )
  (func $src/index/isFlagged (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (result i32)
-  local.get $3
-  call $~lib/util/number/itoa32
-  call $~lib/bindings/dom/console.log
   block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$347 (result i32)
    i32.const -1
    global.get $src/index/flags
@@ -50129,7 +50125,7 @@
           i32.const 5808
           call $~lib/staticarray/StaticArray<~lib/string/String>#join
           i32.const 5632
-          i32.const 42
+          i32.const 33
           i32.const 13
           call $~lib/builtins/abort
           unreachable
@@ -57051,7 +57047,7 @@
   i32.const 6000
   call $~lib/staticarray/StaticArray<~lib/string/String>#join
   i32.const 3680
-  i32.const 535
+  i32.const 534
   i32.const 13
   call $~lib/builtins/abort
   unreachable
