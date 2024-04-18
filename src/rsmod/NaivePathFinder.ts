@@ -4,6 +4,7 @@
 import StepValidator from './StepValidator';
 import {CollisionStrategy} from './collision/CollisionStrategy';
 
+@final
 export default class NaivePathFinder {
     private readonly stepValidator: StepValidator;
     private readonly cardinals: i32[][] = [
