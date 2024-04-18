@@ -345,7 +345,6 @@ export function isZoneAllocated(absoluteX: i32, absoluteZ: i32, level: i32): boo
 }
 
 export function isFlagged(x: i32, z: i32, level: i32, masks: i32): bool {
-    console.log(masks.toString(10));
     return flags.isFlagged(x, z, level, masks);
 }
 
