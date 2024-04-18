@@ -1,27 +1,31 @@
-import CollisionFlag from './flag/CollisionFlag';
+import {CollisionFlag} from './flag/CollisionFlag';
 
+@final
 export default class Line {
-    static readonly SIGHT_BLOCKED_NORTH: number = CollisionFlag.LOC_PROJ_BLOCKER | CollisionFlag.WALL_NORTH_PROJ_BLOCKER;
-    static readonly SIGHT_BLOCKED_EAST: number = CollisionFlag.LOC_PROJ_BLOCKER | CollisionFlag.WALL_EAST_PROJ_BLOCKER;
-    static readonly SIGHT_BLOCKED_SOUTH: number = CollisionFlag.LOC_PROJ_BLOCKER | CollisionFlag.WALL_SOUTH_PROJ_BLOCKER;
-    static readonly SIGHT_BLOCKED_WEST: number = CollisionFlag.LOC_PROJ_BLOCKER | CollisionFlag.WALL_WEST_PROJ_BLOCKER;
+    @inline static readonly SIGHT_BLOCKED_NORTH: i32 = CollisionFlag.LOC_PROJ_BLOCKER | CollisionFlag.WALL_NORTH_PROJ_BLOCKER;
+    @inline static readonly SIGHT_BLOCKED_EAST: i32 = CollisionFlag.LOC_PROJ_BLOCKER | CollisionFlag.WALL_EAST_PROJ_BLOCKER;
+    @inline static readonly SIGHT_BLOCKED_SOUTH: i32 = CollisionFlag.LOC_PROJ_BLOCKER | CollisionFlag.WALL_SOUTH_PROJ_BLOCKER;
+    @inline static readonly SIGHT_BLOCKED_WEST: i32 = CollisionFlag.LOC_PROJ_BLOCKER | CollisionFlag.WALL_WEST_PROJ_BLOCKER;
 
-    static readonly WALK_BLOCKED_NORTH: number = CollisionFlag.WALL_NORTH | CollisionFlag.WALK_BLOCKED;
-    static readonly WALK_BLOCKED_EAST: number = CollisionFlag.WALL_EAST | CollisionFlag.WALK_BLOCKED;
-    static readonly WALK_BLOCKED_SOUTH: number = CollisionFlag.WALL_SOUTH | CollisionFlag.WALK_BLOCKED;
-    static readonly WALK_BLOCKED_WEST: number = CollisionFlag.WALL_WEST | CollisionFlag.WALK_BLOCKED;
+    @inline static readonly WALK_BLOCKED_NORTH: i32 = CollisionFlag.WALL_NORTH | CollisionFlag.WALK_BLOCKED;
+    @inline static readonly WALK_BLOCKED_EAST: i32 = CollisionFlag.WALL_EAST | CollisionFlag.WALK_BLOCKED;
+    @inline static readonly WALK_BLOCKED_SOUTH: i32 = CollisionFlag.WALL_SOUTH | CollisionFlag.WALK_BLOCKED;
+    @inline static readonly WALK_BLOCKED_WEST: i32 = CollisionFlag.WALL_WEST | CollisionFlag.WALK_BLOCKED;
 
-    static readonly HALF_TILE: number = this.scaleUp(1) / 2;
+    @inline static readonly HALF_TILE: i32 = (1 << 16) / 2; // Line.scaleUp(1) / 2;
 
-    static scaleUp(tiles: number): number {
+    @inline
+    static scaleUp(tiles: i32): i32 {
         return tiles << 16;
     }
 
-    static scaleDown(tiles: number): number {
+    @inline
+    static scaleDown(tiles: i32): i32 {
         return tiles >>> 16;
     }
 
-    static coordinate(a: number, b: number, size: number): number {
+    @inline
+    static coordinate(a: i32, b: i32, size: i32): i32 {
         if (a >= b) {
             return a;
         } else if (a + size - 1 <= b) {

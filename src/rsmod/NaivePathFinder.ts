@@ -2,13 +2,11 @@
 // https://gist.github.com/Z-Kris/fe476d75a51374f12dca999700f009f7
 
 import StepValidator from './StepValidator';
-import CollisionStrategy from './collision/CollisionStrategy';
-import Route from './Route';
-import RouteCoordinates from './RouteCoordinates';
+import {CollisionStrategy} from './collision/CollisionStrategy';
 
 export default class NaivePathFinder {
     private readonly stepValidator: StepValidator;
-    private readonly cardinals = [
+    private readonly cardinals: i32[][] = [
         [-1, 0], // West
         [1, 0], // East
         [0, 1], // North
@@ -19,7 +17,21 @@ export default class NaivePathFinder {
         this.stepValidator = stepValidator;
     }
 
-    findPath(level: number, srcX: number, srcZ: number, destX: number, destZ: number, srcWidth: number, srcHeight: number, destWidth: number, destHeight: number, blockAccessFlags: number, collision: CollisionStrategy): Route {
+    // prettier-ignore
+    @inline
+    findPath(
+        level: i32,
+        srcX: i32,
+        srcZ: i32,
+        destX: i32,
+        destZ: i32,
+        srcWidth: i32,
+        srcHeight: i32,
+        destWidth: i32,
+        destHeight: i32,
+        blockAccessFlags: i32,
+        collision: CollisionStrategy
+    ): StaticArray<i32> {
         if (!(srcX >= 0 && srcX <= 0x7fff && srcZ >= 0 && srcZ <= 0x7fff)) {
             throw new Error(`Failed requirement. srcX was: ${srcX}, srcZ was: ${srcZ}.`);
         }
@@ -31,22 +43,23 @@ export default class NaivePathFinder {
         }
         // If we are intersecting at all, the path needs to try to move out of the way.
         if (this.intersects(srcX, srcZ, srcWidth, srcHeight, destX, destZ, destWidth, destHeight)) {
-            const dest: RouteCoordinates = this.cardinalDestination(level, srcX, srcZ);
-            return new Route([dest], false, true);
+            return this.cardinalDestination(level, srcX, srcZ);
         }
-        const dest: RouteCoordinates = this.naiveDestination(level, srcX, srcZ, srcWidth, srcHeight, destX, destZ, 1, 1);
-        if (this.isDiagonal(dest.x, dest.z, srcWidth, srcHeight, destX, destZ, destWidth, destHeight)) {
-            return new Route([dest], false, true);
+        const dest: StaticArray<i32> = this.naiveDestination(level, srcX, srcZ, srcWidth, srcHeight, destX, destZ, 1, 1);
+        const dx: i32 = dest[0] >> 14 & 0x3fff;
+        const dz: i32 = dest[0] & 0x3fff;
+        if (this.isDiagonal(dx, dz, srcWidth, srcHeight, destX, destZ, destWidth, destHeight)) {
+            return dest;
         }
         /* If we can interact from this coord(or overlap with the target), allow the pathfinder to exit. */
-        if (this.intersects(dest.x, dest.z, srcWidth, srcHeight, destX, destZ, destWidth, destHeight)) {
-            return new Route([dest], false, true);
+        if (this.intersects(dx, dz, srcWidth, srcHeight, destX, destZ, destWidth, destHeight)) {
+            return dest;
         }
-        let currX: number = dest.x;
-        let currZ: number = dest.z;
+        let currX: i32 = dx;
+        let currZ: i32 = dz;
         while (currX !== destX && currZ !== destZ) {
-            const dx: number = Math.sign(destX - currX);
-            const dz: number = Math.sign(destZ - currZ);
+            const dx: i32 = <i32>Math.sign(destX - currX);
+            const dz: i32 = <i32>Math.sign(destZ - currZ);
             if (this.stepValidator.canTravel(level, currX, currZ, dx, dz, srcWidth, blockAccessFlags, collision)) {
                 currX += dx;
                 currZ += dz;
@@ -59,7 +72,7 @@ export default class NaivePathFinder {
                 break;
             }
         }
-        return new Route([new RouteCoordinates(currX, currZ, level)], false, true);
+        return StaticArray.fromArray([((currZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28)]);
     }
 
     /**
@@ -73,15 +86,17 @@ export default class NaivePathFinder {
      * @param destWidth The end width on the X axis.
      * @param destHeight The end length on the Z axis.
      */
-    intersects(srcX: number, srcZ: number, srcWidth: number, srcHeight: number, destX: number, destZ: number, destWidth: number, destHeight: number): boolean {
-        const srcHorizontal: number = srcX + srcWidth;
-        const srcVertical: number = srcZ + srcHeight;
-        const destHorizontal: number = destX + destWidth;
-        const destVertical: number = destZ + destHeight;
+    @inline
+    intersects(srcX: i32, srcZ: i32, srcWidth: i32, srcHeight: i32, destX: i32, destZ: i32, destWidth: i32, destHeight: i32): bool {
+        const srcHorizontal: i32 = srcX + srcWidth;
+        const srcVertical: i32 = srcZ + srcHeight;
+        const destHorizontal: i32 = destX + destWidth;
+        const destVertical: i32 = destZ + destHeight;
         return !(destX >= srcHorizontal || destHorizontal <= srcX || destZ >= srcVertical || destVertical <= srcZ);
     }
 
-    private isDiagonal(srcX: number, srcZ: number, srcWidth: number, srcHeight: number, destX: number, destZ: number, destWidth: number, destHeight: number): boolean {
+    @inline
+    private isDiagonal(srcX: i32, srcZ: i32, srcWidth: i32, srcHeight: i32, destX: i32, destZ: i32, destWidth: i32, destHeight: i32): bool {
         if (srcX + srcWidth === destX && srcZ + srcHeight === destZ) {
             return true;
         }
@@ -94,9 +109,10 @@ export default class NaivePathFinder {
         return srcX - 1 === destX + destWidth - 1 && srcZ + srcHeight === destZ;
     }
 
-    cardinalDestination(level: number, srcX: number, srcZ: number): RouteCoordinates {
-        const direction: number[] = this.cardinals[Math.floor(Math.random() * this.cardinals.length)];
-        return new RouteCoordinates(srcX + direction[0], srcZ + direction[1], level);
+    @inline
+    private cardinalDestination(level: i32, srcX: i32, srcZ: i32): StaticArray<i32> {
+        const direction: i32[] = this.cardinals[<i32>Math.floor(Math.random() * this.cardinals.length)];
+        return StaticArray.fromArray([((srcZ + direction[1]) & 0x3fff) | (((srcX + direction[0]) & 0x3fff) << 14) | ((level & 0x3) << 28)]);
     }
 
     /**
@@ -120,68 +136,70 @@ export default class NaivePathFinder {
      * This method is equivalent to returning the last coordinate in a sequence of steps towards south-west when moving
      * ordinal then cardinally until entity side comes into contact with another.
      */
-    naiveDestination(level: number, srcX: number, srcZ: number, srcWidth: number, srcHeight: number, destX: number, destZ: number, destWidth: number, destHeight: number): RouteCoordinates {
-        const diagonal: number = srcX - destX + (srcZ - destZ);
-        const anti: number = srcX - destX - (srcZ - destZ);
-        const southWestClockwise: boolean = anti < 0;
-        const northWestClockwise: boolean = diagonal >= destHeight - 1 - (srcWidth - 1);
-        const northEastClockwise: boolean = anti > srcWidth - srcHeight;
-        const southEastClockwise: boolean = diagonal <= destWidth - 1 - (srcHeight - 1);
+    @inline
+    private naiveDestination(level: i32, srcX: i32, srcZ: i32, srcWidth: i32, srcHeight: i32, destX: i32, destZ: i32, destWidth: i32, destHeight: i32): StaticArray<i32> {
+        const diagonal: i32 = srcX - destX + (srcZ - destZ);
+        const anti: i32 = srcX - destX - (srcZ - destZ);
+        const southWestClockwise: bool = anti < 0;
+        const northWestClockwise: bool = diagonal >= destHeight - 1 - (srcWidth - 1);
+        const northEastClockwise: bool = anti > srcWidth - srcHeight;
+        const southEastClockwise: bool = diagonal <= destWidth - 1 - (srcHeight - 1);
 
-        const target: RouteCoordinates = new RouteCoordinates(destX, destZ, level);
         if (southWestClockwise && !northWestClockwise) {
             // West
-            let offZ: number = 0;
+            let offZ: i32 = 0;
             if (diagonal >= -srcWidth) {
                 offZ = this.coerceAtMost(diagonal + srcWidth, destHeight - 1);
             } else if (anti > -srcWidth) {
                 offZ = -(srcWidth + anti);
             }
-            return target.translate(-srcWidth, offZ, 0);
+            return StaticArray.fromArray([((offZ + destZ) & 0x3fff) | (((-srcWidth + destX) & 0x3fff) << 14) | ((level & 0x3) << 28)]);
         } else if (northWestClockwise && !northEastClockwise) {
             // North
-            let offX: number = 0;
+            let offX: i32 = 0;
             if (anti >= -destHeight) {
                 offX = this.coerceAtMost(anti + destHeight, destWidth - 1);
             } else if (diagonal < destHeight) {
                 offX = this.coerceAtLeast(diagonal - destHeight, -(srcWidth - 1));
             }
-            return target.translate(offX, destHeight, 0);
+            return StaticArray.fromArray([((destHeight + destZ) & 0x3fff) | (((offX + destX) & 0x3fff) << 14) | ((level & 0x3) << 28)]);
         } else if (northEastClockwise && !southEastClockwise) {
             // East
-            let offZ: number = 0;
+            let offZ: i32 = 0;
             if (anti <= destWidth) {
                 offZ = destHeight - anti;
             } else if (diagonal < destWidth) {
                 offZ = this.coerceAtLeast(diagonal - destWidth, -(srcHeight - 1));
             }
-            return target.translate(destWidth, offZ, 0);
+            return StaticArray.fromArray([((offZ + destZ) & 0x3fff) | (((destWidth + destX) & 0x3fff) << 14) | ((level & 0x3) << 28)]);
         } else {
             if (!(southEastClockwise && !southWestClockwise)) {
                 // South
                 throw new Error(`Failed requirement. southEastClockwise was: ${southEastClockwise}, southWestClockwise was: ${southWestClockwise}.`);
             }
-            let offX: number = 0;
+            let offX: i32 = 0;
             if (diagonal > -srcHeight) {
                 offX = this.coerceAtMost(diagonal + srcHeight, destWidth - 1);
             } else if (anti < srcHeight) {
                 offX = this.coerceAtLeast(anti - srcHeight, -(srcHeight - 1));
             }
-            return target.translate(offX, -srcHeight, 0);
+            return StaticArray.fromArray([((-srcHeight + destZ) & 0x3fff) | (((offX + destX) & 0x3fff) << 14) | ((level & 0x3) << 28)]);
         }
     }
 
     /**
      * Ensures that this value is not greater than the specified maximumValue.
      */
-    private coerceAtMost(value: number, maximumValue: number): number {
+    @inline
+    private coerceAtMost(value: i32, maximumValue: i32): i32 {
         return value > maximumValue ? maximumValue : value;
     }
 
     /**
      * Ensures that this value is not less than the specified minimumValue.
      */
-    private coerceAtLeast(value: number, minimumValue: number): number {
+    @inline
+    private coerceAtLeast(value: i32, minimumValue: i32): i32 {
         return value < minimumValue ? minimumValue : value;
     }
 }

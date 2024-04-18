@@ -1,17 +1,30 @@
 import CollisionFlagMap from './collision/CollisionFlagMap';
-import RayCast from './RayCast';
 import Line from './Line';
-import CollisionFlag from './flag/CollisionFlag';
-import RouteCoordinates from './RouteCoordinates';
+import {CollisionFlag} from './flag/CollisionFlag';
 
+@final
 export default class LinePathFinder {
+    private static readonly EMPTY: StaticArray<i32> = new StaticArray(0);
+
     private readonly flags: CollisionFlagMap;
 
     constructor(flags: CollisionFlagMap) {
         this.flags = flags;
     }
 
-    lineOfSight(level: number, srcX: number, srcZ: number, destX: number, destZ: number, srcSize: number = 1, destWidth: number = 0, destHeight: number = 0, extraFlag: number = 0): RayCast {
+    // prettier-ignore
+    @inline
+    lineOfSight(
+        level: i32,
+        srcX: i32,
+        srcZ: i32,
+        destX: i32,
+        destZ: i32,
+        srcSize: i32,
+        destWidth: i32,
+        destHeight: i32,
+        extraFlag: i32
+    ): StaticArray<i32> {
         return this.rayCast(
             level,
             srcX,
@@ -30,7 +43,19 @@ export default class LinePathFinder {
         );
     }
 
-    lineOfWalk(level: number, srcX: number, srcZ: number, destX: number, destZ: number, srcSize: number = 1, destWidth: number = 0, destHeight: number = 0, extraFlag: number = 0): RayCast {
+    // prettier-ignore
+    @inline
+    lineOfWalk(
+        level: i32,
+        srcX: i32,
+        srcZ: i32,
+        destX: i32,
+        destZ: i32,
+        srcSize: i32,
+        destWidth: i32,
+        destHeight: i32,
+        extraFlag: i32
+    ): StaticArray<i32> {
         return this.rayCast(
             level,
             srcX,
@@ -49,113 +74,144 @@ export default class LinePathFinder {
         );
     }
 
-    rayCast(
-        level: number,
-        srcX: number,
-        srcZ: number,
-        destX: number,
-        destZ: number,
-        srcSize: number,
-        destWidth: number,
-        destHeight: number,
-        flagWest: number,
-        flagEast: number,
-        flagSouth: number,
-        flagNorth: number,
-        flagObject: number,
-        los: boolean
-    ): RayCast {
-        const startX: number = Line.coordinate(srcX, destX, srcSize);
-        const startZ: number = Line.coordinate(srcZ, destZ, srcSize);
+    // prettier-ignore
+    @inline
+    private rayCast(
+        level: i32,
+        srcX: i32,
+        srcZ: i32,
+        destX: i32,
+        destZ: i32,
+        srcSize: i32,
+        destWidth: i32,
+        destHeight: i32,
+        flagWest: i32,
+        flagEast: i32,
+        flagSouth: i32,
+        flagNorth: i32,
+        flagObject: i32,
+        los: bool
+    ): StaticArray<i32> {
+        const startX: i32 = Line.coordinate(srcX, destX, srcSize);
+        const startZ: i32 = Line.coordinate(srcZ, destZ, srcSize);
 
         if (los && this.flags.isFlagged(startX, startZ, level, flagObject)) {
-            return RayCast.FAILED;
+            return LinePathFinder.EMPTY; // RayCast.FAILED;
         }
 
-        const endX: number = Line.coordinate(destX, srcX, destWidth);
-        const endZ: number = Line.coordinate(destZ, srcZ, destHeight);
+        const endX: i32 = Line.coordinate(destX, srcX, destWidth);
+        const endZ: i32 = Line.coordinate(destZ, srcZ, destHeight);
 
         if (startX === endX && startZ === endZ) {
-            return RayCast.EMPTY_SUCCESS;
+            return LinePathFinder.EMPTY; // RayCast.EMPTY_SUCCESS;
         }
 
-        const deltaX: number = endX - startX;
-        const deltaZ: number = endZ - startZ;
-        const absoluteDeltaX: number = Math.abs(deltaX);
-        const absoluteDeltaZ: number = Math.abs(deltaZ);
+        const deltaX: i32 = endX - startX;
+        const deltaZ: i32 = endZ - startZ;
+        const absoluteDeltaX: i32 = <i32>Math.abs(deltaX);
+        const absoluteDeltaZ: i32 = <i32>Math.abs(deltaZ);
 
-        const travelEast: boolean = deltaX >= 0;
-        const travelNorth: boolean = deltaZ >= 0;
+        const travelEast: bool = deltaX >= 0;
+        const travelNorth: bool = deltaZ >= 0;
 
-        let xFlags: number = travelEast ? flagWest : flagEast;
-        let zFlags: number = travelNorth ? flagSouth : flagNorth;
+        let xFlags: i32 = travelEast ? flagWest : flagEast;
+        let zFlags: i32 = travelNorth ? flagSouth : flagNorth;
 
-        const coordinates: RouteCoordinates[] = [];
+        const coordinates: i32[] = [];
         if (absoluteDeltaX > absoluteDeltaZ) {
-            const offsetX: number = travelEast ? 1 : -1;
-            const offsetZ: number = travelNorth ? 0 : -1;
+            const offsetX: i32 = travelEast ? 1 : -1;
+            const offsetZ: i32 = travelNorth ? 0 : -1;
 
-            let scaledZ: number = Line.scaleUp(startZ) + Line.HALF_TILE + offsetZ;
-            const tangent: number = Line.scaleUp(deltaZ) / absoluteDeltaX;
+            let scaledZ: i32 = Line.scaleUp(startZ) + Line.HALF_TILE + offsetZ;
+            const tangent: i32 = Line.scaleUp(deltaZ) / absoluteDeltaX;
 
-            let currX: number = startX;
+            let currX: i32 = startX;
             while (currX !== endX) {
                 currX += offsetX;
-                const currZ: number = Line.scaleDown(scaledZ);
+                const currZ: i32 = Line.scaleDown(scaledZ);
                 if (los && currX === endX && currZ === endZ) {
                     xFlags = (xFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (xFlags & ~CollisionFlag.PLAYER);
                 }
                 if (this.flags.isFlagged(currX, currZ, level, xFlags)) {
-                    return new RayCast(coordinates, coordinates.length > 0, false);
+                    const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
+                    for (let i: i32 = 0; i < coordinates.length; i++) {
+                        unchecked(route[i] = coordinates[i]);
+                    }
+                    return route;
+                    // return new RayCast(coordinates, coordinates.length > 0, false);
                 }
-                coordinates.push(new RouteCoordinates(currX, currZ, level));
+                coordinates.push(((currX) & 0x3fff) | (((currZ) & 0x3fff) << 14) | ((level & 0x3) << 28));
+                // coordinates.push(new RouteCoordinates(currX, currZ, level));
 
                 scaledZ += tangent;
 
-                const nextZ: number = Line.scaleDown(scaledZ);
+                const nextZ: i32 = Line.scaleDown(scaledZ);
                 if (nextZ !== currZ) {
                     if (los && currX === endX && nextZ === endZ) {
                         zFlags = (zFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (zFlags & ~CollisionFlag.PLAYER);
                     }
                     if (this.flags.isFlagged(currX, nextZ, level, zFlags)) {
-                        return new RayCast(coordinates, coordinates.length > 0, false);
+                        const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
+                        for (let i: i32 = 0; i < coordinates.length; i++) {
+                            unchecked(route[i] = coordinates[i]);
+                        }
+                        return route;
+                        // return new RayCast(coordinates, coordinates.length > 0, false);
                     }
-                    coordinates.push(new RouteCoordinates(currX, nextZ, level));
+                    coordinates.push(((currX) & 0x3fff) | (((nextZ) & 0x3fff) << 14) | ((level & 0x3) << 28));
+                    // coordinates.push(new RouteCoordinates(currX, nextZ, level));
                 }
             }
         } else {
-            const offsetX: number = travelEast ? 0 : -1;
-            const offsetZ: number = travelNorth ? 1 : -1;
+            const offsetX: i32 = travelEast ? 0 : -1;
+            const offsetZ: i32 = travelNorth ? 1 : -1;
 
-            let scaledX: number = Line.scaleUp(startX) + Line.HALF_TILE + offsetX;
-            const tangent: number = Line.scaleUp(deltaX) / absoluteDeltaZ;
+            let scaledX: i32 = Line.scaleUp(startX) + Line.HALF_TILE + offsetX;
+            const tangent: i32 = Line.scaleUp(deltaX) / absoluteDeltaZ;
 
-            let currZ: number = startZ;
+            let currZ: i32 = startZ;
             while (currZ !== endZ) {
                 currZ += offsetZ;
-                const currX: number = Line.scaleDown(scaledX);
+                const currX: i32 = Line.scaleDown(scaledX);
                 if (los && currX === endX && currZ === endZ) {
                     zFlags = (zFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (zFlags & ~CollisionFlag.PLAYER);
                 }
                 if (this.flags.isFlagged(currX, currZ, level, zFlags)) {
-                    return new RayCast(coordinates, coordinates.length > 0, false);
+                    const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
+                    for (let i: i32 = 0; i < coordinates.length; i++) {
+                        unchecked(route[i] = coordinates[i]);
+                    }
+                    return route;
+                    // return new RayCast(coordinates, coordinates.length > 0, false);
                 }
-                coordinates.push(new RouteCoordinates(currX, currZ, level));
+                coordinates.push(((currX) & 0x3fff) | (((currZ) & 0x3fff) << 14) | ((level & 0x3) << 28));
+                // coordinates.push(new RouteCoordinates(currX, currZ, level));
 
                 scaledX += tangent;
 
-                const nextX: number = Line.scaleDown(scaledX);
+                const nextX: i32 = Line.scaleDown(scaledX);
                 if (nextX !== currX) {
                     if (los && nextX === endX && currZ === endZ) {
                         xFlags = (xFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (xFlags & ~CollisionFlag.PLAYER);
                     }
                     if (this.flags.isFlagged(nextX, currZ, level, xFlags)) {
-                        return new RayCast(coordinates, coordinates.length > 0, false);
+                        const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
+                        for (let i: i32 = 0; i < coordinates.length; i++) {
+                            unchecked(route[i] = coordinates[i]);
+                        }
+                        return route;
+                        // return new RayCast(coordinates, coordinates.length > 0, false);
                     }
-                    coordinates.push(new RouteCoordinates(nextX, currZ, level));
+                    coordinates.push(((nextX) & 0x3fff) | (((currZ) & 0x3fff) << 14) | ((level & 0x3) << 28));
+                    // coordinates.push(new RouteCoordinates(nextX, currZ, level));
                 }
             }
         }
-        return new RayCast(coordinates, false, true);
+        const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
+        for (let i: i32 = 0; i < coordinates.length; i++) {
+            unchecked(route[i] = coordinates[i]);
+        }
+        return route;
+        // return new RayCast(coordinates, false, true);
     }
 }
