@@ -24,18 +24,18 @@ export {CollisionFlag, LocShape, LocAngle, CollisionType, LocLayer};
 
 // prettier-ignore
 export function findPath(
-    level: i32,
+    level: i8,
     srcX: i32,
     srcZ: i32,
     destX: i32,
     destZ: i32,
-    srcSize: i32 = 1,
-    destWidth: i32 = 1,
-    destHeight: i32 = 1,
-    angle: i32 = 0,
-    shape: i32 = -1,
+    srcSize: i8 = 1,
+    destWidth: i8 = 1,
+    destHeight: i8 = 1,
+    angle: i8 = 0,
+    shape: i8 = -1,
     moveNear: bool = true,
-    blockAccessFlags: i32 = 0,
+    blockAccessFlags: i8 = 0,
     maxWaypoints: i32 = 25,
     collision: CollisionType = CollisionType.NORMAL
 ): StaticArray<i32> {
@@ -59,16 +59,16 @@ export function findPath(
 
 // prettier-ignore
 export function findNaivePath(
-    level: i32,
+    level: i8,
     srcX: i32,
     srcZ: i32,
     destX: i32,
     destZ: i32,
-    srcWidth: i32,
-    srcHeight: i32,
-    destWidth: i32,
-    destHeight: i32,
-    blockAccessFlags: i32,
+    srcWidth: i8,
+    srcHeight: i8,
+    destWidth: i8,
+    destHeight: i8,
+    blockAccessFlags: i8,
     collision: CollisionType = CollisionType.NORMAL
 ): StaticArray<i32> {
     return naivePathfinder.findPath(
@@ -109,7 +109,7 @@ export function intersects(
     );
 }
 
-export function changeFloor(x: i32, z: i32, level: i32, add: bool): void {
+export function changeFloor(x: i32, z: i32, level: i8, add: bool): void {
     if (add) {
         flags.add(x, z, level, CollisionFlag.FLOOR);
     } else {
@@ -117,7 +117,7 @@ export function changeFloor(x: i32, z: i32, level: i32, add: bool): void {
     }
 }
 
-export function changeLoc(x: i32, z: i32, level: i32, width: i32, length: i32, blockrange: bool, breakroutefinding: bool, add: bool): void {
+export function changeLoc(x: i32, z: i32, level: i8, width: i8, length: i8, blockrange: bool, breakroutefinding: bool, add: bool): void {
     let mask: i32 = CollisionFlag.LOC;
     if (blockrange) {
         mask |= CollisionFlag.LOC_PROJ_BLOCKER;
@@ -136,7 +136,7 @@ export function changeLoc(x: i32, z: i32, level: i32, width: i32, length: i32, b
     }
 }
 
-export function changeNpc(x: i32, z: i32, level: i32, size: i32, add: bool): void {
+export function changeNpc(x: i32, z: i32, level: i8, size: i8, add: bool): void {
     const mask: i32 = CollisionFlag.NPC;
     for (let index: i32 = 0; index < size * size; index++) {
         const deltaX: i32 = x + (index % size);
@@ -149,7 +149,7 @@ export function changeNpc(x: i32, z: i32, level: i32, size: i32, add: bool): voi
     }
 }
 
-export function changePlayer(x: i32, z: i32, level: i32, size: i32, add: bool): void {
+export function changePlayer(x: i32, z: i32, level: i8, size: i8, add: bool): void {
     const mask: i32 = CollisionFlag.PLAYER;
     for (let index: i32 = 0; index < size * size; index++) {
         const deltaX: i32 = x + (index % size);
@@ -162,7 +162,7 @@ export function changePlayer(x: i32, z: i32, level: i32, size: i32, add: bool): 
     }
 }
 
-export function changeRoof(x: i32, z: i32, level: i32, add: bool): void {
+export function changeRoof(x: i32, z: i32, level: i8, add: bool): void {
     if (add) {
         flags.add(x, z, level, CollisionFlag.ROOF);
     } else {
@@ -170,23 +170,23 @@ export function changeRoof(x: i32, z: i32, level: i32, add: bool): void {
     }
 }
 
-export function changeWall(x: i32, z: i32, level: i32, angle: i32, shape: i32, blockrange: bool, breakroutefinding: bool, add: bool): void {
-    if (shape === LocShape.WALL_STRAIGHT) {
+export function changeWall(x: i32, z: i32, level: i8, angle: i8, shape: i8, blockrange: bool, breakroutefinding: bool, add: bool): void {
+    if (shape == LocShape.WALL_STRAIGHT) {
         changeWallStraight(x, z, level, angle, blockrange, breakroutefinding, add);
-    } else if (shape === LocShape.WALL_DIAGONAL_CORNER || shape === LocShape.WALL_SQUARE_CORNER) {
+    } else if (shape == LocShape.WALL_DIAGONAL_CORNER || shape == LocShape.WALL_SQUARE_CORNER) {
         changeWallCorner(x, z, level, angle, blockrange, breakroutefinding, add);
-    } else if (shape === LocShape.WALL_L) {
+    } else if (shape == LocShape.WALL_L) {
         changeWallL(x, z, level, angle, blockrange, breakroutefinding, add);
     }
 }
 
-function changeWallStraight(x: i32, z: i32, level: i32, angle: i32, blockrange: bool, breakroutefinding: bool, add: bool): void {
+function changeWallStraight(x: i32, z: i32, level: i8, angle: i8, blockrange: bool, breakroutefinding: bool, add: bool): void {
     const west: i32 = breakroutefinding ? CollisionFlag.WALL_WEST_ROUTE_BLOCKER : blockrange ? CollisionFlag.WALL_WEST_PROJ_BLOCKER : CollisionFlag.WALL_WEST;
     const east: i32 = breakroutefinding ? CollisionFlag.WALL_EAST_ROUTE_BLOCKER : blockrange ? CollisionFlag.WALL_EAST_PROJ_BLOCKER : CollisionFlag.WALL_EAST;
     const north: i32 = breakroutefinding ? CollisionFlag.WALL_NORTH_ROUTE_BLOCKER : blockrange ? CollisionFlag.WALL_NORTH_PROJ_BLOCKER : CollisionFlag.WALL_NORTH;
     const south: i32 = breakroutefinding ? CollisionFlag.WALL_SOUTH_ROUTE_BLOCKER : blockrange ? CollisionFlag.WALL_SOUTH_PROJ_BLOCKER : CollisionFlag.WALL_SOUTH;
 
-    if (angle === LocAngle.WEST) {
+    if (angle == LocAngle.WEST) {
         if (add) {
             flags.add(x, z, level, west);
             flags.add(x - 1, z, level, east);
@@ -194,7 +194,7 @@ function changeWallStraight(x: i32, z: i32, level: i32, angle: i32, blockrange: 
             flags.remove(x, z, level, west);
             flags.remove(x - 1, z, level, east);
         }
-    } else if (angle === LocAngle.NORTH) {
+    } else if (angle == LocAngle.NORTH) {
         if (add) {
             flags.add(x, z, level, north);
             flags.add(x, z + 1, level, south);
@@ -202,7 +202,7 @@ function changeWallStraight(x: i32, z: i32, level: i32, angle: i32, blockrange: 
             flags.remove(x, z, level, north);
             flags.remove(x, z + 1, level, south);
         }
-    } else if (angle === LocAngle.EAST) {
+    } else if (angle == LocAngle.EAST) {
         if (add) {
             flags.add(x, z, level, east);
             flags.add(x + 1, z, level, west);
@@ -210,7 +210,7 @@ function changeWallStraight(x: i32, z: i32, level: i32, angle: i32, blockrange: 
             flags.remove(x, z, level, east);
             flags.remove(x + 1, z, level, west);
         }
-    } else if (angle === LocAngle.SOUTH) {
+    } else if (angle == LocAngle.SOUTH) {
         if (add) {
             flags.add(x, z, level, south);
             flags.add(x, z - 1, level, north);
@@ -228,13 +228,13 @@ function changeWallStraight(x: i32, z: i32, level: i32, angle: i32, blockrange: 
     }
 }
 
-function changeWallCorner(x: i32, z: i32, level: i32, angle: i32, blockrange: bool, breakroutefinding: bool, add: bool): void {
+function changeWallCorner(x: i32, z: i32, level: i8, angle: i8, blockrange: bool, breakroutefinding: bool, add: bool): void {
     const northWest: i32 = breakroutefinding ? CollisionFlag.WALL_NORTH_WEST_ROUTE_BLOCKER : blockrange ? CollisionFlag.WALL_NORTH_WEST_PROJ_BLOCKER : CollisionFlag.WALL_NORTH_WEST;
     const southEast: i32 = breakroutefinding ? CollisionFlag.WALL_SOUTH_EAST_ROUTE_BLOCKER : blockrange ? CollisionFlag.WALL_SOUTH_EAST_PROJ_BLOCKER : CollisionFlag.WALL_SOUTH_EAST;
     const northEast: i32 = breakroutefinding ? CollisionFlag.WALL_NORTH_EAST_ROUTE_BLOCKER : blockrange ? CollisionFlag.WALL_NORTH_EAST_PROJ_BLOCKER : CollisionFlag.WALL_NORTH_EAST;
     const southWest: i32 = breakroutefinding ? CollisionFlag.WALL_SOUTH_WEST_ROUTE_BLOCKER : blockrange ? CollisionFlag.WALL_SOUTH_WEST_PROJ_BLOCKER : CollisionFlag.WALL_SOUTH_WEST;
 
-    if (angle === LocAngle.WEST) {
+    if (angle == LocAngle.WEST) {
         if (add) {
             flags.add(x, z, level, northWest);
             flags.add(x - 1, z + 1, level, southEast);
@@ -242,7 +242,7 @@ function changeWallCorner(x: i32, z: i32, level: i32, angle: i32, blockrange: bo
             flags.remove(x, z, level, northWest);
             flags.remove(x - 1, z + 1, level, southEast);
         }
-    } else if (angle === LocAngle.NORTH) {
+    } else if (angle == LocAngle.NORTH) {
         if (add) {
             flags.add(x, z, level, northEast);
             flags.add(x + 1, z + 1, level, southWest);
@@ -250,7 +250,7 @@ function changeWallCorner(x: i32, z: i32, level: i32, angle: i32, blockrange: bo
             flags.remove(x, z, level, northEast);
             flags.remove(x + 1, z + 1, level, southWest);
         }
-    } else if (angle === LocAngle.EAST) {
+    } else if (angle == LocAngle.EAST) {
         if (add) {
             flags.add(x, z, level, southEast);
             flags.add(x + 1, z - 1, level, northWest);
@@ -258,7 +258,7 @@ function changeWallCorner(x: i32, z: i32, level: i32, angle: i32, blockrange: bo
             flags.remove(x, z, level, southEast);
             flags.remove(x + 1, z - 1, level, northWest);
         }
-    } else if (angle === LocAngle.SOUTH) {
+    } else if (angle == LocAngle.SOUTH) {
         if (add) {
             flags.add(x, z, level, southWest);
             flags.add(x - 1, z - 1, level, northEast);
@@ -276,13 +276,13 @@ function changeWallCorner(x: i32, z: i32, level: i32, angle: i32, blockrange: bo
     }
 }
 
-function changeWallL(x: i32, z: i32, level: i32, angle: i32, blockrange: bool, breakroutefinding: bool, add: bool): void {
+function changeWallL(x: i32, z: i32, level: i8, angle: i8, blockrange: bool, breakroutefinding: bool, add: bool): void {
     const west: i32 = breakroutefinding ? CollisionFlag.WALL_WEST_ROUTE_BLOCKER : blockrange ? CollisionFlag.WALL_WEST_PROJ_BLOCKER : CollisionFlag.WALL_WEST;
     const east: i32 = breakroutefinding ? CollisionFlag.WALL_EAST_ROUTE_BLOCKER : blockrange ? CollisionFlag.WALL_EAST_PROJ_BLOCKER : CollisionFlag.WALL_EAST;
     const north: i32 = breakroutefinding ? CollisionFlag.WALL_NORTH_ROUTE_BLOCKER : blockrange ? CollisionFlag.WALL_NORTH_PROJ_BLOCKER : CollisionFlag.WALL_NORTH;
     const south: i32 = breakroutefinding ? CollisionFlag.WALL_SOUTH_ROUTE_BLOCKER : blockrange ? CollisionFlag.WALL_SOUTH_PROJ_BLOCKER : CollisionFlag.WALL_SOUTH;
 
-    if (angle === LocAngle.WEST) {
+    if (angle == LocAngle.WEST) {
         if (add) {
             flags.add(x, z, level, north | west);
             flags.add(x - 1, z, level, east);
@@ -292,7 +292,7 @@ function changeWallL(x: i32, z: i32, level: i32, angle: i32, blockrange: bool, b
             flags.remove(x - 1, z, level, east);
             flags.remove(x, z + 1, level, south);
         }
-    } else if (angle === LocAngle.NORTH) {
+    } else if (angle == LocAngle.NORTH) {
         if (add) {
             flags.add(x, z, level, north | east);
             flags.add(x, z + 1, level, south);
@@ -302,7 +302,7 @@ function changeWallL(x: i32, z: i32, level: i32, angle: i32, blockrange: bool, b
             flags.remove(x, z + 1, level, south);
             flags.remove(x + 1, z, level, west);
         }
-    } else if (angle === LocAngle.EAST) {
+    } else if (angle == LocAngle.EAST) {
         if (add) {
             flags.add(x, z, level, south | east);
             flags.add(x + 1, z, level, west);
@@ -312,7 +312,7 @@ function changeWallL(x: i32, z: i32, level: i32, angle: i32, blockrange: bool, b
             flags.remove(x + 1, z, level, west);
             flags.remove(x, z - 1, level, north);
         }
-    } else if (angle === LocAngle.SOUTH) {
+    } else if (angle == LocAngle.SOUTH) {
         if (add) {
             flags.add(x, z, level, south | west);
             flags.add(x, z - 1, level, north);
@@ -332,30 +332,30 @@ function changeWallL(x: i32, z: i32, level: i32, angle: i32, blockrange: bool, b
     }
 }
 
-export function allocateIfAbsent(absoluteX: i32, absoluteZ: i32, level: i32): StaticArray<i32> {
+export function allocateIfAbsent(absoluteX: i32, absoluteZ: i32, level: i8): StaticArray<i32> {
     return flags.allocateIfAbsent(absoluteX, absoluteZ, level);
 }
 
-export function deallocateIfPresent(absoluteX: i32, absoluteZ: i32, level: i32): void {
+export function deallocateIfPresent(absoluteX: i32, absoluteZ: i32, level: i8): void {
     return flags.deallocateIfPresent(absoluteX, absoluteZ, level);
 }
 
-export function isZoneAllocated(absoluteX: i32, absoluteZ: i32, level: i32): bool {
+export function isZoneAllocated(absoluteX: i32, absoluteZ: i32, level: i8): bool {
     return flags.isZoneAllocated(absoluteX, absoluteZ, level);
 }
 
-export function isFlagged(x: i32, z: i32, level: i32, masks: i32): bool {
+export function isFlagged(x: i32, z: i32, level: i8, masks: i32): bool {
     return flags.isFlagged(x, z, level, masks);
 }
 
 // prettier-ignore
 export function canTravel(
-    level: i32,
+    level: i8,
     x: i32,
     z: i32,
-    offsetX: i32,
-    offsetZ: i32,
-    size: i32,
+    offsetX: i8,
+    offsetZ: i8,
+    size: i8,
     extraFlag: i32,
     collision: CollisionType = CollisionType.NORMAL
 ): bool {
@@ -373,14 +373,14 @@ export function canTravel(
 
 // prettier-ignore
 export function hasLineOfSight(
-    level: i32,
+    level: i8,
     srcX: i32,
     srcZ: i32,
     destX: i32,
     destZ: i32,
-    srcSize: i32 = 1,
-    destWidth: i32 = 0,
-    destHeight: i32 = 0,
+    srcSize: i8 = 1,
+    destWidth: i8 = 0,
+    destHeight: i8 = 0,
     extraFlag: i32 = 0
 ): bool {
     return lineValidator.hasLineOfSight(
@@ -398,14 +398,14 @@ export function hasLineOfSight(
 
 // prettier-ignore
 export function hasLineOfWalk(
-    level: i32,
+    level: i8,
     srcX: i32,
     srcZ: i32,
     destX: i32,
     destZ: i32,
-    srcSize: i32 = 1,
-    destWidth: i32 = 0,
-    destHeight: i32 = 0,
+    srcSize: i8 = 1,
+    destWidth: i8 = 0,
+    destHeight: i8 = 0,
     extraFlag: i32 = 0
 ): bool {
     return lineValidator.hasLineOfWalk(
@@ -423,14 +423,14 @@ export function hasLineOfWalk(
 
 // prettier-ignore
 export function lineOfSight(
-    level: i32,
+    level: i8,
     srcX: i32,
     srcZ: i32,
     destX: i32,
     destZ: i32,
-    srcSize: i32 = 1,
-    destWidth: i32 = 0,
-    destHeight: i32 = 0,
+    srcSize: i8 = 1,
+    destWidth: i8 = 0,
+    destHeight: i8 = 0,
     extraFlag: i32 = 0
 ): StaticArray<i32> {
     return linePathFinder.lineOfSight(
@@ -448,14 +448,14 @@ export function lineOfSight(
 
 // prettier-ignore
 export function lineOfWalk(
-    level: i32,
+    level: i8,
     srcX: i32,
     srcZ: i32,
     destX: i32,
     destZ: i32,
-    srcSize: i32 = 1,
-    destWidth: i32 = 0,
-    destHeight: i32 = 0,
+    srcSize: i8 = 1,
+    destWidth: i8 = 0,
+    destHeight: i8 = 0,
     extraFlag: i32 = 0
 ): StaticArray<i32> {
     return linePathFinder.lineOfWalk(
@@ -473,17 +473,17 @@ export function lineOfWalk(
 
 // prettier-ignore
 export function reached(
-    level: i32,
+    level: i8,
     srcX: i32,
     srcZ: i32,
     destX: i32,
     destZ: i32,
-    destWidth: i32,
-    destHeight: i32,
-    srcSize: i32,
-    angle: i32 = 0,
-    shape: i32 = -1,
-    blockAccessFlags: i32 = 0
+    destWidth: i8,
+    destHeight: i8,
+    srcSize: i8,
+    angle: i8 = 0,
+    shape: i8 = -1,
+    blockAccessFlags: i8 = 0
 ): bool {
     return ReachStrategy.reached(
         flags,

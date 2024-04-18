@@ -10,24 +10,34 @@ export default class StepValidator {
         this.flags = flags;
     }
 
+    // prettier-ignore
     @inline
-    canTravel(level: i32, x: i32, z: i32, offsetX: i32, offsetZ: i32, size: i32, extraFlag: i32, collision: CollisionStrategy): bool {
+    canTravel(
+        level: i8,
+        x: i32,
+        z: i32,
+        offsetX: i8,
+        offsetZ: i8,
+        size: i8,
+        extraFlag: i32,
+        collision: CollisionStrategy
+    ): bool {
         let blocked: bool;
-        if (offsetX === 0 && offsetZ === -1) {
+        if (offsetX == 0 && offsetZ == -1) {
             blocked = this.isBlockedSouth(level, x, z, size, extraFlag, collision);
-        } else if (offsetX === 0 && offsetZ === 1) {
+        } else if (offsetX == 0 && offsetZ == 1) {
             blocked = this.isBlockedNorth(level, x, z, size, extraFlag, collision);
-        } else if (offsetX === -1 && offsetZ === 0) {
+        } else if (offsetX == -1 && offsetZ == 0) {
             blocked = this.isBlockedWest(level, x, z, size, extraFlag, collision);
-        } else if (offsetX === 1 && offsetZ === 0) {
+        } else if (offsetX == 1 && offsetZ == 0) {
             blocked = this.isBlockedEast(level, x, z, size, extraFlag, collision);
-        } else if (offsetX === -1 && offsetZ === -1) {
+        } else if (offsetX == -1 && offsetZ == -1) {
             blocked = this.isBlockedSouthWest(level, x, z, size, extraFlag, collision);
-        } else if (offsetX === -1 && offsetZ === 1) {
+        } else if (offsetX == -1 && offsetZ == 1) {
             blocked = this.isBlockedNorthWest(level, x, z, size, extraFlag, collision);
-        } else if (offsetX === 1 && offsetZ === -1) {
+        } else if (offsetX == 1 && offsetZ == -1) {
             blocked = this.isBlockedSouthEast(level, x, z, size, extraFlag, collision);
-        } else if (offsetX === 1 && offsetZ === 1) {
+        } else if (offsetX == 1 && offsetZ == 1) {
             blocked = this.isBlockedNorthEast(level, x, z, size, extraFlag, collision);
         } else {
             throw new Error(`Invalid offsets: offsetX was: ${offsetX}, offsetZ was: ${offsetZ}`);
@@ -37,9 +47,9 @@ export default class StepValidator {
 
     @inline
     private isBlockedSouth(level: i32, x: i32, z: i32, size: i32, extraFlag: i32, collision: CollisionStrategy): bool {
-        if (size === 1) {
+        if (size == 1) {
             return !collision.canMove(this.flags.get(x, z - 1, level), CollisionFlag.BLOCK_SOUTH | extraFlag);
-        } else if (size === 2) {
+        } else if (size == 2) {
             return !collision.canMove(this.flags.get(x, z - 1, level), CollisionFlag.BLOCK_SOUTH_WEST | extraFlag) || !collision.canMove(this.flags.get(x + 1, z - 1, level), CollisionFlag.BLOCK_SOUTH_EAST | extraFlag);
         } else {
             if (!collision.canMove(this.flags.get(x, z - 1, level), CollisionFlag.BLOCK_SOUTH_WEST | extraFlag)) {
@@ -58,9 +68,9 @@ export default class StepValidator {
 
     @inline
     private isBlockedNorth(level: i32, x: i32, z: i32, size: i32, extraFlag: i32, collision: CollisionStrategy): bool {
-        if (size === 1) {
+        if (size == 1) {
             return !collision.canMove(this.flags.get(x, z + 1, level), CollisionFlag.BLOCK_NORTH | extraFlag);
-        } else if (size === 2) {
+        } else if (size == 2) {
             return !collision.canMove(this.flags.get(x, z + 2, level), CollisionFlag.BLOCK_NORTH_WEST | extraFlag) || !collision.canMove(this.flags.get(x + 1, z + 2, level), CollisionFlag.BLOCK_NORTH_EAST | extraFlag);
         } else {
             if (!collision.canMove(this.flags.get(x, z + size, level), CollisionFlag.BLOCK_NORTH_WEST | extraFlag)) {
@@ -79,9 +89,9 @@ export default class StepValidator {
 
     @inline
     private isBlockedWest(level: i32, x: i32, z: i32, size: i32, extraFlag: i32, collision: CollisionStrategy): bool {
-        if (size === 1) {
+        if (size == 1) {
             return !collision.canMove(this.flags.get(x - 1, z, level), CollisionFlag.BLOCK_WEST | extraFlag);
-        } else if (size === 2) {
+        } else if (size == 2) {
             return !collision.canMove(this.flags.get(x - 1, z, level), CollisionFlag.BLOCK_SOUTH_WEST | extraFlag) || !collision.canMove(this.flags.get(x - 1, z + 1, level), CollisionFlag.BLOCK_NORTH_WEST | extraFlag);
         } else {
             if (!collision.canMove(this.flags.get(x - 1, z, level), CollisionFlag.BLOCK_SOUTH_WEST | extraFlag)) {
@@ -100,9 +110,9 @@ export default class StepValidator {
 
     @inline
     private isBlockedEast(level: i32, x: i32, z: i32, size: i32, extraFlag: i32, collision: CollisionStrategy): bool {
-        if (size === 1) {
+        if (size == 1) {
             return !collision.canMove(this.flags.get(x + 1, z, level), CollisionFlag.BLOCK_EAST | extraFlag);
-        } else if (size === 2) {
+        } else if (size == 2) {
             return !collision.canMove(this.flags.get(x + 2, z, level), CollisionFlag.BLOCK_SOUTH_EAST | extraFlag) || !collision.canMove(this.flags.get(x + 2, z + 1, level), CollisionFlag.BLOCK_NORTH_EAST | extraFlag);
         } else {
             if (!collision.canMove(this.flags.get(x + size, z, level), CollisionFlag.BLOCK_SOUTH_EAST | extraFlag)) {
@@ -121,13 +131,13 @@ export default class StepValidator {
 
     @inline
     private isBlockedSouthWest(level: i32, x: i32, z: i32, size: i32, extraFlag: i32, collision: CollisionStrategy): bool {
-        if (size === 1) {
+        if (size == 1) {
             return (
                 !collision.canMove(this.flags.get(x - 1, z - 1, level), CollisionFlag.BLOCK_SOUTH_WEST | extraFlag) ||
                 !collision.canMove(this.flags.get(x - 1, z, level), CollisionFlag.BLOCK_WEST | extraFlag) ||
                 !collision.canMove(this.flags.get(x, z - 1, level), CollisionFlag.BLOCK_SOUTH | extraFlag)
             );
-        } else if (size === 2) {
+        } else if (size == 2) {
             return (
                 !collision.canMove(this.flags.get(x - 1, z, level), CollisionFlag.BLOCK_NORTH_AND_SOUTH_EAST | extraFlag) ||
                 !collision.canMove(this.flags.get(x - 1, z - 1, level), CollisionFlag.BLOCK_SOUTH_WEST | extraFlag) ||
@@ -150,13 +160,13 @@ export default class StepValidator {
 
     @inline
     private isBlockedNorthWest(level: i32, x: i32, z: i32, size: i32, extraFlag: i32, collision: CollisionStrategy): bool {
-        if (size === 1) {
+        if (size == 1) {
             return (
                 !collision.canMove(this.flags.get(x - 1, z + 1, level), CollisionFlag.BLOCK_NORTH_WEST | extraFlag) ||
                 !collision.canMove(this.flags.get(x - 1, z, level), CollisionFlag.BLOCK_WEST | extraFlag) ||
                 !collision.canMove(this.flags.get(x, z + 1, level), CollisionFlag.BLOCK_NORTH | extraFlag)
             );
-        } else if (size === 2) {
+        } else if (size == 2) {
             return (
                 !collision.canMove(this.flags.get(x - 1, z + 1, level), CollisionFlag.BLOCK_NORTH_AND_SOUTH_EAST | extraFlag) ||
                 !collision.canMove(this.flags.get(x - 1, z + 2, level), CollisionFlag.BLOCK_NORTH_WEST | extraFlag) ||
@@ -179,13 +189,13 @@ export default class StepValidator {
 
     @inline
     private isBlockedSouthEast(level: i32, x: i32, z: i32, size: i32, extraFlag: i32, collision: CollisionStrategy): bool {
-        if (size === 1) {
+        if (size == 1) {
             return (
                 !collision.canMove(this.flags.get(x + 1, z - 1, level), CollisionFlag.BLOCK_SOUTH_EAST | extraFlag) ||
                 !collision.canMove(this.flags.get(x + 1, z, level), CollisionFlag.BLOCK_EAST | extraFlag) ||
                 !collision.canMove(this.flags.get(x, z - 1, level), CollisionFlag.BLOCK_SOUTH | extraFlag)
             );
-        } else if (size === 2) {
+        } else if (size == 2) {
             return (
                 !collision.canMove(this.flags.get(x + 1, z - 1, level), CollisionFlag.BLOCK_NORTH_EAST_AND_WEST | extraFlag) ||
                 !collision.canMove(this.flags.get(x + 2, z - 1, level), CollisionFlag.BLOCK_SOUTH_EAST | extraFlag) ||
@@ -205,13 +215,13 @@ export default class StepValidator {
 
     @inline
     private isBlockedNorthEast(level: i32, x: i32, z: i32, size: i32, extraFlag: i32, collision: CollisionStrategy): bool {
-        if (size === 1) {
+        if (size == 1) {
             return (
                 !collision.canMove(this.flags.get(x + 1, z + 1, level), CollisionFlag.BLOCK_NORTH_EAST | extraFlag) ||
                 !collision.canMove(this.flags.get(x + 1, z, level), CollisionFlag.BLOCK_EAST | extraFlag) ||
                 !collision.canMove(this.flags.get(x, z + 1, level), CollisionFlag.BLOCK_NORTH | extraFlag)
             );
-        } else if (size === 2) {
+        } else if (size == 2) {
             return (
                 !collision.canMove(this.flags.get(x + 1, z + 2, level), CollisionFlag.BLOCK_SOUTH_EAST_AND_WEST | extraFlag) ||
                 !collision.canMove(this.flags.get(x + 2, z + 2, level), CollisionFlag.BLOCK_NORTH_EAST | extraFlag) ||

@@ -45,18 +45,18 @@ export default class PathFinder {
     // prettier-ignore
     @inline
     findPath(
-        level: i32,
+        level: i8,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i32,
-        destWidth: i32,
-        destHeight: i32,
-        angle: i32,
-        shape: i32,
+        srcSize: i8,
+        destWidth: i8,
+        destHeight: i8,
+        angle: i8,
+        shape: i8,
         moveNear: bool,
-        blockAccessFlags: i32,
+        blockAccessFlags: i8,
         maxWaypoints: i32,
         collision: CollisionStrategy
     ): StaticArray<i32> {
@@ -79,20 +79,20 @@ export default class PathFinder {
         this.appendDirection(localSrcX, localSrcZ, PathFinder.DEFAULT_SRC_DIRECTION_VALUE, 0);
 
         let pathFound: bool;
-        if (srcSize === 1) {
+        if (srcSize == 1) {
             pathFound = this.findPath1(baseX, baseZ, level, localDestX, localDestZ, destWidth, destHeight, srcSize, angle, shape, blockAccessFlags, collision);
-        } else if (srcSize === 2) {
+        } else if (srcSize == 2) {
             pathFound = this.findPath2(baseX, baseZ, level, localDestX, localDestZ, destWidth, destHeight, srcSize, angle, shape, blockAccessFlags, collision);
         } else {
             pathFound = this.findPathN(baseX, baseZ, level, localDestX, localDestZ, destWidth, destHeight, srcSize, angle, shape, blockAccessFlags, collision);
         }
         if (!pathFound) {
             if (!moveNear) {
-                return PathFinder.EMPTY; // Route.FAILED;
+                return PathFinder.EMPTY;
             }
             const foundApproachPoint: bool = this.findClosestApproachPoint(localDestX, localDestZ, RotationUtils.rotate(angle, destWidth, destHeight), RotationUtils.rotate(angle, destHeight, destWidth));
             if (!foundApproachPoint) {
-                return PathFinder.EMPTY; // Route.FAILED;
+                return PathFinder.EMPTY;
             }
         }
         const waypoints: i32[] = [];
@@ -100,24 +100,24 @@ export default class PathFinder {
         let currDir: i32 = -1;
 
         for (let index: i32 = 0; index < this.directions.length; index++) {
-            if (this.currLocalX === localSrcX && this.currLocalZ === localSrcZ) {
+            if (this.currLocalX == localSrcX && this.currLocalZ == localSrcZ) {
                 break;
             }
-            if (currDir !== nextDir) {
+            if (currDir != nextDir) {
                 currDir = nextDir;
                 if (waypoints.length >= maxWaypoints) {
                     waypoints.pop();
                 }
                 waypoints.unshift(((baseZ + this.currLocalZ) & 0x3fff) | (((baseX + this.currLocalX) & 0x3fff) << 14) | ((level & 0x3) << 28));
             }
-            if ((currDir & DirectionFlag.EAST) !== 0) {
+            if ((currDir & DirectionFlag.EAST) != 0) {
                 this.currLocalX++;
-            } else if ((currDir & DirectionFlag.WEST) !== 0) {
+            } else if ((currDir & DirectionFlag.WEST) != 0) {
                 this.currLocalX--;
             }
-            if ((currDir & DirectionFlag.NORTH) !== 0) {
+            if ((currDir & DirectionFlag.NORTH) != 0) {
                 this.currLocalZ++;
-            } else if ((currDir & DirectionFlag.SOUTH) !== 0) {
+            } else if ((currDir & DirectionFlag.SOUTH) != 0) {
                 this.currLocalZ--;
             }
             nextDir = unchecked(this.directions[this.localIndex(this.currLocalX, this.currLocalZ)]);
@@ -134,15 +134,15 @@ export default class PathFinder {
     private findPath1(
         baseX: i32,
         baseZ: i32,
-        level: i32,
+        level: i8,
         localDestX: i32,
         localDestZ: i32,
-        destWidth: i32,
-        destHeight: i32,
-        srcSize: i32,
-        angle: i32,
-        shape: i32,
-        blockAccessFlags: i32,
+        destWidth: i8,
+        destHeight: i8,
+        srcSize: i8,
+        angle: i8,
+        shape: i8,
+        blockAccessFlags: i8,
         collision: CollisionStrategy
     ): bool {
         let x: i32;
@@ -151,7 +151,7 @@ export default class PathFinder {
         let dirFlag: i32;
         const relativeSearchSize: i32 = this.searchMapSize - 1;
 
-        while (this.bufWriterIndex !== this.bufReaderIndex) {
+        while (this.bufWriterIndex != this.bufReaderIndex) {
             this.currLocalX = unchecked(this.validLocalX[this.bufReaderIndex]);
             this.currLocalZ = unchecked(this.validLocalZ[this.bufReaderIndex]);
             this.bufReaderIndex = (this.bufReaderIndex + 1) & (this.ringBufferSize - 1);
@@ -168,7 +168,7 @@ export default class PathFinder {
             z = this.currLocalZ;
             clipFlag = CollisionFlag.BLOCK_WEST;
             dirFlag = DirectionFlag.EAST;
-            if (this.currLocalX > 0 && unchecked(this.directions[this.localIndex(x, z)]) === 0 && collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), clipFlag)) {
+            if (this.currLocalX > 0 && unchecked(this.directions[this.localIndex(x, z)]) == 0 && collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), clipFlag)) {
                 this.appendDirection(x, z, dirFlag, nextDistance);
             }
 
@@ -177,7 +177,7 @@ export default class PathFinder {
             z = this.currLocalZ;
             clipFlag = CollisionFlag.BLOCK_EAST;
             dirFlag = DirectionFlag.WEST;
-            if (this.currLocalX < relativeSearchSize && unchecked(this.directions[this.localIndex(x, z)]) === 0 && collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), clipFlag)) {
+            if (this.currLocalX < relativeSearchSize && unchecked(this.directions[this.localIndex(x, z)]) == 0 && collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), clipFlag)) {
                 this.appendDirection(x, z, dirFlag, nextDistance);
             }
 
@@ -186,7 +186,7 @@ export default class PathFinder {
             z = this.currLocalZ - 1;
             clipFlag = CollisionFlag.BLOCK_SOUTH;
             dirFlag = DirectionFlag.NORTH;
-            if (this.currLocalZ > 0 && unchecked(this.directions[this.localIndex(x, z)]) === 0 && collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), clipFlag)) {
+            if (this.currLocalZ > 0 && unchecked(this.directions[this.localIndex(x, z)]) == 0 && collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), clipFlag)) {
                 this.appendDirection(x, z, dirFlag, nextDistance);
             }
 
@@ -195,7 +195,7 @@ export default class PathFinder {
             z = this.currLocalZ + 1;
             clipFlag = CollisionFlag.BLOCK_NORTH;
             dirFlag = DirectionFlag.SOUTH;
-            if (this.currLocalZ < relativeSearchSize && unchecked(this.directions[this.localIndex(x, z)]) === 0 && collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), clipFlag)) {
+            if (this.currLocalZ < relativeSearchSize && unchecked(this.directions[this.localIndex(x, z)]) == 0 && collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), clipFlag)) {
                 this.appendDirection(x, z, dirFlag, nextDistance);
             }
 
@@ -206,7 +206,7 @@ export default class PathFinder {
             if (
                 this.currLocalX > 0 &&
                 this.currLocalZ > 0 &&
-                unchecked(this.directions[this.localIndex(x, z)] === 0) &&
+                unchecked(this.directions[this.localIndex(x, z)] == 0) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), CollisionFlag.BLOCK_SOUTH_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, this.currLocalZ, level), CollisionFlag.BLOCK_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX, z, level), CollisionFlag.BLOCK_SOUTH)
@@ -221,7 +221,7 @@ export default class PathFinder {
             if (
                 this.currLocalX < relativeSearchSize &&
                 this.currLocalZ > 0 &&
-                unchecked(this.directions[this.localIndex(x, z)] === 0) &&
+                unchecked(this.directions[this.localIndex(x, z)] == 0) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), CollisionFlag.BLOCK_SOUTH_EAST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, this.currLocalZ, level), CollisionFlag.BLOCK_EAST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX, z, level), CollisionFlag.BLOCK_SOUTH)
@@ -236,7 +236,7 @@ export default class PathFinder {
             if (
                 this.currLocalX > 0 &&
                 this.currLocalZ < relativeSearchSize &&
-                unchecked(this.directions[this.localIndex(x, z)] === 0) &&
+                unchecked(this.directions[this.localIndex(x, z)] == 0) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), CollisionFlag.BLOCK_NORTH_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, this.currLocalZ, level), CollisionFlag.BLOCK_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX, z, level), CollisionFlag.BLOCK_NORTH)
@@ -251,7 +251,7 @@ export default class PathFinder {
             if (
                 this.currLocalX < relativeSearchSize &&
                 this.currLocalZ < relativeSearchSize &&
-                unchecked(this.directions[this.localIndex(x, z)] === 0) &&
+                unchecked(this.directions[this.localIndex(x, z)] == 0) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), CollisionFlag.BLOCK_NORTH_EAST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, this.currLocalZ, level), CollisionFlag.BLOCK_EAST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX, z, level), CollisionFlag.BLOCK_NORTH)
@@ -267,15 +267,15 @@ export default class PathFinder {
     private findPath2(
         baseX: i32,
         baseZ: i32,
-        level: i32,
+        level: i8,
         localDestX: i32,
         localDestZ: i32,
-        destWidth: i32,
-        destHeight: i32,
-        srcSize: i32,
-        angle: i32,
-        shape: i32,
-        blockAccessFlags: i32,
+        destWidth: i8,
+        destHeight: i8,
+        srcSize: i8,
+        angle: i8,
+        shape: i8,
+        blockAccessFlags: i8,
         collision: CollisionStrategy
     ): bool {
         let x: i32;
@@ -283,7 +283,7 @@ export default class PathFinder {
         let dirFlag: i32;
         const relativeSearchSize: i32 = this.searchMapSize - 2;
 
-        while (this.bufWriterIndex !== this.bufReaderIndex) {
+        while (this.bufWriterIndex != this.bufReaderIndex) {
             unchecked(this.currLocalX = this.validLocalX[this.bufReaderIndex]);
             unchecked(this.currLocalZ = this.validLocalZ[this.bufReaderIndex]);
             this.bufReaderIndex = (this.bufReaderIndex + 1) & (this.ringBufferSize - 1);
@@ -301,7 +301,7 @@ export default class PathFinder {
             dirFlag = DirectionFlag.EAST;
             if (
                 this.currLocalX > 0 &&
-                unchecked(this.directions[this.localIndex(x, z)] === 0) &&
+                unchecked(this.directions[this.localIndex(x, z)] == 0) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), CollisionFlag.BLOCK_SOUTH_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, this.currLocalZ + 1, level), CollisionFlag.BLOCK_NORTH_WEST)
             ) {
@@ -314,7 +314,7 @@ export default class PathFinder {
             dirFlag = DirectionFlag.WEST;
             if (
                 this.currLocalX < relativeSearchSize &&
-                unchecked(this.directions[this.localIndex(x, z)] === 0) &&
+                unchecked(this.directions[this.localIndex(x, z)] == 0) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + 2, z, level), CollisionFlag.BLOCK_SOUTH_EAST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + 2, this.currLocalZ + 1, level), CollisionFlag.BLOCK_NORTH_EAST)
             ) {
@@ -327,7 +327,7 @@ export default class PathFinder {
             dirFlag = DirectionFlag.NORTH;
             if (
                 this.currLocalZ > 0 &&
-                unchecked(this.directions[this.localIndex(x, z)] === 0) &&
+                unchecked(this.directions[this.localIndex(x, z)] == 0) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), CollisionFlag.BLOCK_SOUTH_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + 1, z, level), CollisionFlag.BLOCK_SOUTH_EAST)
             ) {
@@ -340,7 +340,7 @@ export default class PathFinder {
             dirFlag = DirectionFlag.SOUTH;
             if (
                 this.currLocalZ < relativeSearchSize &&
-                unchecked(this.directions[this.localIndex(x, z)] === 0) &&
+                unchecked(this.directions[this.localIndex(x, z)] == 0) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, this.currLocalZ + 2, level), CollisionFlag.BLOCK_NORTH_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + 1, this.currLocalZ + 2, level), CollisionFlag.BLOCK_NORTH_EAST)
             ) {
@@ -354,7 +354,7 @@ export default class PathFinder {
             if (
                 this.currLocalX > 0 &&
                 this.currLocalZ > 0 &&
-                unchecked(this.directions[this.localIndex(x, z)] === 0) &&
+                unchecked(this.directions[this.localIndex(x, z)] == 0) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, this.currLocalZ, level), CollisionFlag.BLOCK_NORTH_AND_SOUTH_EAST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), CollisionFlag.BLOCK_SOUTH_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX, z, level), CollisionFlag.BLOCK_NORTH_EAST_AND_WEST)
@@ -369,7 +369,7 @@ export default class PathFinder {
             if (
                 this.currLocalX < relativeSearchSize &&
                 this.currLocalZ > 0 &&
-                unchecked(this.directions[this.localIndex(x, z)] === 0) &&
+                unchecked(this.directions[this.localIndex(x, z)] == 0) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), CollisionFlag.BLOCK_NORTH_EAST_AND_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + 2, z, level), CollisionFlag.BLOCK_SOUTH_EAST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + 2, this.currLocalZ, level), CollisionFlag.BLOCK_NORTH_AND_SOUTH_WEST)
@@ -384,7 +384,7 @@ export default class PathFinder {
             if (
                 this.currLocalX > 0 &&
                 this.currLocalZ < relativeSearchSize &&
-                unchecked(this.directions[this.localIndex(x, z)] === 0) &&
+                unchecked(this.directions[this.localIndex(x, z)] == 0) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), CollisionFlag.BLOCK_NORTH_AND_SOUTH_EAST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, this.currLocalZ + 2, level), CollisionFlag.BLOCK_NORTH_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX, this.currLocalZ + 2, level), CollisionFlag.BLOCK_SOUTH_EAST_AND_WEST)
@@ -399,7 +399,7 @@ export default class PathFinder {
             if (
                 this.currLocalX < relativeSearchSize &&
                 this.currLocalZ < relativeSearchSize &&
-                unchecked(this.directions[this.localIndex(x, z)] === 0) &&
+                unchecked(this.directions[this.localIndex(x, z)] == 0) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, this.currLocalZ + 2, level), CollisionFlag.BLOCK_SOUTH_EAST_AND_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + 2, this.currLocalZ + 2, level), CollisionFlag.BLOCK_NORTH_EAST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + 2, z, level), CollisionFlag.BLOCK_NORTH_AND_SOUTH_WEST)
@@ -415,15 +415,15 @@ export default class PathFinder {
     private findPathN(
         baseX: i32,
         baseZ: i32,
-        level: i32,
+        level: i8,
         localDestX: i32,
         localDestZ: i32,
-        destWidth: i32,
-        destHeight: i32,
-        srcSize: i32,
-        angle: i32,
-        shape: i32,
-        blockAccessFlags: i32,
+        destWidth: i8,
+        destHeight: i8,
+        srcSize: i8,
+        angle: i8,
+        shape: i8,
+        blockAccessFlags: i8,
         collision: CollisionStrategy
     ): bool {
         let x: i32;
@@ -431,7 +431,7 @@ export default class PathFinder {
         let dirFlag: i32;
         const relativeSearchSize: i32 = this.searchMapSize - srcSize;
 
-        while (this.bufWriterIndex !== this.bufReaderIndex) {
+        while (this.bufWriterIndex != this.bufReaderIndex) {
             unchecked(this.currLocalX = this.validLocalX[this.bufReaderIndex]);
             unchecked(this.currLocalZ = this.validLocalZ[this.bufReaderIndex]);
             this.bufReaderIndex = (this.bufReaderIndex + 1) & (this.ringBufferSize - 1);
@@ -449,7 +449,7 @@ export default class PathFinder {
             dirFlag = DirectionFlag.EAST;
             if (
                 this.currLocalX > 0 &&
-                unchecked(this.directions[this.localIndex(x, z)]) === 0 &&
+                unchecked(this.directions[this.localIndex(x, z)]) == 0 &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), CollisionFlag.BLOCK_SOUTH_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, this.currLocalZ + srcSize - 1, level), CollisionFlag.BLOCK_NORTH_WEST)
             ) {
@@ -472,7 +472,7 @@ export default class PathFinder {
             dirFlag = DirectionFlag.WEST;
             if (
                 this.currLocalX < relativeSearchSize &&
-                unchecked(this.directions[this.localIndex(x, z)]) === 0 &&
+                unchecked(this.directions[this.localIndex(x, z)]) == 0 &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + srcSize, z, level), CollisionFlag.BLOCK_SOUTH_EAST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + srcSize, this.currLocalZ + srcSize - 1, level), CollisionFlag.BLOCK_NORTH_EAST)
             ) {
@@ -495,7 +495,7 @@ export default class PathFinder {
             dirFlag = DirectionFlag.NORTH;
             if (
                 this.currLocalZ > 0 &&
-                unchecked(this.directions[this.localIndex(x, z)]) === 0 &&
+                unchecked(this.directions[this.localIndex(x, z)]) == 0 &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), CollisionFlag.BLOCK_SOUTH_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + srcSize - 1, z, level), CollisionFlag.BLOCK_SOUTH_EAST)
             ) {
@@ -518,7 +518,7 @@ export default class PathFinder {
             dirFlag = DirectionFlag.SOUTH;
             if (
                 this.currLocalZ < relativeSearchSize &&
-                unchecked(this.directions[this.localIndex(x, z)]) === 0 &&
+                unchecked(this.directions[this.localIndex(x, z)]) == 0 &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, x, this.currLocalZ + srcSize, level), CollisionFlag.BLOCK_NORTH_WEST) &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + srcSize - 1, this.currLocalZ + srcSize, level), CollisionFlag.BLOCK_NORTH_EAST)
             ) {
@@ -539,7 +539,7 @@ export default class PathFinder {
             x = this.currLocalX - 1;
             z = this.currLocalZ - 1;
             dirFlag = DirectionFlag.NORTH_EAST;
-            if (this.currLocalX > 0 && this.currLocalZ > 0 && unchecked(this.directions[this.localIndex(x, z)]) === 0 && collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), CollisionFlag.BLOCK_SOUTH_WEST)) {
+            if (this.currLocalX > 0 && this.currLocalZ > 0 && unchecked(this.directions[this.localIndex(x, z)]) == 0 && collision.canMove(this.collisionFlag(baseX, baseZ, x, z, level), CollisionFlag.BLOCK_SOUTH_WEST)) {
                 const clipFlag1: i32 = CollisionFlag.BLOCK_NORTH_AND_SOUTH_EAST;
                 const clipFlag2: i32 = CollisionFlag.BLOCK_NORTH_EAST_AND_WEST;
                 let blocked: bool = false;
@@ -558,7 +558,7 @@ export default class PathFinder {
             x = this.currLocalX + 1;
             z = this.currLocalZ - 1;
             dirFlag = DirectionFlag.NORTH_WEST;
-            if (this.currLocalX < relativeSearchSize && this.currLocalZ > 0 && unchecked(this.directions[this.localIndex(x, z)]) === 0 && collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + srcSize, z, level), CollisionFlag.BLOCK_SOUTH_EAST)) {
+            if (this.currLocalX < relativeSearchSize && this.currLocalZ > 0 && unchecked(this.directions[this.localIndex(x, z)]) == 0 && collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + srcSize, z, level), CollisionFlag.BLOCK_SOUTH_EAST)) {
                 const clipFlag1: i32 = CollisionFlag.BLOCK_NORTH_AND_SOUTH_WEST;
                 const clipFlag2: i32 = CollisionFlag.BLOCK_NORTH_EAST_AND_WEST;
                 let blocked: bool = false;
@@ -580,7 +580,7 @@ export default class PathFinder {
             x = this.currLocalX - 1;
             z = this.currLocalZ + 1;
             dirFlag = DirectionFlag.SOUTH_EAST;
-            if (this.currLocalX > 0 && this.currLocalZ < relativeSearchSize && unchecked(this.directions[this.localIndex(x, z)]) === 0 && collision.canMove(this.collisionFlag(baseX, baseZ, x, this.currLocalZ + srcSize, level), CollisionFlag.BLOCK_NORTH_WEST)) {
+            if (this.currLocalX > 0 && this.currLocalZ < relativeSearchSize && unchecked(this.directions[this.localIndex(x, z)]) == 0 && collision.canMove(this.collisionFlag(baseX, baseZ, x, this.currLocalZ + srcSize, level), CollisionFlag.BLOCK_NORTH_WEST)) {
                 const clipFlag1: i32 = CollisionFlag.BLOCK_NORTH_AND_SOUTH_EAST;
                 const clipFlag2: i32 = CollisionFlag.BLOCK_SOUTH_EAST_AND_WEST;
                 let blocked: bool = false;
@@ -605,7 +605,7 @@ export default class PathFinder {
             if (
                 this.currLocalX < relativeSearchSize &&
                 this.currLocalZ < relativeSearchSize &&
-                unchecked(this.directions[this.localIndex(x, z)]) === 0 &&
+                unchecked(this.directions[this.localIndex(x, z)]) == 0 &&
                 collision.canMove(this.collisionFlag(baseX, baseZ, this.currLocalX + srcSize, this.currLocalZ + srcSize, level), CollisionFlag.BLOCK_NORTH_EAST)
             ) {
                 const clipFlag1: i32 = CollisionFlag.BLOCK_SOUTH_EAST_AND_WEST;
@@ -653,7 +653,7 @@ export default class PathFinder {
                     dz = z - (height + localDestZ - 1);
                 }
                 const cost: i32 = dx * dx + dz * dz;
-                if (cost < lowestCost || (cost === lowestCost && maxAlternativePath > unchecked(this.distances[this.localIndex(x, z)]))) {
+                if (cost < lowestCost || (cost == lowestCost && maxAlternativePath > unchecked(this.distances[this.localIndex(x, z)]))) {
                     this.currLocalX = x;
                     this.currLocalZ = z;
                     lowestCost = cost;
@@ -661,7 +661,7 @@ export default class PathFinder {
                 }
             }
         }
-        return lowestCost !== PathFinder.MAX_ALTERNATIVE_ROUTE_LOWEST_COST;
+        return lowestCost != PathFinder.MAX_ALTERNATIVE_ROUTE_LOWEST_COST;
     }
 
     @inline

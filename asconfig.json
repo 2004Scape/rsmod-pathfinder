@@ -1,7 +1,7 @@
 {
   "options": {
     "bindings": "esm",
-    "outFile": "dist/rsmod.wasm",
+    "outFile": "dist/rsmod-pathfinder.wasm",
     "textFile": "src/rsmod.wat"
   },
   "targets": {

@@ -15,7 +15,7 @@ export default class CollisionFlagMap {
         return (x & 0x7) | ((z & 0x7) << 3);
     }
 
-    readonly flags: StaticArray<StaticArray<i32> | null> = new StaticArray(CollisionFlagMap.TOTAL_ZONE_COUNT);
+    private readonly flags: StaticArray<StaticArray<i32> | null> = new StaticArray(CollisionFlagMap.TOTAL_ZONE_COUNT);
 
     get(absoluteX: i32, absoluteZ: i32, level: i32): i32 {
         const tileIndex: i32 = CollisionFlagMap.tileIndex(absoluteX, absoluteZ);
@@ -79,6 +79,6 @@ export default class CollisionFlagMap {
     }
 
     isFlagged(x: i32, z: i32, level: i32, masks: i32): bool {
-        return (this.get(x, z, level) & masks) !== CollisionFlag.OPEN;
+        return (this.get(x, z, level) & masks) != CollisionFlag.OPEN;
     }
 }

@@ -14,19 +14,19 @@ export default class RectangleBoundaryUtils {
         const east: i32 = destX + destWidth - 1;
         const north: i32 = destZ + destHeight - 1;
 
-        if (srcX === destX - 1 && srcZ >= destZ && srcZ <= north && (flags.get(srcX, srcZ, level) & CollisionFlag.WALL_EAST) === 0 && (blockAccessFlags & BlockAccessFlag.BLOCK_WEST) === 0) {
+        if (srcX == destX - 1 && srcZ >= destZ && srcZ <= north && (flags.get(srcX, srcZ, level) & CollisionFlag.WALL_EAST) == 0 && (blockAccessFlags & BlockAccessFlag.BLOCK_WEST) == 0) {
             return true;
         }
 
-        if (srcX === east + 1 && srcZ >= destZ && srcZ <= north && (flags.get(srcX, srcZ, level) & CollisionFlag.WALL_WEST) === 0 && (blockAccessFlags & BlockAccessFlag.BLOCK_EAST) === 0) {
+        if (srcX == east + 1 && srcZ >= destZ && srcZ <= north && (flags.get(srcX, srcZ, level) & CollisionFlag.WALL_WEST) == 0 && (blockAccessFlags & BlockAccessFlag.BLOCK_EAST) == 0) {
             return true;
         }
 
-        if (srcZ + 1 === destZ && srcX >= destX && srcX <= east && (flags.get(srcX, srcZ, level) & CollisionFlag.WALL_NORTH) === 0 && (blockAccessFlags & BlockAccessFlag.BLOCK_SOUTH) === 0) {
+        if (srcZ + 1 == destZ && srcX >= destX && srcX <= east && (flags.get(srcX, srcZ, level) & CollisionFlag.WALL_NORTH) == 0 && (blockAccessFlags & BlockAccessFlag.BLOCK_SOUTH) == 0) {
             return true;
         }
 
-        return srcZ === north + 1 && srcX >= destX && srcX <= east && (flags.get(srcX, srcZ, level) & CollisionFlag.WALL_SOUTH) === 0 && (blockAccessFlags & BlockAccessFlag.BLOCK_NORTH) === 0;
+        return srcZ == north + 1 && srcX >= destX && srcX <= east && (flags.get(srcX, srcZ, level) & CollisionFlag.WALL_SOUTH) == 0 && (blockAccessFlags & BlockAccessFlag.BLOCK_NORTH) == 0;
     }
 
     @inline
@@ -36,35 +36,35 @@ export default class RectangleBoundaryUtils {
         const destEast: i32 = destWidth + destX;
         const destNorth: i32 = destHeight + destZ;
 
-        if (destEast === srcX && (blockAccessFlags & BlockAccessFlag.BLOCK_EAST) === CollisionFlag.OPEN) {
+        if (destEast == srcX && (blockAccessFlags & BlockAccessFlag.BLOCK_EAST) == CollisionFlag.OPEN) {
             const fromZ: i32 = <i32>Math.max(srcZ, destZ);
             const toZ: i32 = <i32>Math.min(srcNorth, destNorth);
             for (let sideZ: i32 = fromZ; sideZ < toZ; sideZ++) {
-                if ((flags.get(destEast - 1, sideZ, level) & CollisionFlag.WALL_EAST) === CollisionFlag.OPEN) {
+                if ((flags.get(destEast - 1, sideZ, level) & CollisionFlag.WALL_EAST) == CollisionFlag.OPEN) {
                     return true;
                 }
             }
-        } else if (srcEast === destX && (blockAccessFlags & BlockAccessFlag.BLOCK_WEST) === CollisionFlag.OPEN) {
+        } else if (srcEast == destX && (blockAccessFlags & BlockAccessFlag.BLOCK_WEST) == CollisionFlag.OPEN) {
             const fromZ: i32 = <i32>Math.max(srcZ, destZ);
             const toZ: i32 = <i32>Math.min(srcNorth, destNorth);
             for (let sideZ: i32 = fromZ; sideZ < toZ; sideZ++) {
-                if ((flags.get(destX, sideZ, level) & CollisionFlag.WALL_WEST) === CollisionFlag.OPEN) {
+                if ((flags.get(destX, sideZ, level) & CollisionFlag.WALL_WEST) == CollisionFlag.OPEN) {
                     return true;
                 }
             }
-        } else if (srcZ === destNorth && (blockAccessFlags & BlockAccessFlag.BLOCK_NORTH) === CollisionFlag.OPEN) {
+        } else if (srcZ == destNorth && (blockAccessFlags & BlockAccessFlag.BLOCK_NORTH) == CollisionFlag.OPEN) {
             const fromX: i32 = <i32>Math.max(srcX, destX);
             const toX: i32 = <i32>Math.min(srcEast, destEast);
             for (let sideX: i32 = fromX; sideX < toX; sideX++) {
-                if ((flags.get(sideX, destNorth - 1, level) & CollisionFlag.WALL_NORTH) === CollisionFlag.OPEN) {
+                if ((flags.get(sideX, destNorth - 1, level) & CollisionFlag.WALL_NORTH) == CollisionFlag.OPEN) {
                     return true;
                 }
             }
-        } else if (destZ === srcNorth && (blockAccessFlags & BlockAccessFlag.BLOCK_SOUTH) === CollisionFlag.OPEN) {
+        } else if (destZ == srcNorth && (blockAccessFlags & BlockAccessFlag.BLOCK_SOUTH) == CollisionFlag.OPEN) {
             const fromX: i32 = <i32>Math.max(srcX, destX);
             const toX: i32 = <i32>Math.min(srcEast, destEast);
             for (let sideX: i32 = fromX; sideX < toX; sideX++) {
-                if ((flags.get(sideX, destZ, level) & CollisionFlag.WALL_SOUTH) === CollisionFlag.OPEN) {
+                if ((flags.get(sideX, destZ, level) & CollisionFlag.WALL_SOUTH) == CollisionFlag.OPEN) {
                     return true;
                 }
             }

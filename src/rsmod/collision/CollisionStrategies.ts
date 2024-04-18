@@ -5,7 +5,7 @@ import {CollisionFlag} from '../flag/CollisionFlag';
 class Normal implements CollisionStrategy {
     @inline
     canMove(tileFlag: i32, blockFlag: i32): bool {
-        return (tileFlag & blockFlag) === CollisionFlag.OPEN;
+        return (tileFlag & blockFlag) == CollisionFlag.OPEN;
     }
 }
 
@@ -14,7 +14,7 @@ class Blocked implements CollisionStrategy {
     @inline
     canMove(tileFlag: i32, blockFlag: i32): bool {
         const flag: i32 = blockFlag & ~CollisionFlag.FLOOR;
-        return (tileFlag & flag) === 0 && (tileFlag & CollisionFlag.FLOOR) !== CollisionFlag.OPEN;
+        return (tileFlag & flag) == 0 && (tileFlag & CollisionFlag.FLOOR) != CollisionFlag.OPEN;
     }
 }
 
@@ -22,7 +22,7 @@ class Blocked implements CollisionStrategy {
 class Indoors implements CollisionStrategy {
     @inline
     canMove(tileFlag: i32, blockFlag: i32): bool {
-        return (tileFlag & blockFlag) === 0 && (tileFlag & CollisionFlag.ROOF) !== CollisionFlag.OPEN;
+        return (tileFlag & blockFlag) == 0 && (tileFlag & CollisionFlag.ROOF) != CollisionFlag.OPEN;
     }
 }
 
@@ -30,12 +30,13 @@ class Indoors implements CollisionStrategy {
 class Outdoors implements CollisionStrategy {
     @inline
     canMove(tileFlag: i32, blockFlag: i32): bool {
-        return (tileFlag & (blockFlag | CollisionFlag.ROOF)) === CollisionFlag.OPEN;
+        return (tileFlag & (blockFlag | CollisionFlag.ROOF)) == CollisionFlag.OPEN;
     }
 }
 
 @final
 class LineOfSight implements CollisionStrategy {
+    @inline
     private static readonly BLOCK_MOVEMENT: i32 =
         CollisionFlag.WALL_NORTH_WEST |
         CollisionFlag.WALL_NORTH |
@@ -47,6 +48,7 @@ class LineOfSight implements CollisionStrategy {
         CollisionFlag.WALL_WEST |
         CollisionFlag.LOC;
 
+    @inline
     private static readonly BLOCK_ROUTE: i32 =
         CollisionFlag.WALL_NORTH_WEST_ROUTE_BLOCKER |
         CollisionFlag.WALL_NORTH_ROUTE_BLOCKER |
@@ -63,7 +65,7 @@ class LineOfSight implements CollisionStrategy {
         const movementFlags: i32 = (blockFlag & LineOfSight.BLOCK_MOVEMENT) << 9;
         const routeFlags: i32 = (blockFlag & LineOfSight.BLOCK_ROUTE) >> 13;
         const finalBlockFlag: i32 = movementFlags | routeFlags;
-        return (tileFlag & finalBlockFlag) === CollisionFlag.OPEN;
+        return (tileFlag & finalBlockFlag) == CollisionFlag.OPEN;
     }
 }
 

@@ -13,14 +13,14 @@ export default class LineValidator {
     // prettier-ignore
     @inline
     hasLineOfSight(
-        level: i32,
+        level: i8,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i32,
-        destWidth: i32,
-        destHeight: i32,
+        srcSize: i8,
+        destWidth: i8,
+        destHeight: i8,
         extraFlag: i32
     ): bool {
         return this.rayCast(
@@ -45,14 +45,14 @@ export default class LineValidator {
     // prettier-ignore
     @inline
     hasLineOfWalk(
-        level: i32,
+        level: i8,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i32,
-        destWidth: i32,
-        destHeight: i32,
+        srcSize: i8,
+        destWidth: i8,
+        destHeight: i8,
         extraFlag: i32
     ): bool {
         return this.rayCast(
@@ -77,14 +77,14 @@ export default class LineValidator {
     // prettier-ignore
     @inline
     private rayCast(
-        level: i32,
+        level: i8,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i32,
-        destWidth: i32,
-        destHeight: i32,
+        srcSize: i8,
+        destWidth: i8,
+        destHeight: i8,
         flagWest: i32,
         flagEast: i32,
         flagSouth: i32,
@@ -103,7 +103,7 @@ export default class LineValidator {
         const endX: i32 = Line.coordinate(destX, srcX, destWidth);
         const endZ: i32 = Line.coordinate(destZ, srcZ, destHeight);
 
-        if (startX === endX && startZ === endZ) {
+        if (startX == endX && startZ == endZ) {
             return true;
         }
 
@@ -126,10 +126,10 @@ export default class LineValidator {
             const tangent: i32 = Line.scaleUp(deltaZ) / absoluteDeltaX;
 
             let currX: i32 = startX;
-            while (currX !== endX) {
+            while (currX != endX) {
                 currX += offsetX;
                 const currZ: i32 = Line.scaleDown(scaledZ);
-                if (los && currX === endX && currZ === endZ) {
+                if (los && currX == endX && currZ == endZ) {
                     xFlags = xFlags & ~flagProj;
                 }
                 if (this.flags.isFlagged(currX, currZ, level, xFlags)) {
@@ -139,10 +139,10 @@ export default class LineValidator {
                 scaledZ += tangent;
 
                 const nextZ: i32 = Line.scaleDown(scaledZ);
-                if (los && currX === endX && nextZ === endZ) {
+                if (los && currX == endX && nextZ == endZ) {
                     zFlags = zFlags & ~flagProj;
                 }
-                if (nextZ !== currZ && this.flags.isFlagged(currX, nextZ, level, zFlags)) {
+                if (nextZ != currZ && this.flags.isFlagged(currX, nextZ, level, zFlags)) {
                     return false;
                 }
             }
@@ -154,10 +154,10 @@ export default class LineValidator {
             const tangent: i32 = Line.scaleUp(deltaX) / absoluteDeltaZ;
 
             let currZ: i32 = startZ;
-            while (currZ !== endZ) {
+            while (currZ != endZ) {
                 currZ += offsetZ;
                 const currX: i32 = Line.scaleDown(scaledX);
-                if (los && currX === endX && currZ === endZ) {
+                if (los && currX == endX && currZ == endZ) {
                     zFlags = zFlags & ~flagProj;
                 }
                 if (this.flags.isFlagged(currX, currZ, level, zFlags)) {
@@ -167,10 +167,10 @@ export default class LineValidator {
                 scaledX += tangent;
 
                 const nextX: i32 = Line.scaleDown(scaledX);
-                if (los && nextX === endX && currZ === endZ) {
+                if (los && nextX == endX && currZ == endZ) {
                     xFlags = xFlags & ~flagProj;
                 }
-                if (nextX !== currX && this.flags.isFlagged(nextX, currZ, level, xFlags)) {
+                if (nextX != currX && this.flags.isFlagged(nextX, currZ, level, xFlags)) {
                     return false;
                 }
             }

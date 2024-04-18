@@ -15,14 +15,14 @@ export default class LinePathFinder {
     // prettier-ignore
     @inline
     lineOfSight(
-        level: i32,
+        level: i8,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i32,
-        destWidth: i32,
-        destHeight: i32,
+        srcSize: i8,
+        destWidth: i8,
+        destHeight: i8,
         extraFlag: i32
     ): StaticArray<i32> {
         return this.rayCast(
@@ -46,14 +46,14 @@ export default class LinePathFinder {
     // prettier-ignore
     @inline
     lineOfWalk(
-        level: i32,
+        level: i8,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i32,
-        destWidth: i32,
-        destHeight: i32,
+        srcSize: i8,
+        destWidth: i8,
+        destHeight: i8,
         extraFlag: i32
     ): StaticArray<i32> {
         return this.rayCast(
@@ -77,14 +77,14 @@ export default class LinePathFinder {
     // prettier-ignore
     @inline
     private rayCast(
-        level: i32,
+        level: i8,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i32,
-        destWidth: i32,
-        destHeight: i32,
+        srcSize: i8,
+        destWidth: i8,
+        destHeight: i8,
         flagWest: i32,
         flagEast: i32,
         flagSouth: i32,
@@ -96,14 +96,14 @@ export default class LinePathFinder {
         const startZ: i32 = Line.coordinate(srcZ, destZ, srcSize);
 
         if (los && this.flags.isFlagged(startX, startZ, level, flagObject)) {
-            return LinePathFinder.EMPTY; // RayCast.FAILED;
+            return LinePathFinder.EMPTY;
         }
 
         const endX: i32 = Line.coordinate(destX, srcX, destWidth);
         const endZ: i32 = Line.coordinate(destZ, srcZ, destHeight);
 
-        if (startX === endX && startZ === endZ) {
-            return LinePathFinder.EMPTY; // RayCast.EMPTY_SUCCESS;
+        if (startX == endX && startZ == endZ) {
+            return LinePathFinder.EMPTY;
         }
 
         const deltaX: i32 = endX - startX;
@@ -126,10 +126,10 @@ export default class LinePathFinder {
             const tangent: i32 = Line.scaleUp(deltaZ) / absoluteDeltaX;
 
             let currX: i32 = startX;
-            while (currX !== endX) {
+            while (currX != endX) {
                 currX += offsetX;
                 const currZ: i32 = Line.scaleDown(scaledZ);
-                if (los && currX === endX && currZ === endZ) {
+                if (los && currX == endX && currZ == endZ) {
                     xFlags = (xFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (xFlags & ~CollisionFlag.PLAYER);
                 }
                 if (this.flags.isFlagged(currX, currZ, level, xFlags)) {
@@ -138,16 +138,14 @@ export default class LinePathFinder {
                         unchecked(route[i] = coordinates[i]);
                     }
                     return route;
-                    // return new RayCast(coordinates, coordinates.length > 0, false);
                 }
                 coordinates.push(((currZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28));
-                // coordinates.push(new RouteCoordinates(currX, currZ, level));
 
                 scaledZ += tangent;
 
                 const nextZ: i32 = Line.scaleDown(scaledZ);
-                if (nextZ !== currZ) {
-                    if (los && currX === endX && nextZ === endZ) {
+                if (nextZ != currZ) {
+                    if (los && currX == endX && nextZ == endZ) {
                         zFlags = (zFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (zFlags & ~CollisionFlag.PLAYER);
                     }
                     if (this.flags.isFlagged(currX, nextZ, level, zFlags)) {
@@ -156,10 +154,8 @@ export default class LinePathFinder {
                             unchecked(route[i] = coordinates[i]);
                         }
                         return route;
-                        // return new RayCast(coordinates, coordinates.length > 0, false);
                     }
                     coordinates.push(((nextZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28));
-                    // coordinates.push(new RouteCoordinates(currX, nextZ, level));
                 }
             }
         } else {
@@ -170,10 +166,10 @@ export default class LinePathFinder {
             const tangent: i32 = Line.scaleUp(deltaX) / absoluteDeltaZ;
 
             let currZ: i32 = startZ;
-            while (currZ !== endZ) {
+            while (currZ != endZ) {
                 currZ += offsetZ;
                 const currX: i32 = Line.scaleDown(scaledX);
-                if (los && currX === endX && currZ === endZ) {
+                if (los && currX == endX && currZ == endZ) {
                     zFlags = (zFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (zFlags & ~CollisionFlag.PLAYER);
                 }
                 if (this.flags.isFlagged(currX, currZ, level, zFlags)) {
@@ -182,16 +178,14 @@ export default class LinePathFinder {
                         unchecked(route[i] = coordinates[i]);
                     }
                     return route;
-                    // return new RayCast(coordinates, coordinates.length > 0, false);
                 }
                 coordinates.push(((currZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28));
-                // coordinates.push(new RouteCoordinates(currX, currZ, level));
 
                 scaledX += tangent;
 
                 const nextX: i32 = Line.scaleDown(scaledX);
-                if (nextX !== currX) {
-                    if (los && nextX === endX && currZ === endZ) {
+                if (nextX != currX) {
+                    if (los && nextX == endX && currZ == endZ) {
                         xFlags = (xFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (xFlags & ~CollisionFlag.PLAYER);
                     }
                     if (this.flags.isFlagged(nextX, currZ, level, xFlags)) {
@@ -200,10 +194,8 @@ export default class LinePathFinder {
                             unchecked(route[i] = coordinates[i]);
                         }
                         return route;
-                        // return new RayCast(coordinates, coordinates.length > 0, false);
                     }
                     coordinates.push(((currZ) & 0x3fff) | (((nextX) & 0x3fff) << 14) | ((level & 0x3) << 28));
-                    // coordinates.push(new RouteCoordinates(nextX, currZ, level));
                 }
             }
         }
@@ -212,6 +204,5 @@ export default class LinePathFinder {
             unchecked(route[i] = coordinates[i]);
         }
         return route;
-        // return new RayCast(coordinates, false, true);
     }
 }

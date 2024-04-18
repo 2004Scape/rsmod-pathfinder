@@ -6,13 +6,14 @@ import {CollisionStrategy} from './collision/CollisionStrategy';
 
 @final
 export default class NaivePathFinder {
-    private readonly stepValidator: StepValidator;
-    private readonly cardinals: i32[][] = [
+    private static readonly DIRECTIONS: i32[][] = [
         [-1, 0], // West
         [1, 0], // East
         [0, 1], // North
         [0, -1] // South
     ];
+
+    private readonly stepValidator: StepValidator;
 
     constructor(stepValidator: StepValidator) {
         this.stepValidator = stepValidator;
@@ -21,16 +22,16 @@ export default class NaivePathFinder {
     // prettier-ignore
     @inline
     findPath(
-        level: i32,
+        level: i8,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcWidth: i32,
-        srcHeight: i32,
-        destWidth: i32,
-        destHeight: i32,
-        blockAccessFlags: i32,
+        srcWidth: i8,
+        srcHeight: i8,
+        destWidth: i8,
+        destHeight: i8,
+        blockAccessFlags: i8,
         collision: CollisionStrategy
     ): StaticArray<i32> {
         if (!(srcX >= 0 && srcX <= 0x7fff && srcZ >= 0 && srcZ <= 0x7fff)) {
@@ -58,15 +59,15 @@ export default class NaivePathFinder {
         }
         let currX: i32 = dx;
         let currZ: i32 = dz;
-        while (currX !== destX && currZ !== destZ) {
-            const dx: i32 = <i32>Math.sign(destX - currX);
-            const dz: i32 = <i32>Math.sign(destZ - currZ);
+        while (currX != destX && currZ != destZ) {
+            const dx: i8 = <i8>Math.sign(destX - currX);
+            const dz: i8 = <i8>Math.sign(destZ - currZ);
             if (this.stepValidator.canTravel(level, currX, currZ, dx, dz, srcWidth, blockAccessFlags, collision)) {
                 currX += dx;
                 currZ += dz;
-            } else if (dx !== 0 && this.stepValidator.canTravel(level, currX, currZ, dx, 0, srcWidth, blockAccessFlags, collision)) {
+            } else if (dx != 0 && this.stepValidator.canTravel(level, currX, currZ, dx, 0, srcWidth, blockAccessFlags, collision)) {
                 currX += dx;
-            } else if (dz !== 0 && this.stepValidator.canTravel(level, currX, currZ, 0, dz, srcWidth, blockAccessFlags, collision)) {
+            } else if (dz != 0 && this.stepValidator.canTravel(level, currX, currZ, 0, dz, srcWidth, blockAccessFlags, collision)) {
                 currZ += dz;
             } else {
                 /* If we can't step anywhere, exit out, we've arrived. */
@@ -98,21 +99,21 @@ export default class NaivePathFinder {
 
     @inline
     private isDiagonal(srcX: i32, srcZ: i32, srcWidth: i32, srcHeight: i32, destX: i32, destZ: i32, destWidth: i32, destHeight: i32): bool {
-        if (srcX + srcWidth === destX && srcZ + srcHeight === destZ) {
+        if (srcX + srcWidth == destX && srcZ + srcHeight == destZ) {
             return true;
         }
-        if (srcX - 1 === destX + destWidth - 1 && srcZ - 1 === destZ + destHeight - 1) {
+        if (srcX - 1 == destX + destWidth - 1 && srcZ - 1 == destZ + destHeight - 1) {
             return true;
         }
-        if (srcX + srcWidth === destX && srcZ - 1 === destZ + destHeight - 1) {
+        if (srcX + srcWidth == destX && srcZ - 1 == destZ + destHeight - 1) {
             return true;
         }
-        return srcX - 1 === destX + destWidth - 1 && srcZ + srcHeight === destZ;
+        return srcX - 1 == destX + destWidth - 1 && srcZ + srcHeight == destZ;
     }
 
     @inline
     private cardinalDestination(level: i32, srcX: i32, srcZ: i32): StaticArray<i32> {
-        const direction: i32[] = this.cardinals[<i32>Math.floor(Math.random() * this.cardinals.length)];
+        const direction: i32[] = NaivePathFinder.DIRECTIONS[<i32>Math.floor(Math.random() * NaivePathFinder.DIRECTIONS.length)];
         return StaticArray.fromArray([((srcZ + direction[1]) & 0x3fff) | (((srcX + direction[0]) & 0x3fff) << 14) | ((level & 0x3) << 28)]);
     }
 

@@ -2,8 +2,8 @@
   "name": "@2004scape/rsmod-pathfinder",
   "version": "4.2.7",
   "description": "A breadth-first search path finder.",
-  "main": "dist/rsmod.js",
-  "types": "dist/rsmod.d.ts",
+  "main": "dist/rsmod-pathfinder.js",
+  "types": "dist/rsmod-pathfinder.d.ts",
   "files": [
     "/dist"
   ],
@@ -24,7 +24,9 @@
     "rsmod",
     "pathfinder",
     "bfs",
-    "2004scape"
+    "2004scape",
+    "assemblyscript",
+    "webassembly"
   ],
   "author": "2004scape",
   "license": "ISC",
@@ -45,12 +47,12 @@
     ]
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.18.0",
-    "@typescript-eslint/parser": "^6.18.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "assemblyscript": "^0.27.27",
-    "eslint": "^8.56.0",
+    "eslint": "^8.57.0",
     "husky": "^8.0.3",
-    "prettier": "^3.1.1",
-    "typescript": "^5.3.3"
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
   }
 }
