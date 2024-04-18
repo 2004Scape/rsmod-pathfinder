@@ -140,7 +140,7 @@ export default class LinePathFinder {
                     return route;
                     // return new RayCast(coordinates, coordinates.length > 0, false);
                 }
-                coordinates.push(((currX) & 0x3fff) | (((currZ) & 0x3fff) << 14) | ((level & 0x3) << 28));
+                coordinates.push(((currZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28));
                 // coordinates.push(new RouteCoordinates(currX, currZ, level));
 
                 scaledZ += tangent;
@@ -158,7 +158,7 @@ export default class LinePathFinder {
                         return route;
                         // return new RayCast(coordinates, coordinates.length > 0, false);
                     }
-                    coordinates.push(((currX) & 0x3fff) | (((nextZ) & 0x3fff) << 14) | ((level & 0x3) << 28));
+                    coordinates.push(((nextZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28));
                     // coordinates.push(new RouteCoordinates(currX, nextZ, level));
                 }
             }
@@ -184,7 +184,7 @@ export default class LinePathFinder {
                     return route;
                     // return new RayCast(coordinates, coordinates.length > 0, false);
                 }
-                coordinates.push(((currX) & 0x3fff) | (((currZ) & 0x3fff) << 14) | ((level & 0x3) << 28));
+                coordinates.push(((currZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28));
                 // coordinates.push(new RouteCoordinates(currX, currZ, level));
 
                 scaledX += tangent;
@@ -202,7 +202,7 @@ export default class LinePathFinder {
                         return route;
                         // return new RayCast(coordinates, coordinates.length > 0, false);
                     }
-                    coordinates.push(((nextX) & 0x3fff) | (((currZ) & 0x3fff) << 14) | ((level & 0x3) << 28));
+                    coordinates.push(((currZ) & 0x3fff) | (((nextX) & 0x3fff) << 14) | ((level & 0x3) << 28));
                     // coordinates.push(new RouteCoordinates(nextX, currZ, level));
                 }
             }

@@ -51776,10 +51776,10 @@
        br $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.0
       end
       local.get $14
-      local.get $1
+      local.get $8
       i32.const 16383
       i32.and
-      local.get $8
+      local.get $1
       i32.const 16383
       i32.and
       i32.const 14
@@ -51915,10 +51915,10 @@
         br $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.0
        end
        local.get $14
-       local.get $1
+       local.get $9
        i32.const 16383
        i32.and
-       local.get $9
+       local.get $1
        i32.const 16383
        i32.and
        i32.const 14
@@ -52084,10 +52084,10 @@
        br $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.0
       end
       local.get $14
-      local.get $5
+      local.get $1
       i32.const 16383
       i32.and
-      local.get $1
+      local.get $5
       i32.const 16383
       i32.and
       i32.const 14
@@ -52223,10 +52223,10 @@
         br $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.0
        end
        local.get $14
-       local.get $11
+       local.get $1
        i32.const 16383
        i32.and
-       local.get $1
+       local.get $11
        i32.const 16383
        i32.and
        i32.const 14
@@ -52599,10 +52599,10 @@
        br $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.1
       end
       local.get $14
-      local.get $1
+      local.get $6
       i32.const 16383
       i32.and
-      local.get $6
+      local.get $1
       i32.const 16383
       i32.and
       i32.const 14
@@ -52720,10 +52720,10 @@
         br $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.1
        end
        local.get $14
-       local.get $1
+       local.get $8
        i32.const 16383
        i32.and
-       local.get $8
+       local.get $1
        i32.const 16383
        i32.and
        i32.const 14
@@ -52873,10 +52873,10 @@
        br $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.1
       end
       local.get $14
-      local.get $5
+      local.get $1
       i32.const 16383
       i32.and
-      local.get $1
+      local.get $5
       i32.const 16383
       i32.and
       i32.const 14
@@ -52994,10 +52994,10 @@
         br $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.1
        end
        local.get $14
-       local.get $7
+       local.get $1
        i32.const 16383
        i32.and
-       local.get $1
+       local.get $7
        i32.const 16383
        i32.and
        i32.const 14
