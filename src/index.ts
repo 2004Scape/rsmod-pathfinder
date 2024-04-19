@@ -551,3 +551,21 @@ function getCollisionStrategy(collision: CollisionType): CollisionStrategy {
         return CollisionStrategies.LINE_OF_SIGHT;
     }
 }
+
+// ---- EVERYTHING BELOW FOR TESTS ---- //
+
+export function __get(absoluteX: i32, absoluteZ: i32, level: i32): i32 {
+    return flags.get(absoluteX, absoluteZ, level);
+}
+
+export function __set(absoluteX: i32, absoluteZ: i32, level: i32, mask: i32): void {
+    flags.set(absoluteX, absoluteZ, level, mask);
+}
+
+export function __add(absoluteX: i32, absoluteZ: i32, level: i32, mask: i32): void {
+    flags.add(absoluteX, absoluteZ, level, mask);
+}
+
+export function __remove(absoluteX: i32, absoluteZ: i32, level: i32, mask: i32): void {
+    flags.remove(absoluteX, absoluteZ, level, mask);
+}

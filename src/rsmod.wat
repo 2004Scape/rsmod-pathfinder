@@ -1,12 +1,12 @@
 (module
  (type $0 (func (param i32) (result i32)))
  (type $1 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
- (type $2 (func (param i32 i32)))
- (type $3 (func (param i32 i32) (result i32)))
- (type $4 (func (param i32 i32 i32 i32 i32)))
+ (type $2 (func (param i32 i32 i32 i32)))
+ (type $3 (func (param i32 i32)))
+ (type $4 (func (param i32 i32) (result i32)))
  (type $5 (func (param i32 i32 i32) (result i32)))
- (type $6 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
- (type $7 (func (param i32 i32 i32 i32)))
+ (type $6 (func (param i32 i32 i32 i32 i32)))
+ (type $7 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
  (type $8 (func))
  (type $9 (func (param i32 i32 i32)))
  (type $10 (func (param i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
@@ -261,6 +261,10 @@
  (export "lineOfWalk" (func $src/index/lineOfWalk@varargs))
  (export "reached" (func $src/index/reached@varargs))
  (export "locShapeLayer" (func $src/index/locShapeLayer))
+ (export "__get" (func $src/index/__get))
+ (export "__set" (func $src/index/__set))
+ (export "__add" (func $src/index/__add))
+ (export "__remove" (func $src/index/__remove))
  (export "CollisionFlag.NULL" (global $src/rsmod/flag/CollisionFlag/CollisionFlag.NULL))
  (export "CollisionFlag.OPEN" (global $src/rsmod/flag/CollisionFlag/CollisionFlag.OPEN))
  (export "CollisionFlag.WALL_NORTH_WEST" (global $src/rsmod/flag/CollisionFlag/CollisionFlag.WALL_NORTH_WEST))
@@ -58162,6 +58166,90 @@
   i32.const 13
   call $~lib/builtins/abort
   unreachable
+ )
+ (func $src/index/__get (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$504 (result i32)
+   i32.const -1
+   global.get $src/index/flags
+   i32.load
+   local.get $0
+   i32.const 3
+   i32.shr_s
+   i32.const 2047
+   i32.and
+   local.get $1
+   i32.const 3
+   i32.shr_s
+   i32.const 2047
+   i32.and
+   i32.const 11
+   i32.shl
+   i32.or
+   local.get $2
+   i32.const 3
+   i32.and
+   i32.const 22
+   i32.shl
+   i32.or
+   i32.const 2
+   i32.shl
+   i32.add
+   i32.load
+   local.tee $2
+   i32.eqz
+   br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$504
+   drop
+   i32.const -1
+   local.get $0
+   i32.const 7
+   i32.and
+   local.get $1
+   i32.const 7
+   i32.and
+   i32.const 3
+   i32.shl
+   i32.or
+   local.tee $0
+   local.get $2
+   i32.const 20
+   i32.sub
+   i32.load offset=16
+   i32.const 2
+   i32.shr_u
+   i32.ge_s
+   br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$504
+   drop
+   local.get $2
+   local.get $0
+   i32.const 2
+   i32.shl
+   i32.add
+   i32.load
+  end
+ )
+ (func $src/index/__set (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32)
+  global.get $src/index/flags
+  local.get $0
+  local.get $1
+  local.get $2
+  local.get $3
+  call $src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#set
+ )
+ (func $src/index/__add (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32)
+  global.get $src/index/flags
+  local.get $0
+  local.get $1
+  local.get $2
+  local.get $3
+  call $src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#add
+ )
+ (func $src/index/__remove (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32)
+  global.get $src/index/flags
+  local.get $0
+  local.get $1
+  local.get $2
+  local.get $3
+  call $src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#remove
  )
  (func $~setArgumentsLength (param $0 i32)
   local.get $0
