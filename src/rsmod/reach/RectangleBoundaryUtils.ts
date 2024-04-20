@@ -1,6 +1,6 @@
 import CollisionFlagMap from '../collision/CollisionFlagMap';
 import {CollisionFlag} from '../flag/CollisionFlag';
-import BlockAccessFlag from '../flag/BlockAccessFlag';
+import {BlockAccessFlag} from '../flag/BlockAccessFlag';
 
 @final
 export default class RectangleBoundaryUtils {

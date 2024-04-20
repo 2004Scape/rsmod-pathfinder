@@ -13,14 +13,14 @@ export default class LineValidator {
     // prettier-ignore
     @inline
     hasLineOfSight(
-        level: i8,
+        level: i32,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i8,
-        destWidth: i8,
-        destHeight: i8,
+        srcSize: i32,
+        destWidth: i32,
+        destHeight: i32,
         extraFlag: i32
     ): bool {
         return this.rayCast(
@@ -45,14 +45,14 @@ export default class LineValidator {
     // prettier-ignore
     @inline
     hasLineOfWalk(
-        level: i8,
+        level: i32,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i8,
-        destWidth: i8,
-        destHeight: i8,
+        srcSize: i32,
+        destWidth: i32,
+        destHeight: i32,
         extraFlag: i32
     ): bool {
         return this.rayCast(
@@ -77,14 +77,14 @@ export default class LineValidator {
     // prettier-ignore
     @inline
     private rayCast(
-        level: i8,
+        level: i32,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i8,
-        destWidth: i8,
-        destHeight: i8,
+        srcSize: i32,
+        destWidth: i32,
+        destHeight: i32,
         flagWest: i32,
         flagEast: i32,
         flagSouth: i32,

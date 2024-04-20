@@ -45,18 +45,18 @@ export default class PathFinder {
     // prettier-ignore
     @inline
     findPath(
-        level: i8,
+        level: i32,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i8,
-        destWidth: i8,
-        destHeight: i8,
-        angle: i8,
-        shape: i8,
+        srcSize: i32,
+        destWidth: i32,
+        destHeight: i32,
+        angle: i32,
+        shape: i32,
         moveNear: bool,
-        blockAccessFlags: i8,
+        blockAccessFlags: i32,
         maxWaypoints: i32,
         collision: CollisionStrategy
     ): StaticArray<i32> {
@@ -134,15 +134,15 @@ export default class PathFinder {
     private findPath1(
         baseX: i32,
         baseZ: i32,
-        level: i8,
+        level: i32,
         localDestX: i32,
         localDestZ: i32,
-        destWidth: i8,
-        destHeight: i8,
-        srcSize: i8,
-        angle: i8,
-        shape: i8,
-        blockAccessFlags: i8,
+        destWidth: i32,
+        destHeight: i32,
+        srcSize: i32,
+        angle: i32,
+        shape: i32,
+        blockAccessFlags: i32,
         collision: CollisionStrategy
     ): bool {
         let x: i32;
@@ -267,15 +267,15 @@ export default class PathFinder {
     private findPath2(
         baseX: i32,
         baseZ: i32,
-        level: i8,
+        level: i32,
         localDestX: i32,
         localDestZ: i32,
-        destWidth: i8,
-        destHeight: i8,
-        srcSize: i8,
-        angle: i8,
-        shape: i8,
-        blockAccessFlags: i8,
+        destWidth: i32,
+        destHeight: i32,
+        srcSize: i32,
+        angle: i32,
+        shape: i32,
+        blockAccessFlags: i32,
         collision: CollisionStrategy
     ): bool {
         let x: i32;
@@ -415,15 +415,15 @@ export default class PathFinder {
     private findPathN(
         baseX: i32,
         baseZ: i32,
-        level: i8,
+        level: i32,
         localDestX: i32,
         localDestZ: i32,
-        destWidth: i8,
-        destHeight: i8,
-        srcSize: i8,
-        angle: i8,
-        shape: i8,
-        blockAccessFlags: i8,
+        destWidth: i32,
+        destHeight: i32,
+        srcSize: i32,
+        angle: i32,
+        shape: i32,
+        blockAccessFlags: i32,
         collision: CollisionStrategy
     ): bool {
         let x: i32;

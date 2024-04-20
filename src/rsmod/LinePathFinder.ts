@@ -15,14 +15,14 @@ export default class LinePathFinder {
     // prettier-ignore
     @inline
     lineOfSight(
-        level: i8,
+        level: i32,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i8,
-        destWidth: i8,
-        destHeight: i8,
+        srcSize: i32,
+        destWidth: i32,
+        destHeight: i32,
         extraFlag: i32
     ): StaticArray<i32> {
         return this.rayCast(
@@ -46,14 +46,14 @@ export default class LinePathFinder {
     // prettier-ignore
     @inline
     lineOfWalk(
-        level: i8,
+        level: i32,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i8,
-        destWidth: i8,
-        destHeight: i8,
+        srcSize: i32,
+        destWidth: i32,
+        destHeight: i32,
         extraFlag: i32
     ): StaticArray<i32> {
         return this.rayCast(
@@ -77,14 +77,14 @@ export default class LinePathFinder {
     // prettier-ignore
     @inline
     private rayCast(
-        level: i8,
+        level: i32,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i8,
-        destWidth: i8,
-        destHeight: i8,
+        srcSize: i32,
+        destWidth: i32,
+        destHeight: i32,
         flagWest: i32,
         flagEast: i32,
         flagSouth: i32,
@@ -133,11 +133,7 @@ export default class LinePathFinder {
                     xFlags = (xFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (xFlags & ~CollisionFlag.PLAYER);
                 }
                 if (this.flags.isFlagged(currX, currZ, level, xFlags)) {
-                    const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
-                    for (let i: i32 = 0; i < coordinates.length; i++) {
-                        unchecked(route[i] = coordinates[i]);
-                    }
-                    return route;
+                    return LinePathFinder.EMPTY; // alternative
                 }
                 coordinates.push(((currZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28));
 
@@ -149,11 +145,7 @@ export default class LinePathFinder {
                         zFlags = (zFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (zFlags & ~CollisionFlag.PLAYER);
                     }
                     if (this.flags.isFlagged(currX, nextZ, level, zFlags)) {
-                        const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
-                        for (let i: i32 = 0; i < coordinates.length; i++) {
-                            unchecked(route[i] = coordinates[i]);
-                        }
-                        return route;
+                        return LinePathFinder.EMPTY; // alternative
                     }
                     coordinates.push(((nextZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28));
                 }
@@ -173,11 +165,7 @@ export default class LinePathFinder {
                     zFlags = (zFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (zFlags & ~CollisionFlag.PLAYER);
                 }
                 if (this.flags.isFlagged(currX, currZ, level, zFlags)) {
-                    const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
-                    for (let i: i32 = 0; i < coordinates.length; i++) {
-                        unchecked(route[i] = coordinates[i]);
-                    }
-                    return route;
+                    return LinePathFinder.EMPTY; // alternative
                 }
                 coordinates.push(((currZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28));
 
@@ -189,11 +177,7 @@ export default class LinePathFinder {
                         xFlags = (xFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (xFlags & ~CollisionFlag.PLAYER);
                     }
                     if (this.flags.isFlagged(nextX, currZ, level, xFlags)) {
-                        const route: StaticArray<i32> = new StaticArray<i32>(coordinates.length);
-                        for (let i: i32 = 0; i < coordinates.length; i++) {
-                            unchecked(route[i] = coordinates[i]);
-                        }
-                        return route;
+                        return LinePathFinder.EMPTY; // alternative
                     }
                     coordinates.push(((currZ) & 0x3fff) | (((nextX) & 0x3fff) << 14) | ((level & 0x3) << 28));
                 }

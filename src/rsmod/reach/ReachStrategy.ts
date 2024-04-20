@@ -7,14 +7,14 @@ import {LocAngle} from '../LocAngle';
 
 @final
 export default class ReachStrategy {
-    @inline private static readonly WALL_STRATEGY: i8 = 0;
-    @inline private static readonly WALL_DECOR_STRATEGY: i8 = 1;
-    @inline private static readonly RECTANGLE_STRATEGY: i8 = 2;
-    @inline private static readonly NO_STRATEGY: i8 = 3;
-    @inline private static readonly RECTANGLE_EXCLUSIVE_STRATEGY: i8 = 4;
+    @inline private static readonly WALL_STRATEGY: i32 = 0;
+    @inline private static readonly WALL_DECOR_STRATEGY: i32 = 1;
+    @inline private static readonly RECTANGLE_STRATEGY: i32 = 2;
+    @inline private static readonly NO_STRATEGY: i32 = 3;
+    @inline private static readonly RECTANGLE_EXCLUSIVE_STRATEGY: i32 = 4;
 
     @inline
-    private static exitStrategy(locShape: i8): i8 {
+    private static exitStrategy(locShape: i32): i32 {
         if (locShape == -2) {
             return this.RECTANGLE_EXCLUSIVE_STRATEGY;
         } else if (locShape == -1) {
@@ -30,7 +30,7 @@ export default class ReachStrategy {
     }
 
     @inline
-    private static alteredRotation(angle: i8, shape: i8): i8 {
+    static alteredRotation(angle: i32, shape: i32): i32 {
         return shape == 7 ? (angle + 2) & 0x3 : angle;
     }
 
@@ -38,19 +38,19 @@ export default class ReachStrategy {
     @inline
     static reached(
         flags: CollisionFlagMap,
-        level: i8,
+        level: i32,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        destWidth: i8,
-        destHeight: i8,
-        srcSize: i8,
-        angle: i8 = 0,
-        shape: i8 = -1,
-        blockAccessFlags: i8 = 0
+        destWidth: i32,
+        destHeight: i32,
+        srcSize: i32,
+        angle: i32 = 0,
+        shape: i32 = -1,
+        blockAccessFlags: i32 = 0
     ): bool {
-        const exitStrategy: i8 = this.exitStrategy(shape);
+        const exitStrategy: i32 = this.exitStrategy(shape);
         if (exitStrategy != this.RECTANGLE_EXCLUSIVE_STRATEGY && srcX == destX && srcZ == destZ) {
             return true;
         }
@@ -67,7 +67,7 @@ export default class ReachStrategy {
     }
 
     @inline
-    private static reachRectangle(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, srcSize: i8, destWidth: i8, destHeight: i8, angle: i8 = 0, blockAccessFlags: i8 = 0): bool {
+    static reachRectangle(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, srcSize: i32, destWidth: i32, destHeight: i32, angle: i32 = 0, blockAccessFlags: i32 = 0): bool {
         const rotatedWidth: i32 = RotationUtils.rotate(angle, destWidth, destHeight);
         const rotatedHeight: i32 = RotationUtils.rotate(angle, destHeight, destWidth);
         const rotatedBlockAccess: i32 = RotationUtils.rotateFlags(angle, blockAccessFlags);
@@ -80,7 +80,7 @@ export default class ReachStrategy {
     }
 
     @inline
-    private static reachExclusiveRectangle(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, srcSize: i8, destWidth: i8, destHeight: i8, angle: i8 = 0, blockAccessFlags: i8 = 0): bool {
+    static reachExclusiveRectangle(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, srcSize: i32, destWidth: i32, destHeight: i32, angle: i32 = 0, blockAccessFlags: i32 = 0): bool {
         const rotatedWidth: i32 = RotationUtils.rotate(angle, destWidth, destHeight);
         const rotatedHeight: i32 = RotationUtils.rotate(angle, destHeight, destWidth);
         const rotatedBlockAccess: i32 = RotationUtils.rotateFlags(angle, blockAccessFlags);
@@ -93,7 +93,7 @@ export default class ReachStrategy {
     }
 
     @inline
-    private static reachWall(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, srcSize: i8, shape: i8, angle: i8): bool {
+    private static reachWall(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, srcSize: i32, shape: i32, angle: i32): bool {
         if (srcSize == 1 && srcX == destX && srcZ == destZ) {
             return true;
         } else if (srcSize != 1 && destX >= srcX && srcSize + srcX - 1 >= destX && destZ >= srcZ && srcSize + srcZ - 1 >= destZ) {
@@ -105,7 +105,7 @@ export default class ReachStrategy {
     }
 
     @inline
-    private static reachWallDecor(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, srcSize: i8, shape: i8, angle: i8): bool {
+    private static reachWallDecor(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, srcSize: i32, shape: i32, angle: i32): bool {
         if (srcSize == 1 && srcX == destX && srcZ == destZ) {
             return true;
         } else if (srcSize != 1 && destX >= srcX && srcSize + srcX - 1 >= destX && destZ >= srcZ && srcSize + srcZ - 1 >= destZ) {
@@ -117,7 +117,7 @@ export default class ReachStrategy {
     }
 
     @inline
-    private static reachWall1(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, shape: i8, angle: i8): bool {
+    private static reachWall1(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, shape: i32, angle: i32): bool {
         const collisionFlags: i32 = flags.get(srcX, srcZ, level);
         if (shape == LocShape.WALL_STRAIGHT) {
             if (angle == LocAngle.WEST) {
@@ -221,7 +221,7 @@ export default class ReachStrategy {
     }
 
     @inline
-    private static reachWallN(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, srcSize: i8, shape: i8, angle: i8): bool {
+    private static reachWallN(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, srcSize: i32, shape: i32, angle: i32): bool {
         const collisionFlags: i32 = flags.get(srcX, srcZ, level);
         const east: i32 = srcX + srcSize - 1;
         const north: i32 = srcZ + srcSize - 1;
@@ -327,7 +327,7 @@ export default class ReachStrategy {
     }
 
     @inline
-    private static reachWallDecor1(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, shape: i8, angle: i8): bool {
+    private static reachWallDecor1(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, shape: i32, angle: i32): bool {
         const collisionFlags: i32 = flags.get(srcX, srcZ, level);
         if (shape == LocShape.WALLDECOR_DIAGONAL_OFFSET || shape == LocShape.WALLDECOR_DIAGONAL_NOOFFSET) {
             const alteredAngle: i32 = this.alteredRotation(angle, shape);
@@ -376,7 +376,7 @@ export default class ReachStrategy {
     }
 
     @inline
-    private static reachWallDecorN(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, srcSize: i8, shape: i8, angle: i8): bool {
+    private static reachWallDecorN(flags: CollisionFlagMap, level: i32, srcX: i32, srcZ: i32, destX: i32, destZ: i32, srcSize: i32, shape: i32, angle: i32): bool {
         const collisionFlags: i32 = flags.get(srcX, srcZ, level);
         const east: i32 = srcX + srcSize - 1;
         const north: i32 = srcZ + srcSize - 1;

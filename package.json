@@ -1,6 +1,6 @@
 {
   "name": "@2004scape/rsmod-pathfinder",
-  "version": "4.2.7",
+  "version": "4.2.8",
   "description": "A breadth-first search path finder.",
   "main": "dist/rsmod-pathfinder.js",
   "types": "dist/rsmod-pathfinder.d.ts",
@@ -14,7 +14,8 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier src/**/*.ts --write",
     "asbuild:debug": "asc src/index.ts --target debug",
-    "asbuild:release": "asc src/index.ts --target release"
+    "asbuild:release": "asc src/index.ts --target release",
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
@@ -53,6 +54,7 @@
     "eslint": "^8.57.0",
     "husky": "^8.0.3",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vitest": "^1.5.0"
   }
 }
