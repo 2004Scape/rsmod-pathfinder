@@ -22,16 +22,16 @@ export default class NaivePathFinder {
     // prettier-ignore
     @inline
     findPath(
-        level: i8,
+        level: i32,
         srcX: i32,
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcWidth: i8,
-        srcHeight: i8,
-        destWidth: i8,
-        destHeight: i8,
-        blockAccessFlags: i8,
+        srcWidth: i32,
+        srcHeight: i32,
+        destWidth: i32,
+        destHeight: i32,
+        blockAccessFlags: i32,
         collision: CollisionStrategy
     ): StaticArray<i32> {
         if (!(srcX >= 0 && srcX <= 0x7fff && srcZ >= 0 && srcZ <= 0x7fff)) {
@@ -60,8 +60,8 @@ export default class NaivePathFinder {
         let currX: i32 = dx;
         let currZ: i32 = dz;
         while (currX != destX && currZ != destZ) {
-            const dx: i8 = <i8>Math.sign(destX - currX);
-            const dz: i8 = <i8>Math.sign(destZ - currZ);
+            const dx: i32 = <i8>Math.sign(destX - currX);
+            const dz: i32 = <i8>Math.sign(destZ - currZ);
             if (this.stepValidator.canTravel(level, currX, currZ, dx, dz, srcWidth, blockAccessFlags, collision)) {
                 currX += dx;
                 currZ += dz;

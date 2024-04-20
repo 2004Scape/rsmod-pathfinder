@@ -1,7 +1,6 @@
-@final
-export default class BlockAccessFlag {
-    @inline static readonly BLOCK_NORTH: i8 = 0x1;
-    @inline static readonly BLOCK_EAST: i8 = 0x2;
-    @inline static readonly BLOCK_SOUTH: i8 = 0x4;
-    @inline static readonly BLOCK_WEST: i8 = 0x8;
+export enum BlockAccessFlag {
+    BLOCK_NORTH = 0x1,
+    BLOCK_EAST = 0x2,
+    BLOCK_SOUTH = 0x4,
+    BLOCK_WEST = 0x8
 }

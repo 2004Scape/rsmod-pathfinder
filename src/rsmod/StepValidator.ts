@@ -13,12 +13,12 @@ export default class StepValidator {
     // prettier-ignore
     @inline
     canTravel(
-        level: i8,
+        level: i32,
         x: i32,
         z: i32,
-        offsetX: i8,
-        offsetZ: i8,
-        size: i8,
+        offsetX: i32,
+        offsetZ: i32,
+        size: i32,
         extraFlag: i32,
         collision: CollisionStrategy
     ): bool {

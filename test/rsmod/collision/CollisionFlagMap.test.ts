@@ -1,23 +1,13 @@
-import {
-    __add,
-    __get,
-    __remove,
-    __set,
-    allocateIfAbsent,
-    CollisionFlag,
-    deallocateIfPresent,
-    isFlagged,
-    isZoneAllocated
-} from "../../../dist/rsmod-pathfinder";
+import {__add, __get, __remove, __set, allocateIfAbsent, CollisionFlag, deallocateIfPresent, isFlagged, isZoneAllocated} from '../../../dist/rsmod-pathfinder';
 
-import {beforeEach, describe, expect, test} from "vitest";
+import {beforeEach, describe, expect, test} from 'vitest';
 
 beforeEach(() => {
     deallocateIfPresent(3200, 3200, 0);
 });
 
 describe('CollisionFlagMap', () => {
-    test('test get collision flag null zone', () => {
+    test.concurrent('test get collision flag null zone', () => {
         expect(isZoneAllocated(3200, 3200, 0)).toBeFalsy();
 
         for (let x = 3200; x < 3208; x++) {
