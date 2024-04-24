@@ -5,9 +5,9 @@
  (type $3 (func (param i32 i32 i32 i32)))
  (type $4 (func (param i32 i32 i32) (result i32)))
  (type $5 (func (param i32 i32)))
- (type $6 (func (param i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
- (type $7 (func (param i32 i32 i32 i32 i32)))
- (type $8 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
+ (type $6 (func (param i32 i32 i32 i32 i32)))
+ (type $7 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
+ (type $8 (func (param i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
  (type $9 (func))
  (type $10 (func (param i32 i32 i32)))
  (type $11 (func (param i32 i32 i32 i32 i32 i32 i32)))
@@ -248,7 +248,6 @@
  (data $59 (i32.const 5980) "\1c\00\00\00\03\00\00\00\00\00\00\00\14\00\00\00\0c\00\00\00 \17\00\00\00\00\00\000\0f")
  (export "findPath" (func $src/index/findPath@varargs))
  (export "findNaivePath" (func $src/index/findNaivePath@varargs))
- (export "intersects" (func $src/index/intersects))
  (export "changeFloor" (func $src/index/changeFloor))
  (export "changeLoc" (func $src/index/changeLoc))
  (export "changeNpc" (func $src/index/changeNpc))
@@ -2242,7 +2241,7 @@
    i32.const 1840
    call $~lib/staticarray/StaticArray<~lib/string/String>#join
    i32.const 3680
-   i32.const 543
+   i32.const 520
    i32.const 9
    call $~lib/builtins/abort
    unreachable
@@ -39526,32 +39525,6 @@
   local.get $10
   call $src/index/findNaivePath
  )
- (func $src/index/intersects (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (result i32)
-  local.get $4
-  local.get $6
-  i32.add
-  local.get $0
-  i32.le_s
-  local.get $4
-  local.get $0
-  local.get $2
-  i32.add
-  i32.ge_s
-  i32.or
-  local.get $5
-  local.get $1
-  local.get $3
-  i32.add
-  i32.ge_s
-  i32.or
-  local.get $5
-  local.get $7
-  i32.add
-  local.get $1
-  i32.le_s
-  i32.or
-  i32.eqz
- )
  (func $src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#allocateIfAbsent (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (result i32)
   local.get $0
   i32.load
@@ -56835,7 +56808,7 @@
   i32.const 6000
   call $~lib/staticarray/StaticArray<~lib/string/String>#join
   i32.const 3680
-  i32.const 537
+  i32.const 514
   i32.const 13
   call $~lib/builtins/abort
   unreachable

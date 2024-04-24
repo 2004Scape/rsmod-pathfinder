@@ -89,7 +89,7 @@ export default class NaivePathFinder {
      * @param destHeight The end length on the Z axis.
      */
     @inline
-    intersects(srcX: i32, srcZ: i32, srcWidth: i32, srcHeight: i32, destX: i32, destZ: i32, destWidth: i32, destHeight: i32): bool {
+    private intersects(srcX: i32, srcZ: i32, srcWidth: i32, srcHeight: i32, destX: i32, destZ: i32, destWidth: i32, destHeight: i32): bool {
         const srcHorizontal: i32 = srcX + srcWidth;
         const srcVertical: i32 = srcZ + srcHeight;
         const destHorizontal: i32 = destX + destWidth;

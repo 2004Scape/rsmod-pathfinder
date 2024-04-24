@@ -89,29 +89,6 @@ export function findNaivePath(
     );
 }
 
-// prettier-ignore
-export function intersects(
-    srcX: i32,
-    srcZ: i32,
-    srcWidth: i32,
-    srcHeight: i32,
-    destX: i32,
-    destZ: i32,
-    destWidth: i32,
-    destHeight: i32
-): bool {
-    return naivePathfinder.intersects(
-        srcX,
-        srcZ,
-        srcWidth,
-        srcHeight,
-        destX,
-        destZ,
-        destWidth,
-        destHeight
-    );
-}
-
 export function changeFloor(x: i32, z: i32, level: i32, add: bool): void {
     if (add) {
         flags.add(x, z, level, CollisionFlag.FLOOR);
