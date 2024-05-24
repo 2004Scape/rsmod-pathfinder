@@ -1,7 +1,5 @@
 import {__add, __set, allocateIfAbsent, CollisionFlag, deallocateIfPresent, hasLineOfSight, hasLineOfWalk} from '../../dist/rsmod-pathfinder';
 
-import {beforeEach, describe, expect, test} from 'vitest';
-
 function buildCollisionMap(x1: number, z1: number, x2: number, z2: number) {
     for (let level = 0; level < 4; level++) {
         for (let z = Math.min(z1, z2); z <= Math.max(z1, z2); z++) {
@@ -78,7 +76,7 @@ describe('LineValidator', () => {
                 for (let level = 0; level < 4; level++) {
                     for (const flag of extraFlags) {
                         __set(srcX + dirX, srcZ + dirZ, level, flag);
-                        expect(hasLineOfWalk(level, srcX, srcZ, destX, destZ, 1, 0, 0, flag)).toBeFalsy();
+                        expect(hasLineOfWalk(level, srcX, srcZ, destX, destZ, 1, 1, 0, 0, flag)).toBeFalsy();
                     }
                 }
             });
@@ -86,6 +84,16 @@ describe('LineValidator', () => {
     });
 
     describe('line of sight', () => {
+        test('test with extra flag on target coords', () => {
+            __add(srcX, srcZ, 0, CollisionFlag.PLAYER);
+            expect(hasLineOfSight(0, 3200, 3202, 3200, 3200, 1, 1, 1, CollisionFlag.PLAYER)).toBeTruthy();
+        });
+
+        test('test with extra flag past target coords', () => {
+            __add(srcX, srcZ, 0, CollisionFlag.PLAYER);
+            expect(hasLineOfSight(0, 3200, 3202, 3200, 3199, 1, 1, 1, 1, CollisionFlag.PLAYER)).toBeFalsy();
+        });
+
         test('test on top of loc fails line of sight', () => {
             __add(srcX, srcZ, 0, CollisionFlag.LOC);
             expect(hasLineOfSight(0, srcX, srcZ, 3200, 3201)).toBeFalsy();
@@ -93,7 +101,7 @@ describe('LineValidator', () => {
 
         test('test on top of extra flag fails line of sight', () => {
             __add(srcX, srcZ, 0, CollisionFlag.PLAYER);
-            expect(hasLineOfSight(0, srcX, srcZ, 3200, 3201, 1, 0, 0, CollisionFlag.PLAYER)).toBeFalsy();
+            expect(hasLineOfSight(0, srcX, srcZ, 3200, 3201, 1, 1, 0, 0, CollisionFlag.PLAYER)).toBeFalsy();
         });
 
         test('test same tile has line of sight', () => {
@@ -142,7 +150,7 @@ describe('LineValidator', () => {
                 for (let level = 0; level < 4; level++) {
                     for (const flag of extraFlags) {
                         __set(srcX + dirX, srcZ + dirZ, level, flag);
-                        expect(hasLineOfSight(level, srcX, srcZ, destX, destZ, 1, 0, 0, flag)).toBeFalsy();
+                        expect(hasLineOfSight(level, srcX, srcZ, destX, destZ, 1, 1, 0, 0, flag)).toBeFalsy();
                     }
                 }
             });

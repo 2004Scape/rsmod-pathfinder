@@ -1,6 +1,4 @@
-import {describe, expect, test} from 'vitest';
-
-import {__rotate, __rotateFlags, BlockAccessFlag} from "../../../dist/rsmod-pathfinder";
+import {__rotate, __rotateFlags, BlockAccessFlag} from '../../../dist/rsmod-pathfinder';
 
 describe('RotationUtils', () => {
     test('test rotate width', () => {

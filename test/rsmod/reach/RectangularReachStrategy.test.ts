@@ -1,16 +1,4 @@
-import {
-    __remove,
-    __set,
-    allocateIfAbsent,
-    CollisionFlag,
-    reached,
-    __alteredRotation,
-    __reachExclusiveRectangle,
-    __reachRectangle,
-    deallocateIfPresent
-} from "../../../dist/rsmod-pathfinder";
-
-import {beforeEach, describe, expect, test} from "vitest";
+import {__remove, __set, allocateIfAbsent, CollisionFlag, reached, __alteredRotation, __reachExclusiveRectangle, __reachRectangle, deallocateIfPresent} from '../../../dist/rsmod-pathfinder';
 
 function buildCollisionMap(x1: number, z1: number, x2: number, z2: number) {
     for (let level = 0; level < 4; level++) {
@@ -48,55 +36,55 @@ beforeEach(() => {
 
 describe('RectangularReachStrategy', () => {
     const BLOCK_ACCESS_FLAG_TEST_ARGS = [
-        [ 0, 1, 1 ], // north
-        [ 1, 0, 2 ], // east
-        [ 0, -1, 4 ], // south
-        [ -1, 0, 8 ] // west
+        [0, 1, 1], // north
+        [1, 0, 2], // east
+        [0, -1, 4], // south
+        [-1, 0, 8] // west
     ] as const;
 
     const DIMENSIONS_TEST_ARGS = [
-        [ 1, 1 ],
-        [ 1, 2 ],
-        [ 1, 3 ],
-        [ 2, 1 ],
-        [ 2, 2 ],
-        [ 2, 3 ],
-        [ 3, 1 ],
-        [ 3, 2 ],
-        [ 3, 3 ]
+        [1, 1],
+        [1, 2],
+        [1, 3],
+        [2, 1],
+        [2, 2],
+        [2, 3],
+        [3, 1],
+        [3, 2],
+        [3, 3]
     ] as const;
 
     const WALL_STRAIGHT_STRATEGY_TEST_ARGS = [
-        [ 0, 0, 1, CollisionFlag.WALL_SOUTH ],
-        [ 0, 0, -1, CollisionFlag.WALL_NORTH ],
-        [ 1, -1, 0, CollisionFlag.WALL_EAST ],
-        [ 1, 1, 0, CollisionFlag.WALL_WEST ],
-        [ 2, 0, 1, CollisionFlag.WALL_SOUTH ],
-        [ 2, 0, -1, CollisionFlag.WALL_NORTH ],
-        [ 3, -1, 0, CollisionFlag.WALL_EAST ],
-        [ 3, 1, 0, CollisionFlag.WALL_WEST ]
+        [0, 0, 1, CollisionFlag.WALL_SOUTH],
+        [0, 0, -1, CollisionFlag.WALL_NORTH],
+        [1, -1, 0, CollisionFlag.WALL_EAST],
+        [1, 1, 0, CollisionFlag.WALL_WEST],
+        [2, 0, 1, CollisionFlag.WALL_SOUTH],
+        [2, 0, -1, CollisionFlag.WALL_NORTH],
+        [3, -1, 0, CollisionFlag.WALL_EAST],
+        [3, 1, 0, CollisionFlag.WALL_WEST]
     ] as const;
 
     const WALL_L_STRATEGY_TEST_ARGS = [
-        [ 0, 1, 0, CollisionFlag.WALL_WEST ],
-        [ 0, 0, -1, CollisionFlag.WALL_NORTH ],
-        [ 1, -1, 0, CollisionFlag.WALL_EAST ],
-        [ 1, 0, -1, CollisionFlag.BLOCK_NORTH ],
-        [ 2, -1, 0, CollisionFlag.BLOCK_EAST ],
-        [ 2, 0, 1, CollisionFlag.BLOCK_NORTH ],
-        [ 3, 0, 1, CollisionFlag.BLOCK_SOUTH ],
-        [ 3, 1, 0, CollisionFlag.BLOCK_WEST ]
+        [0, 1, 0, CollisionFlag.WALL_WEST],
+        [0, 0, -1, CollisionFlag.WALL_NORTH],
+        [1, -1, 0, CollisionFlag.WALL_EAST],
+        [1, 0, -1, CollisionFlag.BLOCK_NORTH],
+        [2, -1, 0, CollisionFlag.BLOCK_EAST],
+        [2, 0, 1, CollisionFlag.BLOCK_NORTH],
+        [3, 0, 1, CollisionFlag.BLOCK_SOUTH],
+        [3, 1, 0, CollisionFlag.BLOCK_WEST]
     ] as const;
 
     const WALLDECOR_DIAGONAL_OFFSET_STRATEGY_TEST_ARGS = [
-        [ 0, 1, 0, CollisionFlag.WALL_WEST ],
-        [ 0, 0, -1, CollisionFlag.WALL_NORTH ],
-        [ 1, -1, 0, CollisionFlag.WALL_EAST ],
-        [ 1, 0, -1, CollisionFlag.WALL_NORTH ],
-        [ 2, -1, 0, CollisionFlag.WALL_EAST ],
-        [ 2, 0, 1, CollisionFlag.WALL_SOUTH ],
-        [ 3, 1, 0, CollisionFlag.WALL_WEST ],
-        [ 3, 0, 1, CollisionFlag.WALL_SOUTH ]
+        [0, 1, 0, CollisionFlag.WALL_WEST],
+        [0, 0, -1, CollisionFlag.WALL_NORTH],
+        [1, -1, 0, CollisionFlag.WALL_EAST],
+        [1, 0, -1, CollisionFlag.WALL_NORTH],
+        [2, -1, 0, CollisionFlag.WALL_EAST],
+        [2, 0, 1, CollisionFlag.WALL_SOUTH],
+        [3, 1, 0, CollisionFlag.WALL_WEST],
+        [3, 0, 1, CollisionFlag.WALL_SOUTH]
     ];
 
     describe('test wall decor strategy', () => {
@@ -347,10 +335,10 @@ describe('RectangularReachStrategy', () => {
             flag(objX, objZ, 1, 1, CollisionFlag.LOC);
 
             const cardinal = [
-                [ 0, -1 ],
-                [ 0, 1 ],
-                [ -1, 0 ],
-                [ 1, 0 ]
+                [0, -1],
+                [0, 1],
+                [-1, 0],
+                [1, 0]
             ];
 
             for (const dir of cardinal) {
@@ -375,10 +363,10 @@ describe('RectangularReachStrategy', () => {
             flag(objX, objZ, 1, 1, CollisionFlag.LOC);
 
             const cardinal = [
-                [ 0, -1 ],
-                [ 0, 1 ],
-                [ -1, 0 ],
-                [ 1, 0 ]
+                [0, -1],
+                [0, 1],
+                [-1, 0],
+                [1, 0]
             ];
 
             for (const dir of cardinal) {
@@ -413,7 +401,7 @@ describe('RectangularReachStrategy', () => {
             for (let x = -1; x < width + 1; x++) {
                 for (let z = -1; z < height + 1; z++) {
                     const reached3 = __reachRectangle(0, objX + x, objZ + z, objX, objZ, 1, width, height, 0, 0);
-                    const diagonal = z === -1 && x === -1 || z === height && x === width || z === -1 && x === width || z === height && x === -1;
+                    const diagonal = (z === -1 && x === -1) || (z === height && x === width) || (z === -1 && x === width) || (z === height && x === -1);
                     if (diagonal) {
                         expect(reached3).toBeFalsy();
                         continue;
@@ -438,7 +426,7 @@ describe('RectangularReachStrategy', () => {
             for (let x = -1; x < width + 1; x++) {
                 for (let z = -1; z < height + 1; z++) {
                     const reached3 = __reachExclusiveRectangle(0, objX + x, objZ + z, objX, objZ, 1, width, height, 0, 0);
-                    const diagonal = z === -1 && x === -1 || z === height && x === width || z === -1 && x === width || z === height && x === -1;
+                    const diagonal = (z === -1 && x === -1) || (z === height && x === width) || (z === -1 && x === width) || (z === height && x === -1);
                     if (diagonal) {
                         expect(reached3).toBeFalsy();
                         continue;

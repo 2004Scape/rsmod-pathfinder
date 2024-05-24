@@ -1,5 +1,7 @@
 {
-  "compilerOptions": {},
+  "compilerOptions": {
+    "types": ["vitest/globals"]
+  },
   "include": [
     "src/**/*.ts"
   ],

@@ -4,6 +4,7 @@ import DirectionFlag from './flag/DirectionFlag';
 import ReachStrategy from './reach/ReachStrategy';
 import {CollisionFlag} from './flag/CollisionFlag';
 import RotationUtils from './utils/RotationUtils';
+import RouteCoordinates from './RouteCoordinates';
 
 @final
 export default class PathFinder {
@@ -108,7 +109,7 @@ export default class PathFinder {
                 if (waypoints.length >= maxWaypoints) {
                     waypoints.pop();
                 }
-                waypoints.unshift(((baseZ + this.currLocalZ) & 0x3fff) | (((baseX + this.currLocalX) & 0x3fff) << 14) | ((level & 0x3) << 28));
+                waypoints.unshift(RouteCoordinates.pack(level, baseX + this.currLocalX, baseZ + this.currLocalZ));
             }
             if ((currDir & DirectionFlag.EAST) != 0) {
                 this.currLocalX++;

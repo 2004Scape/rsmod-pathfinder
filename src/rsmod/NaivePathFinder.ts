@@ -3,6 +3,7 @@
 
 import StepValidator from './StepValidator';
 import {CollisionStrategy} from './collision/CollisionStrategy';
+import RouteCoordinates from './RouteCoordinates';
 
 @final
 export default class NaivePathFinder {
@@ -48,8 +49,8 @@ export default class NaivePathFinder {
             return this.cardinalDestination(level, srcX, srcZ);
         }
         const dest: StaticArray<i32> = this.naiveDestination(level, srcX, srcZ, srcWidth, srcHeight, destX, destZ, 1, 1);
-        const dx: i32 = dest[0] >> 14 & 0x3fff;
-        const dz: i32 = dest[0] & 0x3fff;
+        const dx: i32 = RouteCoordinates.x(dest[0]);
+        const dz: i32 = RouteCoordinates.z(dest[0]);
         if (this.isDiagonal(dx, dz, srcWidth, srcHeight, destX, destZ, destWidth, destHeight)) {
             return dest;
         }
@@ -74,7 +75,7 @@ export default class NaivePathFinder {
                 break;
             }
         }
-        return StaticArray.fromArray([((currZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28)]);
+        return StaticArray.fromArray([RouteCoordinates.pack(level, currX, currZ)]);
     }
 
     /**
@@ -114,7 +115,7 @@ export default class NaivePathFinder {
     @inline
     private cardinalDestination(level: i32, srcX: i32, srcZ: i32): StaticArray<i32> {
         const direction: i32[] = NaivePathFinder.DIRECTIONS[<i32>Math.floor(Math.random() * NaivePathFinder.DIRECTIONS.length)];
-        return StaticArray.fromArray([((srcZ + direction[1]) & 0x3fff) | (((srcX + direction[0]) & 0x3fff) << 14) | ((level & 0x3) << 28)]);
+        return StaticArray.fromArray([RouteCoordinates.pack(level, srcX + direction[0], srcZ + direction[1])]);
     }
 
     /**
@@ -155,7 +156,7 @@ export default class NaivePathFinder {
             } else if (anti > -srcWidth) {
                 offZ = -(srcWidth + anti);
             }
-            return StaticArray.fromArray([((offZ + destZ) & 0x3fff) | (((-srcWidth + destX) & 0x3fff) << 14) | ((level & 0x3) << 28)]);
+            return StaticArray.fromArray([RouteCoordinates.pack(level, -srcWidth + destX, offZ + destZ)]);
         } else if (northWestClockwise && !northEastClockwise) {
             // North
             let offX: i32 = 0;
@@ -164,7 +165,7 @@ export default class NaivePathFinder {
             } else if (diagonal < destHeight) {
                 offX = this.coerceAtLeast(diagonal - destHeight, -(srcWidth - 1));
             }
-            return StaticArray.fromArray([((destHeight + destZ) & 0x3fff) | (((offX + destX) & 0x3fff) << 14) | ((level & 0x3) << 28)]);
+            return StaticArray.fromArray([RouteCoordinates.pack(level, offX + destX, destHeight + destZ)]);
         } else if (northEastClockwise && !southEastClockwise) {
             // East
             let offZ: i32 = 0;
@@ -173,7 +174,7 @@ export default class NaivePathFinder {
             } else if (diagonal < destWidth) {
                 offZ = this.coerceAtLeast(diagonal - destWidth, -(srcHeight - 1));
             }
-            return StaticArray.fromArray([((offZ + destZ) & 0x3fff) | (((destWidth + destX) & 0x3fff) << 14) | ((level & 0x3) << 28)]);
+            return StaticArray.fromArray([RouteCoordinates.pack(level, destWidth + destX, offZ + destZ)]);
         } else {
             if (!(southEastClockwise && !southWestClockwise)) {
                 // South
@@ -185,7 +186,7 @@ export default class NaivePathFinder {
             } else if (anti < srcHeight) {
                 offX = this.coerceAtLeast(anti - srcHeight, -(srcHeight - 1));
             }
-            return StaticArray.fromArray([((-srcHeight + destZ) & 0x3fff) | (((offX + destX) & 0x3fff) << 14) | ((level & 0x3) << 28)]);
+            return StaticArray.fromArray([RouteCoordinates.pack(level, offX + destX, -srcHeight + destZ)]);
         }
     }
 

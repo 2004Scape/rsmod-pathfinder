@@ -1,6 +1,4 @@
-import {describe, expect, test} from 'vitest';
-
-import {__set, allocateIfAbsent, BlockAccessFlag, CollisionFlag, reached} from "../../../dist/rsmod-pathfinder";
+import {__set, allocateIfAbsent, BlockAccessFlag, CollisionFlag, reached} from '../../../dist/rsmod-pathfinder';
 
 function buildCollisionMap(x1: number, z1: number, x2: number, z2: number) {
     for (let level = 0; level < 4; level++) {
@@ -24,15 +22,15 @@ function flag(baseX: number, baseZ: number, width: number, height: number, mask:
 
 describe('ReachStrategy', () => {
     const ROTATED_OBJECT_TEST_ARGS = [
-        [ 3203, 3203, { width: 1, height: 1 } ],
-        [ 3203, 3203, { width: 1, height: 2 } ],
-        [ 3203, 3203, { width: 1, height: 3 } ],
-        [ 3203, 3203, { width: 2, height: 1 } ],
-        [ 3203, 3203, { width: 2, height: 2 } ],
-        [ 3203, 3203, { width: 2, height: 3 } ],
-        [ 3203, 3203, { width: 3, height: 1 } ],
-        [ 3203, 3203, { width: 3, height: 2 } ],
-        [ 3203, 3203, { width: 3, height: 3 } ],
+        [3203, 3203, {width: 1, height: 1}],
+        [3203, 3203, {width: 1, height: 2}],
+        [3203, 3203, {width: 1, height: 3}],
+        [3203, 3203, {width: 2, height: 1}],
+        [3203, 3203, {width: 2, height: 2}],
+        [3203, 3203, {width: 2, height: 3}],
+        [3203, 3203, {width: 3, height: 1}],
+        [3203, 3203, {width: 3, height: 2}],
+        [3203, 3203, {width: 3, height: 3}]
     ] as const;
 
     /**
@@ -58,11 +56,13 @@ describe('ReachStrategy', () => {
      * - 'o' are the tiles that successfully pass [ReachStrategy.reached].
      * - '-' represents every other tile in the area. (in this case a zone, or 8x8 tile area)
      */
-    test.each(ROTATED_OBJECT_TEST_ARGS)('test rotated object normal ', (objX, objZ, { width, height }) => {
+    test.each(ROTATED_OBJECT_TEST_ARGS)('test rotated object normal ', (objX, objZ, {width, height}) => {
         const LEVEL = 0;
 
-        const minX = objX - 16, minZ = objZ - 16;
-        const maxX = objX + 16, maxZ = objZ + 16;
+        const minX = objX - 16,
+            minZ = objZ - 16;
+        const maxX = objX + 16,
+            maxZ = objZ + 16;
 
         buildCollisionMap(minX, minZ, maxX, maxZ);
         flag(objX, objZ, width, height, CollisionFlag.LOC);
@@ -137,11 +137,13 @@ describe('ReachStrategy', () => {
      * - 'o' are the tiles that successfully pass [ReachStrategy.reached].
      * - '-' represents every other tile in the area. (in this case a zone, or 8x8 tile area)
      */
-    test.each(ROTATED_OBJECT_TEST_ARGS)('test rotated object flipped', (objX, objZ, { width, height }) => {
+    test.each(ROTATED_OBJECT_TEST_ARGS)('test rotated object flipped', (objX, objZ, {width, height}) => {
         const LEVEL = 0;
 
-        const minX = objX - 16, minZ = objZ - 16;
-        const maxX = objX + 16, maxZ = objZ + 16;
+        const minX = objX - 16,
+            minZ = objZ - 16;
+        const maxX = objX + 16,
+            maxZ = objZ + 16;
 
         buildCollisionMap(minX, minZ, maxX, maxZ);
         flag(objX, objZ, width, height, CollisionFlag.LOC);
@@ -162,34 +164,36 @@ describe('ReachStrategy', () => {
             );
         };
 
-        for (let x = 0; x < height; x++) {  // width and height are swapped
+        for (let x = 0; x < height; x++) {
+            // width and height are swapped
             // Test coming from south tiles.
             expect(reachedc(objX + x, objZ - 1, 1)).toBeTruthy();
             expect(reachedc(objX + x, objZ - 1, 3)).toBeTruthy();
             // Test coming from north tiles.
-            expect(reachedc(objX + x, objZ + width, 1)).toBeTruthy();  // width and height are swapped
-            expect(reachedc(objX + x, objZ + width, 3)).toBeTruthy();  // width and height are swapped
+            expect(reachedc(objX + x, objZ + width, 1)).toBeTruthy(); // width and height are swapped
+            expect(reachedc(objX + x, objZ + width, 3)).toBeTruthy(); // width and height are swapped
             // Test coming from south tiles with access blocked.
             expect(reachedc(objX + x, objZ - 1, 1, BlockAccessFlag.BLOCK_EAST)).toBeFalsy();
             expect(reachedc(objX + x, objZ - 1, 3, BlockAccessFlag.BLOCK_WEST)).toBeFalsy();
             // Test coming from north tiles with access blocked.
-            expect(reachedc(objX + x, objZ + width, 1, BlockAccessFlag.BLOCK_WEST)).toBeFalsy();  // width and height are swapped
-            expect(reachedc(objX + x, objZ + width, 3, BlockAccessFlag.BLOCK_EAST)).toBeFalsy();  // width and height are swapped
+            expect(reachedc(objX + x, objZ + width, 1, BlockAccessFlag.BLOCK_WEST)).toBeFalsy(); // width and height are swapped
+            expect(reachedc(objX + x, objZ + width, 3, BlockAccessFlag.BLOCK_EAST)).toBeFalsy(); // width and height are swapped
         }
 
-        for (let z = 0; z < width; z++) {  // width and height are swapped
+        for (let z = 0; z < width; z++) {
+            // width and height are swapped
             // Test coming from west tiles.
             expect(reachedc(objX - 1, objZ + z, 1)).toBeTruthy();
             expect(reachedc(objX - 1, objZ + z, 3)).toBeTruthy();
             // Test coming from east tiles.
-            expect(reachedc(objX + height, objZ + z, 1)).toBeTruthy();  // width and height are swapped
-            expect(reachedc(objX + height, objZ + z, 3)).toBeTruthy();  // width and height are swapped
+            expect(reachedc(objX + height, objZ + z, 1)).toBeTruthy(); // width and height are swapped
+            expect(reachedc(objX + height, objZ + z, 3)).toBeTruthy(); // width and height are swapped
             // Test coming from west tiles with access blocked.
             expect(reachedc(objX - 1, objZ + z, 1, BlockAccessFlag.BLOCK_SOUTH)).toBeFalsy();
             expect(reachedc(objX - 1, objZ + z, 3, BlockAccessFlag.BLOCK_NORTH)).toBeFalsy();
             // Test coming from east tiles with access blocked.
-            expect(reachedc(objX + height, objZ + z, 1, BlockAccessFlag.BLOCK_NORTH)).toBeFalsy();  // width and height are swapped
-            expect(reachedc(objX + height, objZ + z, 3, BlockAccessFlag.BLOCK_SOUTH)).toBeFalsy();  // width and height are swapped
+            expect(reachedc(objX + height, objZ + z, 1, BlockAccessFlag.BLOCK_NORTH)).toBeFalsy(); // width and height are swapped
+            expect(reachedc(objX + height, objZ + z, 3, BlockAccessFlag.BLOCK_SOUTH)).toBeFalsy(); // width and height are swapped
         }
     });
 });

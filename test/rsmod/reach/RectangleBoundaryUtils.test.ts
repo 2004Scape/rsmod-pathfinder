@@ -1,5 +1,3 @@
-import {beforeEach, describe, expect, test} from 'vitest';
-
 import {__collides, __reachRectangle1, __reachRectangleN, __set, BlockAccessFlag, CollisionFlag, deallocateIfPresent} from '../../../dist/rsmod-pathfinder';
 
 describe('RectangleBoundaryUtils', () => {

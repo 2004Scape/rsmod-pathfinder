@@ -358,7 +358,8 @@ export function hasLineOfSight(
     srcZ: i32,
     destX: i32,
     destZ: i32,
-    srcSize: i32 = 1,
+    srcWidth: i32 = 1,
+    srcHeight: i32 = 1,
     destWidth: i32 = 0,
     destHeight: i32 = 0,
     extraFlag: i32 = 0
@@ -369,7 +370,8 @@ export function hasLineOfSight(
         srcZ,
         destX,
         destZ,
-        srcSize,
+        srcWidth,
+        srcHeight,
         destWidth,
         destHeight,
         extraFlag
@@ -383,7 +385,8 @@ export function hasLineOfWalk(
     srcZ: i32,
     destX: i32,
     destZ: i32,
-    srcSize: i32 = 1,
+    srcWidth: i32 = 1,
+    srcHeight: i32 = 1,
     destWidth: i32 = 0,
     destHeight: i32 = 0,
     extraFlag: i32 = 0
@@ -394,7 +397,8 @@ export function hasLineOfWalk(
         srcZ,
         destX,
         destZ,
-        srcSize,
+        srcWidth,
+        srcHeight,
         destWidth,
         destHeight,
         extraFlag
@@ -408,7 +412,8 @@ export function lineOfSight(
     srcZ: i32,
     destX: i32,
     destZ: i32,
-    srcSize: i32 = 1,
+    srcWidth: i32 = 1,
+    srcHeight: i32 = 1,
     destWidth: i32 = 0,
     destHeight: i32 = 0,
     extraFlag: i32 = 0
@@ -419,7 +424,8 @@ export function lineOfSight(
         srcZ,
         destX,
         destZ,
-        srcSize,
+        srcWidth,
+        srcHeight,
         destWidth,
         destHeight,
         extraFlag
@@ -433,7 +439,8 @@ export function lineOfWalk(
     srcZ: i32,
     destX: i32,
     destZ: i32,
-    srcSize: i32 = 1,
+    srcWidth: i32 = 1,
+    srcHeight: i32 = 1,
     destWidth: i32 = 0,
     destHeight: i32 = 0,
     extraFlag: i32 = 0
@@ -444,7 +451,8 @@ export function lineOfWalk(
         srcZ,
         destX,
         destZ,
-        srcSize,
+        srcWidth,
+        srcHeight,
         destWidth,
         destHeight,
         extraFlag

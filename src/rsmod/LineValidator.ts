@@ -18,7 +18,8 @@ export default class LineValidator {
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i32,
+        srcWidth: i32,
+        srcHeight: i32,
         destWidth: i32,
         destHeight: i32,
         extraFlag: i32
@@ -29,7 +30,8 @@ export default class LineValidator {
             srcZ,
             destX,
             destZ,
-            srcSize,
+            srcWidth,
+            srcHeight,
             destWidth,
             destHeight,
             Line.SIGHT_BLOCKED_WEST | extraFlag,
@@ -50,7 +52,8 @@ export default class LineValidator {
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i32,
+        srcWidth: i32,
+        srcHeight: i32,
         destWidth: i32,
         destHeight: i32,
         extraFlag: i32
@@ -61,7 +64,8 @@ export default class LineValidator {
             srcZ,
             destX,
             destZ,
-            srcSize,
+            srcWidth,
+            srcHeight,
             destWidth,
             destHeight,
             Line.WALK_BLOCKED_WEST | extraFlag,
@@ -82,7 +86,8 @@ export default class LineValidator {
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i32,
+        srcWidth: i32,
+        srcHeight: i32,
         destWidth: i32,
         destHeight: i32,
         flagWest: i32,
@@ -93,8 +98,8 @@ export default class LineValidator {
         flagProj: i32,
         los: bool
     ): bool {
-        const startX: i32 = Line.coordinate(srcX, destX, srcSize);
-        const startZ: i32 = Line.coordinate(srcZ, destZ, srcSize);
+        const startX: i32 = Line.coordinate(srcX, destX, srcWidth);
+        const startZ: i32 = Line.coordinate(srcZ, destZ, srcHeight);
 
         if (los && this.flags.isFlagged(startX, startZ, level, flagLoc)) {
             return false;

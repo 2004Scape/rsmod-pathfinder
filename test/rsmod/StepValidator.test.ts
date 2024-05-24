@@ -1,7 +1,5 @@
 import {__set, allocateIfAbsent, canTravel, CollisionFlag, CollisionType, deallocateIfPresent} from '../../dist/rsmod-pathfinder';
 
-import {beforeEach, describe, expect, test} from 'vitest';
-
 function buildCollisionMap(x1: number, z1: number, x2: number, z2: number) {
     for (let level = 0; level < 4; level++) {
         for (let z = Math.min(z1, z2); z <= Math.max(z1, z2); z++) {

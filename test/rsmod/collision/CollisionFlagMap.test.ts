@@ -1,7 +1,5 @@
 import {__add, __get, __remove, __set, allocateIfAbsent, CollisionFlag, deallocateIfPresent, isFlagged, isZoneAllocated} from '../../../dist/rsmod-pathfinder';
 
-import {beforeEach, describe, expect, test} from 'vitest';
-
 beforeEach(() => {
     deallocateIfPresent(3200, 3200, 0);
 });

@@ -1,7 +1,5 @@
 import {__add, __set, allocateIfAbsent, CollisionFlag, deallocateIfPresent, lineOfSight, lineOfWalk} from '../../dist/rsmod-pathfinder';
 
-import {beforeEach, describe, expect, test} from 'vitest';
-
 function buildCollisionMap(x1: number, z1: number, x2: number, z2: number) {
     // const map = new CollisionFlagMap();
     for (let level = 0; level < 4; level++) {
@@ -74,12 +72,12 @@ describe('LinePathFinder', () => {
                 const destX = srcX + dirX * 3;
                 const destZ = srcZ + dirZ * 3;
 
-               buildCollisionMap(srcX, srcZ, destX, destZ);
+                buildCollisionMap(srcX, srcZ, destX, destZ);
 
                 for (let level = 0; level < 4; level++) {
                     for (const flag of extraFlags) {
                         __set(srcX + dirX, srcZ + dirZ, level, flag);
-                        expect(lineOfWalk(level, srcX, srcZ, destX, destZ, 1, 0, 0, flag).length > 0).toBeFalsy();
+                        expect(lineOfWalk(level, srcX, srcZ, destX, destZ, 1, 1, 0, 0, flag).length > 0).toBeFalsy();
                     }
                 }
             });
@@ -87,6 +85,21 @@ describe('LinePathFinder', () => {
     });
 
     describe('line of sight', () => {
+        test('test with extra flag on target coords', () => {
+            __add(srcX, srcZ, 0, CollisionFlag.PLAYER);
+            const raycast: ArrayLike<number> = lineOfSight(0, 3200, 3202, 3200, 3200, 1, 1, 1, 1, CollisionFlag.PLAYER);
+            expect(raycast.length == 2).toBeTruthy();
+            expect(raycast[0] & 0x3fff).toBe(3201);
+            expect((raycast[0] >> 14) & 0x3fff).toBe(3200);
+            expect(raycast[1] & 0x3fff).toBe(3200);
+            expect((raycast[1] >> 14) & 0x3fff).toBe(3200);
+        });
+
+        test('test with extra flag past target coords', () => {
+            __add(srcX, srcZ, 0, CollisionFlag.PLAYER);
+            expect(lineOfSight(0, 3200, 3202, 3200, 3199, 1, 1, 1, 1, CollisionFlag.PLAYER).length > 0).toBeFalsy();
+        });
+
         test('test on top of loc fails line of sight', () => {
             // const map = new CollisionFlagMap();
             __add(srcX, srcZ, 0, CollisionFlag.LOC);
@@ -96,7 +109,7 @@ describe('LinePathFinder', () => {
         test('test on top of extra flag fails line of sight', () => {
             // const map = new CollisionFlagMap();
             __add(srcX, srcZ, 0, CollisionFlag.PLAYER);
-            expect(lineOfSight(0, srcX, srcZ, 3200, 3201, 1, 0, 0, CollisionFlag.PLAYER).length > 0).toBeFalsy();
+            expect(lineOfSight(0, srcX, srcZ, 3200, 3201, 1, 1, 0, 0, CollisionFlag.PLAYER).length > 0).toBeFalsy();
         });
 
         /*test('test same tile has line of sight', () => {
@@ -147,7 +160,7 @@ describe('LinePathFinder', () => {
                 for (let level = 0; level < 4; level++) {
                     for (const flag of extraFlags) {
                         __set(srcX + dirX, srcZ + dirZ, level, flag);
-                        expect(lineOfSight(level, srcX, srcZ, destX, destZ, 1, 0, 0, flag).length > 0).toBeFalsy();
+                        expect(lineOfSight(level, srcX, srcZ, destX, destZ, 1, 1, 0, 0, flag).length > 0).toBeFalsy();
                     }
                 }
             });

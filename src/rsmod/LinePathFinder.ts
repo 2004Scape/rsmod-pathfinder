@@ -1,6 +1,7 @@
 import CollisionFlagMap from './collision/CollisionFlagMap';
 import Line from './Line';
 import {CollisionFlag} from './flag/CollisionFlag';
+import RouteCoordinates from './RouteCoordinates';
 
 @final
 export default class LinePathFinder {
@@ -20,7 +21,8 @@ export default class LinePathFinder {
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i32,
+        srcWidth: i32,
+        srcHeight: i32,
         destWidth: i32,
         destHeight: i32,
         extraFlag: i32
@@ -31,7 +33,8 @@ export default class LinePathFinder {
             srcZ,
             destX,
             destZ,
-            srcSize,
+            srcWidth,
+            srcHeight,
             destWidth,
             destHeight,
             Line.SIGHT_BLOCKED_WEST | extraFlag,
@@ -39,6 +42,7 @@ export default class LinePathFinder {
             Line.SIGHT_BLOCKED_SOUTH | extraFlag,
             Line.SIGHT_BLOCKED_NORTH | extraFlag,
             CollisionFlag.LOC | extraFlag,
+            CollisionFlag.LOC_PROJ_BLOCKER | extraFlag,
             true
         );
     }
@@ -51,7 +55,8 @@ export default class LinePathFinder {
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i32,
+        srcWidth: i32,
+        srcHeight: i32,
         destWidth: i32,
         destHeight: i32,
         extraFlag: i32
@@ -62,7 +67,8 @@ export default class LinePathFinder {
             srcZ,
             destX,
             destZ,
-            srcSize,
+            srcWidth,
+            srcHeight,
             destWidth,
             destHeight,
             Line.WALK_BLOCKED_WEST | extraFlag,
@@ -70,6 +76,7 @@ export default class LinePathFinder {
             Line.WALK_BLOCKED_SOUTH | extraFlag,
             Line.WALK_BLOCKED_NORTH | extraFlag,
             CollisionFlag.LOC | extraFlag,
+            CollisionFlag.LOC_PROJ_BLOCKER | extraFlag,
             false
         );
     }
@@ -82,20 +89,22 @@ export default class LinePathFinder {
         srcZ: i32,
         destX: i32,
         destZ: i32,
-        srcSize: i32,
+        srcWidth: i32,
+        srcHeight: i32,
         destWidth: i32,
         destHeight: i32,
         flagWest: i32,
         flagEast: i32,
         flagSouth: i32,
         flagNorth: i32,
-        flagObject: i32,
+        flagLoc: i32,
+        flagProj: i32,
         los: bool
     ): StaticArray<i32> {
-        const startX: i32 = Line.coordinate(srcX, destX, srcSize);
-        const startZ: i32 = Line.coordinate(srcZ, destZ, srcSize);
+        const startX: i32 = Line.coordinate(srcX, destX, srcWidth);
+        const startZ: i32 = Line.coordinate(srcZ, destZ, srcHeight);
 
-        if (los && this.flags.isFlagged(startX, startZ, level, flagObject)) {
+        if (los && this.flags.isFlagged(startX, startZ, level, flagLoc)) {
             return LinePathFinder.EMPTY;
         }
 
@@ -130,24 +139,24 @@ export default class LinePathFinder {
                 currX += offsetX;
                 const currZ: i32 = Line.scaleDown(scaledZ);
                 if (los && currX == endX && currZ == endZ) {
-                    xFlags = (xFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (xFlags & ~CollisionFlag.PLAYER);
+                    xFlags = xFlags & ~flagProj;
                 }
                 if (this.flags.isFlagged(currX, currZ, level, xFlags)) {
                     return LinePathFinder.EMPTY; // alternative
                 }
-                coordinates.push(((currZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28));
+                coordinates.push(RouteCoordinates.pack(level, currX, currZ));
 
                 scaledZ += tangent;
 
                 const nextZ: i32 = Line.scaleDown(scaledZ);
                 if (nextZ != currZ) {
                     if (los && currX == endX && nextZ == endZ) {
-                        zFlags = (zFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (zFlags & ~CollisionFlag.PLAYER);
+                        zFlags = zFlags & ~flagProj;
                     }
                     if (this.flags.isFlagged(currX, nextZ, level, zFlags)) {
                         return LinePathFinder.EMPTY; // alternative
                     }
-                    coordinates.push(((nextZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28));
+                    coordinates.push(RouteCoordinates.pack(level, currX, nextZ));
                 }
             }
         } else {
@@ -162,24 +171,24 @@ export default class LinePathFinder {
                 currZ += offsetZ;
                 const currX: i32 = Line.scaleDown(scaledX);
                 if (los && currX == endX && currZ == endZ) {
-                    zFlags = (zFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (zFlags & ~CollisionFlag.PLAYER);
+                    zFlags = zFlags & ~flagProj;
                 }
                 if (this.flags.isFlagged(currX, currZ, level, zFlags)) {
                     return LinePathFinder.EMPTY; // alternative
                 }
-                coordinates.push(((currZ) & 0x3fff) | (((currX) & 0x3fff) << 14) | ((level & 0x3) << 28));
+                coordinates.push(RouteCoordinates.pack(level, currX, currZ));
 
                 scaledX += tangent;
 
                 const nextX: i32 = Line.scaleDown(scaledX);
                 if (nextX != currX) {
                     if (los && nextX == endX && currZ == endZ) {
-                        xFlags = (xFlags & ~CollisionFlag.LOC_PROJ_BLOCKER) | (xFlags & ~CollisionFlag.PLAYER);
+                        xFlags = xFlags & ~flagProj;
                     }
                     if (this.flags.isFlagged(nextX, currZ, level, xFlags)) {
                         return LinePathFinder.EMPTY; // alternative
                     }
-                    coordinates.push(((currZ) & 0x3fff) | (((nextX) & 0x3fff) << 14) | ((level & 0x3) << 28));
+                    coordinates.push(RouteCoordinates.pack(level, nextX, currZ));
                 }
             }
         }

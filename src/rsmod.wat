@@ -1,6 +1,6 @@
 (module
- (type $0 (func (param i32) (result i32)))
- (type $1 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
+ (type $0 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
+ (type $1 (func (param i32) (result i32)))
  (type $2 (func (param i32 i32) (result i32)))
  (type $3 (func (param i32 i32 i32 i32)))
  (type $4 (func (param i32 i32 i32) (result i32)))
@@ -11,13 +11,12 @@
  (type $9 (func))
  (type $10 (func (param i32 i32 i32)))
  (type $11 (func (param i32 i32 i32 i32 i32 i32 i32)))
- (type $12 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
- (type $13 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
- (type $14 (func (param i32 i32 i32 i32) (result i32)))
- (type $15 (func (param i32 i32 i32 i32 i32 i32 i32 i32)))
- (type $16 (func (param i32 i32 i64)))
- (type $17 (func (result f64)))
- (type $18 (func (param i32)))
+ (type $12 (func (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result i32)))
+ (type $13 (func (param i32 i32 i32 i32) (result i32)))
+ (type $14 (func (param i32 i32 i32 i32 i32 i32 i32 i32)))
+ (type $15 (func (param i32 i32 i64)))
+ (type $16 (func (result f64)))
+ (type $17 (func (param i32)))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "seed" (func $~lib/builtins/seed (result f64)))
  (global $src/rsmod/flag/CollisionFlag/CollisionFlag.NULL i32 (i32.const -1))
@@ -2241,7 +2240,7 @@
    i32.const 1840
    call $~lib/staticarray/StaticArray<~lib/string/String>#join
    i32.const 3680
-   i32.const 520
+   i32.const 528
    i32.const 9
    call $~lib/builtins/abort
    unreachable
@@ -2326,7 +2325,7 @@
     i32.const 3920
     call $~lib/staticarray/StaticArray<~lib/string/String>#join
     i32.const 3968
-    i32.const 64
+    i32.const 65
     i32.const 13
     call $~lib/builtins/abort
     unreachable
@@ -2363,7 +2362,7 @@
     i32.const 4208
     call $~lib/staticarray/StaticArray<~lib/string/String>#join
     i32.const 3968
-    i32.const 67
+    i32.const 68
     i32.const 13
     call $~lib/builtins/abort
     unreachable
@@ -2385,7 +2384,7 @@
     i32.const 4416
     call $~lib/staticarray/StaticArray<~lib/string/String>#join
     i32.const 3968
-    i32.const 70
+    i32.const 71
     i32.const 13
     call $~lib/builtins/abort
     unreachable
@@ -25650,7 +25649,7 @@
    i32.const 4608
    call $~lib/staticarray/StaticArray<~lib/string/String>#join
    i32.const 4656
-   i32.const 38
+   i32.const 39
    i32.const 13
    call $~lib/builtins/abort
    unreachable
@@ -25689,7 +25688,7 @@
    i32.const 4832
    call $~lib/staticarray/StaticArray<~lib/string/String>#join
    i32.const 4656
-   i32.const 41
+   i32.const 42
    i32.const 13
    call $~lib/builtins/abort
    unreachable
@@ -25710,7 +25709,7 @@
    i32.const 4976
    call $~lib/staticarray/StaticArray<~lib/string/String>#join
    i32.const 4656
-   i32.const 44
+   i32.const 45
    i32.const 13
    call $~lib/builtins/abort
    unreachable
@@ -25872,6 +25871,12 @@
     local.tee $4
     i32.load offset=4
     drop
+    local.get $3
+    i32.const 0
+    call $~lib/array/Array<i32>#__get
+    local.get $1
+    i32.add
+    local.set $1
     local.get $4
     local.get $3
     i32.const 1
@@ -25880,11 +25885,7 @@
     i32.add
     i32.const 16383
     i32.and
-    local.get $3
-    i32.const 0
-    call $~lib/array/Array<i32>#__get
     local.get $1
-    i32.add
     i32.const 16383
     i32.and
     i32.const 14
@@ -26156,7 +26157,7 @@
         i32.const 5328
         call $~lib/staticarray/StaticArray<~lib/string/String>#join
         i32.const 4656
-        i32.const 180
+        i32.const 181
         i32.const 17
         call $~lib/builtins/abort
         unreachable
@@ -50157,8 +50158,7 @@
   local.get $7
   call $src/index/canTravel
  )
- (func $src/index/hasLineOfSight (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (result i32)
-  (local $9 i32)
+ (func $src/index/hasLineOfSight (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (param $9 i32) (result i32)
   (local $10 i32)
   (local $11 i32)
   (local $12 i32)
@@ -50169,33 +50169,33 @@
   (local $17 i32)
   (local $18 i32)
   local.get $0
-  local.set $9
-  local.get $8
+  local.set $10
+  local.get $9
   i32.const 196608
   i32.or
-  local.set $13
-  local.get $8
+  local.set $12
+  local.get $9
   i32.const 135168
   i32.or
-  local.set $14
-  local.get $8
+  local.set $13
+  local.get $9
   i32.const 147456
   i32.or
-  local.set $15
-  local.get $8
+  local.set $14
+  local.get $9
   i32.const 132096
   i32.or
-  local.set $16
-  local.get $8
+  local.set $15
+  local.get $9
   i32.const 256
   i32.or
-  local.set $17
-  local.get $8
+  local.set $16
+  local.get $9
   i32.const 131072
   i32.or
-  local.set $12
+  local.set $17
   global.get $src/index/lineValidator
-  local.tee $11
+  local.tee $9
   i32.load
   local.set $18
   block $src/rsmod/Line/Line.coordinate|inlined.0
@@ -50218,21 +50218,21 @@
   end
   block $src/rsmod/Line/Line.coordinate|inlined.1
    local.get $2
-   local.tee $8
+   local.tee $5
    local.get $4
    i32.ge_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.1
    local.get $5
-   local.get $8
+   local.get $6
    i32.add
    i32.const 1
    i32.sub
-   local.tee $8
+   local.tee $5
    local.get $4
    i32.le_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.1
    local.get $4
-   local.set $8
+   local.set $5
   end
   block $src/rsmod/LineValidator/LineValidator#rayCast|inlined.0
    block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$466 (result i32)
@@ -50244,7 +50244,7 @@
     i32.shr_s
     i32.const 2047
     i32.and
-    local.get $8
+    local.get $5
     i32.const 3
     i32.shr_s
     i32.const 2047
@@ -50252,7 +50252,7 @@
     i32.const 11
     i32.shl
     i32.or
-    local.get $9
+    local.get $10
     i32.const 3
     i32.and
     i32.const 22
@@ -50262,7 +50262,7 @@
     i32.shl
     i32.add
     i32.load
-    local.tee $5
+    local.tee $6
     i32.eqz
     br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$466
     drop
@@ -50270,14 +50270,14 @@
     local.get $0
     i32.const 7
     i32.and
-    local.get $8
+    local.get $5
     i32.const 7
     i32.and
     i32.const 3
     i32.shl
     i32.or
     local.tee $18
-    local.get $5
+    local.get $6
     i32.const 20
     i32.sub
     i32.load offset=16
@@ -50286,14 +50286,14 @@
     i32.ge_s
     br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$466
     drop
-    local.get $5
+    local.get $6
     local.get $18
     i32.const 2
     i32.shl
     i32.add
     i32.load
    end
-   local.get $17
+   local.get $16
    i32.and
    br_if $src/rsmod/LineValidator/LineValidator#rayCast|inlined.0
    block $src/rsmod/Line/Line.coordinate|inlined.2
@@ -50302,7 +50302,7 @@
     i32.le_s
     br_if $src/rsmod/Line/Line.coordinate|inlined.2
     local.get $3
-    local.get $6
+    local.get $7
     i32.add
     i32.const 1
     i32.sub
@@ -50321,7 +50321,7 @@
     i32.le_s
     br_if $src/rsmod/Line/Line.coordinate|inlined.3
     local.get $4
-    local.get $7
+    local.get $8
     i32.add
     i32.const 1
     i32.sub
@@ -50333,10 +50333,10 @@
     local.set $4
    end
    i32.const 1
-   local.set $10
+   local.set $11
    local.get $4
    local.tee $2
-   local.get $8
+   local.get $5
    i32.eq
    local.get $0
    local.get $1
@@ -50346,56 +50346,56 @@
    local.get $1
    local.get $0
    i32.sub
-   local.tee $5
+   local.tee $7
    f64.convert_i32_s
    f64.abs
    i32.trunc_sat_f64_s
    local.set $6
    local.get $4
-   local.get $8
+   local.get $5
    i32.sub
-   local.tee $7
+   local.tee $8
    f64.convert_i32_s
    f64.abs
    i32.trunc_sat_f64_s
-   local.set $10
+   local.set $11
+   local.get $12
    local.get $13
+   local.get $7
+   i32.const 0
+   i32.ge_s
+   local.tee $12
+   select
+   local.set $3
    local.get $14
-   local.get $5
+   local.get $15
+   local.get $8
    i32.const 0
    i32.ge_s
    local.tee $13
    select
-   local.set $3
-   local.get $15
-   local.get $16
-   local.get $7
-   i32.const 0
-   i32.ge_s
-   local.tee $14
-   select
    local.set $4
    local.get $6
-   local.get $10
+   local.get $11
    i32.gt_s
    if
     i32.const 1
     i32.const -1
-    local.get $13
+    local.get $12
     select
-    local.set $13
-    local.get $8
+    local.set $7
+    local.get $5
     i32.const 16
     i32.shl
     i32.const 32768
     i32.add
     i32.const 0
     i32.const -1
-    local.get $14
+    local.get $13
     select
     i32.add
     local.set $5
-    local.get $7
+    local.get $8
     i32.const 16
     i32.shl
     local.get $6
@@ -50407,24 +50407,24 @@
      i32.ne
      if
       i32.const 0
-      local.set $10
-      local.get $12
+      local.set $11
+      local.get $17
       i32.const -1
       i32.xor
-      local.tee $7
+      local.tee $8
       local.get $3
       i32.and
       local.get $3
       local.get $1
       local.get $0
-      local.get $13
+      local.get $7
       i32.add
       local.tee $0
       i32.eq
       local.get $5
       i32.const 16
       i32.shr_u
-      local.tee $8
+      local.tee $12
       local.get $2
       i32.eq
       i32.and
@@ -50432,7 +50432,7 @@
       local.tee $3
       block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$467 (result i32)
        i32.const -1
-       local.get $11
+       local.get $9
        i32.load
        i32.load
        local.get $0
@@ -50440,7 +50440,7 @@
        i32.shr_s
        i32.const 2047
        i32.and
-       local.get $8
+       local.get $12
        i32.const 3
        i32.shr_u
        i32.const 2047
@@ -50448,7 +50448,7 @@
        i32.const 11
        i32.shl
        i32.or
-       local.get $9
+       local.get $10
        i32.const 3
        i32.and
        i32.const 22
@@ -50458,7 +50458,7 @@
        i32.shl
        i32.add
        i32.load
-       local.tee $14
+       local.tee $13
        i32.eqz
        br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$467
        drop
@@ -50466,14 +50466,14 @@
        local.get $0
        i32.const 7
        i32.and
-       local.get $8
+       local.get $12
        i32.const 7
        i32.and
        i32.const 3
        i32.shl
        i32.or
-       local.tee $15
-       local.get $14
+       local.tee $14
+       local.get $13
        i32.const 20
        i32.sub
        i32.load offset=16
@@ -50482,8 +50482,8 @@
        i32.ge_s
        br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$467
        drop
+       local.get $13
        local.get $14
-       local.get $15
        i32.const 2
        i32.shl
        i32.add
@@ -50492,7 +50492,7 @@
       i32.and
       br_if $src/rsmod/LineValidator/LineValidator#rayCast|inlined.0
       local.get $4
-      local.get $7
+      local.get $8
       i32.and
       local.get $4
       local.get $0
@@ -50504,19 +50504,19 @@
       local.tee $5
       i32.const 16
       i32.shr_u
-      local.tee $7
+      local.tee $8
       local.get $2
       i32.eq
       i32.and
       select
       local.set $4
-      local.get $7
       local.get $8
+      local.get $12
       i32.ne
       if (result i32)
        block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$468 (result i32)
         i32.const -1
-        local.get $11
+        local.get $9
         i32.load
         i32.load
         local.get $0
@@ -50524,7 +50524,7 @@
         i32.shr_s
         i32.const 2047
         i32.and
-        local.get $7
+        local.get $8
         i32.const 3
         i32.shr_u
         i32.const 2047
@@ -50532,7 +50532,7 @@
         i32.const 11
         i32.shl
         i32.or
-        local.get $9
+        local.get $10
         i32.const 3
         i32.and
         i32.const 22
@@ -50542,7 +50542,7 @@
         i32.shl
         i32.add
         i32.load
-        local.tee $8
+        local.tee $12
         i32.eqz
         br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$468
         drop
@@ -50550,14 +50550,14 @@
         local.get $0
         i32.const 7
         i32.and
-        local.get $7
+        local.get $8
         i32.const 7
         i32.and
         i32.const 3
         i32.shl
         i32.or
-        local.tee $7
-        local.get $8
+        local.tee $8
+        local.get $12
         i32.const 20
         i32.sub
         i32.load offset=16
@@ -50566,8 +50566,8 @@
         i32.ge_s
         br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$468
         drop
+        local.get $12
         local.get $8
-        local.get $7
         i32.const 2
         i32.shl
         i32.add
@@ -50585,9 +50585,9 @@
    else
     i32.const 1
     i32.const -1
-    local.get $14
+    local.get $13
     select
-    local.set $7
+    local.set $8
     local.get $0
     i32.const 16
     i32.shl
@@ -50595,17 +50595,17 @@
     i32.add
     i32.const 0
     i32.const -1
-    local.get $13
+    local.get $12
     select
     i32.add
     local.set $6
-    local.get $5
+    local.get $7
     i32.const 16
     i32.shl
-    local.get $10
+    local.get $11
     i32.div_s
-    local.set $5
-    local.get $8
+    local.set $7
+    local.get $5
     local.set $0
     loop $while-continue|1
      local.get $0
@@ -50613,23 +50613,23 @@
      i32.ne
      if
       i32.const 0
-      local.set $10
-      local.get $12
+      local.set $11
+      local.get $17
       i32.const -1
       i32.xor
-      local.tee $8
+      local.tee $5
       local.get $4
       i32.and
       local.get $4
       local.get $6
       i32.const 16
       i32.shr_u
-      local.tee $13
+      local.tee $12
       local.get $1
       i32.eq
       local.get $2
       local.get $0
-      local.get $7
+      local.get $8
       i32.add
       local.tee $0
       i32.eq
@@ -50638,10 +50638,10 @@
       local.tee $4
       block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$469 (result i32)
        i32.const -1
-       local.get $11
+       local.get $9
        i32.load
        i32.load
-       local.get $13
+       local.get $12
        i32.const 3
        i32.shr_u
        i32.const 2047
@@ -50654,7 +50654,7 @@
        i32.const 11
        i32.shl
        i32.or
-       local.get $9
+       local.get $10
        i32.const 3
        i32.and
        i32.const 22
@@ -50664,12 +50664,12 @@
        i32.shl
        i32.add
        i32.load
-       local.tee $14
+       local.tee $13
        i32.eqz
        br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$469
        drop
        i32.const -1
-       local.get $13
+       local.get $12
        i32.const 7
        i32.and
        local.get $0
@@ -50678,8 +50678,8 @@
        i32.const 3
        i32.shl
        i32.or
-       local.tee $15
-       local.get $14
+       local.tee $14
+       local.get $13
        i32.const 20
        i32.sub
        i32.load offset=16
@@ -50688,8 +50688,8 @@
        i32.ge_s
        br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$469
        drop
+       local.get $13
        local.get $14
-       local.get $15
        i32.const 2
        i32.shl
        i32.add
@@ -50698,16 +50698,16 @@
       i32.and
       br_if $src/rsmod/LineValidator/LineValidator#rayCast|inlined.0
       local.get $3
-      local.get $8
+      local.get $5
       i32.and
       local.get $3
-      local.get $5
       local.get $6
+      local.get $7
       i32.add
       local.tee $6
       i32.const 16
       i32.shr_u
-      local.tee $8
+      local.tee $5
       local.get $1
       i32.eq
       local.get $0
@@ -50716,16 +50716,16 @@
       i32.and
       select
       local.set $3
-      local.get $8
-      local.get $13
+      local.get $5
+      local.get $12
       i32.ne
       if (result i32)
        block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$470 (result i32)
         i32.const -1
-        local.get $11
+        local.get $9
         i32.load
         i32.load
-        local.get $8
+        local.get $5
         i32.const 3
         i32.shr_u
         i32.const 2047
@@ -50738,7 +50738,7 @@
         i32.const 11
         i32.shl
         i32.or
-        local.get $9
+        local.get $10
         i32.const 3
         i32.and
         i32.const 22
@@ -50748,12 +50748,12 @@
         i32.shl
         i32.add
         i32.load
-        local.tee $13
+        local.tee $12
         i32.eqz
         br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$470
         drop
         i32.const -1
-        local.get $8
+        local.get $5
         i32.const 7
         i32.and
         local.get $0
@@ -50762,8 +50762,8 @@
         i32.const 3
         i32.shl
         i32.or
-        local.tee $8
-        local.get $13
+        local.tee $5
+        local.get $12
         i32.const 20
         i32.sub
         i32.load offset=16
@@ -50772,8 +50772,8 @@
         i32.ge_s
         br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$470
         drop
-        local.get $13
-        local.get $8
+        local.get $12
+        local.get $5
         i32.const 2
         i32.shl
         i32.add
@@ -50790,35 +50790,39 @@
     end
    end
    i32.const 1
-   local.set $10
+   local.set $11
   end
-  local.get $10
+  local.get $11
  )
- (func $src/index/hasLineOfSight@varargs (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (result i32)
-  block $4of4
-   block $3of4
-    block $2of4
-     block $1of4
-      block $0of4
-       block $outOfRange
-        global.get $~argumentsLength
-        i32.const 5
-        i32.sub
-        br_table $0of4 $1of4 $2of4 $3of4 $4of4 $outOfRange
+ (func $src/index/hasLineOfSight@varargs (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (param $9 i32) (result i32)
+  block $5of5
+   block $4of5
+    block $3of5
+     block $2of5
+      block $1of5
+       block $0of5
+        block $outOfRange
+         global.get $~argumentsLength
+         i32.const 5
+         i32.sub
+         br_table $0of5 $1of5 $2of5 $3of5 $4of5 $5of5 $outOfRange
+        end
+        unreachable
        end
-       unreachable
+       i32.const 1
+       local.set $5
       end
       i32.const 1
-      local.set $5
+      local.set $6
      end
      i32.const 0
-     local.set $6
+     local.set $7
     end
     i32.const 0
-    local.set $7
+    local.set $8
    end
    i32.const 0
-   local.set $8
+   local.set $9
   end
   local.get $0
   local.get $1
@@ -50829,35 +50833,35 @@
   local.get $6
   local.get $7
   local.get $8
+  local.get $9
   call $src/index/hasLineOfSight
  )
- (func $src/index/hasLineOfWalk (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (result i32)
-  (local $9 i32)
+ (func $src/index/hasLineOfWalk (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (param $9 i32) (result i32)
   (local $10 i32)
   (local $11 i32)
   (local $12 i32)
   (local $13 i32)
   (local $14 i32)
   global.get $src/index/lineValidator
-  local.set $10
+  local.set $11
   local.get $0
-  local.set $9
-  local.get $8
+  local.set $10
+  local.get $9
   i32.const 2359680
   i32.or
-  local.set $12
-  local.get $8
+  local.set $13
+  local.get $9
   i32.const 2359560
   i32.or
-  local.set $13
-  local.get $8
+  local.set $12
+  local.get $9
   i32.const 2359584
   i32.or
-  local.set $11
-  local.get $8
+  local.set $14
+  local.get $9
   i32.const 2359554
   i32.or
-  local.set $14
+  local.set $9
   block $src/rsmod/Line/Line.coordinate|inlined.4
    local.get $3
    local.get $1
@@ -50878,21 +50882,21 @@
   end
   block $src/rsmod/Line/Line.coordinate|inlined.5
    local.get $2
-   local.tee $8
+   local.tee $5
    local.get $4
    i32.ge_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.5
    local.get $5
-   local.get $8
+   local.get $6
    i32.add
    i32.const 1
    i32.sub
-   local.tee $8
+   local.tee $5
    local.get $4
    i32.le_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.5
    local.get $4
-   local.set $8
+   local.set $5
   end
   block $src/rsmod/Line/Line.coordinate|inlined.6
    local.get $1
@@ -50900,7 +50904,7 @@
    i32.le_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.6
    local.get $3
-   local.get $6
+   local.get $7
    i32.add
    i32.const 1
    i32.sub
@@ -50917,7 +50921,7 @@
    i32.le_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.7
    local.get $4
-   local.get $7
+   local.get $8
    i32.add
    i32.const 1
    i32.sub
@@ -50932,7 +50936,7 @@
   local.set $7
   block $src/rsmod/LineValidator/LineValidator#rayCast|inlined.1
    local.get $4
-   local.get $8
+   local.get $5
    i32.eq
    local.get $0
    local.get $3
@@ -50948,46 +50952,46 @@
    i32.trunc_sat_f64_s
    local.set $2
    local.get $4
-   local.get $8
+   local.get $5
    i32.sub
    local.tee $6
    f64.convert_i32_s
    f64.abs
    i32.trunc_sat_f64_s
-   local.set $5
-   local.get $12
+   local.set $7
    local.get $13
+   local.get $12
    local.get $1
    i32.const 0
    i32.ge_s
-   local.tee $7
+   local.tee $8
    select
    local.set $12
-   local.get $11
    local.get $14
+   local.get $9
    local.get $6
    i32.const 0
    i32.ge_s
-   local.tee $11
+   local.tee $9
    select
    local.set $13
    local.get $2
-   local.get $5
+   local.get $7
    i32.gt_s
    if
     i32.const 1
     i32.const -1
-    local.get $7
+    local.get $8
     select
     local.set $1
-    local.get $8
+    local.get $5
     i32.const 16
     i32.shl
     i32.const 32768
     i32.add
     i32.const 0
     i32.const -1
-    local.get $11
+    local.get $9
     select
     i32.add
     local.set $5
@@ -51022,7 +51026,7 @@
        i32.or
        local.set $6
        i32.const -1
-       local.get $10
+       local.get $11
        i32.load
        i32.load
        local.get $0
@@ -51038,7 +51042,7 @@
        i32.const 11
        i32.shl
        i32.or
-       local.get $9
+       local.get $10
        i32.const 3
        i32.and
        i32.const 22
@@ -51085,7 +51089,7 @@
       if (result i32)
        block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$472 (result i32)
         i32.const -1
-        local.get $10
+        local.get $11
         i32.load
         i32.load
         local.get $0
@@ -51101,7 +51105,7 @@
         i32.const 11
         i32.shl
         i32.or
-        local.get $9
+        local.get $10
         i32.const 3
         i32.and
         i32.const 22
@@ -51154,7 +51158,7 @@
    else
     i32.const 1
     i32.const -1
-    local.get $11
+    local.get $9
     select
     local.set $2
     local.get $0
@@ -51164,17 +51168,17 @@
     i32.add
     i32.const 0
     i32.const -1
-    local.get $7
+    local.get $8
     select
     i32.add
     local.set $6
     local.get $1
     i32.const 16
     i32.shl
-    local.get $5
+    local.get $7
     i32.div_s
     local.set $1
-    local.get $8
+    local.get $5
     local.set $0
     loop $while-continue|1
      local.get $0
@@ -51201,7 +51205,7 @@
        i32.or
        local.set $5
        i32.const -1
-       local.get $10
+       local.get $11
        i32.load
        i32.load
        local.get $3
@@ -51217,7 +51221,7 @@
        i32.const 11
        i32.shl
        i32.or
-       local.get $9
+       local.get $10
        i32.const 3
        i32.and
        i32.const 22
@@ -51264,7 +51268,7 @@
       if (result i32)
        block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$474 (result i32)
         i32.const -1
-        local.get $10
+        local.get $11
         i32.load
         i32.load
         local.get $5
@@ -51280,7 +51284,7 @@
         i32.const 11
         i32.shl
         i32.or
-        local.get $9
+        local.get $10
         i32.const 3
         i32.and
         i32.const 22
@@ -51336,31 +51340,35 @@
   end
   local.get $7
  )
- (func $src/index/hasLineOfWalk@varargs (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (result i32)
-  block $4of4
-   block $3of4
-    block $2of4
-     block $1of4
-      block $0of4
-       block $outOfRange
-        global.get $~argumentsLength
-        i32.const 5
-        i32.sub
-        br_table $0of4 $1of4 $2of4 $3of4 $4of4 $outOfRange
+ (func $src/index/hasLineOfWalk@varargs (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (param $9 i32) (result i32)
+  block $5of5
+   block $4of5
+    block $3of5
+     block $2of5
+      block $1of5
+       block $0of5
+        block $outOfRange
+         global.get $~argumentsLength
+         i32.const 5
+         i32.sub
+         br_table $0of5 $1of5 $2of5 $3of5 $4of5 $5of5 $outOfRange
+        end
+        unreachable
        end
-       unreachable
+       i32.const 1
+       local.set $5
       end
       i32.const 1
-      local.set $5
+      local.set $6
      end
      i32.const 0
-     local.set $6
+     local.set $7
     end
     i32.const 0
-    local.set $7
+    local.set $8
    end
    i32.const 0
-   local.set $8
+   local.set $9
   end
   local.get $0
   local.get $1
@@ -51371,6 +51379,7 @@
   local.get $6
   local.get $7
   local.get $8
+  local.get $9
   call $src/index/hasLineOfWalk
  )
  (func $~lib/array/Array<i32>#push (param $0 i32) (param $1 i32)
@@ -51396,8 +51405,7 @@
   local.get $3
   i32.store offset=12
  )
- (func $src/index/lineOfSight (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (result i32)
-  (local $9 i32)
+ (func $src/index/lineOfSight (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (param $9 i32) (result i32)
   (local $10 i32)
   (local $11 i32)
   (local $12 i32)
@@ -51405,30 +51413,35 @@
   (local $14 i32)
   (local $15 i32)
   (local $16 i32)
+  (local $17 i32)
   global.get $src/index/linePathFinder
   local.set $10
-  local.get $8
+  local.get $9
   i32.const 196608
   i32.or
   local.set $13
-  local.get $8
+  local.get $9
   i32.const 135168
   i32.or
   local.set $14
-  local.get $8
+  local.get $9
   i32.const 147456
   i32.or
   local.set $15
-  local.get $8
+  local.get $9
   i32.const 132096
   i32.or
-  local.set $11
-  local.get $8
+  local.set $12
+  local.get $9
   i32.const 256
   i32.or
   local.set $16
+  local.get $9
+  i32.const 131072
+  i32.or
+  local.set $11
   local.get $1
-  local.set $8
+  local.set $9
   block $src/rsmod/Line/Line.coordinate|inlined.8
    local.get $1
    local.get $3
@@ -51439,35 +51452,44 @@
    i32.add
    i32.const 1
    i32.sub
-   local.tee $8
+   local.tee $9
    local.get $3
    i32.le_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.8
    local.get $3
-   local.set $8
+   local.set $9
   end
-  local.get $8
-  local.set $9
   block $src/rsmod/Line/Line.coordinate|inlined.9
    local.get $2
-   local.tee $8
+   local.tee $5
    local.get $4
    i32.ge_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.9
-   local.get $2
    local.get $5
+   local.get $6
    i32.add
    i32.const 1
    i32.sub
-   local.tee $8
+   local.tee $5
    local.get $4
    i32.le_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.9
    local.get $4
-   local.set $8
+   local.set $5
   end
   block $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.0
    block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$475 (result i32)
+    local.get $9
+    i32.const 7
+    i32.and
+    local.get $5
+    local.tee $6
+    i32.const 7
+    i32.and
+    i32.const 3
+    i32.shl
+    i32.or
+    local.set $17
     i32.const -1
     local.get $10
     i32.load
@@ -51477,8 +51499,7 @@
     i32.shr_s
     i32.const 2047
     i32.and
-    local.get $8
-    local.tee $5
+    local.get $5
     i32.const 3
     i32.shr_s
     i32.const 2047
@@ -51496,22 +51517,13 @@
     i32.shl
     i32.add
     i32.load
-    local.tee $12
+    local.tee $5
     i32.eqz
     br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$475
     drop
     i32.const -1
-    local.get $9
-    i32.const 7
-    i32.and
-    local.get $8
-    i32.const 7
-    i32.and
-    i32.const 3
-    i32.shl
-    i32.or
-    local.tee $8
-    local.get $12
+    local.get $17
+    local.get $5
     i32.const 20
     i32.sub
     i32.load offset=16
@@ -51520,8 +51532,8 @@
     i32.ge_s
     br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$475
     drop
-    local.get $12
-    local.get $8
+    local.get $5
+    local.get $17
     i32.const 2
     i32.shl
     i32.add
@@ -51540,7 +51552,7 @@
     i32.le_s
     br_if $src/rsmod/Line/Line.coordinate|inlined.10
     local.get $3
-    local.get $6
+    local.get $7
     i32.add
     i32.const 1
     i32.sub
@@ -51551,8 +51563,6 @@
     local.get $1
     local.set $3
    end
-   local.get $3
-   local.set $6
    global.get $src/rsmod/LinePathFinder/LinePathFinder.EMPTY
    local.set $1
    block $src/rsmod/Line/Line.coordinate|inlined.11
@@ -51561,7 +51571,7 @@
     i32.le_s
     br_if $src/rsmod/Line/Line.coordinate|inlined.11
     local.get $4
-    local.get $7
+    local.get $8
     i32.add
     i32.const 1
     i32.sub
@@ -51573,29 +51583,29 @@
     local.set $4
    end
    local.get $4
-   local.get $5
-   i32.eq
    local.get $6
+   i32.eq
+   local.get $3
    local.get $9
    i32.eq
    i32.and
    br_if $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.0
-   local.get $6
+   local.get $3
    local.get $9
    i32.sub
    local.tee $1
    f64.convert_i32_s
    f64.abs
    i32.trunc_sat_f64_s
-   local.set $7
+   local.set $2
    local.get $4
-   local.get $5
+   local.get $6
    i32.sub
-   local.tee $8
+   local.tee $5
    f64.convert_i32_s
    f64.abs
    i32.trunc_sat_f64_s
-   local.set $12
+   local.set $16
    local.get $13
    local.get $14
    local.get $1
@@ -51603,76 +51613,74 @@
    i32.ge_s
    local.tee $13
    select
-   local.set $2
+   local.set $7
    local.get $15
-   local.get $11
-   local.get $8
+   local.get $12
+   local.get $5
    i32.const 0
    i32.ge_s
-   local.tee $11
+   local.tee $12
    select
-   local.set $3
+   local.set $8
    i32.const 0
    i32.const 11
    i32.const 5856
    call $~lib/rt/__newArray
    local.set $14
-   local.get $7
-   local.get $12
+   local.get $2
+   local.get $16
    i32.gt_s
    if
     i32.const 1
     i32.const -1
     local.get $13
     select
-    local.set $12
-    local.get $5
+    local.set $13
+    local.get $6
     i32.const 16
     i32.shl
     i32.const 32768
     i32.add
     i32.const 0
     i32.const -1
-    local.get $11
+    local.get $12
     select
     i32.add
-    local.set $5
-    local.get $8
+    local.set $6
+    local.get $5
     i32.const 16
     i32.shl
-    local.get $7
+    local.get $2
     i32.div_s
-    local.set $7
+    local.set $2
     local.get $9
     local.set $1
     loop $while-continue|0
      local.get $1
-     local.get $6
+     local.get $3
      i32.ne
      if
-      local.get $6
+      local.get $7
+      local.get $11
+      i32.const -1
+      i32.xor
+      i32.and
+      local.get $7
+      local.get $3
       local.get $1
-      local.get $12
+      local.get $13
       i32.add
       local.tee $1
       i32.eq
-      local.get $5
+      local.get $6
       i32.const 16
       i32.shr_u
-      local.tee $8
+      local.tee $5
       local.get $4
       i32.eq
       i32.and
-      if
-       local.get $2
-       i32.const -131073
-       i32.and
-       local.get $2
-       i32.const -1048577
-       i32.and
-       i32.or
-       local.set $2
-      end
+      select
+      local.tee $7
       block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$476 (result i32)
        i32.const -1
        local.get $10
@@ -51683,7 +51691,7 @@
        i32.shr_s
        i32.const 2047
        i32.and
-       local.get $8
+       local.get $5
        i32.const 3
        i32.shr_u
        i32.const 2047
@@ -51709,13 +51717,13 @@
        local.get $1
        i32.const 7
        i32.and
-       local.get $8
+       local.get $5
        i32.const 7
        i32.and
        i32.const 3
        i32.shl
        i32.or
-       local.tee $11
+       local.tee $12
        local.get $9
        i32.const 20
        i32.sub
@@ -51726,13 +51734,12 @@
        br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$476
        drop
        local.get $9
-       local.get $11
+       local.get $12
        i32.const 2
        i32.shl
        i32.add
        i32.load
       end
-      local.get $2
       i32.and
       if
        global.get $src/rsmod/LinePathFinder/LinePathFinder.EMPTY
@@ -51740,7 +51747,7 @@
        br $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.0
       end
       local.get $14
-      local.get $8
+      local.get $5
       i32.const 16383
       i32.and
       local.get $1
@@ -51752,37 +51759,21 @@
       local.get $0
       i32.const 3
       i32.and
+      local.tee $9
       i32.const 28
       i32.shl
       i32.or
       call $~lib/array/Array<i32>#push
-      local.get $5
-      local.get $7
+      local.get $2
+      local.get $6
       i32.add
-      local.tee $5
+      local.tee $6
       i32.const 16
       i32.shr_u
-      local.tee $9
-      local.get $8
+      local.tee $12
+      local.get $5
       i32.ne
       if
-       local.get $1
-       local.get $6
-       i32.eq
-       local.get $4
-       local.get $9
-       i32.eq
-       i32.and
-       if
-        local.get $3
-        i32.const -131073
-        i32.and
-        local.get $3
-        i32.const -1048577
-        i32.and
-        i32.or
-        local.set $3
-       end
        block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$477 (result i32)
         i32.const -1
         local.get $10
@@ -51793,7 +51784,7 @@
         i32.shr_s
         i32.const 2047
         i32.and
-        local.get $9
+        local.get $12
         i32.const 3
         i32.shr_u
         i32.const 2047
@@ -51801,9 +51792,7 @@
         i32.const 11
         i32.shl
         i32.or
-        local.get $0
-        i32.const 3
-        i32.and
+        local.get $9
         i32.const 22
         i32.shl
         i32.or
@@ -51811,7 +51800,7 @@
         i32.shl
         i32.add
         i32.load
-        local.tee $8
+        local.tee $5
         i32.eqz
         br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$477
         drop
@@ -51819,14 +51808,14 @@
         local.get $1
         i32.const 7
         i32.and
-        local.get $9
+        local.get $12
         i32.const 7
         i32.and
         i32.const 3
         i32.shl
         i32.or
-        local.tee $11
-        local.get $8
+        local.tee $9
+        local.get $5
         i32.const 20
         i32.sub
         i32.load offset=16
@@ -51835,14 +51824,28 @@
         i32.ge_s
         br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$477
         drop
-        local.get $8
-        local.get $11
+        local.get $5
+        local.get $9
         i32.const 2
         i32.shl
         i32.add
         i32.load
        end
+       local.get $8
+       local.get $11
+       i32.const -1
+       i32.xor
+       i32.and
+       local.get $8
+       local.get $1
        local.get $3
+       i32.eq
+       local.get $4
+       local.get $12
+       i32.eq
+       i32.and
+       select
+       local.tee $8
        i32.and
        if
         global.get $src/rsmod/LinePathFinder/LinePathFinder.EMPTY
@@ -51850,7 +51853,7 @@
         br $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.0
        end
        local.get $14
-       local.get $9
+       local.get $12
        i32.const 16383
        i32.and
        local.get $1
@@ -51873,9 +51876,9 @@
    else
     i32.const 1
     i32.const -1
-    local.get $11
+    local.get $12
     select
-    local.set $7
+    local.set $2
     local.get $9
     i32.const 16
     i32.shl
@@ -51886,14 +51889,14 @@
     local.get $13
     select
     i32.add
-    local.set $8
+    local.set $5
     local.get $1
     i32.const 16
     i32.shl
-    local.get $12
+    local.get $16
     i32.div_s
     local.set $9
-    local.get $5
+    local.get $6
     local.set $1
     loop $while-continue|1
      local.get $1
@@ -51901,34 +51904,32 @@
      i32.ne
      if
       local.get $8
+      local.get $11
+      i32.const -1
+      i32.xor
+      i32.and
+      local.get $8
+      local.get $5
       i32.const 16
       i32.shr_u
-      local.tee $5
-      local.get $6
+      local.tee $6
+      local.get $3
       i32.eq
       local.get $4
       local.get $1
-      local.get $7
+      local.get $2
       i32.add
       local.tee $1
       i32.eq
       i32.and
-      if
-       local.get $3
-       i32.const -131073
-       i32.and
-       local.get $3
-       i32.const -1048577
-       i32.and
-       i32.or
-       local.set $3
-      end
+      select
+      local.tee $8
       block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$478 (result i32)
        i32.const -1
        local.get $10
        i32.load
        i32.load
-       local.get $5
+       local.get $6
        i32.const 3
        i32.shr_u
        i32.const 2047
@@ -51951,12 +51952,12 @@
        i32.shl
        i32.add
        i32.load
-       local.tee $11
+       local.tee $12
        i32.eqz
        br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$478
        drop
        i32.const -1
-       local.get $5
+       local.get $6
        i32.const 7
        i32.and
        local.get $1
@@ -51965,8 +51966,8 @@
        i32.const 3
        i32.shl
        i32.or
-       local.tee $12
-       local.get $11
+       local.tee $13
+       local.get $12
        i32.const 20
        i32.sub
        i32.load offset=16
@@ -51975,14 +51976,13 @@
        i32.ge_s
        br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$478
        drop
-       local.get $11
        local.get $12
+       local.get $13
        i32.const 2
        i32.shl
        i32.add
        i32.load
       end
-      local.get $3
       i32.and
       if
        global.get $src/rsmod/LinePathFinder/LinePathFinder.EMPTY
@@ -51993,7 +51993,7 @@
       local.get $1
       i32.const 16383
       i32.and
-      local.get $5
+      local.get $6
       i32.const 16383
       i32.and
       i32.const 14
@@ -52002,43 +52002,27 @@
       local.get $0
       i32.const 3
       i32.and
+      local.tee $12
       i32.const 28
       i32.shl
       i32.or
       call $~lib/array/Array<i32>#push
-      local.get $8
+      local.get $5
       local.get $9
       i32.add
-      local.tee $8
+      local.tee $5
       i32.const 16
       i32.shr_u
-      local.tee $11
-      local.get $5
+      local.tee $13
+      local.get $6
       i32.ne
       if
-       local.get $6
-       local.get $11
-       i32.eq
-       local.get $1
-       local.get $4
-       i32.eq
-       i32.and
-       if
-        local.get $2
-        i32.const -131073
-        i32.and
-        local.get $2
-        i32.const -1048577
-        i32.and
-        i32.or
-        local.set $2
-       end
        block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$479 (result i32)
         i32.const -1
         local.get $10
         i32.load
         i32.load
-        local.get $11
+        local.get $13
         i32.const 3
         i32.shr_u
         i32.const 2047
@@ -52051,9 +52035,7 @@
         i32.const 11
         i32.shl
         i32.or
-        local.get $0
-        i32.const 3
-        i32.and
+        local.get $12
         i32.const 22
         i32.shl
         i32.or
@@ -52061,12 +52043,12 @@
         i32.shl
         i32.add
         i32.load
-        local.tee $5
+        local.tee $6
         i32.eqz
         br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$479
         drop
         i32.const -1
-        local.get $11
+        local.get $13
         i32.const 7
         i32.and
         local.get $1
@@ -52076,7 +52058,7 @@
         i32.shl
         i32.or
         local.tee $12
-        local.get $5
+        local.get $6
         i32.const 20
         i32.sub
         i32.load offset=16
@@ -52085,14 +52067,28 @@
         i32.ge_s
         br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$479
         drop
-        local.get $5
+        local.get $6
         local.get $12
         i32.const 2
         i32.shl
         i32.add
         i32.load
        end
-       local.get $2
+       local.get $7
+       local.get $11
+       i32.const -1
+       i32.xor
+       i32.and
+       local.get $7
+       local.get $3
+       local.get $13
+       i32.eq
+       local.get $1
+       local.get $4
+       i32.eq
+       i32.and
+       select
+       local.tee $7
        i32.and
        if
         global.get $src/rsmod/LinePathFinder/LinePathFinder.EMPTY
@@ -52103,7 +52099,7 @@
        local.get $1
        i32.const 16383
        i32.and
-       local.get $11
+       local.get $13
        i32.const 16383
        i32.and
        i32.const 14
@@ -52155,31 +52151,35 @@
   end
   local.get $1
  )
- (func $src/index/lineOfSight@varargs (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (result i32)
-  block $4of4
-   block $3of4
-    block $2of4
-     block $1of4
-      block $0of4
-       block $outOfRange
-        global.get $~argumentsLength
-        i32.const 5
-        i32.sub
-        br_table $0of4 $1of4 $2of4 $3of4 $4of4 $outOfRange
+ (func $src/index/lineOfSight@varargs (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (param $9 i32) (result i32)
+  block $5of5
+   block $4of5
+    block $3of5
+     block $2of5
+      block $1of5
+       block $0of5
+        block $outOfRange
+         global.get $~argumentsLength
+         i32.const 5
+         i32.sub
+         br_table $0of5 $1of5 $2of5 $3of5 $4of5 $5of5 $outOfRange
+        end
+        unreachable
        end
-       unreachable
+       i32.const 1
+       local.set $5
       end
       i32.const 1
-      local.set $5
+      local.set $6
      end
      i32.const 0
-     local.set $6
+     local.set $7
     end
     i32.const 0
-    local.set $7
+    local.set $8
    end
    i32.const 0
-   local.set $8
+   local.set $9
   end
   local.get $0
   local.get $1
@@ -52190,10 +52190,10 @@
   local.get $6
   local.get $7
   local.get $8
+  local.get $9
   call $src/index/lineOfSight
  )
- (func $src/index/lineOfWalk (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (result i32)
-  (local $9 i32)
+ (func $src/index/lineOfWalk (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (param $9 i32) (result i32)
   (local $10 i32)
   (local $11 i32)
   (local $12 i32)
@@ -52201,24 +52201,24 @@
   (local $14 i32)
   global.get $src/index/linePathFinder
   local.set $10
-  local.get $8
+  local.get $9
   i32.const 2359680
   i32.or
   local.set $11
-  local.get $8
+  local.get $9
   i32.const 2359560
   i32.or
   local.set $12
-  local.get $8
+  local.get $9
   i32.const 2359584
   i32.or
   local.set $13
-  local.get $8
+  local.get $9
   i32.const 2359554
   i32.or
   local.set $14
   local.get $1
-  local.set $8
+  local.set $9
   block $src/rsmod/Line/Line.coordinate|inlined.12
    local.get $1
    local.get $3
@@ -52229,42 +52229,40 @@
    i32.add
    i32.const 1
    i32.sub
-   local.tee $8
+   local.tee $9
    local.get $3
    i32.le_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.12
    local.get $3
-   local.set $8
+   local.set $9
   end
-  local.get $8
-  local.set $9
   block $src/rsmod/Line/Line.coordinate|inlined.13
    local.get $2
-   local.tee $8
+   local.tee $5
    local.get $4
    i32.ge_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.13
    local.get $5
-   local.get $8
+   local.get $6
    i32.add
    i32.const 1
    i32.sub
-   local.tee $8
+   local.tee $5
    local.get $4
    i32.le_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.13
    local.get $4
-   local.set $8
+   local.set $5
   end
-  local.get $8
-  local.set $5
+  local.get $5
+  local.set $6
   block $src/rsmod/Line/Line.coordinate|inlined.14
    local.get $1
    local.get $3
    i32.le_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.14
    local.get $3
-   local.get $6
+   local.get $7
    i32.add
    i32.const 1
    i32.sub
@@ -52283,7 +52281,7 @@
    i32.le_s
    br_if $src/rsmod/Line/Line.coordinate|inlined.15
    local.get $4
-   local.get $7
+   local.get $8
    i32.add
    i32.const 1
    i32.sub
@@ -52296,7 +52294,7 @@
   end
   block $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.1
    local.get $4
-   local.get $5
+   local.get $6
    i32.eq
    local.get $3
    local.get $9
@@ -52312,9 +52310,9 @@
    i32.trunc_sat_f64_s
    local.set $2
    local.get $4
-   local.get $5
+   local.get $6
    i32.sub
-   local.tee $6
+   local.tee $5
    f64.convert_i32_s
    f64.abs
    i32.trunc_sat_f64_s
@@ -52329,7 +52327,7 @@
    local.set $11
    local.get $13
    local.get $14
-   local.get $6
+   local.get $5
    i32.const 0
    i32.ge_s
    local.tee $12
@@ -52349,7 +52347,7 @@
     local.get $8
     select
     local.set $4
-    local.get $5
+    local.get $6
     i32.const 16
     i32.shl
     i32.const 32768
@@ -52359,8 +52357,8 @@
     local.get $12
     select
     i32.add
-    local.set $5
-    local.get $6
+    local.set $6
+    local.get $5
     i32.const 16
     i32.shl
     local.get $2
@@ -52380,10 +52378,10 @@
        local.tee $1
        i32.const 7
        i32.and
-       local.get $5
+       local.get $6
        i32.const 16
        i32.shr_u
-       local.tee $6
+       local.tee $5
        i32.const 7
        i32.and
        i32.const 3
@@ -52399,7 +52397,7 @@
        i32.shr_s
        i32.const 2047
        i32.and
-       local.get $6
+       local.get $5
        i32.const 3
        i32.shr_u
        i32.const 2047
@@ -52447,7 +52445,7 @@
        br $src/rsmod/LinePathFinder/LinePathFinder#rayCast|inlined.1
       end
       local.get $14
-      local.get $6
+      local.get $5
       i32.const 16383
       i32.and
       local.get $1
@@ -52465,13 +52463,13 @@
       i32.or
       call $~lib/array/Array<i32>#push
       local.get $2
-      local.get $5
+      local.get $6
       i32.add
-      local.tee $5
+      local.tee $6
       i32.const 16
       i32.shr_u
       local.tee $8
-      local.get $6
+      local.get $5
       i32.ne
       if
        block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$481 (result i32)
@@ -52500,7 +52498,7 @@
         i32.shl
         i32.add
         i32.load
-        local.tee $6
+        local.tee $5
         i32.eqz
         br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$481
         drop
@@ -52515,7 +52513,7 @@
         i32.shl
         i32.or
         local.tee $7
-        local.get $6
+        local.get $5
         i32.const 20
         i32.sub
         i32.load offset=16
@@ -52524,7 +52522,7 @@
         i32.ge_s
         br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$481
         drop
-        local.get $6
+        local.get $5
         local.get $7
         i32.const 2
         i32.shl
@@ -52575,14 +52573,14 @@
     local.get $8
     select
     i32.add
-    local.set $8
+    local.set $5
     local.get $1
     i32.const 16
     i32.shl
     local.get $7
     i32.div_s
     local.set $3
-    local.get $5
+    local.get $6
     local.set $1
     loop $while-continue|1
      local.get $1
@@ -52590,10 +52588,10 @@
      i32.ne
      if
       block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$482 (result i32)
-       local.get $8
+       local.get $5
        i32.const 16
        i32.shr_u
-       local.tee $5
+       local.tee $6
        i32.const 7
        i32.and
        local.get $1
@@ -52605,12 +52603,12 @@
        i32.const 3
        i32.shl
        i32.or
-       local.set $6
+       local.set $7
        i32.const -1
        local.get $10
        i32.load
        i32.load
-       local.get $5
+       local.get $6
        i32.const 3
        i32.shr_u
        i32.const 2047
@@ -52633,13 +52631,13 @@
        i32.shl
        i32.add
        i32.load
-       local.tee $7
+       local.tee $8
        i32.eqz
        br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$482
        drop
        i32.const -1
-       local.get $6
        local.get $7
+       local.get $8
        i32.const 20
        i32.sub
        i32.load offset=16
@@ -52648,8 +52646,8 @@
        i32.ge_s
        br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$482
        drop
+       local.get $8
        local.get $7
-       local.get $6
        i32.const 2
        i32.shl
        i32.add
@@ -52666,7 +52664,7 @@
       local.get $1
       i32.const 16383
       i32.and
-      local.get $5
+      local.get $6
       i32.const 16383
       i32.and
       i32.const 14
@@ -52675,19 +52673,19 @@
       local.get $0
       i32.const 3
       i32.and
-      local.tee $6
+      local.tee $7
       i32.const 28
       i32.shl
       i32.or
       call $~lib/array/Array<i32>#push
       local.get $3
-      local.get $8
+      local.get $5
       i32.add
-      local.tee $8
+      local.tee $5
       i32.const 16
       i32.shr_u
-      local.tee $7
-      local.get $5
+      local.tee $8
+      local.get $6
       i32.ne
       if
        block $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$483 (result i32)
@@ -52695,7 +52693,7 @@
         local.get $10
         i32.load
         i32.load
-        local.get $7
+        local.get $8
         i32.const 3
         i32.shr_u
         i32.const 2047
@@ -52708,7 +52706,7 @@
         i32.const 11
         i32.shl
         i32.or
-        local.get $6
+        local.get $7
         i32.const 22
         i32.shl
         i32.or
@@ -52716,12 +52714,12 @@
         i32.shl
         i32.add
         i32.load
-        local.tee $5
+        local.tee $6
         i32.eqz
         br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$483
         drop
         i32.const -1
-        local.get $7
+        local.get $8
         i32.const 7
         i32.and
         local.get $1
@@ -52730,8 +52728,8 @@
         i32.const 3
         i32.shl
         i32.or
-        local.tee $6
-        local.get $5
+        local.tee $7
+        local.get $6
         i32.const 20
         i32.sub
         i32.load offset=16
@@ -52740,8 +52738,8 @@
         i32.ge_s
         br_if $__inlined_func$src/rsmod/collision/CollisionFlagMap/CollisionFlagMap#get$483
         drop
-        local.get $5
         local.get $6
+        local.get $7
         i32.const 2
         i32.shl
         i32.add
@@ -52758,7 +52756,7 @@
        local.get $1
        i32.const 16383
        i32.and
-       local.get $7
+       local.get $8
        i32.const 16383
        i32.and
        i32.const 14
@@ -52810,31 +52808,35 @@
   end
   local.get $1
  )
- (func $src/index/lineOfWalk@varargs (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (result i32)
-  block $4of4
-   block $3of4
-    block $2of4
-     block $1of4
-      block $0of4
-       block $outOfRange
-        global.get $~argumentsLength
-        i32.const 5
-        i32.sub
-        br_table $0of4 $1of4 $2of4 $3of4 $4of4 $outOfRange
+ (func $src/index/lineOfWalk@varargs (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (param $9 i32) (result i32)
+  block $5of5
+   block $4of5
+    block $3of5
+     block $2of5
+      block $1of5
+       block $0of5
+        block $outOfRange
+         global.get $~argumentsLength
+         i32.const 5
+         i32.sub
+         br_table $0of5 $1of5 $2of5 $3of5 $4of5 $5of5 $outOfRange
+        end
+        unreachable
        end
-       unreachable
+       i32.const 1
+       local.set $5
       end
       i32.const 1
-      local.set $5
+      local.set $6
      end
      i32.const 0
-     local.set $6
+     local.set $7
     end
     i32.const 0
-    local.set $7
+    local.set $8
    end
    i32.const 0
-   local.set $8
+   local.set $9
   end
   local.get $0
   local.get $1
@@ -52845,6 +52847,7 @@
   local.get $6
   local.get $7
   local.get $8
+  local.get $9
   call $src/index/lineOfWalk
  )
  (func $src/index/reached (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (param $5 i32) (param $6 i32) (param $7 i32) (param $8 i32) (param $9 i32) (param $10 i32) (result i32)
@@ -56808,7 +56811,7 @@
   i32.const 6000
   call $~lib/staticarray/StaticArray<~lib/string/String>#join
   i32.const 3680
-  i32.const 514
+  i32.const 522
   i32.const 13
   call $~lib/builtins/abort
   unreachable
