@@ -104,14 +104,14 @@ export default class LinePathFinder {
         const startX: i32 = Line.coordinate(srcX, destX, srcWidth);
         const startZ: i32 = Line.coordinate(srcZ, destZ, srcHeight);
 
-        if (los && this.flags.isFlagged(startX, startZ, level, flagLoc)) {
-            return LinePathFinder.EMPTY;
-        }
-
         const endX: i32 = Line.coordinate(destX, srcX, destWidth);
         const endZ: i32 = Line.coordinate(destZ, srcZ, destHeight);
 
         if (startX == endX && startZ == endZ) {
+            return LinePathFinder.EMPTY;
+        }
+
+        if (los && this.flags.isFlagged(startX, startZ, level, flagLoc)) {
             return LinePathFinder.EMPTY;
         }
 

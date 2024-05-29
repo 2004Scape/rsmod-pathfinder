@@ -101,15 +101,15 @@ export default class LineValidator {
         const startX: i32 = Line.coordinate(srcX, destX, srcWidth);
         const startZ: i32 = Line.coordinate(srcZ, destZ, srcHeight);
 
-        if (los && this.flags.isFlagged(startX, startZ, level, flagLoc)) {
-            return false;
-        }
-
         const endX: i32 = Line.coordinate(destX, srcX, destWidth);
         const endZ: i32 = Line.coordinate(destZ, srcZ, destHeight);
 
         if (startX == endX && startZ == endZ) {
             return true;
+        }
+
+        if (los && this.flags.isFlagged(startX, startZ, level, flagLoc)) {
+            return false;
         }
 
         const deltaX: i32 = endX - startX;
