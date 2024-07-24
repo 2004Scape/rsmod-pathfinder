@@ -1,12 +1,13 @@
+use std::collections::HashMap;
 use crate::rsmod::CollisionFlag;
 
 pub struct CollisionFlagMap {
-    flags: Vec<Vec<u32>>
+    flags: HashMap<usize, [u32; CollisionFlagMap::ZONE_TILE_COUNT]>
 }
 
 impl CollisionFlagMap {
-    const ZONE_TILE_COUNT: usize = 8*8;
-    const TOTAL_ZONE_COUNT: usize = 256*256*4*CollisionFlagMap::ZONE_TILE_COUNT;
+    const ZONE_TILE_COUNT: usize = 8 * 8;
+    const TOTAL_ZONE_COUNT: usize = 256 * 256 * 4 * CollisionFlagMap::ZONE_TILE_COUNT;
 
     #[inline(always)]
     fn zone_index(x: i32, z: i32, y: u8) -> usize {
@@ -20,16 +21,15 @@ impl CollisionFlagMap {
 
     #[no_mangle]
     pub fn new() -> CollisionFlagMap {
-        println!("created!");
         return CollisionFlagMap {
-            flags: vec![vec![]; CollisionFlagMap::TOTAL_ZONE_COUNT]
+            flags: HashMap::new()
         }
     }
 
     pub fn get(&self, x: i32, z: i32, y: u8) -> u32 {
         let tile_index: usize = CollisionFlagMap::tile_index(x, z);
 
-        return match self.flags.get(CollisionFlagMap::zone_index(x, z, y)) {
+        return match self.flags.get(&CollisionFlagMap::zone_index(x, z, y)) {
             None => CollisionFlag::NULL as u32,
             Some(flags) => {
                 if flags.len() > 0 {
@@ -46,7 +46,7 @@ impl CollisionFlagMap {
 
         self.allocate_if_absent(x, z, y);
 
-        match self.flags.get_mut(CollisionFlagMap::zone_index(x, z, y)) {
+        match self.flags.get_mut(&CollisionFlagMap::zone_index(x, z, y)) {
             None => {}
             Some(flags) => flags[tile_index] = mask
         }
@@ -57,7 +57,7 @@ impl CollisionFlagMap {
 
         let mut current: u32 = CollisionFlag::OPEN as u32;
 
-        match self.flags.get(CollisionFlagMap::zone_index(x, z, y)) {
+        match self.flags.get(&CollisionFlagMap::zone_index(x, z, y)) {
             None => {}
             Some(flags) => {
                 if flags.len() > 0 {
@@ -74,7 +74,7 @@ impl CollisionFlagMap {
 
         let mut current: u32 = CollisionFlag::OPEN as u32;
 
-        match self.flags.get(CollisionFlagMap::zone_index(x, z, y)) {
+        match self.flags.get(&CollisionFlagMap::zone_index(x, z, y)) {
             None => {}
             Some(flags) => {
                 if flags.len() > 0 {
@@ -89,7 +89,7 @@ impl CollisionFlagMap {
     pub fn allocate_if_absent(&mut self, x: i32, z: i32, y: u8) {
         let zone_index: usize = CollisionFlagMap::zone_index(x, z, y);
 
-        match self.flags.get(zone_index) {
+        match self.flags.get(&zone_index) {
             None => return,
             Some(flags) => {
                 if flags.len() > 0 {
@@ -98,7 +98,7 @@ impl CollisionFlagMap {
             }
         }
 
-        self.flags[zone_index] = vec![0; CollisionFlagMap::ZONE_TILE_COUNT];
+        self.flags.insert(zone_index, [CollisionFlag::OPEN as u32; CollisionFlagMap::ZONE_TILE_COUNT]);
     }
 
     pub fn isFlagged(&self, x: i32, z: i32, level: u8, masks: u32) -> bool {
