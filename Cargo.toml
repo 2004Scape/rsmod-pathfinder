@@ -1,0 +1,18 @@
+[package]
+name = "rsmod-pathfinder"
+version = "5.0.1"
+edition = "2021"
+authors = ["2004Scape"]
+description = "A breadth-first search path finder."
+license = "ISC"
+repository = "https://github.com/2004scape/rsmod-pathfinder"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2.92"
+once_cell = "1.19.0"
+
+[profile.release]
+opt-level = 3
