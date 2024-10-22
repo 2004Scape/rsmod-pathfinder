@@ -12,6 +12,7 @@ const DIRECTIONS: [[i32; 2]; 4] = [
 
 // https://gist.github.com/Z-Kris/2eb1c2fbc22aa7486a57089c82f293f8
 // https://gist.github.com/Z-Kris/fe476d75a51374f12dca999700f009f7
+#[inline(always)]
 pub unsafe fn find_naive_path(
     flags: &CollisionFlagMap,
     y: i32,
@@ -118,6 +119,7 @@ pub unsafe fn find_naive_path(
  * @param dest_width The end width on the X axis.
  * @param dest_height The end length on the Z axis.
  */
+#[inline(always)]
 fn intersects(
     src_x: i32,
     src_z: i32,
@@ -138,6 +140,7 @@ fn intersects(
         || destVertical <= src_z);
 }
 
+#[inline(always)]
 fn is_diagonal(
     src_x: i32,
     src_z: i32,
@@ -160,6 +163,7 @@ fn is_diagonal(
     return src_x - 1 == dest_x + dest_width - 1 && src_z + src_height == dest_z;
 }
 
+#[inline(always)]
 fn cardinal_destination(y: i32, src_x: i32, src_z: i32) -> Vec<u32> {
     let direction: [i32; 2] = DIRECTIONS[rand::thread_rng().gen_range(0..DIRECTIONS.len())];
     vec![CoordGrid::new(y, src_x + direction[0], src_z + direction[1]).packed]
@@ -186,6 +190,7 @@ fn cardinal_destination(y: i32, src_x: i32, src_z: i32) -> Vec<u32> {
  * This method is equivalent to returning the last coordinate in a sequence of steps towards south-west when moving
  * ordinal then cardinally until entity side comes into contact with another.
  */
+#[inline(always)]
 fn naive_destination(
     y: i32,
     src_x: i32,
@@ -249,6 +254,7 @@ fn naive_destination(
 /**
  * Ensures that this value is not greater than the specified maximumValue.
  */
+#[inline(always)]
 fn coerceAtMost(value: i32, max: i32) -> i32 {
     return if value > max { max } else { value };
 }
@@ -256,6 +262,7 @@ fn coerceAtMost(value: i32, max: i32) -> i32 {
 /**
  * Ensures that this value is not less than the specified minimumValue.
  */
+#[inline(always)]
 fn coerceAtLeast(value: i32, min: i32) -> i32 {
     return if value < min { min } else { value };
 }
