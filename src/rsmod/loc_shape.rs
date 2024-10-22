@@ -1,8 +1,12 @@
 #![allow(non_camel_case_types)]
 
+use std::cmp::PartialEq;
+use std::process;
+
 use wasm_bindgen::prelude::wasm_bindgen;
 
-#[repr(u8)]
+#[repr(i8)]
+#[derive(PartialEq)]
 #[wasm_bindgen]
 pub enum LocShape {
     WALL_STRAIGHT = 0,
@@ -27,38 +31,44 @@ pub enum LocShape {
     ROOFEDGE_DIAGONAL_CORNER = 19,
     ROOFEDGE_L = 20,
     ROOFEDGE_SQUARE_CORNER = 21,
-    GROUND_DECOR = 22
+    GROUND_DECOR = 22,
 }
 
-impl TryFrom<u8> for LocShape {
-    type Error = &'static str;
+impl From<i8> for LocShape {
+    #[inline(always)]
+    fn from(value: i8) -> LocShape {
+        return match value {
+            0 => LocShape::WALL_STRAIGHT,
+            1 => LocShape::WALL_DIAGONAL_CORNER,
+            2 => LocShape::WALL_L,
+            3 => LocShape::WALL_SQUARE_CORNER,
+            4 => LocShape::WALLDECOR_STRAIGHT_NOOFFSET,
+            5 => LocShape::WALLDECOR_STRAIGHT_OFFSET,
+            6 => LocShape::WALLDECOR_DIAGONAL_OFFSET,
+            7 => LocShape::WALLDECOR_DIAGONAL_NOOFFSET,
+            8 => LocShape::WALLDECOR_DIAGONAL_BOTH,
+            9 => LocShape::WALL_DIAGONAL,
+            10 => LocShape::CENTREPIECE_STRAIGHT,
+            11 => LocShape::CENTREPIECE_DIAGONAL,
+            12 => LocShape::ROOF_STRAIGHT,
+            13 => LocShape::ROOF_DIAGONAL_WITH_ROOFEDGE,
+            14 => LocShape::ROOF_DIAGONAL,
+            15 => LocShape::ROOF_L_CONCAVE,
+            16 => LocShape::ROOF_L_CONVEX,
+            17 => LocShape::ROOF_FLAT,
+            18 => LocShape::ROOFEDGE_STRAIGHT,
+            19 => LocShape::ROOFEDGE_DIAGONAL_CORNER,
+            20 => LocShape::ROOFEDGE_L,
+            21 => LocShape::ROOFEDGE_SQUARE_CORNER,
+            22 => LocShape::GROUND_DECOR,
+            _ => process::abort(), // unreachable!("[LocShape] Invalid value used for shape! {}", value),
+        };
+    }
+}
 
-    fn try_from(value: u8) -> Result<Self, Self::Error> {
-        match value {
-            0 => Ok(LocShape::WALL_STRAIGHT),
-            1 => Ok(LocShape::WALL_DIAGONAL_CORNER),
-            2 => Ok(LocShape::WALL_L),
-            3 => Ok(LocShape::WALL_SQUARE_CORNER),
-            4 => Ok(LocShape::WALLDECOR_STRAIGHT_NOOFFSET),
-            5 => Ok(LocShape::WALLDECOR_STRAIGHT_OFFSET),
-            6 => Ok(LocShape::WALLDECOR_DIAGONAL_OFFSET),
-            7 => Ok(LocShape::WALLDECOR_DIAGONAL_NOOFFSET),
-            8 => Ok(LocShape::WALLDECOR_DIAGONAL_BOTH),
-            9 => Ok(LocShape::WALL_DIAGONAL),
-            10 => Ok(LocShape::CENTREPIECE_STRAIGHT),
-            11 => Ok(LocShape::CENTREPIECE_DIAGONAL),
-            12 => Ok(LocShape::ROOF_STRAIGHT),
-            13 => Ok(LocShape::ROOF_DIAGONAL_WITH_ROOFEDGE),
-            14 => Ok(LocShape::ROOF_DIAGONAL),
-            15 => Ok(LocShape::ROOF_L_CONCAVE),
-            16 => Ok(LocShape::ROOF_L_CONVEX),
-            17 => Ok(LocShape::ROOF_FLAT),
-            18 => Ok(LocShape::ROOFEDGE_STRAIGHT),
-            19 => Ok(LocShape::ROOFEDGE_DIAGONAL_CORNER),
-            20 => Ok(LocShape::ROOFEDGE_L),
-            21 => Ok(LocShape::ROOFEDGE_SQUARE_CORNER),
-            22 => Ok(LocShape::GROUND_DECOR),
-            _ => Err("Invalid loc shape value.")
-        }
+impl PartialEq<LocShape> for i8 {
+    #[inline(always)]
+    fn eq(&self, other: &LocShape) -> bool {
+        return LocShape::from(*self) == *other;
     }
 }

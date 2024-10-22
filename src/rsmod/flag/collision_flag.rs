@@ -2,8 +2,9 @@
 
 use wasm_bindgen::prelude::wasm_bindgen;
 
-#[wasm_bindgen]
 #[repr(u32)]
+#[derive(Clone, PartialEq, Copy, Debug)]
+#[wasm_bindgen]
 pub enum CollisionFlag {
     OPEN = 0x0,
     WALL_NORTH_WEST = 0x1,
