@@ -36,5 +36,13 @@ opt-level = 3
 
 [package.metadata.wasm-pack.profile.release]
 wasm-opt = [
-    "-O4"
+    "--generate-global-effects",
+    "--optimize-instructions",
+    "--memory-packing",
+    "--intrinsic-lowering",
+    "--flexible-inline-max-function-size",
+    "4294967295",
+    "--inlining",
+    "--inlining-optimizing",
+    "-O4",
 ]
