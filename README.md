@@ -40,7 +40,9 @@ requests to a destination +10 tiles North with a single access point to the dest
 
 AMD Ryzen 9 3900X 12-Core Processor 3.80 GHz
 
-### Native:
+- All tests below were done on the same machine with the same hardware.
+
+### Rust (Native):
 
 Ran in Release mode on Windows x64 OS.
 
@@ -57,7 +59,7 @@ Ran in Release mode on Windows x64 OS.
 100k paths took: 356.8262ms; time per call: 3.568µs
 ```
 
-### WebAssembly:
+### Rust (WebAssembly):
 
 Ran in Release mode on Windows x64 OS with NodeJS.
 
@@ -74,6 +76,30 @@ on a server also using TypeScript.
 100k paths took: 737ms; time per call: 7.37µs
 100k paths took: 745ms; time per call: 7.45µs
 100k paths took: 737ms; time per call: 7.37µs
+```
+
+### AssemblyScript (WebAssembly):
+
+```
+100k paths took: 1534ms; time per call: 15.34µs
+100k paths took: 1540ms; time per call: 15.40µs
+100k paths took: 1544ms; time per call: 15.44µs
+100k paths took: 1519ms; time per call: 15.19µs
+100k paths took: 1533ms; time per call: 15.33µs
+100k paths took: 1522ms; time per call: 15.22µs
+100k paths took: 1527ms; time per call: 15.27µs
+```
+
+### TypeScript:
+
+```
+100k paths took: 3858ms; time per call: 38.58µs
+100k paths took: 3855ms; time per call: 38.55µs
+100k paths took: 3828ms; time per call: 38.28µs
+100k paths took: 3820ms; time per call: 38.20µs
+100k paths took: 3833ms; time per call: 38.33µs
+100k paths took: 3852ms; time per call: 38.52µs
+100k paths took: 3844ms; time per call: 38.44µs
 ```
 
 --
