@@ -1,3 +1,5 @@
+use std::collections::VecDeque;
+
 use crate::rsmod::{CollisionStrategies, CollisionStrategy, CoordGrid};
 use crate::rsmod::collision::collision::CollisionFlagMap;
 use crate::rsmod::collision_flag::CollisionFlag;
@@ -147,7 +149,8 @@ impl PathFinder {
             }
         }
 
-        let mut waypoints: Vec<u32> = vec![];
+        let limit: usize = max_waypoints as usize;
+        let mut waypoints: VecDeque<u32> = VecDeque::with_capacity(limit);
 
         let mut next: i8 = *self
             .directions
@@ -161,11 +164,10 @@ impl PathFinder {
             }
             if curr != next {
                 curr = next;
-                if waypoints.len() >= max_waypoints as usize {
-                    waypoints.pop();
+                if waypoints.len() >= limit {
+                    waypoints.pop_back();
                 }
-                waypoints.insert(
-                    0,
+                waypoints.push_front(
                     CoordGrid::new(y, base_x + self.curr_local_x, base_z + self.curr_local_z)
                         .packed,
                 );
@@ -188,7 +190,7 @@ impl PathFinder {
                 .as_ptr()
                 .add(self.local_index(self.curr_local_x, self.curr_local_z));
         }
-        return waypoints.to_vec();
+        return Vec::from(waypoints);
     }
 
     #[inline(always)]
