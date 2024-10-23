@@ -1,2 +1,2 @@
 pub mod reach_strategy;
-mod rectangle_boundary;
+pub mod rectangle_boundary;

@@ -2,7 +2,7 @@ use rsmod::rsmod::collision::collision::CollisionFlagMap;
 use rsmod::rsmod::collision_flag::CollisionFlag;
 
 #[test]
-fn test_get_collision_flag_null_zone() {
+fn test_collision_get_collision_flag_null_zone() {
     let collision: CollisionFlagMap = CollisionFlagMap::new();
 
     unsafe { assert_eq!(false, collision.is_zone_allocated(3200, 3200, 0)) }
@@ -17,7 +17,7 @@ fn test_get_collision_flag_null_zone() {
 }
 
 #[test]
-fn test_get_collision_flag_allocated_zone() {
+fn test_collision_get_collision_flag_allocated_zone() {
     let mut collision: CollisionFlagMap = CollisionFlagMap::new();
 
     unsafe {
@@ -37,7 +37,7 @@ fn test_get_collision_flag_allocated_zone() {
 }
 
 #[test]
-fn test_set_collision_flag() {
+fn test_collision_set_collision_flag() {
     let mut collision: CollisionFlagMap = CollisionFlagMap::new();
 
     unsafe {
@@ -56,7 +56,7 @@ fn test_set_collision_flag() {
 }
 
 #[test]
-fn test_add_collision_flag() {
+fn test_collision_add_collision_flag() {
     let mut collision: CollisionFlagMap = CollisionFlagMap::new();
 
     unsafe {
@@ -90,7 +90,7 @@ fn test_add_collision_flag() {
 }
 
 #[test]
-fn test_remove_collision_flag() {
+fn test_collision_remove_collision_flag() {
     let mut collision: CollisionFlagMap = CollisionFlagMap::new();
 
     unsafe {
@@ -109,7 +109,7 @@ fn test_remove_collision_flag() {
 }
 
 #[test]
-fn test_deallocate_if_present() {
+fn test_collision_deallocate_if_present() {
     let mut collision: CollisionFlagMap = CollisionFlagMap::new();
 
     unsafe {
@@ -124,6 +124,6 @@ fn test_deallocate_if_present() {
 }
 
 #[test]
-fn test_zone_index() {
+fn test_collision_zone_index() {
     assert_eq!(CollisionFlagMap::zone_index(0, 0, 0), 0);
 }

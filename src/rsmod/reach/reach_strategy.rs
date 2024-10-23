@@ -30,7 +30,7 @@ impl ReachStrategy {
     }
 
     #[inline(always)]
-    fn altered_rotation(angle: u8, shape: i8) -> u8 {
+    pub fn altered_rotation(angle: u8, shape: i8) -> u8 {
         return if shape == 7 { (angle + 2) & 0x3 } else { angle };
     }
 
@@ -98,7 +98,7 @@ impl ReachStrategy {
     }
 
     #[inline(always)]
-    unsafe fn reach_rectangle(
+    pub unsafe fn reach_rectangle(
         flags: &CollisionFlagMap,
         y: i32,
         src_x: i32,
@@ -161,7 +161,7 @@ impl ReachStrategy {
     }
 
     #[inline(always)]
-    unsafe fn reach_exclusive_rectangle(
+    pub unsafe fn reach_exclusive_rectangle(
         flags: &CollisionFlagMap,
         y: i32,
         src_x: i32,

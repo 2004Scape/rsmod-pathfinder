@@ -1,0 +1,34 @@
+{
+  "name": "@2004scape/rsmod-pathfinder",
+  "version": "5.0.2",
+  "description": "A breadth-first search path finder.",
+  "main": "dist/rsmod-pathfinder.js",
+  "types": "dist/rsmod-pathfinder.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "wasm": "wasm-pack build --target nodejs --out-dir dist --out-name rsmod-pathfinder",
+    "bench": "cargo bench",
+    "test": "cargo test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2004scape/rsmod-pathfinder.git"
+  },
+  "keywords": [
+    "rsmod",
+    "pathfinder",
+    "bfs",
+    "2004scape",
+    "rust",
+    "webassembly",
+    "wasm"
+  ],
+  "author": "2004scape",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2004scape/rsmod-pathfinder/issues"
+  },
+  "homepage": "https://github.com/2004scape/rsmod-pathfinder#readme"
+}

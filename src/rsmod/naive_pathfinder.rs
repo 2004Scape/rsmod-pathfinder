@@ -239,7 +239,7 @@ fn naive_destination(
     } else {
         if !(southeast_clockwise && !southwest_clockwise) {
             // South
-            // throw new Error(`Failed requirement. southEastClockwise was: ${southEastClockwise}, southWestClockwise was: ${southWestClockwise}.`);
+            return vec![]; // throw new Error(`Failed requirement. southEastClockwise was: ${southEastClockwise}, southWestClockwise was: ${southWestClockwise}.`);
         }
         let mut off_x: i32 = 0;
         if diagonal > -src_height {

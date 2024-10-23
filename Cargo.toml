@@ -6,6 +6,14 @@ authors = ["2004Scape"]
 description = "A breadth-first search path finder."
 license = "ISC"
 repository = "https://github.com/2004scape/rsmod-pathfinder"
+homepage = "https://github.com/2004scape/rsmod-pathfinder#readme"
+keywords = [
+    "rsmod",
+    "pathfinder",
+    "bfs",
+    "rust",
+    "webassembly"
+]
 
 [lib]
 crate-type = ["cdylib", "lib"]

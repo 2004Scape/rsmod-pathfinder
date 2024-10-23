@@ -17,13 +17,11 @@ npm i @2004scape/rsmod-pathfinder
 
 ----
 
-## Publishing Notes
+## Command Notes
 
 ```shell
 wasm-pack build --target nodejs --out-dir dist --out-name rsmod-pathfinder # Builds the wasm bundle.
 ~/IdeaProjects/wabt/bin/wasm2wat  dist/rsmod-pathfinder_bg.wasm -o src/rsmod.wat # Generates the wat file.
-# update cargo.toml version
-# commit and push to main
 npm publish --access public # Publishes the version of this to npm.
 ```
 
