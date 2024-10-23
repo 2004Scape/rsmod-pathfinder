@@ -380,6 +380,12 @@ unsafe fn is_blocked_southeast(
             )
         }
         _ => {
+            if !collision.can_move(
+                flags.get(x + size as i32, z - 1, y),
+                CollisionFlag::BLOCK_SOUTH_EAST as u32 | extra_flag,
+            ) {
+                return true;
+            }
             for mid in 1..size {
                 if !collision.can_move(
                     flags.get(x + size as i32, z + mid as i32 - 1, y),
