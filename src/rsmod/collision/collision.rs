@@ -2,7 +2,7 @@ use crate::rsmod::collision_flag::CollisionFlag;
 
 #[derive(Clone)]
 pub struct CollisionFlagMap {
-    pub flags: Vec<Option<Vec<u32>>>,
+    pub flags: Vec<Option<Box<[u32; 8 * 8]>>>,
 }
 
 impl CollisionFlagMap {
@@ -65,10 +65,10 @@ impl CollisionFlagMap {
     }
 
     #[inline(always)]
-    unsafe fn allocate_if_absent_return(&mut self, zone_idx: usize) -> &mut Vec<u32> {
-        return (*self.flags.as_mut_ptr().add(zone_idx)).get_or_insert_with(|| {
-            vec![CollisionFlag::OPEN as u32; CollisionFlagMap::ZONE_TILE_COUNT]
-        });
+    unsafe fn allocate_if_absent_return(&mut self, zone_idx: usize) -> &mut [u32; 64] {
+        return (*self.flags.as_mut_ptr().add(zone_idx)).get_or_insert(Box::new(
+            [CollisionFlag::OPEN as u32; CollisionFlagMap::ZONE_TILE_COUNT],
+        ));
     }
 
     #[rustfmt::skip]

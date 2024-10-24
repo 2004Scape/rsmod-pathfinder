@@ -45,12 +45,14 @@ AMD Ryzen 9 3900X 12-Core Processor 3.80 GHz
 Ran in Release mode on Windows x64 OS.
 
 ```
-100k paths took: 312.3261ms; time per call: 3.123µs
-100k paths took: 313.0271ms; time per call: 3.13µs
-100k paths took: 310.554ms; time per call: 3.105µs
-100k paths took: 312.095ms; time per call: 3.12µs
-100k paths took: 312.5054ms; time per call: 3.125µs
-100k paths took: 315.6638ms; time per call: 3.156µs
+100k paths took: 279.3573ms; time per call: 2.793µs
+100k paths took: 280.2238ms; time per call: 2.802µs
+100k paths took: 281.206ms; time per call: 2.812µs
+100k paths took: 278.8223ms; time per call: 2.788µs
+100k paths took: 277.9747ms; time per call: 2.779µs
+100k paths took: 279.5909ms; time per call: 2.795µs
+100k paths took: 277.8473ms; time per call: 2.778µs
+100k paths took: 281.0326ms; time per call: 2.81µs
 ```
 
 ### Rust (WebAssembly):
@@ -61,13 +63,14 @@ This typically takes about 850ms on average in a real world scenario tested
 on a server also using TypeScript.
 
 ```
-100k paths took: 711ms; time per call: 7.11µs
-100k paths took: 709ms; time per call: 7.09µs
-100k paths took: 707ms; time per call: 7.07µs
-100k paths took: 714ms; time per call: 7.14µs
-100k paths took: 707ms; time per call: 7.07µs
-100k paths took: 715ms; time per call: 7.15µs
-100k paths took: 712ms; time per call: 7.12µs
+100k paths took: 703ms; time per call: 7.03µs
+100k paths took: 702ms; time per call: 7.02µs
+100k paths took: 701ms; time per call: 7.01µs
+100k paths took: 702ms; time per call: 7.02µs
+100k paths took: 699ms; time per call: 6.99µs
+100k paths took: 705ms; time per call: 7.05µs
+100k paths took: 701ms; time per call: 7.01µs
+100k paths took: 702ms; time per call: 7.02µs
 ```
 
 ### AssemblyScript (WebAssembly):

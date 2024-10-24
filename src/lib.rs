@@ -20,8 +20,8 @@ use crate::rsmod::reach_strategy::ReachStrategy;
 pub mod rsmod;
 
 // alloc on the heap for the wasm module globally.
-static mut COLLISION_FLAGS: Lazy<CollisionFlagMap> = Lazy::new(|| CollisionFlagMap::new());
-static mut PATHFINDER: Lazy<PathFinder> = Lazy::new(|| PathFinder::new());
+static mut COLLISION_FLAGS: Lazy<CollisionFlagMap> = Lazy::new(CollisionFlagMap::new);
+static mut PATHFINDER: Lazy<PathFinder> = Lazy::new(PathFinder::new);
 
 #[wasm_bindgen]
 pub unsafe fn findPath(
