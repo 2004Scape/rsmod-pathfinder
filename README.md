@@ -13,7 +13,6 @@ Ported from Kotlin: 🔗 https://github.com/rsmod/rsmod/tree/main/engine/pathfin
 >
 > `npm i @2004scape/rsmod-pathfinder`
 
-> [!CARGO]
 > 🔗 https://crates.io/crates/rsmod-pathfinder
 >
 > `cargo add rsmod-pathfinder`
