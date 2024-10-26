@@ -481,8 +481,8 @@ pub unsafe fn isZoneAllocated(x: i32, z: i32, y: i32) -> bool {
 }
 
 #[wasm_bindgen]
-pub unsafe fn isFlagged(x: i32, z: i32, y: i32, masks: CollisionFlag) -> bool {
-    return COLLISION_FLAGS.is_flagged(x, z, y, masks as u32);
+pub unsafe fn isFlagged(x: i32, z: i32, y: i32, masks: u32) -> bool {
+    return COLLISION_FLAGS.is_flagged(x, z, y, masks);
 }
 
 #[wasm_bindgen]
