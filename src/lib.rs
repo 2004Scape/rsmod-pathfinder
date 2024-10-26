@@ -690,7 +690,7 @@ pub unsafe fn __set(x: i32, z: i32, y: i32, mask: u32) {
 }
 
 #[inline(always)]
-pub fn get_collision_strategy(collision: CollisionType) -> CollisionStrategies {
+fn get_collision_strategy(collision: CollisionType) -> CollisionStrategies {
     return match collision {
         CollisionType::NORMAL => CollisionStrategies::Normal(Normal),
         CollisionType::BLOCKED => CollisionStrategies::Blocked(Blocked),

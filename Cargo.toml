@@ -5,8 +5,10 @@ edition = "2021"
 authors = ["2004Scape"]
 description = "A breadth-first search path finder."
 license = "ISC"
+license-file = "LICENSE.md"
 repository = "https://github.com/2004scape/rsmod-pathfinder"
 homepage = "https://github.com/2004scape/rsmod-pathfinder#readme"
+readme = "README.md"
 keywords = [
     "rsmod",
     "pathfinder",
@@ -14,6 +16,8 @@ keywords = [
     "rust",
     "webassembly"
 ]
+categories = ["game-engines", "game-development"]
+exclude = [".github", ".run", "package.json", "lumbridge.json", "src/main.*"]
 
 [lib]
 crate-type = ["cdylib", "lib"]

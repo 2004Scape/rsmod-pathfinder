@@ -3,31 +3,24 @@
 A breadth-first search pathfinder.
 (The fastest in all the land)
 
-Ported from Kotlin: https://github.com/rsmod/rsmod/tree/main/engine/pathfinder
+Ported from Kotlin: 🔗 https://github.com/rsmod/rsmod/tree/main/engine/pathfinder
 
 ----
 
-## Installing (Consuming)
+## ✨ Installing
 
-https://www.npmjs.com/package/@2004scape/rsmod-pathfinder
+> 🔗 https://www.npmjs.com/package/@2004scape/rsmod-pathfinder
+>
+> `npm i @2004scape/rsmod-pathfinder`
 
-```shell
-npm i @2004scape/rsmod-pathfinder
-```
-
-----
-
-## Command Notes
-
-```shell
-wasm-pack build --target nodejs --out-dir dist --out-name rsmod-pathfinder # Builds the wasm bundle.
-~/IdeaProjects/wabt/bin/wasm2wat  dist/rsmod-pathfinder_bg.wasm -o src/rsmod.wat # Generates the wat file.
-npm publish --access public # Publishes the version of this to npm.
-```
+> [!CARGO]
+> 🔗 https://crates.io/crates/rsmod-pathfinder
+>
+> `cargo add rsmod-pathfinder`
 
 ----
 
-## Benchmarks
+## 💪 Benchmarks
 
 I have created `main.js` and `main.rs` for synthetic examples of performance.
 They load in a full reconstruction of the Lumbridge mapsquare (64x64) tiles
@@ -108,3 +101,11 @@ pathfinder/find_path    time:   [6.8195 µs 7.1890 µs 7.4884 µs]
 ```
 
 ----
+
+## Contributor Notes
+
+```shell
+wasm-pack build --target nodejs --out-dir dist --out-name rsmod-pathfinder # Builds the wasm bundle.
+~/IdeaProjects/wabt/bin/wasm2wat  dist/rsmod-pathfinder_bg.wasm -o src/rsmod.wat # Generates the wat file.
+npm publish --access public # Publishes the version of this to npm.
+```
